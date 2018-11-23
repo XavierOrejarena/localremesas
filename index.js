@@ -1,0 +1,19 @@
+const app = new Vue({
+	el: '#app',
+	data: {
+		welcome: false
+	},
+	methods: {
+		
+	},
+	beforeMount () {
+		axios({
+	    method: 'get',
+	    url: './session.php',
+	    config: { headers: {'Content-Type': 'multipart/form-data' }}
+	    })
+	    .then( response => {
+	    	this.welcome = response['data']
+	    })
+	}
+})
