@@ -1,1 +1,1 @@
-<?php echo date("Y/m/d");
+<?php date("Y/m/d");
