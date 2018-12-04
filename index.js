@@ -1,7 +1,8 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		welcome: false
+		welcome: false,
+		tipo_usuario: 'REGULAR',
 	},
 	methods: {
 		
@@ -13,7 +14,7 @@ const app = new Vue({
 	    config: { headers: {'Content-Type': 'multipart/form-data' }}
 	    })
 	    .then( response => {
-	    	this.welcome = response['data']
+			this.welcome = this.tipo_usuario = response['data']
 	    })
 	}
 })

@@ -13,6 +13,7 @@ if (mysqli_connect_errno()) {
 	$link->query("DROP TABLE cuentas");
 	$link->query("DROP TABLE usuarios");
 	$link->query("DROP TABLE tasas");
+	$link->query("DROP TABLE bancos");
 
 	$sql = "CREATE TABLE usuarios (
 	id INT(10) ZEROFILL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -97,7 +98,7 @@ if (mysqli_connect_errno()) {
 
 	$sql = "CREATE TABLE tasas (
 	divisa VARCHAR(4) PRIMARY KEY NOT NULL,
-	tasa INT(10)
+	tasa DECIMAL(10,2)
 	)";
 
 	if ($link->query($sql) === TRUE) {
@@ -121,6 +122,26 @@ if (mysqli_connect_errno()) {
 	} else {
 	    echo "Not droped\n" . $conn->error;
 	}
+
+	$sql = "CREATE TABLE bancos (
+		id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		nombre VARCHAR(20),
+		saldo INT(10)
+		)";
+
+	if ($link->query($sql) === TRUE) {
+		echo "Droped\n";
+	} else {
+		echo "Not droped\n" . $conn->error;
+	}
+	$password = password_hash('xavier123', PASSWORD_DEFAULT);
+	$sql = "INSERT INTO usuarios (username, password, tipo) VALUES ('XAVIER', '$password', 'ADMIN')";
 	
+	if ($link->query($sql)) {
+		echo "<br>Usuario creado</br>";
+	} else {
+		echo "<br>Errro creando admin</br>";
+	}
+
 	}
 ?>

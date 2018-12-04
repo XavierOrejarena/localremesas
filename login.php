@@ -12,6 +12,7 @@
       $res = true;
       $_SESSION['username'] = $username;
       $_SESSION['time'] = time();
+      $_SESSION['tipo'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM usuarios WHERE username = '$username'"))['tipo'];
     } else {
       $res = false;
     }

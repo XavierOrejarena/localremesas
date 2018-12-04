@@ -5,7 +5,8 @@ const app = new Vue({
 		monto: 0,
 		tasa: 0,
 		id_usuario: 0,
-		tipo_usuario: 'REGULAR',
+		tipo_usuario: '',
+		tipo_cliente: 'REGULAR',
 		monto_total: 0,
 		tabla: false,
 		cuentas_display: '',
@@ -144,6 +145,7 @@ const app = new Vue({
 									if (this.monto_total > this.tasa*this.monto) {
 										this.error('El monto total es inocrrecto.', 'monto_total')
 									} else {
+										var barra = document.getElementById("barra");
 										var bodyFormData = new FormData();
 										bodyFormData.append('comprobante', document.getElementById("comprobante").files[0]);
 										bodyFormData.set('id_usuario', this.id_usuario);
@@ -155,7 +157,17 @@ const app = new Vue({
 									    method: 'post',
 									    url: './insertarPagos_in.php',
 									    data: bodyFormData,
-									    config: { headers: {'Content-Type': 'multipart/form-data' }}
+									    config: { headers: {'Content-Type': 'multipart/form-data' }},
+							            onUploadProgress: (e) => {
+							                    if (e.lengthComputable) {
+							                       var p = Math.round((e.loaded/e.total)*100);
+											       barra.style ="width: "+ p +"%";
+											       barra.innerHTML = p + "%";
+											       this.small = '...'
+											       this.tipo_cliente = '...'
+							                    }
+							           }
+
 									    })
 									    .then( response => {
 												this.mensajes = response['data']['mensajes']
@@ -163,6 +175,8 @@ const app = new Vue({
 												this.insertarPagos_out(response['data']['id_pago_in'])
 												window.scrollTo(0,0);
 												this.clear();
+												barra.style ="width: 0%";
+												barra.innerHTML = "";
 									    })	
 									}
 								}
@@ -281,11 +295,11 @@ const app = new Vue({
 			    		this.cuentas_display.map(item => item.monto = 0)
 			    		this.tabla = true
 			    		this.cargarTasa(response['data']['cuentas'][0].tipo)
-			    		this.tipo_usuario = response['data']['cuentas'][0].tipo
+			    		this.tipo_cliente = response['data']['cuentas'][0].tipo
 			    	} else {
 			    		if (response['data']['tipo']) {
 				    		this.small = 'Usuario ya existe'
-				    		this.tipo_usuario = response['data']['tipo']
+				    		this.tipo_cliente = response['data']['tipo']
 				    		this.cargarTasa(response['data']['tipo'])
 				    	} else {
 				    		this.cargarTasa('REGULAR')
@@ -296,7 +310,7 @@ const app = new Vue({
 			    	}
 			    })
 			} else {
-				this.tipo_usuario = 'REGULAR'
+				this.tipo_cliente = 'REGULAR'
 		        this.cuentas_display = ''
 		        this.tabla = false
 				this.small = "Usuario nuevo"}
@@ -315,16 +329,18 @@ const app = new Vue({
 		}
 	},
 	beforeMount () {
-		this.cargarTasa('REGULAR')
 		axios({
 	    method: 'get',
 	    url: './session.php',
 	    config: { headers: {'Content-Type': 'multipart/form-data' }}
 	    })
 	    .then( response => {
-	    	if (!response['data']) {
-	    		window.location.href = "./index.html"
-	    	}
+	    	if (response['data'] == 'ADMIN'  || response['data'] == 'OPERADOR') {
+				this.tipo_usuario = response.data
+				this.cargarTasa('REGULAR')
+	    	} else {
+				window.location.href = "./index.html"
+			}
 	    })
 		
 

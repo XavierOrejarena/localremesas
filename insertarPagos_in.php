@@ -44,27 +44,27 @@ if ($_FILES['comprobante']['name']) {
         $res['errores'][] = true;
     // if everything is ok, try to upload file
     } else {
+        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $referencia . ".jpg")) {
+            $res['mensajes'][] = 'Archivo cargado existosamente';
+            $res['errores'][] = false;
 
-        $id_usuario = $_POST['id_usuario'];
-        $divisa = $_POST['divisa'];
-        $banco = $_POST['banco'];
-        $monto = $_POST['monto'];
-        $referencia = $_POST['referencia'];
+            $id_usuario = $_POST['id_usuario'];
+            $divisa = $_POST['divisa'];
+            $banco = $_POST['banco'];
+            $monto = $_POST['monto'];
+            $referencia = $_POST['referencia'];
 
-        $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado) VALUES ('$id_usuario', '$divisa', '$banco', '$monto', '$referencia', 'PENDIENTE')";
+            $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado) VALUES ('$id_usuario', '$divisa', '$banco', '$monto', '$referencia', 'PENDIENTE')";
 
-        if(mysqli_query($link, $sql)) {
-                $res['mensajes'][] = 'Pago agregado existosamente';
-                $res['errores'][] = false;
-                $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+            if(mysqli_query($link, $sql)) {
+                    $res['mensajes'][] = 'Pago agregado existosamente';
+                    $res['errores'][] = false;
+                    $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
             } else {
                 $res['mensajes'][] = 'Hubo un error agregando el pago';
                 $res['errores'][] = true;
             }
-
-        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $referencia . ".jpg")) {
-            $res['mensajes'][] = 'Archivo cargado existosamente';
-            $res['errores'][] = false;
+            
         } else {
             $res['mensajes'][] = 'Hubo un error cargando el archivo.';
             $res['errores'][] = true;

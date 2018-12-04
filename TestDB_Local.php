@@ -11,6 +11,21 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 
+	// $sql = "INSERT INTO bancos (nombre, saldo) VALUES ('Banesco', 100000)";
+	$sql = "INSERT INTO bancos (nombre, saldo) VALUES ('Mercantil', 120000)";
+	$link->query($sql);
+
+	// $sql = "CREATE TABLE bancos (
+	// 	id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	// 	nombre VARCHAR(20),
+	// 	saldo INT(10)
+	// 	)";
+
+	// if ($link->query($sql) === TRUE) {
+	// 	echo "Droped\n";
+	// } else {
+	// 	echo "Not droped\n" . $conn->error;
+	// }
 	// $username = 'xavier';
 
 

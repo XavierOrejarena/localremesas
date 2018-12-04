@@ -12,34 +12,38 @@
    </head>
    <body>
       
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Inicio
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      
    
    <div id="app">
 
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+         <div class="container">
+           <a class="navbar-brand" href="#">Local Remesas</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarResponsive">
+             <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                 <a class="nav-link" href="index.html">Inicio
+                 </a>
+               </li>
+               <li class="nav-item active">
+                 <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
+               </li>
+               <li v-if="tipo_cliente=='ADMIN'" class="nav-item">
+                     <a class="nav-link" href="admin.html">Admin</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </nav>
 
       <div class="container">
          <div id="0"></div>
@@ -54,7 +58,7 @@
             <div class="form-group">
                <label>ID de Usuario</label>
                <input v-model="id_usuario" @keyup="buscarUsuario($event)" type="text" class="form-control" name="id_usuario" id="id_usuario" required onClick="this.select();" maxlength="10">
-               <small id="emailHelp" :class="{'text-primary': id_usuario==0, 'text-success':small=='Usuario ya existe', 'text-danger':small=='Usuario no existe'}">{{small}} ({{tipo_usuario}})</small>
+               <small id="emailHelp" :class="{'text-primary': id_usuario==0, 'text-success':small=='Usuario ya existe', 'text-danger':small=='Usuario no existe'}">{{small}} ({{tipo_cliente}})</small>
             </div>
             
             <div class="form-group  ">
@@ -106,7 +110,7 @@
                      <label><strong>Faltan</strong></label>
                      <input readonly class="form-control" :value="tasa*monto-monto_total">
                   </div>
-                  <div class="form-group text-center col-md-2" v-if="tipo_usuario=='MAYORISTA'">
+                  <div class="form-group text-center col-md-2" v-if="tipo_cliente=='MAYORISTA'">
                         <div class="form-group text-center col">
                            <label><strong>&nbsp;</strong></label>
                            <button type="button" @click="calcularTasa('-')" class="form-control btn btn-secondary">- 0.5%</button>
@@ -115,10 +119,10 @@
                   <div class="form-group text-center col">
                      <div class="form-group text-center col">
                         <label><strong>Tasa</strong></label>
-                        <input :readonly="!(tipo_usuario=='ESPECIAL')" class="form-control text-center" v-model="tasa">
+                        <input :readonly="!(tipo_cliente=='ESPECIAL')" class="form-control text-center" v-model="tasa">
                      </div>
                   </div>
-                  <div class="form-group text-center col-md-2" v-if="tipo_usuario=='MAYORISTA'">
+                  <div class="form-group text-center col-md-2" v-if="tipo_cliente=='MAYORISTA'">
                         <div class="form-group text-center col">
                            <label><strong>&nbsp;</strong></label>
                            <button type="button" @click="calcularTasa('+')" class="form-control btn btn-secondary">+ 0.5%</button>
@@ -197,7 +201,7 @@
             <button v-if="small!='Usuario no existe'" @click="agregarCuenta" class="btn btn-outline-primary" type="button">Agregar cuenta</button>
             <button v-if="cuentas != 0" type="button" class="btn btn-primary" @click="cargarCuentas">Cargar Cuentas</button>
             <div class="mt-2">
-               <button v-if="small!='Usuario no existe'" @click="insertarPagos_in" type="button" class="form-group btn btn-primary">Cargar Pago</button>
+               <button v-if="small=='Usuario ya existe'" @click="insertarPagos_in" type="button" class="form-group btn btn-primary">Cargar Pago</button>
                </div>
             </div>
          </form>
@@ -207,41 +211,5 @@
    <script src="./vue.js"></script>
    <script src="./axios.min.js"></script>
    <script src="agregar_pagos.js"></script>
-   <script>
-      function crearPeticion () {
-  var peticion = null;
-  try {
-    peticion = new XMLHttpRequest();
-  }catch (IntentarMs) {
-    try{
-      peticion = new ActiveXObject("Msxml2.XMLHTTP");
-    }catch (OtroMs){
-      try{
-        peticion = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (fallo) {
-        peticion = null;
-      }
-    }
-  }
-  return peticion;
-}
-  window.onload = function () {
-    var archivo = document.getElementById("comprobante");
-    var barra = document.getElementById("barra");
-    archivo.addEventListener("change", function () {
-      var informacion = new FormData();
-      informacion.append("archivo", archivo.files[0]);
-      var peticion = crearPeticion();
 
-      peticion.upload.addEventListener("progress", function(e) {
-        var p = Math.round((e.loaded/e.total)*100);
-        barra.style ="width: "+ p +"%";
-        barra.innerHTML = p + "%";
-      });
-      
-      peticion.open("POST", "./insertarPagos_in.php");
-      peticion.send(informacion);
-    });
-  }
-</script>
 </html>

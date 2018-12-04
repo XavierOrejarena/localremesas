@@ -13,74 +13,77 @@
    </head>
    <body>
       <div id="app">
-        <div v-if="welcome">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-         <div class="container">
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                     <a class="nav-link" href="index.html">Inicio
-                     <span class="sr-only">(current)</span>
-                     </a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
-                  </li>
-               </ul>
-            </div>
-         </div>
-      </nav>
-         <div class="row col px-0 mx-0 mt-4">
-            <div class="col-md-6">
-               <form>
-                  <div class="form-group">
-                     <label for="dolares">Dólares a Bolívares</label>
-                     <input class="form-control" type="text" value="180" readonly id="dolares">
-                  </div>
-                  <div class="form-group">
-                     <label for="soles">Soles a Bolívares</label>
-                     <input class="form-control" type="text" value="50" readonly id="soles">
-                  </div>
-               </form>
-            </div>
-            <div class="col-md-6">
-               <h3>Calculadora</h3>
-               <form>
-                  <div class="form-group">
-                     <label for="de">De:</label>
-                     <select class="form-control" id="de" onchange="myFunction()">
-                        <option value="dolares">Dólares</option>
-                        <option value="soles">Soles</option>
-                     </select>
-                  </div>
-                  <div class="form-group">
-                     <label for="a">A:</label>
-                     <input class="form-control" type="text" readonly id="a" value="Bolívares">
-                  </div>
-                  <div class="form-group">
-                     <label for="monto">Monto</label>
-                     <input class="form-control" type="text" placeholder="Inserte el monto que desea cambiar" id="monto" onkeyup="myFunction()" autofocus value="100" onClick="this.select();">
-                  </div>
-                  <div class="form-group">
-                     <label for="total">Bolívares</label>
-                     <input class="form-control" type="text" value="180" readonly id="total">
-                  </div>
-               </form>
-            </div>
-         </div>
-         </div>
-         <div v-else class="container offset-md-3 mt-5">
+         <div v-if="!welcome" class="container offset-md-3 mt-5">
             <img src="test.png" width="50%">
+         </div>
+        <div v-else>
+           <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+               <a class="navbar-brand" href="#">Local Remesas</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Inicio
+                        <span class="sr-only">(current)</span>
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
+                     </li>
+                     <li v-if="tipo_usuario=='ADMIN'" class="nav-item">
+                           <a class="nav-link" href="admin.html">Admin</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+            <div class="row col px-0 mx-0 mt-4">
+               <div class="col-md-6">
+                  <form>
+                     <div class="form-group">
+                        <label for="dolares">Dólares a Bolívares</label>
+                        <input class="form-control" type="text" value="180" readonly id="dolares">
+                     </div>
+                     <div class="form-group">
+                        <label for="soles">Soles a Bolívares</label>
+                        <input class="form-control" type="text" value="50" readonly id="soles">
+                     </div>
+                  </form>
+               </div>
+               <div class="col-md-6">
+                  <h3>Calculadora</h3>
+                  <form>
+                     <div class="form-group">
+                        <label for="de">De:</label>
+                        <select class="form-control" id="de" onchange="myFunction()">
+                           <option value="dolares">Dólares</option>
+                           <option value="soles">Soles</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label for="a">A:</label>
+                        <input class="form-control" type="text" readonly id="a" value="Bolívares">
+                     </div>
+                     <div class="form-group">
+                        <label for="monto">Monto</label>
+                        <input class="form-control" type="text" placeholder="Inserte el monto que desea cambiar" id="monto" onkeyup="myFunction()" autofocus value="100" onClick="this.select();">
+                     </div>
+                     <div class="form-group">
+                        <label for="total">Bolívares</label>
+                        <input class="form-control" type="text" value="180" readonly id="total">
+                     </div>
+                  </form>
+               </div>
+            </div>
          </div>
       </div>
    </body>

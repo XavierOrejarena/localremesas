@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="icon" href="favicon.png" type="image/x-icon"/>
+      <link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+      <script src="jquery/jquery.min.js"></script>
+      <script src="bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+      <script src="calc.js"></script>
+      <link href="css/simple-sidebar.css" rel="stylesheet">
+      <title>Local Remesas</title>
+   </head>
+   <body>
+      <!-- app -->
+      <div id="app">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Local Remesas</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
+            </li>
+            <li v-if="tipo_usuario=='ADMIN'" class="nav-item active">
+              <a class="nav-link" href="admin.html">Admin</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+      <div id="wrapper" class="toggled">
+
+              <!-- Sidebar -->
+              <div id="sidebar-wrapper">
+                  <ul class="sidebar-nav">
+                      <li class="sidebar-brand">
+                          <a href="#">
+                              Sección administrativa
+                          </a>
+                      </li>
+                      <li>
+                          <a :class="{'actives':clase=='Tasas'}" href="#" @click="clase='Tasas'">Tasas</a>
+                      </li>
+                      <li>
+                          <a :class="{'actives':clase=='Usuarios'}" href="#" @click="clase='Usuarios'">Usuarios</a>
+                      </li>
+                      <li>
+                        <a :class="{'actives':clase=='Bancos'}" href="#" @click="clase='Bancos'">Bancos</a>
+                    </li>
+                    <li>
+                     <a :class="{'actives':clase=='Prestamos'}" href="#" @click="clase='Prestamos'">Prestamos</a>
+                 </li>
+                  </ul>
+              </div>
+              <!-- /#sidebar-wrapper -->
+
+              <!-- Page Content -->
+              <div v-if="clase=='Tasas'" id="page-content-wrapper">
+                  <div class="container-fluid">
+                      <h1>Tasas Local Remesas</h1>
+                      <p>En esta sección se modificaran las tasas de todas las divisas ofertadas.</p>
+                  </div>
+              </div>
+              <!-- /#page-content-wrapper -->
+
+          </div>
+         <div v-if="clase=='Tasas'" class="container col-md-6 mt-5">
+            <div v-for="(tasa, index) in tasas" class="row">
+               <div class="form-group mr-2">
+                     <input type="text" class="form-control" :value="tasa.divisa" disabled>   
+               </div>
+               <div class="form-group mr-2">
+                  <input type="text" class="form-control" :placeholder="'TASA ' + tasa.divisa" :id="tasa.divisa" :value="tasa.tasa">
+               </div>
+               <div class="form-group mr-2">
+                  <input type="text" class="form-control" :value="tasa.tasa" disabled>
+               </div>
+               <div class="form-group">
+                  <input class="btn btn-primary" type="button" value="Actualizar" @click="actualizarTasa(tasa.divisa)">
+               </div>
+            </div>
+         </div>
+         <div v-if="clase=='Usuarios'" class="container col-md-5 mt-5">
+            <div class="form-group">
+               <label>ID de Usuario</label>
+               <input v-model="id" @keyup="getUserInfo()" type="text" class="form-control" onClick="this.select();" maxlength="10">
+               <small class="text-danger">{{small}}</small>
+            </div>
+            <div v-if="usuario">
+               <table class="table table-hover text-center table-lg container border rounded">
+                     <thead>
+                        <tr>
+                           <th scope="col">Username</th>
+                           <th scope="col">Tipo</th>
+                           <th scope="col">Fecha de registro</th>
+                           <th scope="col">Modificar</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td scope="col">{{usuario.username}}</th>
+                           <td scope="col">
+                           <select class="form-control" id="tipo" v-model:value="tipo_usuario">
+                              <option v-for="tipo in tipos">{{tipo}}</option>
+                            </select>
+                         </td>
+                           <td scope="col">{{usuario.reg_date}}</th>   
+                           <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarUsuario()">Modificar</button></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <div id="mensaje" class="alert alert-success" v-if="mensaje">
+                    {{mensaje}}
+                  </div>
+            </div>
+         </div>
+         <div v-if="clase=='Bancos'" class="container offset-md-2 mt-5">
+          <div class="container">
+            <div class="row ml-1">
+            <div class="form-group mr-2">
+                <input type="text" class="form-control" placeholder="Nombre del banco" id="nombre">
+             </div>
+             <div class="form-group mr-2">
+                <input type="text" class="form-control" placeholder="Saldo" id="saldo">
+             </div>
+             <div class="form-group">
+                  <input class="btn btn-primary" type="button" value="Agregar" @click="agregarBanco()">
+               </div>
+             </div>
+           <table class="table table-hover text-center table-lg container border rounded">
+                 <thead>
+                    <tr>
+                       <th scope="col">Nombre</th>
+                       <th scope="col">Nuevo saldo</th>
+                       <th scope="col">Saldo actual</th>
+                       <th scope="col">Actualizar</th>
+                       <th scope="col">Eliminar</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <tr v-for="banco in bancos">
+                       <td scope="col">{{banco.nombre}}</th>
+                       <td scope="col"><input type="text" class="form-control" placeholder="Saldo" :id="banco.id" :value="banco.saldo"></td>
+                       <td scope="col"><input type="text" class="form-control" :value="banco.saldo" disabled></th>   
+                       <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarSaldo(banco.id)">Actualizar</button></td>
+                       <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="eliminarBanco(banco.id)">X</button></td>
+                    </tr>
+                 </tbody>
+              </table>
+            </div>
+         </div>
+         <div v-if="clase=='Prestamos'" class="container offset-md-2 mt-5">
+            <div class="row ml-1">
+               <div class="form-group mr-2">
+                   <input type="text" class="form-control" placeholder="Monto en bs" id="nombre">
+                </div>
+                <div class="form-group mr-2">
+                   <input type="text" class="form-control" value="500" id="saldo" disabled>
+                </div>
+                <div class="form-group mr-2">
+                  <input class="btn btn-primary" type="button" value="Agregar" @click="agregarBanco()">
+               </div>
+               <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+   <script src="./vue.js"></script>
+   <script src="./axios.min.js"></script>
+   <script src="admin.js"></script>
+</html>
