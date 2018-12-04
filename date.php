@@ -1,1 +1,1 @@
-<?php echo date("d/h");
+<?php echo date("d/h:i:s");
