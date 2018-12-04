@@ -44,6 +44,7 @@ if ($_FILES['comprobante']['name']) {
         $res['errores'][] = true;
     // if everything is ok, try to upload file
     } else {
+        $referencia = $_POST['referencia'];
         if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $referencia . ".jpg")) {
             $res['mensajes'][] = 'Archivo cargado existosamente';
             $res['errores'][] = false;
@@ -52,7 +53,6 @@ if ($_FILES['comprobante']['name']) {
             $divisa = $_POST['divisa'];
             $banco = $_POST['banco'];
             $monto = $_POST['monto'];
-            $referencia = $_POST['referencia'];
 
             $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado) VALUES ('$id_usuario', '$divisa', '$banco', '$monto', '$referencia', 'PENDIENTE')";
 
