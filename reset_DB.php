@@ -16,7 +16,7 @@ if (mysqli_connect_errno()) {
 	$link->query("DROP TABLE bancos");
 
 	$sql = "CREATE TABLE usuarios (
-	id INT(10) ZEROFILL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	username VARCHAR(255) UNIQUE,
 	password VARCHAR(255),
 	tipo VARCHAR(255),
@@ -30,7 +30,7 @@ if (mysqli_connect_errno()) {
 	}
 
 	$sql = "CREATE TABLE cuentas (
-	id INT(10) ZEROFILL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(20),
 	tipo_cedula VARCHAR(1),
 	cedula VARCHAR(10),
@@ -45,9 +45,9 @@ if (mysqli_connect_errno()) {
 	}
 
 	$sql = "CREATE TABLE usuarios_cuentas (
-	id_usuario INT(10) ZEROFILL UNSIGNED,
+	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-	id_cuenta INT(10) ZEROFILL UNSIGNED,
+	id_cuenta INT(10) UNSIGNED,
 	FOREIGN KEY (id_cuenta) REFERENCES cuentas(id),
 	CONSTRAINT PK_usuarios_cuentas PRIMARY KEY (id_usuario,id_cuenta)
 	)";
@@ -59,7 +59,7 @@ if (mysqli_connect_errno()) {
 	}
 
 	$sql = "CREATE TABLE pagos_in (
-	id INT(10) ZEROFILL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
 	divisa VARCHAR(64),
@@ -77,7 +77,7 @@ if (mysqli_connect_errno()) {
 	}
 
 	$sql = "CREATE TABLE pagos_out (
-	id INT(10) ZEROFILL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
 	id_pago_in INT(10) UNSIGNED,
