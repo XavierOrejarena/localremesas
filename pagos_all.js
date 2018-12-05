@@ -1,7 +1,8 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		pagos_in: '',
+        pagos_in: '',
+        pagos_out: '',
 		tipo_usuario: 'REGULAR',
 	},
 	methods: {
@@ -41,6 +42,7 @@ const app = new Vue({
 		    })
 		    .then( response => {
                 this.pagos_in = response.data.in
+                this.pagos_out = response.data.out
 		    })
 		}
 	},
