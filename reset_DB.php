@@ -73,7 +73,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "Pagos in creada\n";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Pagos in no creada\n" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE pagos_out (
