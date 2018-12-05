@@ -24,9 +24,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE cuentas (
@@ -39,9 +39,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE usuarios_cuentas (
@@ -53,9 +53,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE pagos_in (
@@ -71,9 +71,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Pagos in creada\n";
+	    echo "Pagos in <br>creada<br>";
 	} else {
-	    echo "Pagos in no creada\n" . $conn->error;
+	    echo "Pagos in no <br>creada<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE pagos_out (
@@ -91,9 +91,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE tasas (
@@ -102,25 +102,25 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 80)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('USD', 300)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "Droped\n";
+	    echo "<br>Droped<br>";
 	} else {
-	    echo "Not droped\n" . $conn->error;
+	    echo "Not <br>droped<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE bancos (
@@ -130,9 +130,9 @@ if (mysqli_connect_errno()) {
 		)";
 
 	if ($link->query($sql) === TRUE) {
-		echo "Droped\n";
+		echo "<br>Droped<br>";
 	} else {
-		echo "Not droped\n" . $conn->error;
+		echo "Not <br>droped<br>" . $conn->error;
 	}
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
 	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
