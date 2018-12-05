@@ -20,7 +20,7 @@ if (mysqli_connect_errno()) {
 	username VARCHAR(255) UNIQUE,
 	password VARCHAR(255),
 	tipo VARCHAR(255),
-	reg_date TIMESTAMP + INTERVAL 3 HOUR
+	reg_date (TIMESTAMP + INTERVAL 3 HOUR)
 	)";
 
 	if ($link->query($sql) === TRUE) {
@@ -67,7 +67,7 @@ if (mysqli_connect_errno()) {
 	monto VARCHAR(64),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
-	reg_date TIMESTAMP + INTERVAL 3 HOUR
+	reg_date (TIMESTAMP + INTERVAL 3 HOUR)
 	)";
 
 	if ($link->query($sql) === TRUE) {
@@ -87,7 +87,7 @@ if (mysqli_connect_errno()) {
 	monto VARCHAR(64),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
-	reg_date TIMESTAMP + INTERVAL 3 HOUR
+	reg_date (TIMESTAMP + INTERVAL 3 HOUR)
 	)";
 
 	if ($link->query($sql) === TRUE) {
