@@ -19,7 +19,7 @@ if (mysqli_connect_errno()) {
 	username VARCHAR(255) UNIQUE,
 	password VARCHAR(255),
 	tipo VARCHAR(255),
-	reg_date TIMESTAMP
+	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 
 	if ($link->query($sql) === TRUE) {
@@ -66,7 +66,7 @@ if (mysqli_connect_errno()) {
 	monto VARCHAR(64),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
-	reg_date TIMESTAMP
+	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 
 	if ($link->query($sql) === TRUE) {
@@ -86,7 +86,7 @@ if (mysqli_connect_errno()) {
 	monto VARCHAR(64),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
-	reg_date TIMESTAMP
+	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 
 	if ($link->query($sql) === TRUE) {
@@ -134,7 +134,7 @@ if (mysqli_connect_errno()) {
 		echo "<br>no bancos<br>" . $conn->error;
 	}
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
-	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR));";
+	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 	
 	if ($link->query($sql)) {
 		echo "<br>Usuario creado</br>";
@@ -142,13 +142,15 @@ if (mysqli_connect_errno()) {
 		echo "<br>Error creando admin</br>";
 	}
 
-	$sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado, reg_date) VALUES ('1', 'PEN', 'BCP', '100', '123', 'RECHAZADA', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+	$sql = "INSERT INTO cuentas (nombre, tipo_cedula, cedula, tipo_cuenta, cuenta) VALUES ('XAVIER OREJARENA', 'V', '19398747', 'CORRIENTE', '01340946340001440220')";
 	
 	if ($link->query($sql)) {
-		echo "<br>pago</br>";
+		echo "<br>cuenta creada exitosamente</br>";
 	} else {
-		echo "<br>no pago</br>";
+		echo "<br>Error creando cuenta</br>";
 	}
+
+	$link->query("INSERT INTO usuarios_cuentas (id_usuario, id_cuenta) VALUES (1,1)");
 
 }
 ?>
