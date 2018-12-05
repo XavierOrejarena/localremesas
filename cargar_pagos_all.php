@@ -8,7 +8,7 @@ FROM pagos_in, cuentas, pagos_out
 WHERE pagos_out.id_cuenta = cuentas.id 
 AND pagos_in.estado = 'RECHAZADA'
 AND pagos_out.id_pago_in = pagos_in.id
-AND EXTRACT(DAY FROM pagos_in.reg_date) = EXTRACT(DAY FROM CURDATE())");
+AND EXTRACT(DAY FROM pagos_in.reg_date) = EXTRACT(DAY FROM (CURDATE() + INTERVAL 3 HOUR))");
 
 
 
