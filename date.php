@@ -1,4 +1,4 @@
-<?php echo date("d h:i:s"), "<br>";
+<?php echo date("Y-m-d h:i:s"), "<br>";
 
 include "connect.php";
 
