@@ -67,7 +67,7 @@ if (mysqli_connect_errno()) {
 	monto VARCHAR(64),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
-	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP + INTERVAL 3 HOUR
+	reg_date TIMESTAMP NOT NULL DEFAULT NOW() + INTERVAL 3 HOUR
 	)";
 
 	if ($link->query($sql) === TRUE) {
