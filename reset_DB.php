@@ -67,7 +67,7 @@ if (mysqli_connect_errno()) {
 	monto VARCHAR(64),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
-	reg_date TIMESTAMP NOT NULL
+	reg_date TIMESTAMP
 	)";
 
 	if ($link->query($sql) === TRUE) {

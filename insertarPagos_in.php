@@ -54,7 +54,7 @@ if ($_FILES['comprobante']['name']) {
             $banco = $_POST['banco'];
             $monto = $_POST['monto'];
 
-            $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado) VALUES ('$id_usuario', '$divisa', '$banco', '$monto', '$referencia', 'PENDIENTE')";
+            $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$divisa', '$banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
             if(mysqli_query($link, $sql)) {
                     $res['mensajes'][] = 'Pago agregado existosamente';
