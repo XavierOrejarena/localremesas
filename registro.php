@@ -15,7 +15,7 @@ if (!empty($_POST)) {
     $tipo = $_POST['tipo'];
   }
 
-  $res = $link->query("INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('$username', '$password', '$tipo', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+  $res = $link->query("INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('$username', '$password', '$tipo', DATE_ADD(NOW(),INTERVAL 3 HOUR));");
 
   $_SESSION['username'] = $username;
   $_SESSION['time'] = time();

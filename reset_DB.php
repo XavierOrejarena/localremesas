@@ -134,13 +134,21 @@ if (mysqli_connect_errno()) {
 		echo "<br>no bancos<br>" . $conn->error;
 	}
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
-	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR));";
 	
 	if ($link->query($sql)) {
 		echo "<br>Usuario creado</br>";
 	} else {
-		echo "<br>Errro creando admin</br>";
+		echo "<br>Error creando admin</br>";
 	}
 
+	$sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado, reg_date) VALUES ('1', 'PEN', 'BCP', '100', '123', 'RECHAZADA', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+	
+	if ($link->query($sql)) {
+		echo "<br>pago</br>";
+	} else {
+		echo "<br>no pago</br>";
 	}
+
+}
 ?>
