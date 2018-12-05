@@ -135,7 +135,7 @@ if (mysqli_connect_errno()) {
 		echo "Not droped\n" . $conn->error;
 	}
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
-	$sql = "INSERT INTO usuarios (username, password, tipo) VALUES ('XAVIER', '$password', 'ADMIN')";
+	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 	
 	if ($link->query($sql)) {
 		echo "<br>Usuario creado</br>";
