@@ -65,7 +65,7 @@ if ($_POST['id']) {
 	        $res['errores'][] = true;
 	    // if everything is ok, try to upload file
 	    } else {
-	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id . ".".$extension)) {
+	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id . ".jpg")) {
 	            $res['mensajes'][] = 'Archivo cargado existosamente';
 	            $res['errores'][] = false;
 	        } else {
