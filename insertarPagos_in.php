@@ -70,6 +70,22 @@ if ($_FILES['comprobante']['name']) {
             $res['errores'][] = true;
         }
     }
+}else {
+    $referencia = $_POST['referencia'];
+    $id_usuario = $_POST['id_usuario'];
+    $divisa = $_POST['divisa'];
+    $banco = $_POST['banco'];
+    $monto = $_POST['monto'];
+    $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$divisa', '$banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+
+    if(mysqli_query($link, $sql)) {
+            $res['mensajes'][] = 'Pago agregado existosamente';
+            $res['errores'][] = false;
+            $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+    } else {
+        $res['mensajes'][] = 'Hubo un error agregando el pago';
+        $res['errores'][] = true;
+    }
 }
 
 

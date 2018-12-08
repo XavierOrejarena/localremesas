@@ -132,13 +132,13 @@ const app = new Vue({
 					if (this.id_usuario == 0) {
 						this.error('Debe agregar una cuenta.', 'id_usuario')
 					} else {
-						if (document.getElementById("referencia").value == '') {
-							this.error('Introduzca un número de referencia.', 'referencia')
-						} else {
-							if (document.getElementById("comprobante").value == '') {
-								this.error('No hay documento adjunto.', 'comprobante')
-							} else {
-								document.getElementById("comprobante").style = ''
+						// if (document.getElementById("referencia").value == '') {
+						// 	this.error('Introduzca un número de referencia.', 'referencia')
+						// } else {
+						// 	if (document.getElementById("comprobante").value == '') {
+						// 		this.error('No hay documento adjunto.', 'comprobante')
+						// 	} else {
+						// 		document.getElementById("comprobante").style = ''
 								if (this.monto_total == 0) {
 									this.error('El monto total no puede ser cero.', 'monto_total')
 								} else {
@@ -180,8 +180,8 @@ const app = new Vue({
 									    })	
 									}
 								}
-							}
-						}
+						
+					
 					}
 				}
 			}
@@ -303,7 +303,8 @@ const app = new Vue({
 				    		this.cargarTasa(response['data']['tipo'])
 				    	} else {
 				    		this.cargarTasa('REGULAR')
-				    		this.small = 'Usuario no existe'
+							this.small = 'Usuario no existe'
+							this.tipo_cliente = ''
 				    	}
 				    	this.cuentas_display = ''
 				    	this.tabla = false
