@@ -53,6 +53,7 @@ const app = new Vue({
 					document.getElementById('f'+e).style = 'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);'
 					console.log('no hay archivo')
 				} else {
+					var barra = document.getElementById("barra");
 					var bodyFormData = new FormData();
 					bodyFormData.append('comprobante', document.getElementById('f'+e).files[0]);
 					bodyFormData.set('id', e);
@@ -62,10 +63,21 @@ const app = new Vue({
 				    method: 'post',
 				    url: './pagar_out.php',
 				    data: bodyFormData,
-				    config: { headers: {'Content-Type': 'multipart/form-data' }}
+					config: { headers: {'Content-Type': 'multipart/form-data' }},
+					onUploadProgress: (e) => {
+						if (e.lengthComputable) {
+						   var p = Math.round((e.loaded/e.total)*100);
+						   barra.style ="width: "+ p +"%";
+						   barra.innerHTML = p + "%";
+						   this.small = '...'
+						   this.tipo_cliente = '...'
+						}
+			   }
 				    })
 				    .then( response => {
 						this.cargar_pagos_out()
+						barra.style ="width: 0%";
+						barra.innerHTML = "";
 				    })
 				}
 			}
@@ -92,7 +104,7 @@ const app = new Vue({
 				this.tipo_usuario = response.data
 				this.cargar_pagos_out()
 	    	} else {
-				window.location.href = "./index.html"
+				window.location.href = "./login.html"
 			}
 	    })
 	}

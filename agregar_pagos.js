@@ -339,7 +339,7 @@ const app = new Vue({
 				this.tipo_usuario = response.data
 				this.cargarTasa('REGULAR')
 	    	} else {
-				window.location.href = "./index.html"
+				window.location.href = "./login.html"
 			}
 	    })
 		

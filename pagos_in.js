@@ -55,7 +55,7 @@ const app = new Vue({
 				this.tipo_usuario = response.data
 	    		this.cargar_pagos_in()
 	    	} else {
-				window.location.href = "./index.html"
+				window.location.href = "./login.html"
 			}
 	    })
 	}
