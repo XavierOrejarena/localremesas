@@ -8,7 +8,7 @@ FROM pagos_in, cuentas, pagos_out
 WHERE pagos_out.id_cuenta = cuentas.id 
 AND pagos_in.estado = 'RECHAZADA'
 AND pagos_out.id_pago_in = pagos_in.id
-AND pagos_in.reg_date > (NOW() - INTERVAL 21 HOUR)");
+AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR");
 
 
 
