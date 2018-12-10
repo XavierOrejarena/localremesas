@@ -1,7 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		welcome: false,
+		welcome: true,
 		tipo_usuario: 'REGULAR',
 	},
 	methods: {

@@ -13,10 +13,7 @@
    </head>
    <body>
       <div id="app">
-         <div v-if="!welcome" class="container offset-md-3 mt-5">
-            <img src="test.png" width="50%">
-         </div>
-        <div v-else>
+        <div v-if="welcome">
            <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
             <div class="container">
                <a class="navbar-brand" href="#">Local Remesas</a>
@@ -85,6 +82,9 @@
                   </form>
                </div>
             </div>
+         </div>
+         <div v-if="!welcome" class="container offset-md-3 mt-5">
+            <img src="test.png" width="50%">
          </div>
       </div>
    </body>
