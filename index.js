@@ -14,7 +14,9 @@ const app = new Vue({
 	    config: { headers: {'Content-Type': 'multipart/form-data' }}
 	    })
 	    .then( response => {
-			this.welcome = this.tipo_usuario = response['data']
+			if (!(this.welcome = this.tipo_usuario = response['data'])) {
+				window.location.href = "./login.html"
+			}
 	    })
 	}
 })

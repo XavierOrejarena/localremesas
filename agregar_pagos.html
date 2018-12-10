@@ -64,7 +64,7 @@
                <small id="emailHelp" :class="{'text-primary': id_usuario==0, 'text-success':small=='Usuario ya existe', 'text-danger':small=='Usuario no existe'}">{{small}} ({{tipo_cliente}})</small>
             </div>
             
-            <div class="form-group  ">
+            <div v-if="referencia!='0'" class="form-group  ">
                <div class="form-row mt-3" @click="disabled">
                   <div class="col-md-2">
                      <div class="form-check form-check-inline">
@@ -92,11 +92,11 @@
                <label>Monto</label>
                <input @keyup="verificarMonto($event)" onClick="this.select();"  v-model="monto" type="number" class="form-control" name="monto" id="monto" placeholder="Soles o USD" required min="0">
                <label>Número de referencia</label>
-               <input @keyup="verificarReferencia($event)" type="text" class="form-group form-control" name="referencia" id="referencia" placeholder="Solamente números">
-               <div class="form-group">
+               <input @keyup="verificarReferencia($event);referencia_cero()" type="text" class="form-group form-control" name="referencia" id="referencia" placeholder="Solamente números" v-model="referencia">
+               <div v-if="referencia!='0'" class="form-group">
                   <label>Adjuntar comprobante de transferencia</label>
                   <input type="file" class="form-control-file" name="comprobante" id="comprobante" accept=".jpeg, .jpg, .png">
-                  <div class="progress">
+                  <div class="progress mt-2">
                     <div id="barra" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                </div>

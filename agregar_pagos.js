@@ -13,7 +13,8 @@ const app = new Vue({
 		small: 'Usuario nuevo',
 		mensajes: '',
 		errores: '',
-		cuentas: ''
+		cuentas: '',
+		referencia: '',
 	},
 	methods: {
 		calcularMontoTotal () {
@@ -37,7 +38,11 @@ const app = new Vue({
 		cargarTasa (tipo) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('tipo', tipo);
-			bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
+			if (this.referencia == '0') {
+				bodyFormData.set('divisa', 'USD');
+			} else { 
+				bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
+			}
 			axios({
 		    method: 'post',
 		    url: './cargarTasa.php',
@@ -58,7 +63,7 @@ const app = new Vue({
 			this.id_usuario = 0
 			this.buscarUsuario()
 			this.cargarTasa()
-			document.getElementById("referencia").value = ''
+			this.referencia = ''
 			document.getElementById("comprobante").value = document.getElementById("comprobante").defaultValue
 			document.getElementById('banco1').checked = true
 			document.getElementById('divisa1').checked = true
@@ -82,7 +87,7 @@ const app = new Vue({
 			window.scrollTo(0,0);
 		},
 		verificarReferencia: function (e) {
-			if (e.target.value.length < 1 || e.target.value == 0) {
+			if (e.target.value.length < 1) {
 				e.target.style = 'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);'
 			} else {
 				e.target.style = ''
@@ -145,31 +150,32 @@ const app = new Vue({
 									if (this.monto_total > this.tasa*this.monto) {
 										this.error('El monto total es inocrrecto.', 'monto_total')
 									} else {
-										var barra = document.getElementById("barra");
-										var bodyFormData = new FormData();
-										bodyFormData.append('comprobante', document.getElementById("comprobante").files[0]);
-										bodyFormData.set('id_usuario', this.id_usuario);
-										bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
-										bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value);
-										bodyFormData.set('monto', document.getElementById("monto").value);
-										bodyFormData.set('referencia', document.getElementById("referencia").value);
-										axios({
-									    method: 'post',
-									    url: './insertarPagos_in.php',
-									    data: bodyFormData,
-									    config: { headers: {'Content-Type': 'multipart/form-data' }},
-							            onUploadProgress: (e) => {
-							                    if (e.lengthComputable) {
-							                       var p = Math.round((e.loaded/e.total)*100);
-											       barra.style ="width: "+ p +"%";
-											       barra.innerHTML = p + "%";
-											       this.small = '...'
-											       this.tipo_cliente = '...'
-							                    }
-							           }
+										if (this.referencia != 0) {
+											var barra = document.getElementById("barra");
+											var bodyFormData = new FormData();
+											bodyFormData.append('comprobante', document.getElementById("comprobante").files[0]);
+											bodyFormData.set('id_usuario', this.id_usuario);
+											bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
+											bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value);
+											bodyFormData.set('monto', document.getElementById("monto").value);
+											bodyFormData.set('referencia', this.referencia);
+											axios({
+											method: 'post',
+											url: './insertarPagos_in.php',
+											data: bodyFormData,
+											config: { headers: {'Content-Type': 'multipart/form-data' }},
+											onUploadProgress: (e) => {
+													if (e.lengthComputable) {
+													var p = Math.round((e.loaded/e.total)*100);
+													barra.style ="width: "+ p +"%";
+													barra.innerHTML = p + "%";
+													this.small = '...'
+													this.tipo_cliente = '...'
+													}
+											}
 
-									    })
-									    .then( response => {
+											})
+											.then( response => {
 												this.mensajes = response['data']['mensajes']
 												this.errores = response['data']['errores']
 												this.insertarPagos_out(response['data']['id_pago_in'])
@@ -177,7 +183,26 @@ const app = new Vue({
 												this.clear();
 												barra.style ="width: 0%";
 												barra.innerHTML = "";
-									    })	
+											})	
+										} else {
+											var bodyFormData = new FormData();
+											bodyFormData.set('id_usuario', this.id_usuario);
+											bodyFormData.set('monto', document.getElementById("monto").value);
+											axios({
+											method: 'post',
+											url: './insertarPagos_in.php',
+											data: bodyFormData,
+											config: { headers: {'Content-Type': 'multipart/form-data' }}
+											})
+											.then( response => {
+												this.mensajes = response['data']['mensajes']
+												this.errores = response['data']['errores']
+												this.insertarPagos_out(response['data']['id_pago_in'])
+												window.scrollTo(0,0);
+												this.clear();
+											})	
+										}
+										
 									}
 								}
 						
@@ -315,6 +340,11 @@ const app = new Vue({
 		        this.cuentas_display = ''
 		        this.tabla = false
 				this.small = "Usuario nuevo"}
+		},
+		referencia_cero () {
+			if (this.referencia == '0') {
+				this.cargarTasa(this.tipo_cliente)
+			}
 		}
 	},
 	computed: {
@@ -327,7 +357,7 @@ const app = new Vue({
 				this.pagar = false
 			}
 			return styles;
-		}
+		},
 	},
 	beforeMount () {
 		axios({
