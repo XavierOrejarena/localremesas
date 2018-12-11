@@ -3,43 +3,53 @@ const app = new Vue({
 	data: {
 		pagos: '',
 		tipo_usuario: 'REGULAR',
+		bancos: '',
 	},
 	methods: {
+		getBancos() {
+			axios({
+				method: 'get',
+				url: './getBancos.php',
+				config: { headers: {'Content-Type': 'multipart/form-data' }}
+			}).then( response => {
+				this.bancos = response.data
+			})
+		},
 		Banco (cuenta) {
 			var bancos = {
 			'0156': "100%BANCO",
-			'0196': "ABN AMRO BANK",
-			'0172': "BANCAMIGA BANCO MICROFINANCIERO, C.A.",
-			'0171': "BANCO ACTIVO BANCO COMERCIAL, C.A.",
-			'0166': "BANCO AGRICOLA",
-			'0175': "BANCO BICENTENARIO",
-			'0128': "BANCO CARONI, C.A. BANCO UNIVERSAL",
-			'0164': "BANCO DE DESARROLLO DEL MICROEMPRESARIO",
-			'0102': "BANCO DE VENEZUELA S.A.I.C.A.",
-			'0114': "BANCO DEL CARIBE C.A.",
-			'0149': "BANCO DEL PUEBLO SOBERANO C.A.",
-			'0163': "BANCO DEL TESORO",
-			'0176': "BANCO ESPIRITO SANTO, S.A.",
-			'0115': "BANCO EXTERIOR C.A.",
-			'0003': "BANCO INDUSTRIAL DE VENEZUELA.",
-			'0173': "BANCO INTERNACIONAL DE DESARROLLO, C.A.",
-			'0105': "BANCO MERCANTIL C.A.",
-			'0191': "BANCO NACIONAL DE CREDITO",
-			'0116': "BANCO OCCIDENTAL DE DESCUENTO.",
-			'0138': "BANCO PLAZA",
-			'0108': "BANCO PROVINCIAL BBVA",
-			'0104': "BANCO VENEZOLANO DE CREDITO S.A.",
-			'0168': "BANCRECER S.A. BANCO DE DESARROLLO",
-			'0134': "BANESCO BANCO UNIVERSAL",
+			'0196': "ABN AMRO",
+			'0172': "BANCAMIGA",
+			'0171': "ACTIVO",
+			'0166': "AGRICOLA",
+			'0175': "BICENTENARIO",
+			'0128': "CARONI",
+			'0164': "DESARROLLO",
+			'0102': "VENEZUELA",
+			'0114': "CARIBE",
+			'0149': "PUEBLO SOBERANO",
+			'0163': "TESORO",
+			'0176': "ESPIRITO SANTO",
+			'0115': "EXTERIOR",
+			'0003': "INDUSTRIAL",
+			'0173': "INTERNACIONAL DE DESARROLLO",
+			'0105': "MERCANTIL",
+			'0191': "BNC",
+			'0116': "BOD",
+			'0138': "PLAZA",
+			'0108': "PROVINCIAL",
+			'0104': "VENEZOLANO DE CREDITO",
+			'0168': "BANCRECER",
+			'0134': "BANESCO",
 			'0177': "BANFANB",
 			'0146': "BANGENTE",
-			'0174': "BANPLUS BANCO COMERCIAL C.A",
+			'0174': "BANPLUS",
 			'0190': "CITIBANK.",
 			'0121': "CORP BANCA.",
-			'0157': "DELSUR BANCO UNIVERSAL",
+			'0157': "DELSUR",
 			'0151': "FONDO COMUN",
-			'0601': "INSTITUTO MUNICIPAL DE CR&#201;DITO POPULAR",
-			'0169': "MIBANCO BANCO DE DESARROLLO, C.A.",
+			'0601': "POPULAR",
+			'0169': "MIBANCO",
 			'0137': "SOFITASA"}
 			return bancos[cuenta.substring(0,4)]
 		},
@@ -101,6 +111,7 @@ const app = new Vue({
 	    	if (response['data'] == 'ADMIN'  || response['data'] == 'OPERADOR') {
 				this.tipo_usuario = response.data
 				this.cargar_pagos_out()
+				this.getBancos()
 	    	} else {
 				window.location.href = "./login.html"
 			}
