@@ -88,7 +88,7 @@ const app = new Vue({
 			window.scrollTo(0,0);
 		},
 		verificarReferencia: function (e) {
-			if (e.target.value.length < 1) {
+			if (e.target.value.length < 1 || e.target.value == '') {
 				e.target.style = 'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);'
 			} else {
 				e.target.style = ''
@@ -144,45 +144,49 @@ const app = new Vue({
 							if (this.monto_total > this.tasa*this.monto) {
 								this.error('El monto total es inocrrecto.', 'monto_total')
 							} else {
-								var bodyFormData = new FormData()
-								if (this.referencia != '0') {
-									bodyFormData.append('comprobante', document.getElementById("comprobante").files[0])
-									var barra = document.getElementById("barra")
-								}
-								bodyFormData.set('id_usuario', this.id_usuario)
-								bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value)
-								bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value)
-								bodyFormData.set('monto', document.getElementById("monto").value)
-								bodyFormData.set('referencia', this.referencia)
-								axios({
-								method: 'post',
-								url: './insertarPagos_in.php',
-								data: bodyFormData,
-								config: { headers: {'Content-Type': 'multipart/form-data' }},
-								onUploadProgress: (e) => {
-										if (e.lengthComputable && this.referencia != '0') {
-											var p = Math.round((e.loaded/e.total)*100)
-											barra.style ="width: "+ p +"%"
-											barra.innerHTML = p + "%"
-											this.small = '...'
-											this.tipo_cliente = '...'
-										}
-								}
-
-								})
-								.then( response => {
-									this.mensajes = response['data']['mensajes']
-									this.errores = response['data']['errores']
+								if (this.referencia == '') {
+									this.error('Debe introducir algun número de referencia.', 'referencia')
+								} else {
+									var bodyFormData = new FormData()
 									if (this.referencia != '0') {
-										barra.style ="width: 0%"
-										barra.innerHTML = ""
+										bodyFormData.append('comprobante', document.getElementById("comprobante").files[0])
+										var barra = document.getElementById("barra")
 									}
-									if (!response['data']['errores'][0]) {
-										this.insertarPagos_out(response['data']['id_pago_in'])
-										this.clear()
+									bodyFormData.set('id_usuario', this.id_usuario)
+									bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value)
+									bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value)
+									bodyFormData.set('monto', document.getElementById("monto").value)
+									bodyFormData.set('referencia', this.referencia)
+									axios({
+									method: 'post',
+									url: './insertarPagos_in.php',
+									data: bodyFormData,
+									config: { headers: {'Content-Type': 'multipart/form-data' }},
+									onUploadProgress: (e) => {
+											if (e.lengthComputable && this.referencia != '0') {
+												var p = Math.round((e.loaded/e.total)*100)
+												barra.style ="width: "+ p +"%"
+												barra.innerHTML = p + "%"
+												this.small = '...'
+												this.tipo_cliente = '...'
+											}
 									}
-									window.scrollTo(0,0)
-								})	
+
+									})
+									.then( response => {
+										this.mensajes = response['data']['mensajes']
+										this.errores = response['data']['errores']
+										if (this.referencia != '0') {
+											barra.style ="width: 0%"
+											barra.innerHTML = ""
+										}
+										if (!response['data']['errores'][0]) {
+											this.insertarPagos_out(response['data']['id_pago_in'])
+											this.clear()
+										}
+										window.scrollTo(0,0)
+									})
+								}
 							}
 						}
 					}
