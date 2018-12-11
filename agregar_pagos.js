@@ -38,11 +38,7 @@ const app = new Vue({
 		cargarTasa (tipo) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('tipo', tipo);
-			if (this.referencia == '0') {
-				bodyFormData.set('divisa', 'USD');
-			} else { 
-				bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
-			}
+			bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
 			axios({
 		    method: 'post',
 		    url: './cargarTasa.php',
