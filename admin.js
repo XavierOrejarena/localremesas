@@ -10,6 +10,7 @@ const app = new Vue({
 		usuario: '',
 		mensaje: '',
 		bancos: '',
+		prestamos: '',
 	},
 	methods: {
 		eliminarBanco (id) {
@@ -136,7 +137,16 @@ const app = new Vue({
 		    .then( response => {
 		    	this.tasas = response.data
 		    })
-		}
+		},
+		getPrestamos() {
+			axios({
+				method: 'get',
+				url: './getPrestamos.php',
+				config: { headers: {'Content-Type': 'multipart/form-data' }}
+			}).then( response => {
+				this.prestamos = response.data
+			})
+		},
 	},
 	beforeMount () {
 		axios({
@@ -148,7 +158,8 @@ const app = new Vue({
 			if (response['data'] == 'ADMIN') {
 				this.tipo_usuario = response.data
 				this.cargarTasas()
-				this.getBancos
+				this.getBancos()
+				this.getPrestamos()
 	    	} else {
 				window.location.href = "./login.html"
 			}

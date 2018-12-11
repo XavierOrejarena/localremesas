@@ -168,26 +168,22 @@
               </table>
             </div>
          </div>
-         <table class="table table-hover text-center table-lg container border rounded">
+         <div v-if="clase=='Prestamos'" class="container offset-md-2 mt-5">
+         <table class="table table-hover text-center table-lg container border rounded col-md-6">
             <thead>
                <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Nuevo saldo</th>
-                  <th scope="col">Saldo actual</th>
-                  <th scope="col">Actualizar</th>
-                  <th scope="col">Eliminar</th>
+                  <th scope="col">ID Usuario</th>
+                  <th scope="col">Monto</th>
                </tr>
             </thead>
             <tbody>
-               <tr v-for="banco in bancos">
-                  <td scope="col">{{banco.nombre}}</th>
-                  <td scope="col"><input type="text" class="form-control" placeholder="Saldo" :id="banco.id" :value="banco.saldo"></td>
-                  <td scope="col"><input type="text" class="form-control" :value="banco.saldo" disabled></th>   
-                  <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarSaldo(banco.id)">Actualizar</button></td>
-                  <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="eliminarBanco(banco.id)">X</button></td>
+               <tr v-for="prestamo in prestamos">
+                  <td scope="col">{{prestamo.id_usuario}}</th>
+                  <td scope="col">{{prestamo.monto}}</th>
                </tr>
             </tbody>
          </table>
+      </div>
       </div>
    </body>
    <script src="./vue.js"></script>
