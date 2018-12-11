@@ -76,7 +76,7 @@
                   <td scope="col">{{pago['tipo_cedula']}} {{pago['cedula']}}</td>
                   <td scope="col">{{pago['monto']}}</td>
                   <td scope="col"><input type="number" placeholder="Solo números" class="form-control" :id="pago['0']"></td>
-                  <td scope="col"><input :id="'f'+pago['0']" type="file"></td>
+                  <td scope="col"><input :id="'f'+pago['0']" type="file" accept=".jpeg, .jpg, .png"></td>
                   <td scope="col"><button @click="pagar_out(pago['0'],pago['id_pago_in'])" type="button" class="btn btn-outline-success btn-sm mr-2">Pagar</button></td>
                   <td scope="col">{{pago['estado']}}</td>
                </tr>

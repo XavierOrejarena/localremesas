@@ -3,7 +3,7 @@ const app = new Vue({
 	data: {
 		tipos: ["REGULAR", "OPERADOR", "MAYORISTA", "BUSCADOR", "ESPECIAL", "ADMIN"],
 		tasas: '',
-		clase: 'Prestamos',
+		clase: '',
 		id: 0,
 		small: '',
 		tipo_usuario: '',
@@ -13,6 +13,10 @@ const app = new Vue({
 		prestamos: '',
 	},
 	methods: {
+		setClase (clase) {
+			this.clase = clase
+			localStorage.setItem('clase', clase);
+		},
 		eliminarBanco (id) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', id);
@@ -156,6 +160,7 @@ const app = new Vue({
 	    })
 	    .then( response => {
 			if (response['data'] == 'ADMIN') {
+				this.clase = localStorage.getItem('clase');
 				this.tipo_usuario = response.data
 				this.cargarTasas()
 				this.getBancos()
