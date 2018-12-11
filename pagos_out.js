@@ -75,9 +75,7 @@ const app = new Vue({
 			   }
 				    })
 				    .then( response => {
-						this.cargar_pagos_out()
-						barra.style ="width: 0%";
-						barra.innerHTML = "";
+						window.location.href = "./pagos_out.html"
 				    })
 				}
 			}

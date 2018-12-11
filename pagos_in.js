@@ -15,7 +15,6 @@ const app = new Vue({
 		    config: { headers: {'Content-Type': 'multipart/form-data' }}
 		    })
 		    .then( response => {
-				console.log(response)
 				this.cargar_pagos_in()
 		    })
 		},
@@ -29,7 +28,6 @@ const app = new Vue({
 		    config: { headers: {'Content-Type': 'multipart/form-data' }}
 		    })
 		    .then( response => {
-				console.log(response)
 				this.cargar_pagos_in()
 		    })
 		},

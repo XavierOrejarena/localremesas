@@ -9,6 +9,7 @@ if (mysqli_connect_errno()) {
 	$link->query("DROP TABLE usuarios_cuentas");
 	$link->query("DROP TABLE pagos_out");
 	$link->query("DROP TABLE pagos_in");
+	$link->query("DROP TABLE prestamos");
 	$link->query("DROP TABLE cuentas");
 	$link->query("DROP TABLE usuarios");
 	$link->query("DROP TABLE tasas");
@@ -93,6 +94,18 @@ if (mysqli_connect_errno()) {
 	    echo "<br>pagos_out<br>";
 	} else {
 	    echo "<br>no pagos_out<br>" . $conn->error;
+	}
+
+	$sql = "CREATE TABLE prestamos (
+	id_usuario INT(10) UNSIGNED PRIMARY KEY,
+	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+	monto DECIMAL(10,2)
+	)";
+
+	if ($link->query($sql) === TRUE) {
+		echo "<br>prestamos<br>";
+	} else {
+		echo "<br>no prestamos<br>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE tasas (

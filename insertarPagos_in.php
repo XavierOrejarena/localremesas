@@ -70,9 +70,9 @@ if ($_FILES['comprobante']['name']) {
             $res['errores'][] = true;
         }
     }
-}else {
+} else {
+    $id_usuario = $_POST['id_usuario'];
     if ($referencia = $_POST['referencia']) {
-        $id_usuario = $_POST['id_usuario'];
         $divisa = $_POST['divisa'];
         $banco = $_POST['banco'];
         $monto = $_POST['monto'];
@@ -87,20 +87,18 @@ if ($_FILES['comprobante']['name']) {
             $res['errores'][] = true;
         }
     } else {
-        $id_usuario = $_POST['id_usuario'];
         $monto = $_POST['monto'];
         $sql = "INSERT INTO pagos_in (id_usuario, divisa, banco, monto, estado, reg_date) VALUES ('$id_usuario', 'USD', 'SIN BANCO', '$monto', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
         if(mysqli_query($link, $sql)) {
-            $res['mensajes'][] = 'Prestamo agregado exitosamente';
-            $res['errores'][] = false;
             $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
-    } else {
-        $res['mensajes'][] = 'Hubo un error agregando el prestamo';
-        $res['errores'][] = true;
-    }
+            $res['mensajes'][] = 'Prestamo agregado exitosamente';
+	        $res['errores'][] = false;
+        } else {
+            $res['mensajes'][] = 'Hubo un error agregando el prestamo';
+            $res['errores'][] = true;
+        }
     }
 }
-
 
 echo json_encode($res);
 ?>

@@ -63,12 +63,13 @@ const app = new Vue({
 			this.id_usuario = 0
 			this.buscarUsuario()
 			this.cargarTasa()
+			if (this.referencia != '0') {
+				document.getElementById("comprobante").value = document.getElementById("comprobante").defaultValue
+				document.getElementById('banco1').checked = true
+				document.getElementById('divisa1').checked = true
+				document.getElementById('divisa2').disabled = true
+			}
 			this.referencia = ''
-			document.getElementById("comprobante").value = document.getElementById("comprobante").defaultValue
-			document.getElementById('banco1').checked = true
-			document.getElementById('divisa1').checked = true
-			document.getElementById('divisa2').disabled = true
-
 		},
 		disabled () {
 			if (document.getElementById('banco1').checked == true) {
@@ -197,9 +198,11 @@ const app = new Vue({
 											.then( response => {
 												this.mensajes = response['data']['mensajes']
 												this.errores = response['data']['errores']
-												this.insertarPagos_out(response['data']['id_pago_in'])
+												if (!response['data']['errores'][0]) {
+													this.insertarPagos_out(response['data']['id_pago_in'])
+													this.clear();
+												}
 												window.scrollTo(0,0);
-												this.clear();
 											})	
 										}
 										

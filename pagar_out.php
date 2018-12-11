@@ -3,27 +3,7 @@ header( 'Content-type: application/json' );
 include "connect.php";
 
 
-if ($_POST['id']) {
-	$id = $_POST['id'];
-	$referencia = $_POST['referencia'];
-	$id_pago_in = $_POST['id_pago_in'];
-
-	$sql = "UPDATE pagos_out SET estado = 'PAGADO', referencia = '$referencia' WHERE id = '$id'";
-	$res = mysqli_query($link, $sql);
-
-	$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
-	$aux = true;
-	while($row = mysqli_fetch_array($result)){
-		if ($row['estado'] != 'PAGADO') {
-			$aux = false;
-			break;
-		}
-	}
-
-	if ($aux) {
-		mysqli_query($link, "UPDATE pagos_in SET estado = 'PAGADO' WHERE id = '$id_pago_in'");
-	}
-
+if ($id = $_POST['id']) {
 	if ($_FILES['comprobante']['name']) {
 	    $extension = pathinfo($_FILES["comprobante"]["name"], PATHINFO_EXTENSION);
 	    $target_dir = "comprobantes_out/";
@@ -66,6 +46,42 @@ if ($_POST['id']) {
 	    // if everything is ok, try to upload file
 	    } else {
 	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id . ".jpg")) {
+				$referencia = $_POST['referencia'];
+				$id_pago_in = $_POST['id_pago_in'];
+
+				$sql = "UPDATE pagos_out SET estado = 'PAGADO', referencia = '$referencia' WHERE id = '$id'";
+				$res = mysqli_query($link, $sql);
+
+				$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
+				$aux = true;
+				while($row = mysqli_fetch_array($result)){
+					if ($row['estado'] != 'PAGADO') {
+						$aux = false;
+						break;
+					}
+				}
+
+				if ($aux) {
+					mysqli_query($link, "UPDATE pagos_in SET estado = 'PAGADO' WHERE id = '$id_pago_in'");
+
+					if (mysqli_fetch_array(mysqli_query($link, "SELECT banco FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))[banco] == 'SIN BANCO') {
+						$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))['monto'];
+						$monto = $monto + mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM prestamos WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id')"))['monto'];
+						if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id')"))) {
+							$sql = "UPDATE prestamos SET monto = $monto  WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id')";
+						} else {
+							$sql = "INSERT INTO prestamos (id_usuario, monto) VALUES ((SELECT id_usuario FROM pagos_out WHERE id = '$id'), '$monto')";
+						}
+						if(mysqli_query($link, $sql)) {
+							$res['mensajes'][] = 'Prestamo agregado exitosamente';
+							$res['errores'][] = false;
+						} else {
+							$res['mensajes'][] = 'Hubo un error agregando el prestamo';
+							$res['errores'][] = true;
+						}
+					}
+
+				}
 	            $res['mensajes'][] = 'Archivo cargado existosamente';
 	            $res['errores'][] = false;
 	        } else {
@@ -73,7 +89,7 @@ if ($_POST['id']) {
 	            $res['errores'][] = true;
 	        }
 	    }
-}
+	}
 }
 
 echo json_encode($res);
