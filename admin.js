@@ -4,13 +4,14 @@ const app = new Vue({
 		tipos: ["REGULAR", "OPERADOR", "MAYORISTA", "BUSCADOR", "ESPECIAL", "ADMIN"],
 		tasas: '',
 		clase: '',
-		id: 0,
+		id: '',
 		small: '',
 		tipo_usuario: '',
 		usuario: '',
 		mensaje: '',
 		bancos: '',
 		prestamos: '',
+		pagos_in: '',
 	},
 	methods: {
 		setClase (clase) {
@@ -149,6 +150,18 @@ const app = new Vue({
 				config: { headers: {'Content-Type': 'multipart/form-data' }}
 			}).then( response => {
 				this.prestamos = response.data
+			})
+		},
+		getPagosIn() {
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', this.id);
+			axios({
+				method: 'post',
+				url: './getPagosIn.php',
+				data: bodyFormData,
+				config: { headers: {'Content-Type': 'multipart/form-data' }}
+			}).then( response => {
+				this.pagos_in = response.data
 			})
 		},
 	},

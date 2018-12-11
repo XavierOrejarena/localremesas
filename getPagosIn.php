@@ -2,7 +2,9 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
-$sql = "SELECT * FROM prestamos WHERE monto > 0";
+$id = $_POST['id'];
+
+$sql = "SELECT * FROM pagos_in WHERE id_usuario = '$id' AND referencia = 0";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
@@ -10,4 +12,5 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 echo json_encode($res);
+
 ?>
