@@ -64,7 +64,7 @@
                <small id="emailHelp" :class="{'text-primary': id_usuario==0, 'text-success':small=='Usuario ya existe', 'text-danger':small=='Usuario no existe'}">{{small}} ({{tipo_cliente}})</small>
             </div>
             
-            <div v-if="referencia!='0'" class="form-group  ">
+            <div class="form-group  ">
                <div class="form-row mt-3" @click="disabled">
                   <div class="col-md-2">
                      <div class="form-check form-check-inline">

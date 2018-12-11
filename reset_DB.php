@@ -97,9 +97,11 @@ if (mysqli_connect_errno()) {
 	}
 
 	$sql = "CREATE TABLE prestamos (
-	id_usuario INT(10) UNSIGNED PRIMARY KEY,
+	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-	monto DECIMAL(10,2)
+	monto DECIMAL(10,2),
+	divisa VARCHAR(4)
 	)";
 
 	if ($link->query($sql) === TRUE) {

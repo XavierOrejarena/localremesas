@@ -65,10 +65,10 @@ const app = new Vue({
 			this.cargarTasa()
 			if (this.referencia != '0') {
 				document.getElementById("comprobante").value = document.getElementById("comprobante").defaultValue
-				document.getElementById('banco1').checked = true
-				document.getElementById('divisa1').checked = true
-				document.getElementById('divisa2').disabled = true
 			}
+			document.getElementById('banco1').checked = true
+			document.getElementById('divisa1').checked = true
+			document.getElementById('divisa2').disabled = true
 			this.referencia = ''
 		},
 		disabled () {
@@ -138,78 +138,53 @@ const app = new Vue({
 					if (this.id_usuario == 0) {
 						this.error('Debe agregar una cuenta.', 'id_usuario')
 					} else {
-						// if (document.getElementById("referencia").value == '') {
-						// 	this.error('Introduzca un número de referencia.', 'referencia')
-						// } else {
-						// 	if (document.getElementById("comprobante").value == '') {
-						// 		this.error('No hay documento adjunto.', 'comprobante')
-						// 	} else {
-						// 		document.getElementById("comprobante").style = ''
-								if (this.monto_total == 0) {
-									this.error('El monto total no puede ser cero.', 'monto_total')
-								} else {
-									if (this.monto_total > this.tasa*this.monto) {
-										this.error('El monto total es inocrrecto.', 'monto_total')
-									} else {
-										if (this.referencia != 0) {
-											var barra = document.getElementById("barra");
-											var bodyFormData = new FormData();
-											bodyFormData.append('comprobante', document.getElementById("comprobante").files[0]);
-											bodyFormData.set('id_usuario', this.id_usuario);
-											bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
-											bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value);
-											bodyFormData.set('monto', document.getElementById("monto").value);
-											bodyFormData.set('referencia', this.referencia);
-											axios({
-											method: 'post',
-											url: './insertarPagos_in.php',
-											data: bodyFormData,
-											config: { headers: {'Content-Type': 'multipart/form-data' }},
-											onUploadProgress: (e) => {
-													if (e.lengthComputable) {
-													var p = Math.round((e.loaded/e.total)*100);
-													barra.style ="width: "+ p +"%";
-													barra.innerHTML = p + "%";
-													this.small = '...'
-													this.tipo_cliente = '...'
-													}
-											}
-
-											})
-											.then( response => {
-												this.mensajes = response['data']['mensajes']
-												this.errores = response['data']['errores']
-												this.insertarPagos_out(response['data']['id_pago_in'])
-												window.scrollTo(0,0);
-												this.clear();
-												barra.style ="width: 0%";
-												barra.innerHTML = "";
-											})	
-										} else {
-											var bodyFormData = new FormData();
-											bodyFormData.set('id_usuario', this.id_usuario);
-											bodyFormData.set('monto', document.getElementById("monto").value);
-											axios({
-											method: 'post',
-											url: './insertarPagos_in.php',
-											data: bodyFormData,
-											config: { headers: {'Content-Type': 'multipart/form-data' }}
-											})
-											.then( response => {
-												this.mensajes = response['data']['mensajes']
-												this.errores = response['data']['errores']
-												if (!response['data']['errores'][0]) {
-													this.insertarPagos_out(response['data']['id_pago_in'])
-													this.clear();
-												}
-												window.scrollTo(0,0);
-											})	
-										}
-										
-									}
+						if (this.monto_total == 0) {
+							this.error('El monto total no puede ser cero.', 'monto_total')
+						} else {
+							if (this.monto_total > this.tasa*this.monto) {
+								this.error('El monto total es inocrrecto.', 'monto_total')
+							} else {
+								var bodyFormData = new FormData()
+								if (this.referencia != '0') {
+									bodyFormData.append('comprobante', document.getElementById("comprobante").files[0])
+									var barra = document.getElementById("barra")
 								}
-						
-					
+								bodyFormData.set('id_usuario', this.id_usuario)
+								bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value)
+								bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value)
+								bodyFormData.set('monto', document.getElementById("monto").value)
+								bodyFormData.set('referencia', this.referencia)
+								axios({
+								method: 'post',
+								url: './insertarPagos_in.php',
+								data: bodyFormData,
+								config: { headers: {'Content-Type': 'multipart/form-data' }},
+								onUploadProgress: (e) => {
+										if (e.lengthComputable && this.referencia != '0') {
+											var p = Math.round((e.loaded/e.total)*100)
+											barra.style ="width: "+ p +"%"
+											barra.innerHTML = p + "%"
+											this.small = '...'
+											this.tipo_cliente = '...'
+										}
+								}
+
+								})
+								.then( response => {
+									this.mensajes = response['data']['mensajes']
+									this.errores = response['data']['errores']
+									if (this.referencia != '0') {
+										barra.style ="width: 0%"
+										barra.innerHTML = ""
+									}
+									if (!response['data']['errores'][0]) {
+										this.insertarPagos_out(response['data']['id_pago_in'])
+										this.clear()
+									}
+									window.scrollTo(0,0)
+								})	
+							}
+						}
 					}
 				}
 			}

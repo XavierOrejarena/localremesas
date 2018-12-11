@@ -64,13 +64,16 @@ if ($id = $_POST['id']) {
 				if ($aux) {
 					mysqli_query($link, "UPDATE pagos_in SET estado = 'PAGADO' WHERE id = '$id_pago_in'");
 
-					if (mysqli_fetch_array(mysqli_query($link, "SELECT banco FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))[banco] == 'SIN BANCO') {
+					if (mysqli_fetch_array(mysqli_query($link, "SELECT referencia FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))[referencia] == 0) {
+
+
+						$divisa = mysqli_fetch_array(mysqli_query($link, "SELECT divisa FROM pagos_in WHERE id = '$id_pago_in'"))['divisa'];
 						$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))['monto'];
-						$monto = $monto + mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM prestamos WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id')"))['monto'];
-						if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id')"))) {
+						$monto = $monto + mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM prestamos WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id') AND divisa = '$divisa'"))['monto'];
+						if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id') AND divisa = '$divisa'"))) {
 							$sql = "UPDATE prestamos SET monto = $monto  WHERE id_usuario = (SELECT id_usuario FROM pagos_out WHERE id = '$id')";
 						} else {
-							$sql = "INSERT INTO prestamos (id_usuario, monto) VALUES ((SELECT id_usuario FROM pagos_out WHERE id = '$id'), '$monto')";
+							$sql = "INSERT INTO prestamos (id_usuario, monto, divisa) VALUES ((SELECT id_usuario FROM pagos_out WHERE id = '$id'), '$monto', '$divisa')";
 						}
 						if(mysqli_query($link, $sql)) {
 							$res['mensajes'][] = 'Prestamo agregado exitosamente';

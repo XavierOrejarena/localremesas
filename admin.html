@@ -174,12 +174,14 @@
                <tr>
                   <th scope="col">ID Usuario</th>
                   <th scope="col">Monto</th>
+                  <th scope="col">Divisa</th>
                </tr>
             </thead>
             <tbody>
                <tr v-for="prestamo in prestamos">
                   <td scope="col">{{prestamo.id_usuario}}</th>
                   <td scope="col">{{prestamo.monto}}</th>
+                  <td scope="col">{{prestamo.divisa}}</th>
                </tr>
             </tbody>
          </table>
