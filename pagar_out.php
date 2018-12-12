@@ -48,9 +48,10 @@ if ($id = $_POST['id']) {
 	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id . ".jpg")) {
 				$referencia = $_POST['referencia'];
 				$id_pago_in = $_POST['id_pago_in'];
+				$id_banco = $_POST['id_banco'];
 
 				$sql = "UPDATE pagos_out SET estado = 'PAGADO', referencia = '$referencia' WHERE id = '$id'";
-				$res = mysqli_query($link, $sql);
+				$res['errores'][] = mysqli_query($link, $sql);
 
 				$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
 				$aux = true;
@@ -60,6 +61,9 @@ if ($id = $_POST['id']) {
 						break;
 					}
 				}
+
+				$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_out WHERE id_pago_in = '$id_pago_in'"))['monto'];
+				mysqli_query($link, "UPDATE bancos SET saldo = bancos.saldo - '$monto' WHERE id = '$id_banco'");
 
 				if ($aux) {
 					mysqli_query($link, "UPDATE pagos_in SET estado = 'PAGADO' WHERE id = '$id_pago_in'");

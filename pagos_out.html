@@ -84,12 +84,7 @@
                   </div></td>
                   <!-- <td><input :id="'f'+pago['0']" type="file" accept=".jpeg, .jpg, .png"></td> -->
                   <td><button @click="pagar_out(pago['0'],pago['id_pago_in'])" type="button" class="btn btn-outline-success btn-sm mr-2">Pagar</button></td>
-                  <!-- <td>{{pago['estado']}}</td> -->
-                  <td>
-                    <select class="form-control" :id="pago['0']">
-                      <option v-for="banco in bancos">{{banco.nombre[0]+"("+banco.saldo+")"}}</option>
-                    </select>
-                  </td>
+                  <td><select class="form-control" :id="'b'+pago['0']"><option :value="banco.id" v-for="banco in bancos">{{banco.nombre[0]+"("+banco.saldo+")"}}</option></select></td>
                </tr>
             </tbody>
          </table>

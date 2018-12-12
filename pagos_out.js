@@ -65,6 +65,7 @@ const app = new Vue({
 				} else {
 					var barra = document.getElementById("barra");
 					var bodyFormData = new FormData();
+					bodyFormData.append('id_banco', $('#b'+e).find(":selected").val());
 					bodyFormData.append('comprobante', document.getElementById('f'+e).files[0]);
 					bodyFormData.set('id', e);
 					bodyFormData.set('id_pago_in', id_pago_in);
