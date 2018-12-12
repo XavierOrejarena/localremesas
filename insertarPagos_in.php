@@ -33,7 +33,7 @@ if ($_FILES['comprobante']['name']) { // SI HAY COMPROBANTE
         $uploadOk = 0;
     }
     // Allow certain file formats
-    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jpe") {
         $res['mensajes'][] = 'Formato de archivo no admitido.';
         $res['errores'][] = true;
         $uploadOk = 0;

@@ -10,17 +10,22 @@ include "connect.php";
 if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
-	$id_usuario = 1;
-	$monto = 123;
-	$monto = $monto + mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM prestamos WHERE id_usuario = '$id_usuario'"))['monto'];
 
-	if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = '$id_usuario' LIMIT 1"))) {
-		$sql = "UPDATE prestamos SET monto = $monto  WHERE id_usuario = '$id_usuario'";
-	} else {
-		$sql = "INSERT INTO prestamos (id_usuario, monto) VALUES ('$id_usuario', '$monto')";
-	}
 
-	echo $sql;
+	echo "Hello";
+
+
+	// $id_usuario = 1;
+	// $monto = 123;
+	// $monto = $monto + mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM prestamos WHERE id_usuario = '$id_usuario'"))['monto'];
+
+	// if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = '$id_usuario' LIMIT 1"))) {
+	// 	$sql = "UPDATE prestamos SET monto = $monto  WHERE id_usuario = '$id_usuario'";
+	// } else {
+	// 	$sql = "INSERT INTO prestamos (id_usuario, monto) VALUES ('$id_usuario', '$monto')";
+	// }
+
+	// echo $sql;
 
 	// $sql = "INSERT INTO bancos (nombre, saldo) VALUES ('Banesco', 100000)";
 	// $sql = "INSERT INTO bancos (nombre, saldo) VALUES ('Mercantil', 120000)";
