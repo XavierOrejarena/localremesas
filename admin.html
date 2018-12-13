@@ -142,6 +142,9 @@
              <div class="form-group mr-2">
                 <input type="text" class="form-control" placeholder="Saldo" id="saldo">
              </div>
+             <div class="form-group mr-2">
+                  <input type="text" class="form-control" placeholder="Divisa" id="divisa">
+               </div>
              <div class="form-group">
                   <input class="btn btn-primary" type="button" value="Agregar" @click="agregarBanco()">
                </div>
@@ -150,6 +153,7 @@
                  <thead>
                     <tr>
                        <th scope="col">Nombre</th>
+                       <th scope="col">Divisa</th>
                        <th scope="col">Nuevo saldo</th>
                        <th scope="col">Saldo actual</th>
                        <th scope="col">Actualizar</th>
@@ -159,6 +163,7 @@
                  <tbody>
                     <tr v-for="banco in bancos">
                        <td scope="col">{{banco.nombre}}</th>
+                        <td scope="col">{{banco.divisa}}</th>
                        <td scope="col"><input type="text" class="form-control" placeholder="Saldo" :id="banco.id" :value="banco.saldo"></td>
                        <td scope="col"><input type="text" class="form-control" :value="banco.saldo" disabled></th>   
                        <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarSaldo(banco.id)">Actualizar</button></td>

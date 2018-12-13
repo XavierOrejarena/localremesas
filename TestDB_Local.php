@@ -12,7 +12,23 @@ if (mysqli_connect_errno()) {
 }else {
 
 
-	echo "Hello";
+	$sql = "SELECT * FROM bancos";
+	$result = mysqli_query($link, $sql);
+
+	// while ($row = mysqli_fetch_array($result)) {
+	// 	$res[] = $row;
+	// 	print_r($row);
+	// }
+
+	while($row = $result->fetch_assoc()) {
+        print_r($row);
+    }
+
+
+
+
+
+
 
 
 	// $id_usuario = 1;

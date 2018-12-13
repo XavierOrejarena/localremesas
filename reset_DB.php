@@ -140,7 +140,8 @@ if (mysqli_connect_errno()) {
 	$sql = "CREATE TABLE bancos (
 		id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		nombre VARCHAR(20),
-		saldo INT(10)
+		saldo DECIMAL(10,2),
+		divisa VARCHAR(3)
 		)";
 
 	if ($link->query($sql) === TRUE) {

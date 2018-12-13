@@ -41,8 +41,9 @@ const app = new Vue({
         },
         agregarBanco() {
             var bodyFormData = new FormData();
-            bodyFormData.set('nombre', document.getElementById('nombre').value);
+            bodyFormData.set('nombre', document.getElementById('nombre').value.toUpperCase());
             bodyFormData.set('saldo', document.getElementById('saldo').value);
+            bodyFormData.set('divisa', document.getElementById('divisa').value.toUpperCase());
             axios({
                 method: 'post',
                 url: './agregarBanco.php',
@@ -195,7 +196,7 @@ const app = new Vue({
             }
             return clase;
         },
-        tiposUsuarios() {
+        filterBancos() {
             return this.tipos.filter(tipo => tipo != this.usuario.tipo);
         }
     }
