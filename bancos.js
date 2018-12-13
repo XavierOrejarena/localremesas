@@ -44,8 +44,8 @@ const app = new Vue({
                     var that = this;
                     if (response.data) {
                         this.getBancos();
-                        e.target[3].value = ''
-                        e.target[4].value = ''
+                        e.target[0].value = ''
+                        e.target[1].value = ''
                         this.mensaje = 'Pago agregado exitosamente.';
                     } else {
                         this.mensaje = 'Hubo un error al agregar los datos.';

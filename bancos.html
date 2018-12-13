@@ -16,59 +16,52 @@
     </head>
     <body>
         <div id="app">
-            <div class="container mt-4">
+            <div class="container mt-5">
                 <form
                     v-for="banco in filterBancos"
-                    class="form-inline"
+                    class="row ml-1"
                     @submit.prevent="setBanco"
                 >
-                    <div class="form-group mb-2">
-                        <input
-                            type="text"
-                            readonly
-                            class="form-control-plaintext"
-                            :value="banco.nombre"
-                        />
+                    <div class="form-group mr-2 col-md-2">
+                        <p class="form-control-plaintext">{{ banco.nombre }}</p>
                     </div>
-                    <div class="form-group mb-2">
-                        <input
-                            type="text"
-                            readonly
-                            class="form-control-plaintext"
-                            :value="banco.saldo"
-                        />
+                    <div class="form-group mr-2 col-md-2">
+                        <p class="form-control-plaintext">{{ banco.saldo }}</p>
                     </div>
-                    <div class="form-group mb-2">
-                        <input
-                            type="text"
-                            readonly
-                            class="form-control-plaintext"
-                            :value="banco.divisa"
-                        />
+                    <div class="form-group mr-2 col-md-1">
+                        <p class="form-control-plaintext">{{ banco.divisa }}</p>
                     </div>
-                    <div class="form-group mx-sm-1 mb-2">
+                    <div class="form-group mr-2 col-md-2">
                         <input
                             type="text"
                             class="form-control"
-                            :name="'r'+banco.id"
                             placeholder="Referencia"
+                            :name="'r'+banco.id"
                         />
                     </div>
-                    <div class="form-group mx-sm-1 mb-2">
+                    <div class="form-group mr-2 col-md-2">
                         <input
                             type="text"
                             class="form-control"
-                            :name="'m'+banco.id"
                             placeholder="Monto"
+                            :name="'m'+banco.id"
                         />
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">
-                        Agregar
-                    </button>
+                    <div class="form-group">
+                        <input
+                            class="btn btn-primary"
+                            type="submit"
+                            value="Agregar"
+                        />
+                    </div>
                 </form>
             </div>
-            <div v-if="mensaje" :class="{'alert container col-md-4 mt-5': true, 'alert-success': mensaje[26], 'alert-danger': mensaje[34]}" role="alert">
-                {{mensaje}}
+            <div
+                v-if="mensaje"
+                :class="{'alert container col-md-4 mt-5': true, 'alert-success': mensaje[26], 'alert-danger': mensaje[34]}"
+                role="alert"
+            >
+                {{ mensaje }}
             </div>
         </div>
     </body>
