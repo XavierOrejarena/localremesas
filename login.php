@@ -6,7 +6,7 @@
   if (!empty($_POST)) {
     include 'connect.php';
     $username = strtoupper($_POST['username']);
-    $res = $username;
+    
     if (password_verify($_POST['password'], mysqli_fetch_assoc(mysqli_query($link, "SELECT * FROM usuarios WHERE username = '$username'"))['password'])) {
       $res = true;
       $_SESSION['username'] = $username;
