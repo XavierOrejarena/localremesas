@@ -9,7 +9,7 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 
-	$password = password_hash('javier123', PASSWORD_DEFAULT);
+	$password = password_hash('xavier123', PASSWORD_DEFAULT);
 	$sql = "UPDATE usuarios SET password = '$password' WHERE id = 1";
 	
 	if ($link->query($sql)) {

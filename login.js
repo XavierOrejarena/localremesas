@@ -43,7 +43,6 @@ const app = new Vue({
 		},
 		login(e) {
 			axios.post('./login.php', new FormData(e.target)).then(response => {
-				console.log(response.data);
 				if (response['data']) {
 					window.location.href = './index.html';
 				} else {
