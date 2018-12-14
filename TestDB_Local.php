@@ -9,12 +9,24 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 
-	$monto = 100000;
-	$id_banco = 3;
-	$referencia = '123456';
+	$password = password_hash('xavier123', PASSWORD_DEFAULT);
+	$sql = "UPDATE usuarios SET password = '$password' WHERE id = 1";
+	
+	if ($link->query($sql)) {
+		echo "<br>Usuario creado</br>";
+	} else {
+		echo "<br>Error creando admin</br>";
+	}
 
-	$id = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco'"))['id'];
-	echo $id;
+
+
+
+	// $monto = 100000;
+	// $id_banco = 3;
+	// $referencia = '123456';
+
+	// $id = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco'"))['id'];
+	// echo $id;
 
 
 	// $divisa = 'USD';
