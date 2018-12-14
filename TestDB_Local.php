@@ -9,14 +9,27 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 
-	$password = password_hash('xavier123', PASSWORD_DEFAULT);
-	$sql = "UPDATE usuarios SET password = '$password' WHERE id = 1";
+	$id_banco = 5;
+
+	echo mysqli_fetch_assoc(mysqli_query($link, "SELECT nombre FROM bancos WHERE id = '$id_banco'"));
+
+
+
+
+	// $str = '12345678';
+
+	// print_r(substr($str, 2));
+
+
+
+	// $password = password_hash('xavier123', PASSWORD_DEFAULT);
+	// $sql = "UPDATE usuarios SET password = '$password' WHERE id = 1";
 	
-	if ($link->query($sql)) {
-		echo "<br>Contraseña cambiada</br>";
-	} else {
-		echo "<br>Error</br>";
-	}
+	// if ($link->query($sql)) {
+	// 	echo "<br>Contraseña cambiada</br>";
+	// } else {
+	// 	echo "<br>Error</br>";
+	// }
 
 
 

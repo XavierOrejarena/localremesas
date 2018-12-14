@@ -16,6 +16,7 @@ const app = new Vue({
 		},
 		setBanco(e) {
 			axios.post('./setBanco.php', new FormData(e.target)).then(response => {
+				console.log(response.data);
 				var that = this;
 				if (response.data) {
 					this.getBancos();
