@@ -11,208 +11,199 @@
       <title>Agregar Pago</title>
    </head>
    <body>
-      
-      
-   
-   <div id="app">
-
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+      <div id="app">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+               <a class="navbar-brand" href="index.html">Local Remesas</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarResponsive">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="index.html">Inicio</a>
+                     </li>
+                     <li class="nav-item active">
+                        <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="pagos_all.html">Todos los pagos</a>
+                     </li>
+                     <li v-if="tipo_usuario=='ADMIN'" class="nav-item">
+                        <a class="nav-link" href="admin.html">Admin</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
          <div class="container">
-           <a class="navbar-brand" href="#">Local Remesas</a>
-           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-           </button>
-           <div class="collapse navbar-collapse" id="navbarResponsive">
-             <ul class="navbar-nav ml-auto">
-               <li class="nav-item">
-                 <a class="nav-link" href="index.html">Inicio
-                 </a>
-               </li>
-               <li class="nav-item active">
-                 <a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" href="pagos_in.html">Pagos entrantes</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" href="pagos_out.html">Pagos salientes</a>
-               </li>
-               <li class="nav-item">
-                     <a class="nav-link" href="pagos_all.html">Todos los pagos</a>
-               </li>
-               <li v-if="tipo_usuario=='ADMIN'" class="nav-item">
-                     <a class="nav-link" href="admin.html">Admin</a>
-               </li>
-             </ul>
-           </div>
-         </div>
-       </nav>
-
-      <div class="container">
-         <div id="0"></div>
-         <div v-for="(mensaje, index) in mensajes" :class="{'mt-2 alert alert-danger':errores[index], 'mt-2 alert alert-success':!errores[index]}" role="alert">
-            <strong>{{mensaje}}</strong>
-            <button @click="mensajes.splice(index,1)" type="button" class="close">
+            <div id="0"></div>
+            <div v-for="(mensaje, index) in mensajes" :class="{'mt-2 alert alert-danger':errores[index], 'mt-2 alert alert-success':!errores[index]}" role="alert">
+               <strong>{{mensaje}}</strong>
+               <button @click="mensajes.splice(index,1)" type="button" class="close">
                <span>&times;</span>
-            </button>
-         </div>
-         <form>
-            <!--@submit.prevent="insertarCuentas" -->
-            <div class="form-group">
-               <label>ID de Usuario</label>
-               <input v-model="id_usuario" @keyup="buscarUsuario($event)" type="text" class="form-control" name="id_usuario" id="id_usuario" required onClick="this.select();" maxlength="10">
-               <small id="emailHelp" :class="{'text-primary': id_usuario==0, 'text-success':small=='Usuario ya existe', 'text-danger':small=='Usuario no existe'}">{{small}} ({{tipo_cliente}})</small>
+               </button>
             </div>
-            
-            <div class="form-group  ">
-               <div class="form-row mt-3" @click="disabled">
-                  <div class="col-md-2">
-                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="banco1" value="BCP" name="banco" checked>
-                        <label class="form-check-label">BCP</label>
+            <form>
+               <div class="form-group">
+                  <label>ID de Usuario</label>
+                  <input v-model="id_usuario" @keyup="buscarUsuario($event)" type="text" class="form-control" name="id_usuario" id="id_usuario" required onClick="this.select();" maxlength="10">
+                  <small id="emailHelp" :class="{'text-primary': id_usuario==0, 'text-success':small=='Usuario ya existe', 'text-danger':small=='Usuario no existe'}">{{small}} ({{tipo_cliente}})</small>
+               </div>
+               <div class="form-group  ">
+                  <div class="form-row mt-3" @click="disabled">
+                     <div class="col-md-2">
+                        <div class="form-check form-check-inline">
+                           <input class="form-check-input" type="radio" id="banco1" value="BCP" name="banco" checked>
+                           <label class="form-check-label">BCP</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                           <input class="form-check-input" type="radio" id="banco2" value="INTERBANK" name="banco">
+                           <label class="form-check-label">INTERBANK</label>
+                        </div>
                      </div>
-                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="banco2" value="INTERBANK" name="banco">
-                        <label class="form-check-label">INTERBANK</label>
-                     </div>
-                  </div>
-                  <div class="col-md-1">
-                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="divisa1" value="PEN" name="divisa" checked>
-                        <label class="form-check-label">PEN</label>
-                     </div>
-                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" id="divisa2" value="USD" name="divisa" disabled>
-                        <label class="form-check-label">USD</label>
+                     <div class="col-md-1">
+                        <div class="form-check form-check-inline">
+                           <input class="form-check-input" type="radio" id="divisa1" value="PEN" name="divisa" checked>
+                           <label class="form-check-label">PEN</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                           <input class="form-check-input" type="radio" id="divisa2" value="USD" name="divisa" disabled>
+                           <label class="form-check-label">USD</label>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
-            <div class="form-group">
-               <label>Monto</label>
-               <input @keyup="verificarMonto($event)" onClick="this.select();"  v-model="monto" type="number" class="form-control" name="monto" id="monto" placeholder="Soles o USD" required min="0">
-               <label>Número de referencia</label>
-               <input @keyup="verificarReferencia($event);referencia_cero()" type="text" class="form-group form-control" name="referencia" id="referencia" placeholder="Solamente números" v-model="referencia">
-               <div v-if="referencia!='0'" class="form-group">
-                  <label>Adjuntar comprobante de transferencia</label>
-                  <input type="file" class="form-control-file" name="comprobante" id="comprobante" accept=".jpeg, .jpg, .png">
-                  <div class="progress mt-2">
-                    <div id="barra" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+               <div class="form-group">
+                  <label>Monto</label>
+                  <input @keyup="verificarMonto($event)" onClick="this.select();"  v-model="monto" type="number" class="form-control" name="monto" id="monto" placeholder="Soles o USD" required min="0">
+                  <label>Número de referencia</label>
+                  <input @keyup="verificarReferencia($event);referencia_cero()" type="text" class="form-group form-control" name="referencia" id="referencia" placeholder="Solamente números" v-model="referencia">
+                  <div v-if="referencia!='0'" class="form-group">
+                     <label>Adjuntar comprobante de transferencia</label>
+                     <input type="file" class="form-control-file" name="comprobante" id="comprobante" accept=".jpeg, .jpg, .png">
+                     <div class="progress mt-2">
+                        <div id="barra" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                     </div>
                   </div>
-               </div>
-               <div class="form-row">
-                  <div class="form-group text-center col">
-                     <label><strong>Van</strong></label>
-                     <input id="monto_total" readonly class="form-control" v-model="monto_total" :style="style">
-                  </div>
-                  <div class="form-group text-center col">
-                     <label><strong>De</strong></label>
-                     <input readonly class="form-control" :value="tasa*monto">
-                  </div>
-                  <div class="form-group text-center col">
-                     <label><strong>Faltan</strong></label>
-                     <input readonly class="form-control" :value="tasa*monto-monto_total">
-                  </div>
-                  <div class="form-group text-center col-md-2" v-if="tipo_cliente=='MAYORISTA'">
+                  <div class="form-row">
+                     <div class="form-group text-center col">
+                        <label><strong>Van</strong></label>
+                        <input id="monto_total" readonly class="form-control" v-model="monto_total" :style="style">
+                     </div>
+                     <div class="form-group text-center col">
+                        <label><strong>De</strong></label>
+                        <input readonly class="form-control" :value="tasa*monto">
+                     </div>
+                     <div class="form-group text-center col">
+                        <label><strong>Faltan</strong></label>
+                        <input readonly class="form-control" :value="tasa*monto-monto_total">
+                     </div>
+                     <div class="form-group text-center col-md-2" v-if="tipo_cliente=='MAYORISTA'">
                         <div class="form-group text-center col">
                            <label><strong>&nbsp;</strong></label>
                            <button type="button" @click="calcularTasa('-')" class="form-control btn btn-secondary">- 0.5%</button>
                         </div>
-                  </div>
-                  <div class="form-group text-center col">
-                     <div class="form-group text-center col">
-                        <label><strong>Tasa</strong></label>
-                        <input :readonly="!(tipo_cliente=='ESPECIAL')" class="form-control text-center" v-model="tasa">
                      </div>
-                  </div>
-                  <div class="form-group text-center col-md-2" v-if="tipo_cliente=='MAYORISTA'">
+                     <div class="form-group text-center col">
+                        <div class="form-group text-center col">
+                           <label><strong>Tasa</strong></label>
+                           <input :readonly="!(tipo_cliente=='ESPECIAL')" class="form-control text-center" v-model="tasa">
+                        </div>
+                     </div>
+                     <div class="form-group text-center col-md-2" v-if="tipo_cliente=='MAYORISTA'">
                         <div class="form-group text-center col">
                            <label><strong>&nbsp;</strong></label>
                            <button type="button" @click="calcularTasa('+')" class="form-control btn btn-secondary">+ 0.5%</button>
                         </div>
-                  </div>
-               </div>
-               <div v-if="tabla">
-                  <table class="table table-hover text-center table-sm container border rounded">
-                     <thead>
-                        <tr>
-                           <th scope="col">Nombre</th>
-                           <th scope="col">Cuenta</th>
-                           <th scope="col">Monto</th>
-                           <th scope="col">Eliminar</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr v-for="(cuenta2, index) in cuentas_display">
-                           <td scope="col">{{cuenta2.nombre}}</th>
-                           <td scope="col">{{cuenta2.cuenta}}</th>
-                           <td scope="col"><input type="number" :name="'Bs[' + index +']'" class="form-control" placeholder="Bs."  @keyup="calcularMontoTotal()" v-model:value="cuenta2.monto" onClick="this.select();" min="0"></th>
-                           <td scope="col"><button type="button" class="btn btn-md " @click="borrarCuenta" :value="cuenta2.id">X</button></td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-               <div v-for="(cuenta, index) in cuentas" class="form-group border border-warning rounded container bg-light">
-               <div class="form-group mt-2">
-                  <label>Nombre y Apellido</label>
-                  <input @keyup="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="20" v-model="cuenta.nombre">
-               </div>
-               <div class="form-group">
-                  <div class="form-row">
-                     <div class="col-md-3">
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" id="tipo_cedula" v-model="cuenta.tipo_cedula" :name="'tipo_cedula[' + index +']'" checked value="V">
-                           <label class="form-check-label">V</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" id="tipo_cedula" v-model="cuenta.tipo_cedula" :name="'tipo_cedula[' + index +']'" value="E">
-                           <label class="form-check-label">E</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" id="tipo_cedula" v-model="cuenta.tipo_cedula" :name="'tipo_cedula[' + index +']'" value="J">
-                           <label class="form-check-label">J</label>
-                        </div>
-                     </div>
-                     <div class="col">
-                        <label>Número de cédula</label>
-                        <input @keyup="verificarCedula($event)" type="text" class="form-control" :name="'cedula[' + index +']'" placeholder="Solamente números" required maxlength="9" v-model="cuenta.cedula">
                      </div>
                   </div>
-               </div>
-               <div class="form-group">
-                  <div class="form-row">
-                     <div class="col-md-3 align-self-center">
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" id="tipo_cuenta" v-model="cuenta.tipo_cuenta" :name="'tipo_cuenta[' + index +']'" checked value="CORRIENTE">
-                           <label class="form-check-label">CORRIENTE</label>
-                        </div>
-                        <div class="form-check">
-                           <input class="form-check-input" type="radio" id="tipo_cuenta" v-model="cuenta.tipo_cuenta" :name="'tipo_cuenta[' + index +']'" value="AHORRO">
-                           <label class="form-check-label">AHORRO</label>
+                  <div v-if="tabla">
+                     <table class="table table-hover text-center table-sm container border rounded">
+                        <thead>
+                           <tr>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Cuenta</th>
+                              <th scope="col">Monto</th>
+                              <th scope="col">Eliminar</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr v-for="(cuenta2, index) in cuentas_display">
+                              <td scope="col">{{cuenta2.nombre}}</th>
+                              <td scope="col">{{cuenta2.cuenta}}</th>
+                              <td scope="col"><input type="number" :name="'Bs[' + index +']'" class="form-control" placeholder="Bs."  @keyup="calcularMontoTotal()" v-model:value="cuenta2.monto" onClick="this.select();" min="0"></th>
+                              <td scope="col"><button type="button" class="btn btn-md " @click="borrarCuenta" :value="cuenta2.id">X</button></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+                  <div v-for="(cuenta, index) in cuentas" class="form-group border border-warning rounded container bg-light">
+                     <div class="form-group mt-2">
+                        <label>Nombre y Apellido</label>
+                        <input @keyup="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="20" v-model="cuenta.nombre">
+                     </div>
+                     <div class="form-group">
+                        <div class="form-row">
+                           <div class="col-md-3">
+                              <div class="form-check">
+                                 <input class="form-check-input" type="radio" id="tipo_cedula" v-model="cuenta.tipo_cedula" :name="'tipo_cedula[' + index +']'" checked value="V">
+                                 <label class="form-check-label">V</label>
+                              </div>
+                              <div class="form-check">
+                                 <input class="form-check-input" type="radio" id="tipo_cedula" v-model="cuenta.tipo_cedula" :name="'tipo_cedula[' + index +']'" value="E">
+                                 <label class="form-check-label">E</label>
+                              </div>
+                              <div class="form-check">
+                                 <input class="form-check-input" type="radio" id="tipo_cedula" v-model="cuenta.tipo_cedula" :name="'tipo_cedula[' + index +']'" value="J">
+                                 <label class="form-check-label">J</label>
+                              </div>
+                           </div>
+                           <div class="col">
+                              <label>Número de cédula</label>
+                              <input @keyup="verificarCedula($event)" type="text" class="form-control" :name="'cedula[' + index +']'" placeholder="Solamente números" required maxlength="9" v-model="cuenta.cedula">
+                           </div>
                         </div>
                      </div>
-                     <div class="col">
-                        <label>Número de cuenta</label>
-                        <input @keyup="verificarCuenta($event)" type="text" class="form-control" :name="'cuenta[' + index +']'" placeholder="Solamente números" required v-model="cuenta.cuenta" maxlength="20">
+                     <div class="form-group">
+                        <div class="form-row">
+                           <div class="col-md-3 align-self-center">
+                              <div class="form-check">
+                                 <input class="form-check-input" type="radio" id="tipo_cuenta" v-model="cuenta.tipo_cuenta" :name="'tipo_cuenta[' + index +']'" checked value="CORRIENTE">
+                                 <label class="form-check-label">CORRIENTE</label>
+                              </div>
+                              <div class="form-check">
+                                 <input class="form-check-input" type="radio" id="tipo_cuenta" v-model="cuenta.tipo_cuenta" :name="'tipo_cuenta[' + index +']'" value="AHORRO">
+                                 <label class="form-check-label">AHORRO</label>
+                              </div>
+                           </div>
+                           <div class="col">
+                              <label>Número de cuenta</label>
+                              <input @keyup="verificarCuenta($event)" type="text" class="form-control" :name="'cuenta[' + index +']'" placeholder="Solamente números" required v-model="cuenta.cuenta" maxlength="20">
+                           </div>
+                        </div>
+                        <div class="mt-4 mb-2 d-flex justify-content-end">
+                           <button class="btn btn-outline-primary" @click="eliminarCuenta(index)" type="button">Eliminar cuenta</button>
+                        </div>
                      </div>
                   </div>
-                  <div class="mt-4 mb-2 d-flex justify-content-end">
-                     <button class="btn btn-outline-primary" @click="eliminarCuenta(index)" type="button">Eliminar cuenta</button>
+                  <button v-if="small!='Usuario no existe'" @click="agregarCuenta" class="btn btn-outline-primary" type="button">Agregar cuenta</button>
+                  <button v-if="cuentas != 0" type="button" class="btn btn-primary" @click="cargarCuentas">Cargar Cuentas</button>
+                  <div class="mt-2">
+                     <button v-if="small=='Usuario ya existe'" @click="insertarPagos_in" type="button" class="form-group btn btn-primary">Cargar Pago</button>
                   </div>
                </div>
-            </div>
-            <button v-if="small!='Usuario no existe'" @click="agregarCuenta" class="btn btn-outline-primary" type="button">Agregar cuenta</button>
-            <button v-if="cuentas != 0" type="button" class="btn btn-primary" @click="cargarCuentas">Cargar Cuentas</button>
-            <div class="mt-2">
-               <button v-if="small=='Usuario ya existe'" @click="insertarPagos_in" type="button" class="form-group btn btn-primary">Cargar Pago</button>
-               </div>
-            </div>
-         </form>
-      </div>
+            </form>
+         </div>
       </div>
    </body>
    <script src="./vue.js"></script>
    <script src="./axios.min.js"></script>
    <script src="agregar_pagos.js"></script>
-
 </html>

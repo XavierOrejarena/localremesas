@@ -3,32 +3,37 @@
 
 // session_start();
 
-
-
 include "connect.php";
 
 if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 
+	$monto = 100000;
+	$id_banco = 3;
+	$referencia = '123456';
 
-	$sql = "SELECT * FROM bancos";
-	$result = mysqli_query($link, $sql);
+	$id = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco'"))['id'];
+	echo $id;
+
+
+	// $divisa = 'USD';
+	// $banco = 'INTERBANK';
+
+	// $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
+
+
+	// $sql = "SELECT * FROM bancos";
+	// $result = mysqli_query($link, $sql);
 
 	// while ($row = mysqli_fetch_array($result)) {
 	// 	$res[] = $row;
 	// 	print_r($row);
 	// }
 
-	while($row = $result->fetch_assoc()) {
-        print_r($row);
-    }
-
-
-
-
-
-
+	// while($row = $result->fetch_assoc()) {
+    //     print_r($row);
+    // }
 
 
 	// $id_usuario = 1;

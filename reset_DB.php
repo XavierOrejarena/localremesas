@@ -57,14 +57,27 @@ if (mysqli_connect_errno()) {
 	} else {
 	    echo "<br>no usuarios_cuentas<br>" . $conn->error;
 	}
+	
+	$sql = "CREATE TABLE bancos (
+		id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		nombre VARCHAR(20),
+		saldo DECIMAL(10,2),
+		divisa VARCHAR(3)
+		)";
+	
+	if ($link->query($sql) === TRUE) {
+		echo "<br>bancos<br>";
+	} else {
+		echo "<br>no bancos<br>" . $conn->error;
+	}
 
 	$sql = "CREATE TABLE pagos_in (
 	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-	divisa VARCHAR(64),
-	banco VARCHAR(64),
-	monto VARCHAR(64),
+	id_banco INT(10) UNSIGNED,
+	FOREIGN KEY (id_banco) REFERENCES bancos(id),
+	monto DECIMAL(10,2),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),
 	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -136,34 +149,6 @@ if (mysqli_connect_errno()) {
 	} else {
 	    echo "<br>no USD<br>" . $conn->error;
 	}
-
-	$sql = "CREATE TABLE bancos (
-		id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		nombre VARCHAR(20),
-		saldo DECIMAL(10,2),
-		divisa VARCHAR(3)
-		)";
-
-	if ($link->query($sql) === TRUE) {
-		echo "<br>bancos<br>";
-	} else {
-		echo "<br>no bancos<br>" . $conn->error;
-	}
-
-	$sql = "CREATE TABLE depositos (
-		id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		id_banco VARCHAR(20),
-		monto DECIMAL(10,2),
-		referencia VARCHAR(20)
-		)";
-
-	if ($link->query($sql) === TRUE) {
-		echo "<br>depositos<br>";
-	} else {
-		echo "<br>no depositos<br>" . $conn->error;
-	}
-
-
 
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
 	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
