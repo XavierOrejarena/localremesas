@@ -13,9 +13,9 @@ if (mysqli_connect_errno()) {
 	$sql = "UPDATE usuarios SET password = '$password' WHERE id = 1";
 	
 	if ($link->query($sql)) {
-		echo "<br>Usuario creado</br>";
+		echo "<br>Contraseña cambiada</br>";
 	} else {
-		echo "<br>Error creando admin</br>";
+		echo "<br>Error</br>";
 	}
 
 
