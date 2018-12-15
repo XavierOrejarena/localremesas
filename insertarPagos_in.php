@@ -71,12 +71,12 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
         }
     }
 } else { // SI NO HAY ARCHIVO
-    $sql = "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+    $sql = "INSERT INTO pagos_in OUTPUT Inserted.ID (id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
-    if(mysqli_query($link, $sql)) {
+    if($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, $sql))['id']) {
             $res['mensajes'][] = 'Pago agregado existosamente';
             $res['errores'][] = false;
-/* TODO: */ $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+// /* TODO: */ $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
     } else {
         $res['mensajes'][] = 'Hubo un error agregando el pago';
         $res['errores'][] = true;
