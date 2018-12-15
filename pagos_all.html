@@ -82,14 +82,16 @@
                      <th scope="col">ID Usuario</th>
                      <th scope="col">Monto</th>
                      <th scope="col">Hora</th>
+                     <th scope="col">Estado</th>
                   </tr>
                </thead>
                <tbody>
                   <tr v-for="(pago_out, index) in pagos_out">
                     <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+pago_out.id+'.jpg'" target="_blank">{{pago_out.id}}</td>
                      <td scope="col">{{pago_out.id_usuario}}</td>
-                     <td scope="col">{{pago_out.monto+' Bs.'}}</td>
+                     <td scope="col">{{pago_out.monto}}</td>
                      <td scope="col">{{pago_out.reg_date.split(' ')[1]}}</td>
+                     <td scope="col">{{pago_out.estado}}</td>
                   </tr>
                </tbody>
             </table>

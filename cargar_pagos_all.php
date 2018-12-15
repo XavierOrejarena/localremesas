@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_array($result)) {
 	$res[in][] = $row;
 }
 
-$result = mysqli_query($link, "SELECT * FROM pagos_out WHERE estado = 'PAGADO' AND reg_date > NOW() - INTERVAL 21 HOUR");
+$result = mysqli_query($link, "SELECT * FROM pagos_out WHERE estado = 'RECHAZADO' OR estado = 'PAGADO' AND reg_date > NOW() - INTERVAL 21 HOUR");
 
 while ($row = mysqli_fetch_array($result)) {
 	$res[out][] = $row;

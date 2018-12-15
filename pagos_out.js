@@ -105,6 +105,18 @@ const app = new Vue({
 			}).then(response => {
 				this.pagos = response.data;
 			});
+		},
+		rechazar(id) {
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', id);
+			axios({
+				method: 'post',
+				url: './rechazar_pagos_out.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				this.cargar_pagos_out();
+			});
 		}
 	},
 	computed: {
