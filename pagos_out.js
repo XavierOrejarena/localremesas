@@ -110,7 +110,7 @@ const app = new Vue({
 	},
 	computed: {
 		filterBancos() {
-			return this.bancos.filter(banco => banco.divisa != 'VEF');
+			return this.bancos.filter(banco => banco.divisa != 'VES');
 		}
 	},
 	beforeMount() {
