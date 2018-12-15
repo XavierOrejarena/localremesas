@@ -76,7 +76,7 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
     if(mysqli_query($link, $sql)) {
             $res['mensajes'][] = 'Pago agregado existosamente';
             $res['errores'][] = false;
-            $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+/* TODO: */ $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
     } else {
         $res['mensajes'][] = 'Hubo un error agregando el pago';
         $res['errores'][] = true;
