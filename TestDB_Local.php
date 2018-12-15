@@ -8,13 +8,38 @@ include "connect.php";
 if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
+	$monto = 100;
+	$referencia = 123456;
+	$banco = 'BCP';
+	$divisa = 'PEN';
+	$id_usuario = 3;
+	$id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
+	$sql = "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', 'LOL', DATE_ADD(NOW(),INTERVAL 3 HOUR));
+SELECT LAST_INSERT_ID();";
+	// $sql = "SELECT * FROM bancos";
+	 print_r(mysqli_multi_query($link, $sql));
 
-	$id_banco = 5;
 
-	echo mysqli_fetch_assoc(mysqli_query($link, "SELECT nombre FROM bancos WHERE id = '$id_banco'"));
+	// print_r(mysqli_fetch_assoc(mysqli_multi_query($link, $sql)));
+	
+	
+	// if($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, $sql))['id']) {
+    //         echo 'Pago agregado existosamente', "\n";
+    //         echo "false", "\n";
+    // } else {
+    //     echo 'Hubo un error agregando el pago', "\n";
+    //     echo "true", "\n";
+    //     echo 'xd', "\n";
+    // }
 
 
 
+
+
+
+	// $id_banco = 5;
+
+	// echo mysqli_fetch_assoc(mysqli_query($link, "SELECT nombre FROM bancos WHERE id = '$id_banco'"));
 
 	// $str = '12345678';
 

@@ -169,8 +169,8 @@ if (mysqli_connect_errno()) {
 
 	$link->query("INSERT INTO usuarios_cuentas (id_usuario, id_cuenta) VALUES (1,1)");
 
-	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('MERCANTIL', 100, 'VEF')");
-	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANESCO', 100, 'VEF')");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('MERCANTIL', 100, 'VES')");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANESCO', 100, 'VES')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'PEN')");
