@@ -3,7 +3,7 @@ const app = new Vue({
 	data: {
 		pagos: '',
 		tipo_usuario: 'REGULAR',
-		bancos: ''
+		bancos: []
 	},
 	methods: {
 		getBancos() {
@@ -104,7 +104,8 @@ const app = new Vue({
 				url: './cargar_pagos_out.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				this.pagos = response['data'];
+				console.log(response.data);
+				this.pagos = response.data;
 			});
 		}
 	},
