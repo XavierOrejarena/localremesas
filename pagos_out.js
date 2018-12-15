@@ -64,7 +64,6 @@ const app = new Vue({
 					// document.getElementById('f'+e).parentElement.style = 'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);'
 					document.getElementById('f' + e).style =
 						'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
-					console.log('no hay archivo');
 				} else {
 					var barra = document.getElementById('barra');
 					var bodyFormData = new FormData();
@@ -104,14 +103,13 @@ const app = new Vue({
 				url: './cargar_pagos_out.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data);
 				this.pagos = response.data;
 			});
 		}
 	},
 	computed: {
 		filterBancos() {
-			return this.bancos.filter(banco => banco.divisa != 'VES');
+			return this.bancos.filter(banco => banco.divisa == 'VES');
 		}
 	},
 	beforeMount() {
@@ -120,7 +118,7 @@ const app = new Vue({
 			url: './session.php',
 			config: { headers: { 'Content-Type': 'multipart/form-data' } }
 		}).then(response => {
-			if (response['data'] == 'ADMIN' || response['data'] == 'OPERADOR') {
+			if (response.data == 'ADMIN' || response.data == 'OPERADOR') {
 				this.tipo_usuario = response.data;
 				this.cargar_pagos_out();
 				this.getBancos();
