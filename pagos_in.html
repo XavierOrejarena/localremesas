@@ -44,7 +44,7 @@
               </div>
             </nav>
         <div class="container">
-         <table onclick="copy(this)" class="table table-hover text-center table-sm container border rounded">
+         <table onclick="copy(this)" class="table table-hover text-center container table-responsive-sm text-nowrap">
             <thead>
                <tr>
                   <th scope="col">ID</th>
@@ -53,18 +53,21 @@
                   <th scope="col">Divisa</th>
                   <th scope="col"># Ref</th>
                   <th scope="col">Monto</th>
-                  <th scope="col">Acción</th>
+                  <th class="th-lg">Acción</th>
                </tr>
             </thead>
             <tbody>
-               <tr v-for="(pago, index) in pagos">
-                  <td scope="col">{{pago.id}}</td>
-                  <td scope="col">{{pago.id_usuario}}</td>
-                  <td scope="col">{{pago.nombre}}</td>
-                  <td scope="col">{{pago.divisa}}</td>
-                  <td scope="col"><a :href="'http://localremesas.com/comprobantes_in/'+pago.referencia+'.jpg'" target="_blank">{{pago.referencia}}</td>
-                  <td scope="col">{{pago.monto}}</td>
-                  <td scope="col"><button @click="aprobar_in(pago.id)" type="button" class="btn btn-outline-success btn-sm mr-2">Aprobar</button><button @click="rechazar_in(pago.id)"type="button" class="btn btn-outline-danger btn-sm">Rechazar</button></td>
+               <tr v-for="pago in pagos">
+                  <th scope="row">{{pago.id}}</th>
+                  <td>{{pago.id_usuario}}</td>
+                  <td>{{pago.nombre}}</td>
+                  <td>{{pago.divisa}}</td>
+                  <td><a :href="'http://localremesas.com/comprobantes_in/'+pago.referencia+'.jpg'" target="_blank">{{pago.referencia}}</td>
+                  <td>{{pago.monto}}</td>
+                  <td>
+                    <button @click="aprobar_in(pago.id)" type="button" class="btn btn-outline-success btn-sm mr-2">Aprobar</button>
+                    <button @click="rechazar_in(pago.id)"type="button" class="btn btn-outline-danger btn-sm">Rechazar</button>
+                  </td>
                </tr>
             </tbody>
          </table>

@@ -12,8 +12,6 @@ if (mysqli_query($link, "UPDATE bancos SET saldo = bancos.saldo + '$monto' WHERE
 
     if (mysqli_fetch_assoc(mysqli_query($link, "SELECT nombre FROM bancos WHERE id = '$id_banco'"))['nombre'] == 'BCP' && strlen($referencia) == 8) {
         $referencia = substr($referencia, 2);
-    } else {
-        echo strlen($referencia)."\n";
     }
 
     if($id = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco'"))['id']) {
