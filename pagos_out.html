@@ -53,7 +53,7 @@
 							<th>ID</th>
 							<!-- <th>ID Usuario</th> -->
 							<th>Nombre</th>
-							<th>Tipo</th>
+							<!-- <th>Tipo</th> -->
 							<th>Banco</th>
 							<th>Cuenta</th>
 							<th>Número Cédula</th>
@@ -70,9 +70,9 @@
 							<td>{{ pago.ide }}</td>
 							<!-- <td>{{ pago.id_usuario }}</td> -->
 							<td>{{ pago.nombre }}</td>
-							<td>{{ pago.tipo_cuenta[0] }}</td>
+							<!-- <td>{{ pago.tipo_cuenta[0] }}</td> -->
 							<td>{{ Banco(pago.cuenta) }}</td>
-							<td>{{ pago.cuenta }}</td>
+							<td>{{ pago.tipo_cuenta[0] }} {{ pago.cuenta }}</td>
 							<td>{{ pago.tipo_cedula }} {{ pago.cedula }}</td>
 							<td>{{ pago.monto }}</td>
 							<td><input type="number" placeholder="Solo números" class="form-control" :id="pago.ide" /></td>
