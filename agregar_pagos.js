@@ -122,7 +122,7 @@ const app = new Vue({
 			}
 		},
 		verificarNombre: function(e) {
-			if (e.target.value.length > 19 || e.target.value.length < 3 || !isNaN(e.target.value)) {
+			if (e.target.value.length > 19) {
 				e.target.style =
 					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
 				this.agregar_cuenta = false;
