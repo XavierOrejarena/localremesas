@@ -78,7 +78,7 @@ if (mysqli_connect_errno()) {
 	id_banco INT(10) UNSIGNED,
 	FOREIGN KEY (id_banco) REFERENCES bancos(id),
 	monto DECIMAL(10,2),
-	referencia VARCHAR(64),
+	referencia INT(10) UNSIGNED,
 	tasa DECIMAL(10,2),
 	estado VARCHAR(64),
 	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -99,7 +99,7 @@ if (mysqli_connect_errno()) {
 	id_cuenta INT(10) UNSIGNED,
 	FOREIGN KEY (id_cuenta) REFERENCES cuentas(id),
 	monto INT(10),
-	referencia VARCHAR(64),
+	referencia INT(10) UNSIGNED,
 	estado VARCHAR(64),
 	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
