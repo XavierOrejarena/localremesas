@@ -1,6 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
+		red: 'border-color: #ff0000;  -webkit-box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);',
 		agregar_cuenta: true,
 		monto: 0,
 		tasa: '',
@@ -81,30 +82,26 @@ const app = new Vue({
 		error(mensaje, obj) {
 			this.mensajes = [mensaje];
 			this.errores = [true];
-			document.getElementById(obj).style =
-				'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+			document.getElementById(obj).style = this.red;
 			window.scrollTo(0, 0);
 		},
 		verificarReferencia: function(e) {
 			if (e.target.value.length < 1 || e.target.value == '') {
-				e.target.style =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+				e.target.style = this.red;
 			} else {
 				e.target.style = '';
 			}
 		},
 		verificarMonto: function(e) {
 			if (e.target.value.length < 1 || isNaN(e.target.value) || e.target.value == 0) {
-				e.target.style =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+				e.target.style = this.red;
 			} else {
 				e.target.style = '';
 			}
 		},
 		verificarCedula: function(e) {
 			if (e.target.value.length > 9 || e.target.value.length < 7 || isNaN(e.target.value)) {
-				e.target.style =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+				e.target.style = this.red;
 				this.agregar_cuenta = false;
 			} else {
 				e.target.style = '';
@@ -113,8 +110,7 @@ const app = new Vue({
 		},
 		verificarCuenta: function(e) {
 			if (e.target.value.length > 20 || e.target.value.length < 20 || isNaN(e.target.value)) {
-				e.target.style =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+				e.target.style = this.red;
 				this.agregar_cuenta = false;
 			} else {
 				e.target.style = '';
@@ -123,8 +119,7 @@ const app = new Vue({
 		},
 		verificarNombre: function(e) {
 			if (e.target.value.length > 19) {
-				e.target.style =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+				e.target.style = this.red;
 				this.agregar_cuenta = false;
 			} else {
 				e.target.style = '';
@@ -273,8 +268,7 @@ const app = new Vue({
 		buscarUsuario(e) {
 			if (e != undefined) {
 				if (e.target.value.length > 10 || e.target.value.length < 1 || isNaN(e.target.value)) {
-					e.target.style =
-						'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+					e.target.style = this.red;
 				} else {
 					e.target.style = '';
 				}
@@ -320,19 +314,6 @@ const app = new Vue({
 			if (this.referencia == '0') {
 				this.cargarTasa(this.tipo_cliente);
 			}
-		}
-	},
-	computed: {
-		style: function() {
-			var styles = '';
-			var monto_total = this.monto_total + '';
-			monto_total = monto_total.split('/');
-			if (monto_total[0] > this.monto * this.tasa) {
-				styles =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
-				this.pagar = false;
-			}
-			return styles;
 		}
 	},
 	beforeMount() {

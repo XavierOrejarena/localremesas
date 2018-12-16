@@ -12,13 +12,13 @@ if (mysqli_query($link, "UPDATE bancos SET saldo = bancos.saldo + '$monto' WHERE
 
     if (mysqli_fetch_assoc(mysqli_query($link, "SELECT nombre FROM bancos WHERE id = '$id_banco'"))['nombre'] == 'BCP') {
         // SI EL BANCO ES BCP
-        if ($monto == -7.5 && mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco'")->num_rows == 1) {
+        if ($monto == -7.5 && mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = RIGHT('$referencia',6) AND id_banco = '$id_banco'")->num_rows == 1) {
             // SI EL MONTO ES -7.5 SOLES Y YA EXISTE UN PAGO CON ESA REFERENCIA
-            if (mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = (SELECT id from pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco')")->num_rows == 1) {
+            if (mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = (SELECT id from pagos_in WHERE referencia = RIGHT('$referencia',6) AND id_banco = '$id_banco')")->num_rows == 1) {
                 // SI SOLO HAY UN PAGO SALIENTE
-                if (mysqli_query($link, "UPDATE pagos_out SET monto = pagos_out.monto + (SELECT tasa FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco')*'$monto', estado = 'PENDIENTE' WHERE id_pago_in = (SELECT id from pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco')")) {
+                if (mysqli_query($link, "UPDATE pagos_out SET monto = pagos_out.monto + (SELECT tasa FROM pagos_in WHERE referencia = RIGHT('$referencia',6) AND id_banco = '$id_banco')*'$monto', estado = 'PENDIENTE' WHERE id_pago_in = (SELECT id from pagos_in WHERE referencia = RIGHT('$referencia',6) AND id_banco = '$id_banco')")) {
                     echo "Se descuenta la comision del pago saliente.\n";
-                    if (mysqli_query($link, "UPDATE pagos_in SET estado = 'APROBADO' WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND monto <> '$monto'")) {
+                    if (mysqli_query($link, "UPDATE pagos_in SET estado = 'APROBADO' WHERE referencia = RIGHT('$referencia',6) AND id_banco = '$id_banco' AND monto <> '$monto'")) {
                         echo "Pago entrante actualizado.\n";
                     }
                 }
