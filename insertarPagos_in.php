@@ -6,6 +6,7 @@ $id_usuario = $_POST['id_usuario'];
 $divisa = $_POST['divisa'];
 $banco = $_POST['banco'];
 $monto = $_POST['monto'];
+$tasa = $_POST['tasa'];
 $referencia = $_POST['referencia'];
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
 
@@ -54,7 +55,7 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
             $res['mensajes'][] = 'Archivo cargado existosamente';
             $res['errores'][] = false;
 
-            $sql = "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+            $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
             if(mysqli_query($link, $sql)) {
                     $res['mensajes'][] = 'Pago agregado existosamente';
@@ -71,7 +72,7 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
         }
     }
 } else { // SI NO HAY ARCHIVO
-    $sql = "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+    $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
     if(mysqli_query($link, $sql)) {
             $res['mensajes'][] = 'Pago agregado existosamente';

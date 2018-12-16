@@ -3,7 +3,7 @@ const app = new Vue({
 	data: {
 		agregar_cuenta: true,
 		monto: 0,
-		tasa: 0,
+		tasa: '',
 		id_usuario: 0,
 		tipo_usuario: '',
 		tipo_cliente: 'REGULAR',
@@ -13,7 +13,7 @@ const app = new Vue({
 		small: 'Usuario nuevo',
 		mensajes: [],
 		errores: [],
-		cuentas: '',
+		cuentas: [],
 		referencia: ''
 	},
 	methods: {
@@ -155,6 +155,7 @@ const app = new Vue({
 										bodyFormData.append('comprobante', document.getElementById('comprobante').files[0]);
 										var barra = document.getElementById('barra');
 									}
+									bodyFormData.set('tasa', this.tasa);
 									bodyFormData.set('id_usuario', this.id_usuario);
 									bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
 									bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value);
@@ -175,7 +176,6 @@ const app = new Vue({
 											}
 										}
 									}).then(response => {
-										console.log(response.data);
 										this.mensajes = response.data.mensajes;
 										this.errores = response.data.errores;
 										if (this.referencia != '0') {
@@ -216,24 +216,13 @@ const app = new Vue({
 			});
 		},
 		agregarCuenta() {
-			if (this.cuentas == '') {
-				this.cuentas = [
-					{
-						nombre: '',
-						tipo_cedula: 'V',
-						cedula: '',
-						tipo_cuenta: 'CORRIENTE',
-						cuenta: ''
-					}
-				];
-			} else
-				this.cuentas.push({
-					nombre: '',
-					tipo_cedula: 'V',
-					cedula: '',
-					tipo_cuenta: 'CORRIENTE',
-					cuenta: ''
-				});
+			this.cuentas.push({
+				nombre: '',
+				tipo_cedula: 'V',
+				cedula: '',
+				tipo_cuenta: 'CORRIENTE',
+				cuenta: ''
+			});
 		},
 		borrarCuenta(e) {
 			var bodyFormData = new FormData();
@@ -250,7 +239,7 @@ const app = new Vue({
 		eliminarCuenta(index) {
 			this.cuentas.splice(index, 1);
 		},
-		cargarCuentas(e) {
+		cargarCuentas() {
 			if (this.agregar_cuenta) {
 				var bodyFormData = new FormData();
 				bodyFormData.set('id_usuario', this.id_usuario);
