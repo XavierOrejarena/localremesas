@@ -36,7 +36,6 @@ if (mysqli_query($link, "UPDATE bancos SET saldo = bancos.saldo + '$monto' WHERE
                 mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, reg_date) VALUES ('$id_banco', '$monto', '$referencia', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
             }
         }
-
     } elseif ($id = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco'"))['id']) {
         echo "3.\n";
         // SI ES INTERBANK
@@ -45,7 +44,6 @@ if (mysqli_query($link, "UPDATE bancos SET saldo = bancos.saldo + '$monto' WHERE
     } else {
         mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, reg_date) VALUES ('$id_banco', '$monto', '$referencia', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
     }
-
 }
 
 echo json_encode($res);
