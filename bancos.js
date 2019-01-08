@@ -1,7 +1,8 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		mensaje: '',
+		errores: [],
+		mensajes: [],
 		bancos: []
 	},
 	methods: {
@@ -15,25 +16,27 @@ const app = new Vue({
 			});
 		},
 		setBanco(e) {
-			axios.post('./setBanco.php', new FormData(e.target)).then(response => {
-				console.log(response.data);
-				var that = this;
-				if (response.data) {
+			if (!isNaN(e.target[0].value) && !isNaN(e.target[1].value) && (e.target[0].value != '' && e.target[1].value != '')) {
+				axios.post('./setBanco.php', new FormData(e.target)).then(response => {
+					console.log(response.data);
+					var that = this;
 					this.getBancos();
 					e.target[0].value = '';
 					e.target[1].value = '';
-					this.mensaje = 'Pago agregado exitosamente.';
-				} else {
-					this.mensaje = 'Hubo un error al agregar los datos.';
-				}
-				window.setTimeout(function() {
-					$('.alert')
-						.fadeTo(500, 0)
-						.slideUp(500, function() {
-							that.mensaje = '';
-						});
-				}, 2000);
-			});
+					this.mensajes = response.data.mensajes;
+					this.errores = response.data.errores;
+					window.setTimeout(function() {
+						$('.alert')
+							.fadeTo(500, 0)
+							.slideUp(500, function() {
+								that.mensajes = '';
+							});
+					}, 10000);
+				});
+			} else {
+				this.mensajes = ['Datos inválidos.'];
+				this.errores = [true];
+			}
 		}
 	},
 	computed: {

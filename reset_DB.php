@@ -24,9 +24,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>usuarios<br>";
+	    echo "<p style='color: green;'>usuarios<p>";
 	} else {
-	    echo "<br>no usuarios<br>" . $conn->error;
+	    echo "<p style='color: red;'>no usuarios<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE cuentas (
@@ -39,9 +39,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>cuentas<br>";
+	    echo "<p style='color: green;'>cuentas<p>";
 	} else {
-	    echo "<br>no cuentas<br>" . $conn->error;
+	    echo "<p style='color: red;'>no cuentas<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE usuarios_cuentas (
@@ -53,9 +53,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>usuarios_cuentas<br>";
+	    echo "<p style='color: green;'>usuarios_cuentas<p>";
 	} else {
-	    echo "<br>no usuarios_cuentas<br>" . $conn->error;
+	    echo "<p style='color: red;'>no usuarios_cuentas<p>" . $conn->error;
 	}
 	
 	$sql = "CREATE TABLE bancos (
@@ -66,9 +66,9 @@ if (mysqli_connect_errno()) {
 		)";
 	
 	if ($link->query($sql) === TRUE) {
-		echo "<br>bancos<br>";
+		echo "<p style='color: green;'>bancos<p>";
 	} else {
-		echo "<br>no bancos<br>" . $conn->error;
+		echo "<p style='color: red;'>no bancos<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE pagos_in (
@@ -78,16 +78,17 @@ if (mysqli_connect_errno()) {
 	id_banco INT(10) UNSIGNED,
 	FOREIGN KEY (id_banco) REFERENCES bancos(id),
 	monto DECIMAL(10,2),
-	referencia INT(10) UNSIGNED,
+	referencia VARCHAR(64),
 	tasa DECIMAL(10,2),
 	estado VARCHAR(64),
+	flag BOOLEAN,
 	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>pagos_in<br>";
+	    echo "<p style='color: green;'>pagos_in<p>";
 	} else {
-	    echo "<br>no pagos_in<br>" . $conn->error;
+	    echo "<p style='color: red;'>no pagos_in<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE pagos_out (
@@ -99,15 +100,15 @@ if (mysqli_connect_errno()) {
 	id_cuenta INT(10) UNSIGNED,
 	FOREIGN KEY (id_cuenta) REFERENCES cuentas(id),
 	monto INT(10),
-	referencia INT(10) UNSIGNED,
+	referencia VARCHAR(64),
 	estado VARCHAR(64),
 	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>pagos_out<br>";
+	    echo "<p style='color: green;'>pagos_out<p>";
 	} else {
-	    echo "<br>no pagos_out<br>" . $conn->error;
+	    echo "<p style='color: red;'>no pagos_out<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE prestamos (
@@ -119,9 +120,9 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-		echo "<br>prestamos<br>";
+		echo "<p style='color: green;'>prestamos<p>";
 	} else {
-		echo "<br>no prestamos<br>" . $conn->error;
+		echo "<p style='color: red;'>no prestamos<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE tasas (
@@ -130,42 +131,42 @@ if (mysqli_connect_errno()) {
 	)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>tasas<br>";
+	    echo "<p style='color: green;'>tasas<p>";
 	} else {
-	    echo "<br>no tasas<br>" . $conn->error;
+	    echo "<p style='color: red;'>no tasas<p>" . $conn->error;
 	}
 
 	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 80)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>PEN<br>";
+	    echo "<p style='color: green;'>PEN<p>";
 	} else {
-	    echo "<br>no PEN<br>" . $conn->error;
+	    echo "<p style='color: red;'>no PEN<p>" . $conn->error;
 	}
 
 	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('USD', 300)";
 
 	if ($link->query($sql) === TRUE) {
-	    echo "<br>USD<br>";
+	    echo "<p style='color: green;'>USD<p>";
 	} else {
-	    echo "<br>no USD<br>" . $conn->error;
+	    echo "<p style='color: red;'>no USD<p>" . $conn->error;
 	}
 
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
 	$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 	
 	if ($link->query($sql)) {
-		echo "<br>Usuario creado</br>";
+		echo "<p style='color: green;'>Admin creado.</br>";
 	} else {
-		echo "<br>Error creando admin</br>";
+		echo "<p style='color: green;'>Error creando Admin.</br>";
 	}
 
 	$sql = "INSERT INTO cuentas (nombre, tipo_cedula, cedula, tipo_cuenta, cuenta) VALUES ('XAVIER OREJARENA', 'V', '19398747', 'CORRIENTE', '01340946340001440220')";
 	
 	if ($link->query($sql)) {
-		echo "<br>cuenta creada exitosamente</br>";
+		echo "<p style='color: green;'>Cuenta creada exitosamente.</br>";
 	} else {
-		echo "<br>Error creando cuenta</br>";
+		echo "<p style='color: green;'>Error creando cuenta.</br>";
 	}
 
 	$link->query("INSERT INTO usuarios_cuentas (id_usuario, id_cuenta) VALUES (1,1)");

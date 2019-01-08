@@ -10,7 +10,14 @@ if (mysqli_connect_errno()) {
 }else {
 
 
-	echo mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = 79")->num_rows;
+	$referencia = 2;
+	$monto = 1;
+	$id_banco = 3;
+	print_r( mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'PENDIENTE'"))['id'] );
+
+
+
+	// echo mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = 79")->num_rows;
 
 	// if (mysqli_query($link, "SELECT id FROM pagos_in WHERE id_pago_in 79")->num_rows == 1) {
 	// 	echo "Yes\n";

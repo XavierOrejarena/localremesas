@@ -34,8 +34,8 @@
 				</form>
 			</div>
 			<div
-				v-if="mensaje"
-				:class="{'alert container col-md-4 mt-5': true, 'alert-success': mensaje[26], 'alert-danger': mensaje[34]}"
+				v-for="(mensaje, index) in mensajes"
+				:class="{'alert container col-md-4 mt-2': true, 'alert-success': !errores[index], 'alert-danger': errores[index]}"
 				role="alert"
 			>
 				{{ mensaje }}
