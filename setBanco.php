@@ -26,7 +26,7 @@ if ($id_banco == 5) {
             if (mysqli_query($link, "UPDATE pagos_in SET estado = 'APROBADO' WHERE id = '$id_pago_in'")) {
                 $res['errores'][] = false;
                 $res['mensajes'][] = 'Se ha aprobado un pago en divisa extranjera.';
-                if (mysqli_query($link, "UPDATE pagos_out SET estado = 'APROBADO' WHERE id = '$id_pago_out'")) {
+                if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id = '$id_pago_out'")) {
                     $res['errores'][] = false;
                     $res['mensajes'][] = 'Se ha aprobado un pago en bolívares.';
                 } else {
