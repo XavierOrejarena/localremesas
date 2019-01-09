@@ -13,6 +13,7 @@ if ($id_banco == 5) {
     if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'PENDIENTE'"))['id']) {
         // Si existe uno o mas pagos entrantes pendientes
         if (mysqli_query($link, "UPDATE pagos_in SET flag = 1 WHERE id = '$id_pago_in' AND flag = 0")){
+            mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'");
             $res['errores'][] = false;
             $res['mensajes'][] = 'Pago agregado existosamente.';
         } else {
@@ -50,6 +51,7 @@ if ($id_banco == 5) {
     } else {
         //SI NO EXISTE ESE PAGO
         if (mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, flag) VALUES ('$id_banco', '$monto', '$referencia', true)")) {
+            mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'");
             $res['errores'][] = false;
             $res['mensajes'][] = 'Pago agregado existosamente.';
         } else {
