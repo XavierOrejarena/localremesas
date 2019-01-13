@@ -12,8 +12,14 @@ if (mysqli_connect_errno()) {
 
 	$referencia = 2;
 	$monto = 1;
-	$id_banco = 3;
-	print_r( mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'PENDIENTE'"))['id'] );
+	$id_banco = 5;
+	$id_pago_in = 1;
+	mysqli_query($link, "UPDATE pagos_in SET flag = 1 WHERE id = '$id_pago_in' AND flag <=> NULL AND estado <> 'APROBADO'");
+	if (mysqli_affected_rows($link)) {
+		echo "Yes";
+	} else{
+		echo "No";
+	}
 
 
 
