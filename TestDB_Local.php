@@ -10,15 +10,18 @@ if (mysqli_connect_errno()) {
 }else {
 
 
-	$referencia = 2;
+	$referencia = 345678;
 	$monto = 1;
 	$id_banco = 5;
 	$id_pago_in = 1;
-	mysqli_query($link, "UPDATE pagos_in SET flag = 1 WHERE id = '$id_pago_in' AND flag <=> NULL AND estado <> 'APROBADO'");
-	if (mysqli_affected_rows($link)) {
-		echo "Yes";
+	$monto = -7.5;
+	$monto = 100;
+	$id_banco = 5;
+	
+	if ((mysqli_query($link, "SELECT id FROM pagos_in WHERE monto = 1"))->num_rows) {
+		echo "Yes\n";
 	} else{
-		echo "No";
+		echo "No\n";
 	}
 
 

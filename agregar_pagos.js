@@ -118,7 +118,7 @@ const app = new Vue({
 			}
 		},
 		verificarNombre: function(e) {
-			if (e.target.value.length > 19) {
+			if (e.target.value.length > 19 || e.target.value.length == 0) {
 				e.target.style = this.red;
 				this.agregar_cuenta = false;
 			} else {
