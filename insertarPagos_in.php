@@ -8,6 +8,9 @@ $banco = $_POST['banco'];
 $monto = $_POST['monto'];
 $tasa = $_POST['tasa'];
 $referencia = $_POST['referencia'];
+if ($banco = 'BCP') {
+    $referencia = sprintf("%06d", $referencia);
+}
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
 
 if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO

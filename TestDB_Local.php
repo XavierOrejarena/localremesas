@@ -10,19 +10,22 @@ if (mysqli_connect_errno()) {
 }else {
 
 
-	$referencia = 345678;
+	$referencia = 125678;
 	$monto = 1;
 	$id_banco = 5;
 	$id_pago_in = 1;
 	$monto = -7.5;
 	$monto = 100;
 	$id_banco = 5;
+
+	echo sprintf("%06d", $referencia);
+
 	
-	if ((mysqli_query($link, "SELECT id FROM pagos_in WHERE monto = 1"))->num_rows) {
-		echo "Yes\n";
-	} else{
-		echo "No\n";
-	}
+	// if ((mysqli_query($link, "SELECT id FROM pagos_in WHERE monto = 1"))->num_rows) {
+	// 	echo "Yes\n";
+	// } else{
+	// 	echo "No\n";
+	// }
 
 
 
