@@ -29,6 +29,7 @@ const app = new Vue({
 					}
 					this.monto_total += parseFloat(plus);
 				}
+				this.monto_total = Math.round(this.monto_total);
 			}
 		},
 		calcularTasa(operador) {
@@ -139,7 +140,7 @@ const app = new Vue({
 						if (this.monto_total == 0) {
 							this.error('El monto total no puede ser cero.', 'monto_total');
 						} else {
-							if (this.monto_total > this.tasa * this.monto) {
+							if (this.monto_total > Math.round(this.tasa * this.monto)) {
 								this.error('El monto total es inocrrecto.', 'monto_total');
 							} else {
 								if (this.referencia == '') {

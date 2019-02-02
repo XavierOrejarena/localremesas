@@ -13,7 +13,8 @@ if ($id_banco == 5) {
             $res['mensajes'][] = "Saldo actualizado existosamente.";
             if (mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, flag) VALUES ('$id_banco', '$monto', '$referencia', true)")) {
                 $res['errores'][] = false;
-                $res['mensajes'][] = "Pago agregado existosamente.";
+                $res['mensajes'][] = $referencia;
+                // $res['mensajes'][] = "Pago agregado existosamente.";
             }
         }
         $result = mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
@@ -65,53 +66,6 @@ if ($id_banco == 5) {
             }
     }
 }
-    // Si existe uno o mas pagos entrantes pendientes
-    // if (mysqli_query($link, "UPDATE pagos_in SET flag = 1 WHERE id = '$id_pago_in' AND flag = 0")){
-    //     mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'");
-    //     $res['errores'][] = false;
-    //     $res['mensajes'][] = 'Pago agregado existosamente3.';
-    // } else {
-    //     $res['errores'][] = true;
-    //     $res['mensajes'][] = 'Hubo un error agregando el pago.';
-    // }
-    // $result = mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
-    // if ($result->num_rows == 1) { // si solo existe un pago
-    //     $id_pago_out = mysqli_fetch_assoc($result)['id'];
-    //     if (mysqli_query($link, "UPDATE pagos_in SET estado = 'APROBADO' WHERE id = '$id_pago_in'")) {
-    //         $res['errores'][] = false;
-    //         $res['mensajes'][] = 'Se ha aprobado un pago en divisa extranjera.';
-    //         if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id = '$id_pago_out'")) {
-    //             $res['errores'][] = false;
-    //             $res['mensajes'][] = 'Se ha aprobado un pago en bolívares.';
-    //         } else {
-    //             $res['errores'][] = true;
-    //             $res['mensajes'][] = 'Hubo un error aprobando un pago en bolívares.';
-    //         }
-    //     } else {
-    //         $res['errores'][] = true;
-    //         $res['mensajes'][] = 'Hubo un error aprobando un pago en divisa extranjera.';
-    //     }
-    // } else {
-    //     $res['errores'][] = true;
-    //     $res['mensajes'][] = 'El numero de pagos salientes es mayor a 1. Debe aprobar de forma manual.';
-    // }
-    // } elseif ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'APROBADO'"))['id']) {
-    //     $res['errores'][] = true;
-    //     $res['mensajes'][] = 'Este pago ya fue aprobado y agregado.';
-    // } elseif (mysqli_num_rows(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND id_banco = '$id_banco' AND flag = 1")) > 0) {
-    //         $res['errores'][] = true;
-    //         $res['mensajes'][] = "Ya este pago fue agregado.";
-    // } else {
-    //     //SI NO EXISTE ESE PAGO
-    //     if (mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, flag) VALUES ('$id_banco', '$monto', '$referencia', true)")) {
-    //         mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'");
-    //         $res['errores'][] = false;
-    //         $res['mensajes'][] = 'Pago agregado existosamente.3';
-    //     } else {
-    //         $res['errores'][] = true;
-    //         $res['mensajes'][] = 'Hubo un error agregando el pago.';
-    //     }
-    // }
 } elseif ($id_banco == 3 || $id_banco == 4) {  // INTERBANK
     if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'PENDIENTE'"))['id']) {
         // Si existe uno o mas pagos entrantes pendientes
