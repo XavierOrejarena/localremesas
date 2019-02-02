@@ -13,8 +13,7 @@ if ($id_banco == 5) {
             $res['mensajes'][] = "Saldo actualizado existosamente.";
             if (mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, flag) VALUES ('$id_banco', '$monto', '$referencia', true)")) {
                 $res['errores'][] = false;
-                $res['mensajes'][] = $referencia;
-                // $res['mensajes'][] = "Pago agregado existosamente.";
+                $res['mensajes'][] = "Pago agregado existosamente.";
             }
         }
         $result = mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
