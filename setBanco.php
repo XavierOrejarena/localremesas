@@ -8,7 +8,7 @@ $id_banco = explode('r', key($_POST))[1];
 
 if ($id_banco == 5) {
     if ($monto == -7.5 && ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND id_banco = '$id_banco' AND estado = 'PENDIENTE' AND flag IS NULL"))['id'])) {
-        if (mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'")) {
+        if (mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' + (SELECT monto FROM pagos_in WHERE id = '$id_pago_in') WHERE id = '$id_banco'")) {
             $res['errores'][] = false;
             $res['mensajes'][] = "Saldo actualizado existosamente.";
             if (mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, flag) VALUES ('$id_banco', '$monto', '$referencia', true)")) {
