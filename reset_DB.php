@@ -81,7 +81,7 @@ if (mysqli_connect_errno()) {
 	referencia VARCHAR(64),
 	tasa DECIMAL(10,2),
 	estado VARCHAR(64),
-	flag BOOLEAN,
+	flag INT(1) UNSIGNED,
 	reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	)";
 
