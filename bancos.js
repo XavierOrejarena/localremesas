@@ -16,7 +16,6 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data);
 				this.getBancos();
 				this.getPagos();
 			});
