@@ -3,7 +3,8 @@ const app = new Vue({
 	data: {
 		errores: [],
 		mensajes: [],
-		bancos: []
+		bancos: [],
+		pagos: []
 	},
 	methods: {
 		getBancos() {
@@ -15,12 +16,22 @@ const app = new Vue({
 				this.bancos = response.data;
 			});
 		},
+		getPagos() {
+			axios({
+				method: 'get',
+				url: './getPagosInBancos.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				console.log(response.data);
+				this.pagos = response.data;
+			});
+		},
 		setBanco(e) {
 			if (!isNaN(e.target[0].value) && !isNaN(e.target[1].value) && (e.target[0].value != '' && e.target[1].value != '')) {
 				axios.post('./setBanco.php', new FormData(e.target)).then(response => {
-					console.log(response.data);
 					var that = this;
 					this.getBancos();
+					this.getPagos();
 					e.target[0].value = '';
 					e.target[1].value = '';
 					this.mensajes = response.data.mensajes;
@@ -46,5 +57,6 @@ const app = new Vue({
 	},
 	beforeMount() {
 		this.getBancos();
+		this.getPagos();
 	}
 });
