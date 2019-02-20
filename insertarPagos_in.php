@@ -8,10 +8,11 @@ $banco = $_POST['banco'];
 $monto = $_POST['monto'];
 $tasa = $_POST['tasa'];
 $referencia = $_POST['referencia'];
-if ($banco = 'BCP') {
+if ($banco == 'BCP') {
     $referencia = sprintf("%06d", $referencia);
 }
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
+
 
 if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
     $extension = pathinfo($_FILES["comprobante"]["name"], PATHINFO_EXTENSION);
@@ -82,8 +83,8 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
             $res['errores'][] = false;
             $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
     } else {
-        $res['mensajes'] = 'Hubo un error agregando el pago';
-        $res['errores'] = true;
+        $res['mensajes'][] = 'Hubo un error agregando el pago';
+        $res['errores'][] = true;
     }
 }
 

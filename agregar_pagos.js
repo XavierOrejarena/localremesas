@@ -172,7 +172,6 @@ const app = new Vue({
 											}
 										}
 									}).then(response => {
-										console.log(response.data);
 										this.mensajes = response.data.mensajes;
 										this.errores = response.data.errores;
 										if (this.referencia != '0') {
