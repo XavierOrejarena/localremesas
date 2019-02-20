@@ -2,7 +2,7 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
-$sql = "SELECT pagos_in.id, pagos_in.referencia, bancos.nombre, pagos_in.monto, pagos_in.id_usuario
+$sql = "SELECT bancos.nombre, bancos.divisa, pagos_in.id, pagos_in.referencia, pagos_in.monto, pagos_in.id_usuario
 FROM bancos
 INNER JOIN pagos_in ON bancos.id = pagos_in.id_banco
 -- WHERE estado IS NULL OR flag = 2

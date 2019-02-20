@@ -46,6 +46,7 @@
 						<tr>
 							<th scope="col">ID</th>
 							<th scope="col">Banco</th>
+							<th scope="col">Divisa</th>
 							<th scope="col">Referencia</th>
 							<th scope="col">Monto</th>
 							<th scope="col">Eliminar</th>
@@ -56,6 +57,7 @@
 						<tr v-for="pago in pagos">
 							<td scope="col">{{ pago.id }}</td>
 							<td scope="col">{{ pago.nombre }}</td>
+							<td scope="col">{{ pago.divisa }}</td>
 							<td scope="col">{{ pago.referencia }}</td>
 							<td scope="col">{{ pago.monto }}</td>
 							<td scope="col">
