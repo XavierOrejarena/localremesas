@@ -7,6 +7,20 @@ const app = new Vue({
 		pagos: []
 	},
 	methods: {
+		eliminarPago(id) {
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', id);
+			axios({
+				method: 'post',
+				url: './eliminarPago.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				console.log(response.data);
+				this.getBancos();
+				this.getPagos();
+			});
+		},
 		getBancos() {
 			axios({
 				method: 'get',
@@ -22,7 +36,6 @@ const app = new Vue({
 				url: './getPagosInBancos.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data);
 				this.pagos = response.data;
 			});
 		},
