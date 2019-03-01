@@ -185,5 +185,6 @@ if (mysqli_connect_errno()) {
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'PEN')");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'PEN')");
 }
 ?>

@@ -2,6 +2,7 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
+$flag = true;
 $id_usuario = $_POST['id_usuario'];
 $divisa = $_POST['divisa'];
 $banco = $_POST['banco'];
@@ -12,6 +13,15 @@ if ($banco == 'BCP') {
     $referencia = sprintf("%06d", $referencia);
 }
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
+
+if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto'"))['id']) {
+    mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2");
+    $res['flag'] = 1;
+    $res['mensajes'][] = 'El pago ya existe, pago abrobado.';
+    $res['errores'][] = false;
+}
+
+
 
 
 if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
@@ -75,15 +85,15 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
             $res['errores'] = true;
         }
     }
-} else { // SI NO HAY ARCHIVO
+} elseif ($flag == 1){ // SI NO HAY ARCHIVO
     $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
     if(mysqli_query($link, $sql)) {
-            $res['mensajes'][] = 'Pago agregado existosamente';
+            $res['mensajes'][] = 'Pago entrante agregado existosamente';
             $res['errores'][] = false;
             $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
     } else {
-        $res['mensajes'][] = 'Hubo un error agregando el pago';
+        $res['mensajes'][] = 'Hubo un error agregando el pago entrante';
         $res['errores'][] = true;
     }
 }
