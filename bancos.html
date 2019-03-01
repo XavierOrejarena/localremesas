@@ -13,6 +13,35 @@
 	</head>
 	<body>
 		<div id="app">
+			<div v-if="true">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+					<div class="container">
+						<a class="navbar-brand" href="#">Local Remesas</a>
+						<button
+							class="navbar-toggler"
+							type="button"
+							data-toggle="collapse"
+							data-target="#navbarResponsive"
+							aria-controls="navbarResponsive"
+							aria-expanded="false"
+							aria-label="Toggle navigation"
+						>
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarResponsive">
+							<ul class="navbar-nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+								<li class="nav-item"><a class="nav-link" href="agregar_pagos.html">Agregar Pagos</a></li>
+								<li class="nav-item"><a class="nav-link" href="pagos_in.html">Pagos entrantes</a></li>
+								<li class="nav-item"><a class="nav-link" href="pagos_out.html">Pagos salientes</a></li>
+								<li class="nav-item"><a class="nav-link" href="pagos_all.html">Todos los pagos</a></li>
+								<li class="nav-item"><a class="nav-link" href="bancos.html">Bancos</a></li>
+								<li v-if="tipo_usuario=='ADMIN'" class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
 			<div class="container mt-5">
 				<form v-for="banco in filterBancos" class="row border rounded mb-2" @submit.prevent="setBanco">
 					<div class="form-group mr-2 col-md-2 mt-3">
