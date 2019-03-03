@@ -14,15 +14,15 @@ if ($banco == 'BCP') {
 }
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
 
-if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto'"))['id']) {
+if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag = 1"))['id']) {
     mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2");
     $res['flag'] = 1;
     $res['mensajes'][] = 'El pago ya existe, pago abrobado.';
     $res['errores'][] = false;
+} elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag IS NULL"))['id']) {
+    $res['mensajes'][] = 'Este pago ya habia sido agregado anteriormente.';
+    $res['errores'][] = true;
 }
-
-
-
 
 if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
     $extension = pathinfo($_FILES["comprobante"]["name"], PATHINFO_EXTENSION);
@@ -85,7 +85,7 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
             $res['errores'] = true;
         }
     }
-} elseif ($flag == 1){ // SI NO HAY ARCHIVO
+} elseif ($res['flag'] != 1){ // SI NO HAY ARCHIVO
     $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
     if(mysqli_query($link, $sql)) {
@@ -97,6 +97,10 @@ if ($_FILES['comprobante']['name']) { // SI HAY ARCHIVO
         $res['errores'][] = true;
     }
 }
+
+
+
+
 
 echo json_encode($res);
 ?>

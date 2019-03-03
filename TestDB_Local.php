@@ -9,16 +9,44 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 
+	$search = 'Voucher Code:';
+	$longStr = "";
 
-	$referencia = 125678;
-	$monto = 1;
-	$id_banco = 5;
-	$id_pago_in = 1;
-	$monto = -7.5;
-	$monto = 100;
-	$id_banco = 5;
+	while (true){
+		$str = readline();
+		$longStr = $longStr.$str;
+		if ($str == '0') {
+			break;
+		}
+	}
 
-	echo sprintf("%06d", $referencia);
+	preg_match_all('/Voucher Code:/', $longStr, $matches, PREG_OFFSET_CAPTURE);
+	
+	foreach ($matches[0] as $pos) {
+		echo substr($longStr, $pos[1]+14, 14), "\n";
+	}
+	
+
+
+	// if ($pos = strpos($longStr, "Voucher Code: ")) {
+	// 	for ($i=0; $i < 14; $i++) { 
+	// 		echo $longStr[14+$pos+$i];
+	// 	}
+	// 	echo "\n";
+	// }
+
+
+
+
+	// $referencia = 125678;
+	// $monto = 1;
+	// $id_banco = 5;
+	// $id_pago_in = 1;
+	// $monto = -7.5;
+	// $monto = 100;
+	// $id_banco = 5;
+
+	// echo sprintf("%06d", $referencia);
 
 	
 	// if ((mysqli_query($link, "SELECT id FROM pagos_in WHERE monto = 1"))->num_rows) {
