@@ -24,6 +24,12 @@ for ($i=0; $i < sizeof($_POST['id_cuenta']); $i++) {
 if ($_POST['flag'] == 1 && $i == 1) {
 	$sql = "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id_pago_in = '$id_pago_in'";
 	mysqli_query($link, $sql);
+	if ($_POST['restar'] == 1) {
+		$sql = "UPDATE pagos_out SET monto = monto - 7.5*(SELECT tasa FROM pagos_in WHERE id = '$id_pago_in') WHERE id_pago_in = '$id_pago_in'";
+		mysqli_query($link, $sql);
+		$res['mensajes'][] = 'Se ha descontado la comision de un pago saliente';
+		$res['errores'][] = false;
+	}
 	$res['mensajes'][] = 'Pago saliente aprobado exitosamente';
 	$res['errores'][] = false;
 	$res['i'] = $i;

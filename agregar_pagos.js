@@ -179,8 +179,11 @@ const app = new Vue({
 											barra.style = 'width: 0%';
 											barra.innerHTML = '';
 										}
-										if (!response.data.errores[0]) {
-											this.insertarPagos_out(response.data.id_pago_in, response.data.flag);
+										if (!response.data.errores[0] && this.referencia != 0) {
+											this.insertarPagos_out(response.data.id_pago_in, response.data.flag, response.data.restar);
+											this.clear();
+										}
+										if (this.referencia == 0) {
 											this.clear();
 										}
 										window.scrollTo(0, 0);
@@ -192,11 +195,12 @@ const app = new Vue({
 				}
 			}
 		},
-		insertarPagos_out(id_pago_in, flag) {
+		insertarPagos_out(id_pago_in, flag, restar) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id_usuario', this.id_usuario);
 			bodyFormData.set('id_pago_in', id_pago_in);
 			bodyFormData.set('flag', flag);
+			bodyFormData.set('restar', restar);
 			for (var i = 0; i < this.cuentas_display.length; i++) {
 				if (this.cuentas_display[i].monto > 0) {
 					bodyFormData.set('id_cuenta[' + i + ']', this.cuentas_display[i].id);
