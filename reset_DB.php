@@ -186,5 +186,6 @@ if (mysqli_connect_errno()) {
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'PEN')");
+	$link->query("INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES (0, 1, 1, 0, 0, 'APROBADO', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 }
 ?>

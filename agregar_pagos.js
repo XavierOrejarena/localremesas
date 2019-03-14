@@ -179,11 +179,8 @@ const app = new Vue({
 											barra.style = 'width: 0%';
 											barra.innerHTML = '';
 										}
-										if (!response.data.errores[0] && this.referencia != 0) {
+										if (!response.data.errores[0]) {
 											this.insertarPagos_out(response.data.id_pago_in, response.data.flag, response.data.restar);
-											this.clear();
-										}
-										if (this.referencia == 0) {
 											this.clear();
 										}
 										window.scrollTo(0, 0);

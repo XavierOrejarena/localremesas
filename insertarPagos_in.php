@@ -2,7 +2,7 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
-$flag = true;
+$res['flag'] = 0;
 $id_usuario = $_POST['id_usuario'];
 $divisa = $_POST['divisa'];
 $banco = $_POST['banco'];
@@ -22,7 +22,8 @@ if ($referencia == 0) {
     }
     $res['mensajes'][] = 'Prestamo agregado exitosamente';
     $res['errores'][] = false;
-} else {
+    $res['flag'] = 2;
+} 
 
     if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag = 1"))['id']) {
         if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = -7.5 AND flag = 1"))['id']) {
@@ -98,7 +99,7 @@ if ($referencia == 0) {
                 $res['errores'] = true;
             }
         }
-    } elseif ($res['flag'] != 1){ // SI NO HAY ARCHIVO
+    } elseif ($res['flag'] == 0){ // SI NO HAY ARCHIVO
         $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
 
         if(mysqli_query($link, $sql)) {
@@ -110,8 +111,6 @@ if ($referencia == 0) {
             $res['errores'][] = true;
         }
     }
-
-}
 
 
 
