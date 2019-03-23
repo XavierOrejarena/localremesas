@@ -4,12 +4,10 @@ include "connect.php";
 $res = array( 'errores' => false );
 
 $id_usuario = $_POST['id_usuario'];
-
+$id_pago_in = $_POST['id_pago_in'];
 if ($_POST['flag'] == 2) {
-	$id_pago_in = 1;
 	$estado = 'PENDIENTE';
 } else {
-	$id_pago_in = $_POST['id_pago_in'];
 	$estado = 'EN ESPERA';
 }
 
