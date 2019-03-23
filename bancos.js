@@ -4,7 +4,8 @@ const app = new Vue({
 		errores: [],
 		mensajes: [],
 		bancos: [],
-		pagos: []
+		pagos: [],
+		tipo_usuario: ''
 	},
 	methods: {
 		eliminarPago(id) {
@@ -68,6 +69,17 @@ const app = new Vue({
 		}
 	},
 	beforeMount() {
+		axios({
+			method: 'get',
+			url: './session.php',
+			config: { headers: { 'Content-Type': 'multipart/form-data' } }
+		}).then(response => {
+			if (response['data'] == 'ADMIN' || response['data'] == 'OPERADOR') {
+				this.tipo_usuario = response.data;
+			} else {
+				window.location.href = './login.html';
+			}
+		});
 		this.getBancos();
 		this.getPagos();
 	}
