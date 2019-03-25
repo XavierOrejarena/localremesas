@@ -1,7 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		tipos: ['REGULAR', 'OPERADOR', 'MAYORISTA', 'BUSCADOR', 'ESPECIAL', 'ADMIN'],
+		tipos: ['REGULAR', 'OPERADOR', 'BUSCADOR', 'ESPECIAL', 'ADMIN'],
 		tasas: '',
 		clase: '',
 		id: '',
