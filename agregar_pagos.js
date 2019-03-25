@@ -50,7 +50,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				if (tipo == 'BUSCADOR') {
-					this.tasa = response['data'] / 1.04;
+					this.tasa = Math.floor(response['data'] / 1.04);
 				} else {
 					this.tasa = response['data'];
 				}
