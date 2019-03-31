@@ -176,26 +176,24 @@
          <div v-if="clase=='Prestamos'" class="container offset-md-2 mt-5">
          <div class="form-group col-md-6 container">
             <label>ID de Usuario</label>
-            <input v-model="id" @keyup="getPagosIn()" type="text" class="form-control" onClick="this.select();" maxlength="10">
+            <input v-model="id" type="text" class="form-control" maxlength="10">
             <small class="text-danger">{{small}}</small>
          </div>
          <table v-if="id" class="table table-hover text-center table-lg container border rounded col-md-6">
                <thead>
                   <tr>
-                     <th scope="col">ID</th>
+                     <th scope="col">ID Usuario</th>
                      <th scope="col">Monto</th>
                      <th scope="col">Divisa</th>
                      <th scope="col">Banco</th>
-                     <th scope="col">Fecha</th>
                   </tr>
                </thead>
                <tbody>
-                  <tr v-for="pago_in in pagos_in">
-                     <td scope="col">{{pago_in.id}}</th>
-                     <td scope="col">{{pago_in.monto}}</th>
-                     <td scope="col">{{pago_in.divisa}}</th>
-                     <td scope="col">{{pago_in.banco}}</th>
-                     <td scope="col">{{pago_in.reg_date}}</th>
+                  <tr v-for="prestamo in filterPrestamos">
+                     <td scope="col">{{prestamo.id}}</th>
+                     <td scope="col">{{prestamo.monto}}</th>
+                     <td scope="col">{{prestamo.divisa}}</th>
+                     <td scope="col">{{prestamo.nombre}}</th>
                   </tr>
                </tbody>
             </table>
@@ -205,6 +203,7 @@
                   <th scope="col">ID Usuario</th>
                   <th scope="col">Monto</th>
                   <th scope="col">Divisa</th>
+                  <th scope="col">Banco</th>
                </tr>
             </thead>
             <tbody>
@@ -212,6 +211,7 @@
                   <td scope="col">{{prestamo.id_usuario}}</th>
                   <td scope="col">{{prestamo.monto}}</th>
                   <td scope="col">{{prestamo.divisa}}</th>
+                  <td scope="col">{{prestamo.nombre}}</th>
                </tr>
             </tbody>
          </table>

@@ -116,7 +116,8 @@ if (mysqli_connect_errno()) {
 	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
 	monto DECIMAL(10,2),
-	divisa VARCHAR(4)
+	id_banco INT(10) UNSIGNED,
+	FOREIGN KEY (id_banco) REFERENCES bancos(id)
 	)";
 
 	if ($link->query($sql) === TRUE) {

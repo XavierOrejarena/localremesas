@@ -193,6 +193,9 @@ const app = new Vue({
 		},
 		filterBancos() {
 			return this.tipos.filter(tipo => tipo != this.usuario.tipo);
+		},
+		filterPrestamos() {
+			return this.prestamos.filter(prestamo => prestamo.id == this.id);
 		}
 	}
 });
