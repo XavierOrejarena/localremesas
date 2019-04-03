@@ -11,7 +11,6 @@ if ($_POST['flag'] == 2) {
 	$estado = 'EN ESPERA';
 }
 
-
 for ($i=0; $i < sizeof($_POST['id_cuenta']); $i++) {
 	
 	$id_cuenta = $_POST['id_cuenta'][$i];

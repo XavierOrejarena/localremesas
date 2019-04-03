@@ -179,10 +179,8 @@ const app = new Vue({
 											barra.style = 'width: 0%';
 											barra.innerHTML = '';
 										}
-										if (!response.data.errores[0]) {
-											this.insertarPagos_out(response.data.id_pago_in, response.data.flag, response.data.restar);
-											this.clear();
-										}
+										this.insertarPagos_out(response.data.id_pago_in, response.data.flag, response.data.restar);
+										this.clear();
 										window.scrollTo(0, 0);
 									});
 								}
@@ -198,10 +196,12 @@ const app = new Vue({
 			bodyFormData.set('id_pago_in', id_pago_in);
 			bodyFormData.set('flag', flag);
 			bodyFormData.set('restar', restar);
+			var j = 0;
 			for (var i = 0; i < this.cuentas_display.length; i++) {
 				if (this.cuentas_display[i].monto > 0) {
-					bodyFormData.set('id_cuenta[' + i + ']', this.cuentas_display[i].id);
-					bodyFormData.set('monto[' + i + ']', this.cuentas_display[i].monto);
+					bodyFormData.set('id_cuenta[' + j + ']', this.cuentas_display[i].id);
+					bodyFormData.set('monto[' + j + ']', this.cuentas_display[i].monto);
+					j++;
 				}
 			}
 			axios({
@@ -210,7 +210,6 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data);
 				this.mensajes = this.mensajes.concat(response.data.mensajes);
 				this.errores = this.errores.concat(response.data.errores);
 			});
