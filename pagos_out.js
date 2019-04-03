@@ -52,7 +52,11 @@ const app = new Vue({
 				'0169': 'MIBANCO',
 				'0137': 'SOFITASA'
 			};
-			return bancos[cuenta.substring(0, 4)];
+			if (cuenta) {
+				return bancos[cuenta.substring(0, 4)];
+			} else {
+				return 'SIN CUENTA';
+			}
 		},
 		pagar_out(e, id_pago_in) {
 			if (document.getElementById(e).value == '' || document.getElementById(e).value == 0) {
