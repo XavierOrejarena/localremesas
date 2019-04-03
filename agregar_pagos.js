@@ -71,11 +71,18 @@ const app = new Vue({
 			this.referencia = '';
 		},
 		disabled() {
-			if (document.getElementById('banco1').checked == true) {
+			if (document.getElementById('banco1').checked == true || document.getElementById('banco3').checked == true) {
 				document.getElementById('divisa2').disabled = true;
 				document.getElementById('divisa1').checked = true;
-				document.getElementById('divisa2').checked = false;
+				// document.getElementById('divisa2').checked = false;
+				document.getElementById('divisa1').disabled = false;
 			} else {
+				document.getElementById('divisa2').disabled = false;
+			}
+			if (document.getElementById('banco4').checked == true) {
+				// document.getElementById('divisa1').checked = false;
+				document.getElementById('divisa2').checked = true;
+				document.getElementById('divisa1').disabled = true;
 				document.getElementById('divisa2').disabled = false;
 			}
 			this.cargarTasa('REGULAR');

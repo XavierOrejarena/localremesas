@@ -67,7 +67,7 @@
 					</thead>
 					<tbody>
 						<tr v-for="(pago, index) in pagos">
-							<td>{{ pago.id_cuenta }}</td>
+							<td>{{ pago.ide }}</td>
 							<td>{{ pago.id_usuario }}</td>
 							<td>{{ pago.nombre }}</td>
 							<!-- <td>{{ pago.tipo_cuenta[0] }}</td> -->
@@ -75,17 +75,17 @@
 							<td>{{ pago.tipo_cuenta[0] }} {{ pago.cuenta }}</td>
 							<td>{{ pago.tipo_cedula }} {{ pago.cedula }}</td>
 							<td>{{ pago.monto }}</td>
-							<td><input type="number" placeholder="Solo números" class="form-control" :id="pago.id_cuenta" /></td>
+							<td><input type="number" placeholder="Solo números" class="form-control" :id="pago.ide" /></td>
 							<td>
 								<div class="upload-btn-wrapper">
 									<button class="btn-sm btn-success">Upload a file</button>
-									<input :id="'f'+pago.id_cuenta" type="file" name="myfile" accept=".jpeg, .jpg, .png" />
+									<input :id="'f'+pago.ide" type="file" name="myfile" accept=".jpeg, .jpg, .png" />
 								</div>
 							</td>
-							<!-- <td><input :id="'f'+pago.id_cuenta" type="file" accept=".jpeg, .jpg, .png"></td> -->
+							<!-- <td><input :id="'f'+pago.ide" type="file" accept=".jpeg, .jpg, .png"></td> -->
 							<td>
 								<button
-									@click="pagar_out(pago.id_cuenta,pago.id_pago_in)"
+									@click="pagar_out(pago.ide,pago.id_pago_in)"
 									type="button"
 									class="btn btn-outline-success btn-sm mr-2"
 								>
@@ -93,14 +93,14 @@
 								</button>
 							</td>
 							<td>
-								<select class="form-control" :id="'b'+pago.id_cuenta"
+								<select class="form-control" :id="'b'+pago.ide"
 									><option :value="banco.id" v-for="banco in filterBancos">{{
 										banco.nombre[0] + '(' + banco.saldo + ')'
 									}}</option></select
 								>
 							</td>
 							<td scope="col">
-								<button type="button" class="btn btn-outline-danger btn-sm" @click="rechazar(pago.id_cuenta)">X</button>
+								<button type="button" class="btn btn-outline-danger btn-sm" @click="rechazar(pago.ide)">X</button>
 							</td>
 						</tr>
 					</tbody>
