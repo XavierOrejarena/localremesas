@@ -107,7 +107,6 @@ const app = new Vue({
 				url: './cargar_pagos_out.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data);
 				this.pagos = response.data;
 			});
 		},
@@ -121,6 +120,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.cargar_pagos_out();
+				window.location.href = './pagos_out.html';
 			});
 		}
 	},
