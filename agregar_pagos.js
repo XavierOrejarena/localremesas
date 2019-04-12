@@ -15,7 +15,8 @@ const app = new Vue({
 		mensajes: [],
 		errores: [],
 		cuentas: [],
-		referencia: ''
+		referencia: '',
+		otros: true
 	},
 	methods: {
 		calcularMontoTotal() {
@@ -69,6 +70,13 @@ const app = new Vue({
 			document.getElementById('divisa1').checked = true;
 			document.getElementById('divisa2').disabled = true;
 			this.referencia = '';
+		},
+		onChange(e) {
+			if (e.target.value == 'BANPA / ZELLE') {
+				this.otros = false;
+			} else {
+				this.otros = true;
+			}
 		},
 		disabled() {
 			if (document.getElementById('banco1').checked == true || document.getElementById('banco3').checked == true) {
