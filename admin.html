@@ -206,12 +206,14 @@
                                     <tr>
                                        <th scope="col">Monto</th>
                                        <th scope="col">Nota</th>
+                                       <th scope="col">Fecha</th>
                                     </tr>
                                  </thead>
                                  <tbody>
                                        <tr v-for="reg in registros">
                                           <td scope="col">{{reg.monto}}</td>
                                           <td scope="col">{{reg.nota}}</td>
+                                          <td scope="col">{{reg.reg_date}}</td>
                                        </tr>
                                  </tbody>
                            </table>

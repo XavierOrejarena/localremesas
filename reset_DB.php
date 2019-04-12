@@ -78,7 +78,8 @@ if (mysqli_connect_errno()) {
 		id_banco INT(10) UNSIGNED,
 		FOREIGN KEY (id_banco) REFERENCES bancos(id),
 		monto DECIMAL(10,2),
-		nota VARCHAR(512)
+		nota VARCHAR(512),
+		reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 		)";
 	
 	if ($link->query($sql) === TRUE) {

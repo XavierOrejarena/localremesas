@@ -171,23 +171,18 @@ const app = new Vue({
 		},
 		onChange(e) {
 			this.banco_id = e.target.value;
+			this.getRegistros();
 		},
-		getRegistros(e) {
+		getRegistros() {
 			var bodyFormData = new FormData();
-			if (!isNaN(e)) {
-				bodyFormData.set('id', e);
-			} else {
-				bodyFormData.set('id', e.target.value);
-			}
+			bodyFormData.set('id', this.banco_id);
 			axios({
 				method: 'post',
 				url: './getRegistros.php',
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				if (response.data) {
-					this.registros = response.data;
-				}
+				this.registros = response.data;
 			});
 		},
 		agregarRegistro() {
@@ -201,7 +196,7 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				this.getRegistros(this.banco_id);
+				this.getRegistros();
 			});
 		}
 	},
