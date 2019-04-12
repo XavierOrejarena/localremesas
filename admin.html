@@ -197,9 +197,9 @@
                            <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="agregarRegistro()">+</button></td>
                         </tbody>
                      </table>
-                     <select class="form-control col-md-3 container" id="banco_show" @change="getRegistros($event)">
+                     <!-- <select class="form-control col-md-3 container mb-3" id="banco_show" @change="getRegistros($event)">
                            <option v-for="banco in bancos" :value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
-                     </select>
+                     </select> -->
                      <div v-if="registros" class="container">
                            <table class="table table-hover text-center table-lg container border rounded">
                                  <thead>

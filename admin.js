@@ -201,7 +201,6 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				d(this.banco_id);
 				this.getRegistros(this.banco_id);
 			});
 		}
