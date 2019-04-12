@@ -11,14 +11,24 @@ const app = new Vue({
 		mensaje: '',
 		bancos: '',
 		prestamos: '',
-		pagos_in: ''
+		pagos_in: '',
+		registro: '',
+		monto: '',
+		nota: '',
+		banco_id: 1,
+		registros: ''
 	},
 	methods: {
 		setClase(clase) {
 			this.clase = clase;
 			localStorage.setItem('clase', clase);
 		},
+		setRegistro(registro) {
+			this.registro = registro;
+			localStorage.setItem('registro', registro);
+		},
 		eliminarBanco(id) {
+			console.log(id);
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', id);
 			axios({
@@ -158,6 +168,42 @@ const app = new Vue({
 			}).then(response => {
 				this.pagos_in = response.data;
 			});
+		},
+		onChange(e) {
+			this.banco_id = e.target.value;
+		},
+		getRegistros(e) {
+			var bodyFormData = new FormData();
+			if (!isNaN(e)) {
+				bodyFormData.set('id', e);
+			} else {
+				bodyFormData.set('id', e.target.value);
+			}
+			axios({
+				method: 'post',
+				url: './getRegistros.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				if (response.data) {
+					this.registros = response.data;
+				}
+			});
+		},
+		agregarRegistro() {
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', this.banco_id);
+			bodyFormData.set('monto', this.monto);
+			bodyFormData.set('nota', this.nota);
+			axios({
+				method: 'post',
+				url: './agregarRegistro.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				d(this.banco_id);
+				this.getRegistros(this.banco_id);
+			});
 		}
 	},
 	beforeMount() {
@@ -168,10 +214,16 @@ const app = new Vue({
 		}).then(response => {
 			if (response['data'] == 'ADMIN') {
 				this.clase = localStorage.getItem('clase');
+				if (localStorage.getItem('registro') == 'true') {
+					this.registro = true;
+				} else {
+					this.registro = false;
+				}
 				this.tipo_usuario = response.data;
 				this.cargarTasas();
 				this.getBancos();
 				this.getPrestamos();
+				this.getRegistros(1);
 			} else {
 				window.location.href = './login.html';
 			}

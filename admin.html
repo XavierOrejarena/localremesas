@@ -14,7 +14,7 @@
    <body>
       <!-- app -->
       <div id="app">
-         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
         <a class="navbar-brand" href="#">Local Remesas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -134,7 +134,11 @@
             </div>
          </div>
          <div v-if="clase=='Bancos'" class="container offset-md-2 mt-5">
-          <div class="container">
+            <div class="text-center mb-3">
+               <button type="button" :class="{'btn btn-primary': registro, 'btn btn-light': !registro}" @click="registro = true, getBancos(), setRegistro(true)">Saldo</button>
+               <button type="button" :class="{'btn btn-light': registro, 'btn btn-primary': !registro}" @click="registro = false, getRegistros(1), setRegistro(false)">Registro</button>
+           </div>
+          <div v-if="registro" class="container">
             <div class="row ml-1">
             <div class="form-group mr-2">
                 <input type="text" class="form-control" placeholder="Nombre del banco" id="nombre">
@@ -162,15 +166,56 @@
                  </thead>
                  <tbody>
                     <tr v-for="banco in bancos">
-                       <td scope="col">{{banco.nombre}}</th>
-                        <td scope="col">{{banco.divisa}}</th>
+                       <td scope="col">{{banco.nombre}}</td>
+                       <td scope="col">{{banco.divisa}}</td>
                        <td scope="col"><input type="text" class="form-control" placeholder="Saldo" :id="banco.id" :value="banco.saldo"></td>
-                       <td scope="col"><input type="text" class="form-control" :value="banco.saldo" disabled></th>   
+                       <td scope="col"><input type="text" class="form-control" v-model="banco.saldo" disabled></th>   
                        <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarSaldo(banco.id)">Actualizar</button></td>
                        <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="eliminarBanco(banco.id)">X</button></td>
                     </tr>
                  </tbody>
               </table>
+            </div>
+            <div v-if="!registro" class="container">
+                  <table class="table table-hover text-center table-lg container border rounded">
+                        <thead>
+                           <tr>
+                              <th scope="col">Banco</th>
+                              <th scope="col">Monto</th>
+                              <th scope="col">Nota</th>
+                              <th scope="col">Agregar</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <td scope="col">
+                                 <select class="form-control" id="banco" @change="onChange($event)">
+                                    <option v-for="banco in bancos" :value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
+                                 </select>
+                           </td>
+                           <td scope="col"><input type="text" class="form-control" placeholder="Monto" v-model="monto"></td>
+                           <td scope="col"><input type="text" class="form-control" placeholder="Nota" v-model="nota"></td>
+                           <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="agregarRegistro()">+</button></td>
+                        </tbody>
+                     </table>
+                     <select class="form-control col-md-3 container" id="banco_show" @change="getRegistros($event)">
+                           <option v-for="banco in bancos" :value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
+                     </select>
+                     <div v-if="registros" class="container">
+                           <table class="table table-hover text-center table-lg container border rounded">
+                                 <thead>
+                                    <tr>
+                                       <th scope="col">Monto</th>
+                                       <th scope="col">Nota</th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                       <tr v-for="reg in registros">
+                                          <td scope="col">{{reg.monto}}</td>
+                                          <td scope="col">{{reg.nota}}</td>
+                                       </tr>
+                                 </tbody>
+                           </table>
+                     </div>
             </div>
          </div>
          <div v-if="clase=='Prestamos'" class="container offset-md-2 mt-5">

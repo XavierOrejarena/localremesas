@@ -1,64 +1,62 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-        pagos_in: '',
-        pagos_out: '',
-		tipo_usuario: 'REGULAR',
+		pagos_in: '',
+		pagos_out: '',
+		tipo_usuario: 'REGULAR'
 	},
 	methods: {
-		rechazar_in (e) {
+		rechazar_in(e) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', e);
 			axios({
-		    method: 'post',
-		    url: './rechazar_in.php',
-		    data: bodyFormData,
-		    config: { headers: {'Content-Type': 'multipart/form-data' }}
-		    })
-		    .then( response => {
-				console.log(response)
-				this.cargar_pagos_in()
-		    })
+				method: 'post',
+				url: './rechazar_in.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				console.log(response);
+				this.cargar_pagos_in();
+			});
 		},
-		aprobar_in (e) {
+		aprobar_in(e) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', e);
 			axios({
-		    method: 'post',
-		    url: './aprobar_in.php',
-		    data: bodyFormData,
-		    config: { headers: {'Content-Type': 'multipart/form-data' }}
-		    })
-		    .then( response => {
-				console.log(response)
-				this.cargar_pagos_in()
-		    })
+				method: 'post',
+				url: './aprobar_in.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				console.log(response);
+				this.cargar_pagos_in();
+			});
 		},
-		cargar_pagos_all () {
+		cargar_pagos_all() {
 			axios({
-		    method: 'get',
-		    url: './cargar_pagos_all.php',
-		    config: { headers: {'Content-Type': 'multipart/form-data' }}
-		    })
-		    .then( response => {
-                this.pagos_in = response.data.in
-                this.pagos_out = response.data.out
-		    })
+				method: 'get',
+				url: './cargar_pagos_all.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				if (response.data) {
+					this.pagos_in = response.data.in;
+					this.pagos_out = response.data.out;
+				}
+			});
 		}
 	},
-	beforeMount () {
+	beforeMount() {
 		axios({
-	    method: 'get',
-	    url: './session.php',
-	    config: { headers: {'Content-Type': 'multipart/form-data' }}
-	    })
-	    .then( response => {
-	    	if (response['data'] == 'ADMIN'  || response['data'] == 'OPERADOR') {
-				this.tipo_usuario = response.data
-	    		this.cargar_pagos_all()
-	    	} else {
-				window.location.href = "./login.html"
+			method: 'get',
+			url: './session.php',
+			config: { headers: { 'Content-Type': 'multipart/form-data' } }
+		}).then(response => {
+			if (response['data'] == 'ADMIN' || response['data'] == 'OPERADOR') {
+				this.tipo_usuario = response.data;
+				this.cargar_pagos_all();
+			} else {
+				window.location.href = './login.html';
 			}
-	    })
+		});
 	}
-})
+});

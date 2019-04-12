@@ -13,7 +13,9 @@ if (mysqli_connect_errno()) {
 	$link->query("DROP TABLE cuentas");
 	$link->query("DROP TABLE usuarios");
 	$link->query("DROP TABLE tasas");
+	$link->query("DROP TABLE registros_bancos");
 	$link->query("DROP TABLE bancos");
+	
 
 	$sql = "CREATE TABLE usuarios (
 	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -59,7 +61,7 @@ if (mysqli_connect_errno()) {
 	}
 	
 	$sql = "CREATE TABLE bancos (
-		id INT(10)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 		nombre VARCHAR(20),
 		saldo DECIMAL(10,2),
 		divisa VARCHAR(3)
@@ -69,6 +71,20 @@ if (mysqli_connect_errno()) {
 		echo "<p style='color: green;'>bancos<p>";
 	} else {
 		echo "<p style='color: red;'>no bancos<p>" . $conn->error;
+	}
+
+	$sql = "CREATE TABLE registros_bancos (
+		id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		id_banco INT(10) UNSIGNED,
+		FOREIGN KEY (id_banco) REFERENCES bancos(id),
+		monto DECIMAL(10,2),
+		nota VARCHAR(512)
+		)";
+	
+	if ($link->query($sql) === TRUE) {
+		echo "<p style='color: green;'>registro_bancos<p>";
+	} else {
+		echo "<p style='color: red;'>no registro_bancos<p>" . $conn->error;
 	}
 
 	$sql = "CREATE TABLE pagos_in (
