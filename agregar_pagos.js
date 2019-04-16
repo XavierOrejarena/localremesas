@@ -71,8 +71,10 @@ const app = new Vue({
 			document.getElementById('divisa2').disabled = true;
 			this.referencia = '';
 		},
-		onChange(e) {
-			if (e.target.value == 'BANPA / ZELLE') {
+		onChange() {
+			console.log(document.querySelector('input[name="banco"]:checked').value);
+			console.log(this.tipo_cliente);
+			if (document.querySelector('input[name="banco"]:checked').value == 'BANPA / ZELLE' || this.tipo_cliente == 'ESPECIAL') {
 				this.otros = false;
 			} else {
 				this.otros = true;
@@ -82,13 +84,11 @@ const app = new Vue({
 			if (document.getElementById('banco1').checked == true || document.getElementById('banco3').checked == true) {
 				document.getElementById('divisa2').disabled = true;
 				document.getElementById('divisa1').checked = true;
-				// document.getElementById('divisa2').checked = false;
 				document.getElementById('divisa1').disabled = false;
 			} else {
 				document.getElementById('divisa2').disabled = false;
 			}
 			if (document.getElementById('banco4').checked == true) {
-				// document.getElementById('divisa1').checked = false;
 				document.getElementById('divisa2').checked = true;
 				document.getElementById('divisa1').disabled = true;
 				document.getElementById('divisa2').disabled = false;
@@ -327,6 +327,7 @@ const app = new Vue({
 				this.tabla = false;
 				this.small = 'Usuario nuevo';
 			}
+			this.onChange();
 		},
 		referencia_cero() {
 			if (this.referencia == '0') {
