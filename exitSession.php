@@ -4,4 +4,6 @@
 	session_destroy();
 ?>
 
+Sesion Finalizada.
+
 <title>EXIT</title>
