@@ -130,7 +130,7 @@ if ($id_banco == 5) {
         if (mysqli_query($link, "INSERT INTO pagos_in (id_banco, monto, referencia, flag) VALUES ('$id_banco', '$monto', '$referencia', true)")) {
             mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'");
             $res['errores'][] = false;
-            $res['mensajes'][] = 'Pago agregado existosamente.5';
+            $res['mensajes'][] = 'Pago agregado existosamente';
         } else {
             $res['errores'][] = true;
             $res['mensajes'][] = 'Hubo un error agregando el pago.';

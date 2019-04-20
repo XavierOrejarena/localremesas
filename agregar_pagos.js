@@ -321,13 +321,13 @@ const app = new Vue({
 						this.tabla = false;
 					}
 				});
+				this.onChange();
 			} else {
 				this.tipo_cliente = 'REGULAR';
 				this.cuentas_display = '';
 				this.tabla = false;
 				this.small = 'Usuario nuevo';
 			}
-			this.onChange();
 		},
 		referencia_cero() {
 			if (this.referencia == '0') {
