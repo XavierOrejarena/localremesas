@@ -16,9 +16,42 @@ const app = new Vue({
 		monto: '',
 		nota: '',
 		banco_id: 1,
-		registros: ''
+		registros: '',
+		amount: '',
+		referencia: '',
+		mensajes: [],
+		errores: []
 	},
 	methods: {
+		revisarPrestamo(){
+			var bodyFormData = new FormData();
+			bodyFormData.set('amount', this.amount);
+			bodyFormData.set('id_banco', this.banco_id);
+			bodyFormData.set('referencia', this.referencia);
+			bodyFormData.set('id_usuario', this.id);
+			axios({
+				method: 'post',
+				url: './revisarPrestamo.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				if (response.data) {
+					this.mensajes.push('Prestamo actualizado exitosamente.')
+					this.errores.push(false);
+					this.getPrestamos();
+				} else {
+					this.mensajes.push('No se encontró el pago.')
+					this.errores.push(true);
+				}
+				window.setTimeout(function() {
+					$('.alert')
+						.fadeTo(500, 0)
+						.slideUp(500, function() {
+							that.mensajes = '';
+						});
+				}, 10000);
+			});
+		},
 		setClase(clase) {
 			this.clase = clase;
 			localStorage.setItem('clase', clase);
@@ -169,6 +202,9 @@ const app = new Vue({
 				this.pagos_in = response.data;
 			});
 		},
+		onChanges(e) {
+			this.banco_id = e.target.value;
+		},
 		onChange(e) {
 			this.banco_id = e.target.value;
 			this.getRegistros();
@@ -241,7 +277,9 @@ const app = new Vue({
 			return this.tipos.filter(tipo => tipo != this.usuario.tipo);
 		},
 		filterPrestamos() {
-			return this.prestamos.filter(prestamo => prestamo.id == this.id);
+			if (this.prestamos != null) {
+				return this.prestamos.filter(prestamo => prestamo.id == this.id);	
+			}
 		}
 	}
 });

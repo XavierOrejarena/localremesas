@@ -221,6 +221,34 @@
             </div>
          </div>
          <div v-if="clase=='Prestamos'" class="container offset-md-2 mt-5">
+               <div
+               v-for="(mensaje, index) in mensajes"
+               :class="{'alert container col-md-4 mt-2': true, 'alert-success': !errores[index], 'alert-danger': errores[index]}"
+               role="alert"
+            >
+               {{ mensaje }}
+            </div>
+               <label class="ml-5">Agregar pago de prestamo.</label>
+               <table class="ml-5 table table-hover text-center table-lg container border rounded">
+                     <thead>
+                        <tr>
+                           <th scope="col">Banco</th>
+                           <th scope="col">Monto</th>
+                           <th scope="col">Referencia</th>
+                           <th scope="col">Agregar</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <td scope="col">
+                              <select class="form-control" @change="onChanges($event)">
+                                 <option v-for="bank in bancos" :value="bank.id">{{bank.nombre}} {{bank.divisa}}</option>
+                              </select>
+                        </td>
+                        <td scope="col"><input type="text" class="form-control" placeholder="Monto" v-model="amount"></td>
+                        <td scope="col"><input type="text" class="form-control" placeholder="Referencia" v-model="referencia"></td>
+                        <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="revisarPrestamo()">+</button></td>
+                     </tbody>
+                  </table>
          <div class="form-group col-md-6 container">
             <label>ID de Usuario</label>
             <input v-model="id" type="text" class="form-control" maxlength="10">

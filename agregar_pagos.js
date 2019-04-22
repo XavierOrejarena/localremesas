@@ -320,8 +320,8 @@ const app = new Vue({
 						this.cuentas_display = '';
 						this.tabla = false;
 					}
+					this.onChange();
 				});
-				this.onChange();
 			} else {
 				this.tipo_cliente = 'REGULAR';
 				this.cuentas_display = '';
