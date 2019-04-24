@@ -20,7 +20,7 @@ const app = new Vue({
 		amount: '',
 		referencia: '',
 		mensajes: [],
-		errores: []
+		errores: [],
 	},
 	methods: {
 		revisarPrestamo(){
