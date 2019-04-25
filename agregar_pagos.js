@@ -81,7 +81,7 @@ const app = new Vue({
 			}
 		},
 		disabled() {
-			if (document.getElementById('banco1').checked == true || document.getElementById('banco3').checked == true) {
+			if (document.getElementById('banco3').checked == true) {
 				document.getElementById('divisa2').disabled = true;
 				document.getElementById('divisa1').checked = true;
 				document.getElementById('divisa1').disabled = false;
