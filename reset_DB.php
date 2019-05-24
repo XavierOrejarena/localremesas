@@ -210,9 +210,9 @@ if (mysqli_connect_errno()) {
 
 
 
-	$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 6, 100, 0, 300, 'PRESTAMO', 4, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
-	$link->query("INSERT INTO prestamos (id_usuario, monto, id_banco) VALUES (1, 100, 6)");
-	$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (NULL, 6, 150, 123456, NULL, NULL, 1, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 6, 100, 0, 300, 'PRESTAMO', 4, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	// $link->query("INSERT INTO prestamos (id_usuario, monto, id_banco) VALUES (1, 100, 6)");
+	// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (NULL, 6, 150, 123456, NULL, NULL, 1, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 
 
 
