@@ -30,7 +30,12 @@ const app = new Vue({
 					}
 					this.monto_total += parseFloat(plus);
 				}
-				this.monto_total = Math.round(this.monto_total);
+				// this.monto_total = Math.round(this.monto_total);
+				if (document.querySelector('input[name="divisa"]:checked').value == 'PEN') {
+					this.monto_total = Math.round(this.monto_total)-this.tasa*3;
+				}else {
+					this.monto_total = Math.round(this.monto_total)-this.tasa;
+				}
 			}
 		},
 		calcularTasa(operador) {
@@ -328,6 +333,7 @@ const app = new Vue({
 				this.tabla = false;
 				this.small = 'Usuario nuevo';
 			}
+			this.calcularMontoTotal();
 		},
 		referencia_cero() {
 			if (this.referencia == '0') {
