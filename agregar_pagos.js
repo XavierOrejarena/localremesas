@@ -5,6 +5,7 @@ const app = new Vue({
 		agregar_cuenta: true,
 		monto: 0,
 		tasa: '',
+		divisa: 'PEN',
 		id_usuario: 0,
 		tipo_usuario: '',
 		tipo_cliente: 'REGULAR',
@@ -30,12 +31,7 @@ const app = new Vue({
 					}
 					this.monto_total += parseFloat(plus);
 				}
-				// this.monto_total = Math.round(this.monto_total);
-				if (document.querySelector('input[name="divisa"]:checked').value == 'PEN') {
-					this.monto_total = Math.round(this.monto_total)-this.tasa*3;
-				}else {
-					this.monto_total = Math.round(this.monto_total)-this.tasa;
-				}
+				this.monto_total = Math.round(this.monto_total);
 			}
 		},
 		calcularTasa(operador) {
@@ -48,7 +44,7 @@ const app = new Vue({
 		cargarTasa(tipo) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('tipo', tipo);
-			bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
+			bodyFormData.set('divisa', this.divisa);
 			axios({
 				method: 'post',
 				url: './cargarTasa.php',
@@ -77,8 +73,6 @@ const app = new Vue({
 			this.referencia = '';
 		},
 		onChange() {
-			console.log(document.querySelector('input[name="banco"]:checked').value);
-			console.log(this.tipo_cliente);
 			if (document.querySelector('input[name="banco"]:checked').value == 'BANPA / ZELLE' || this.tipo_cliente == 'ESPECIAL') {
 				this.otros = false;
 			} else {
@@ -173,7 +167,7 @@ const app = new Vue({
 									}
 									bodyFormData.set('tasa', this.tasa);
 									bodyFormData.set('id_usuario', this.id_usuario);
-									bodyFormData.set('divisa', document.querySelector('input[name="divisa"]:checked').value);
+									bodyFormData.set('divisa', this.divisa);
 									bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value);
 									bodyFormData.set('monto', document.getElementById('monto').value);
 									bodyFormData.set('referencia', this.referencia);
@@ -341,6 +335,15 @@ const app = new Vue({
 			}
 		}
 	},
+	computed: {
+		monto2: function () {
+			if (this.divisa == 'PEN') {
+				return this.monto-3
+			} else {
+				return this.monto-1
+			}
+		}
+	  },
 	beforeMount() {
 		axios({
 			method: 'get',

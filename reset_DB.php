@@ -154,7 +154,7 @@ if (mysqli_connect_errno()) {
 	    echo "<p style='color: red;'>no tasas<p>" . $conn->error;
 	}
 
-	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 80)";
+	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 1780)";
 
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>PEN<p>";
