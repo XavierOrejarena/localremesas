@@ -4,6 +4,7 @@ const app = new Vue({
 		red: 'border-color: #ff0000;  -webkit-box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);',
 		agregar_cuenta: true,
 		monto: 0,
+		monto3: 0,
 		tasa: '',
 		divisa: 'PEN',
 		id_usuario: 0,
@@ -154,7 +155,7 @@ const app = new Vue({
 						if (this.monto_total == 0) {
 							this.error('El monto total no puede ser cero.', 'monto_total');
 						} else {
-							if (this.monto_total > Math.round(this.tasa * this.monto)) {
+							if (this.monto_total > Math.round(this.tasa * this.monto3)) {
 								this.error('El monto total es inocrrecto.', 'monto_total');
 							} else {
 								if (this.referencia == '') {
@@ -338,8 +339,10 @@ const app = new Vue({
 	computed: {
 		monto2: function () {
 			if (this.divisa == 'PEN') {
+				this.monto3 = this.monto-3;
 				return this.monto-3
 			} else {
+				this.monto3 = this.monto-1;
 				return this.monto-1
 			}
 		}
