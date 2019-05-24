@@ -69,6 +69,9 @@
                     <li>
                      <a :class="{'actives':clase=='Prestamos'}" href="#" @click="setClase('Prestamos')">Prestamos</a>
                  </li>
+                 <li>
+                  <a :class="{'actives':clase=='Estadisticas'}" href="#" @click="setClase('Estadisticas')">Estadísticas</a>
+              </li>
                   </ul>
               </div>
               <!-- /#sidebar-wrapper -->
@@ -82,7 +85,7 @@
               </div>
               <!-- /#page-content-wrapper -->
 
-          </div>
+          
          <div v-if="clase=='Tasas'" class="container col-md-6 mt-5">
             <div v-for="(tasa, index) in tasas" class="row">
                <div class="form-group mr-2">
@@ -99,7 +102,7 @@
                </div>
             </div>
          </div>
-         <div v-if="clase=='Usuarios'" class="container col-md-5 mt-5">
+         <div v-if="clase=='Usuarios'" class="container">
             <div class="form-group">
                <label>ID de Usuario</label>
                <input v-model="id" @keyup="getUserInfo()" type="text" class="form-control" onClick="this.select();" maxlength="10">
@@ -133,10 +136,10 @@
                   </div>
             </div>
          </div>
-         <div v-if="clase=='Bancos'" class="container offset-md-2 mt-5">
+         <div v-if="clase=='Bancos'" class="container">
             <div class="text-center mb-3">
-               <button type="button" :class="{'btn btn-primary': registro, 'btn btn-light': !registro}" @click="registro = true, getBancos(), setRegistro(true)">Saldo</button>
-               <button type="button" :class="{'btn btn-light': registro, 'btn btn-primary': !registro}" @click="registro = false, getRegistros(1), setRegistro(false)">Registro</button>
+               <button type="button" :class="{'btn btn-primary mt-3': registro, 'btn btn-light mt-3': !registro}" @click="registro = true, getBancos(), setRegistro(true)">Saldo</button>
+               <button type="button" :class="{'btn btn-light mt-3': registro, 'btn btn-primary mt-3': !registro}" @click="registro = false, getRegistros(1), setRegistro(false)">Registro</button>
            </div>
           <div v-if="registro" class="container">
             <div class="row ml-1">
@@ -220,7 +223,7 @@
                      </div>
             </div>
          </div>
-         <div v-if="clase=='Prestamos'" class="container offset-md-2 mt-5">
+         <div v-if="clase=='Prestamos'" class="container">
                <div
                v-for="(mensaje, index) in mensajes"
                :class="{'alert container col-md-4 mt-2': true, 'alert-success': !errores[index], 'alert-danger': errores[index]}"
@@ -228,7 +231,7 @@
             >
                {{ mensaje }}
             </div>
-               <label class="ml-5">Agregar pago de prestamo.</label>
+               <label class="ml-5 mt-3">Agregar pago de prestamo.</label>
                <table class="ml-5 table table-hover text-center table-lg container border rounded">
                      <thead>
                         <tr>
@@ -291,6 +294,12 @@
             </tbody>
          </table>
       </div>
+      <div v-if="clase=='Estadisticas'" id="page-content-wrapper">
+         <div class="container-fluid">
+             <h1>asdasdasdasdasdasdasd</h1>
+         </div>
+     </div>
+   </div>
       </div>
    </body>
    <script src="./vue.js"></script>

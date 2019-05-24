@@ -6,6 +6,9 @@ const app = new Vue({
 		tipo_usuario: 'REGULAR'
 	},
 	methods: {
+		cargar_pagos_in() {
+
+		},
 		rechazar_in(e) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', e);
@@ -16,7 +19,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				console.log(response);
-				this.cargar_pagos_in();
+				this.cargar_pagos_all();
 			});
 		},
 		aprobar_in(e) {
@@ -29,7 +32,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				console.log(response);
-				this.cargar_pagos_in();
+				this.cargar_pagos_all();
 			});
 		},
 		cargar_pagos_all() {
@@ -38,6 +41,7 @@ const app = new Vue({
 				url: './cargar_pagos_all.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				console.log(response.data)
 				if (response.data) {
 					this.pagos_in = response.data.in;
 					this.pagos_out = response.data.out;

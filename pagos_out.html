@@ -95,7 +95,7 @@
 							<td>
 								<select class="form-control" :id="'b'+pago.id_pago_out"
 									><option :value="banco.id" v-for="banco in filterBancos">{{
-										banco.nombre[0] + '(' + banco.saldo + ')'
+										banco.nombre.substring(0, 3) + '(' + banco.saldo + ')'
 									}}</option></select
 								>
 							</td>

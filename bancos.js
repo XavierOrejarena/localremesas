@@ -42,6 +42,8 @@ const app = new Vue({
 		setBanco(e) {
 			if (!isNaN(e.target[0].value) && !isNaN(e.target[1].value) && (e.target[0].value != '' && e.target[1].value != '')) {
 				axios.post('./setBanco.php', new FormData(e.target)).then(response => {
+					console.log(response.data)
+					console.log("Ok")
 					var that = this;
 					this.getBancos();
 					this.getPagos();

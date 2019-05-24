@@ -35,21 +35,18 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				if (response.data) {
-					this.mensajes.push('Prestamo actualizado exitosamente.')
-					this.errores.push(false);
-					this.getPrestamos();
-				} else {
-					this.mensajes.push('No se encontró el pago.')
-					this.errores.push(true);
-				}
+				console.log(response.data);
+				this.mensajes.push(response.data.mensaje)
+				this.errores.push(response.data.error);
+				this.getPrestamos();
 				window.setTimeout(function() {
+					that = this.mensajes;
 					$('.alert')
 						.fadeTo(500, 0)
 						.slideUp(500, function() {
-							that.mensajes = '';
+							that = '';
 						});
-				}, 10000);
+				}, 3000);
 			});
 		},
 		setClase(clase) {

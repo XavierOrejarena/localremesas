@@ -203,8 +203,18 @@ if (mysqli_connect_errno()) {
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'PEN')");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 100, 'USD')");
 	// $link->query("INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES (0, 1, 1, 0, 0, 'APROBADO', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+
+
+
+	$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 6, 100, 0, 300, 'PRESTAMO', 4, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	$link->query("INSERT INTO prestamos (id_usuario, monto, id_banco) VALUES (1, 100, 6)");
+	$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (NULL, 6, 150, 123456, NULL, NULL, 1, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+
+
+
 }
 ?>

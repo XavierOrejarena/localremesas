@@ -65,7 +65,7 @@
                   <td scope="col">{{pago_in.id}}</td>
                   <td scope="col">{{pago_in.id_usuario}}</td>
                   <td scope="col">{{pago_in.divisa}}</td>
-                  <td scope="col">{{pago_in.banco}}</td>
+                  <td scope="col">{{pago_in.name}}</td>
                   <td scope="col">{{pago_in.monto}}</td>
                   <td scope="col"><a :href="'http://localremesas.com/comprobantes_in/'+pago_in.referencia+'.jpg'" target="_blank">{{pago_in.referencia}}</td>
                   <td scope="col">{{pago_in.nombre}}</td>
@@ -81,7 +81,11 @@
                   <tr>
                      <th scope="col">ID</th>
                      <th scope="col">ID Usuario</th>
-                     <th scope="col">Monto</th>
+                     <th scope="col">ID Pago IN</th>
+                     <th scope="col">Monto IN</th>
+                     <th scope="col">Divisa</th>
+                     <th scope="col">Monto OUT</th>
+                     <th scope="col">Tasa</th>
                      <th scope="col">Hora</th>
                      <th scope="col">Estado</th>
                   </tr>
@@ -90,7 +94,11 @@
                   <tr v-for="(pago_out, index) in pagos_out">
                     <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+pago_out.id+'.jpg'" target="_blank">{{pago_out.id}}</td>
                      <td scope="col">{{pago_out.id_usuario}}</td>
+                     <td scope="col">{{pago_out.id_pago_in}}</td>
+                     <td scope="col">{{pago_out.amount}}</td>
+                     <td scope="col">{{pago_out.divisa}}</td>
                      <td scope="col">{{pago_out.monto}}</td>
+                     <td scope="col">{{pago_out.tasa}}</td>
                      <td scope="col">{{pago_out.reg_date.split(' ')[1]}}</td>
                      <td scope="col">{{pago_out.estado}}</td>
                   </tr>

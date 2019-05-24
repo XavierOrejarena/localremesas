@@ -6,6 +6,10 @@ $referencia = array_values($_POST)[0];
 $monto = array_values($_POST)[1];
 $id_banco = explode('r', key($_POST))[1];
 
+$res['referencia'] = $referencia;
+$res['monto'] = $monto;
+$res['id_banco'] = $id_banco;
+
 if ($id_banco == 5) {
     $referencia = sprintf("%06d", $referencia);
 }
@@ -86,7 +90,7 @@ if ($id_banco == 5) {
             }
     }
 }
-} elseif ($id_banco == 3 || $id_banco == 4) {  // INTERBANK
+} else {
     if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'PENDIENTE'"))['id']) {
         // Si existe uno o mas pagos entrantes pendientes
         if (mysqli_query($link, "UPDATE pagos_in SET flag = 1 WHERE id = '$id_pago_in' AND flag = 0")){
