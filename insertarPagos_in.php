@@ -35,7 +35,7 @@ if ($referencia == 0) {
         if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = -7.5 AND flag = 1"))['id']) {
             $res['restar'] = 1;
         }
-        mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2");
+        mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND referencia = '$referencia' AND flag = 1");
         $res['flag'] = 1;
         $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
         $res['errores'][] = false;
