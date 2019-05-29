@@ -7,6 +7,7 @@ const app = new Vue({
 		monto3: 0,
 		tasa: '',
 		divisa: 'PEN',
+		banco: 'BCP',
 		id_usuario: 0,
 		tipo_usuario: '',
 		tipo_cliente: 'REGULAR',
@@ -21,11 +22,17 @@ const app = new Vue({
 		otros: true
 	},
 	methods: {
+		calcTest(){
+			this.cuentas_display[0].monto = this.monto_aux*this.tasa;
+		},
 		calcularMontoTotal() {
 			this.monto_total = 0;
 			if (!(this.cuentas_display == undefined)) {
 				var plus;
 				for (var i = 0; i < this.cuentas_display.length; i++) {
+					if (this.cuentas_display[i]['monto_aux'] > 0) {
+						this.cuentas_display[i]['monto'] = this.tasa*this.cuentas_display[i]['monto_aux'];
+					}
 					plus = parseFloat(this.cuentas_display[i]['monto']);
 					if (this.cuentas_display[i]['monto'] == '') {
 						plus = 0;
@@ -44,7 +51,6 @@ const app = new Vue({
 		},
 		cargarTasa(tipo) {
 			var bodyFormData = new FormData();
-			bodyFormData.set('tipo', tipo);
 			bodyFormData.set('divisa', this.divisa);
 			axios({
 				method: 'post',
@@ -68,32 +74,14 @@ const app = new Vue({
 			if (this.referencia != '0') {
 				document.getElementById('comprobante').value = document.getElementById('comprobante').defaultValue;
 			}
-			document.getElementById('banco1').checked = true;
-			document.getElementById('divisa1').checked = true;
-			document.getElementById('divisa2').disabled = true;
 			this.referencia = '';
 		},
 		onChange() {
-			if (document.querySelector('input[name="banco"]:checked').value == 'BANPA / ZELLE' || this.tipo_cliente == 'ESPECIAL') {
+			if (this.banco == 'BANPA / ZELLE' || this.tipo_cliente == 'ESPECIAL') {
 				this.otros = false;
 			} else {
 				this.otros = true;
 			}
-		},
-		disabled() {
-			if (document.getElementById('banco3').checked == true) {
-				document.getElementById('divisa2').disabled = true;
-				document.getElementById('divisa1').checked = true;
-				document.getElementById('divisa1').disabled = false;
-			} else {
-				document.getElementById('divisa2').disabled = false;
-			}
-			if (document.getElementById('banco4').checked == true) {
-				document.getElementById('divisa2').checked = true;
-				document.getElementById('divisa1').disabled = true;
-				document.getElementById('divisa2').disabled = false;
-			}
-			this.cargarTasa('REGULAR');
 		},
 		error(mensaje, obj) {
 			this.mensajes = [mensaje];
@@ -169,8 +157,8 @@ const app = new Vue({
 									bodyFormData.set('tasa', this.tasa);
 									bodyFormData.set('id_usuario', this.id_usuario);
 									bodyFormData.set('divisa', this.divisa);
-									bodyFormData.set('banco', document.querySelector('input[name="banco"]:checked').value);
-									bodyFormData.set('monto', document.getElementById('monto').value);
+									bodyFormData.set('banco', this.banco);
+									bodyFormData.set('monto', this.monto);
 									bodyFormData.set('referencia', this.referencia);
 									axios({
 										method: 'post',
@@ -187,7 +175,6 @@ const app = new Vue({
 											}
 										}
 									}).then(response => {
-										console.log(response.data);
 										this.mensajes = response.data.mensajes;
 										this.errores = response.data.errores;
 										if (this.referencia != '0') {
@@ -303,7 +290,7 @@ const app = new Vue({
 					if (response['data']['cuentas']) {
 						this.small = 'Usuario ya existe';
 						this.cuentas_display = response['data']['cuentas'];
-						this.cuentas_display.map(item => (item.monto = 0));
+						this.cuentas_display.map(item => (item.monto = 0, item.monto_aux = 0));
 						this.tabla = true;
 						this.cargarTasa(response['data']['cuentas'][0].tipo);
 						this.tipo_cliente = response['data']['cuentas'][0].tipo;
@@ -344,6 +331,24 @@ const app = new Vue({
 			} else {
 				this.monto3 = this.monto-1;
 				return this.monto-1
+			}
+		},
+		disablePEN: function() {
+			if (this.banco == "INTERBANK") {
+				return true
+			} else if (this.banco == "BANPA / ZELLE"){
+				this.divisa = 'USD'
+				return true
+			} else {
+				return false
+			}
+		},
+		disableUSD: function() {
+			if (this.banco == "INTERBANK") {
+				this.divisa = ''
+				return true
+			} else {
+				return false
 			}
 		}
 	  },
