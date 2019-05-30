@@ -18,13 +18,6 @@ if ($referencia == 0) {
 
     mysqli_query($link, "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', '$tasa', 'PRESTAMO', 4, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
     
-
-
-    // if ($id_prestamo = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM prestamos WHERE id_usuario = '$id_usuario' AND divisa = '$divisa'"))['id']) {
-    //     mysqli_query($link, "UPDATE prestamos SET monto = monto + '$monto' WHERE id = '$id_prestamo'");
-    // } else {
-    //     mysqli_query($link, "INSERT INTO prestamos (id_usuario, monto, divisa) VALUES ('$id_usuario', '$monto', '$divisa')");
-    // }
     $res['mensajes'][] = 'Prestamo agregado exitosamente';
     $res['errores'][] = false;
     $res['flag'] = 2;
