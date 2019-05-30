@@ -22,6 +22,23 @@ const app = new Vue({
 		otros: true
 	},
 	methods: {
+		cargarTasa(tipo) {
+			console.log(this.divisa)
+			var bodyFormData = new FormData();
+			bodyFormData.set('divisa', this.divisa);
+			axios({
+				method: 'post',
+				url: './cargarTasa.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				if (tipo == 'BUSCADOR') {
+					this.tasa = Math.floor(response.data / 1.04);
+				} else {
+					this.tasa = response.data;
+				}
+			});
+		},
 		calcTest(){
 			this.cuentas_display[0].monto = this.monto_aux*this.tasa;
 		},
@@ -48,22 +65,6 @@ const app = new Vue({
 			} else {
 				this.tasa = this.tasa / 1.005;
 			}
-		},
-		cargarTasa(tipo) {
-			var bodyFormData = new FormData();
-			bodyFormData.set('divisa', this.divisa);
-			axios({
-				method: 'post',
-				url: './cargarTasa.php',
-				data: bodyFormData,
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				if (tipo == 'BUSCADOR') {
-					this.tasa = Math.floor(response['data'] / 1.04);
-				} else {
-					this.tasa = response['data'];
-				}
-			});
 		},
 		clear() {
 			this.monto = 0;
@@ -323,6 +324,11 @@ const app = new Vue({
 			}
 		}
 	},
+	watch: {
+        divisa: function() {
+            this.cargarTasa()
+        }
+    },
 	computed: {
 		monto2: function () {
 			if (this.divisa == 'PEN') {
@@ -360,7 +366,7 @@ const app = new Vue({
 		}).then(response => {
 			if (response['data'] == 'ADMIN' || response['data'] == 'OPERADOR') {
 				this.tipo_usuario = response.data;
-				this.cargarTasa('REGULAR');
+				this.cargarTasa();
 			} else {
 				window.location.href = './login.html';
 			}
