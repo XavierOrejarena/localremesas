@@ -333,10 +333,14 @@ const app = new Vue({
 		monto2: function () {
 			if (this.divisa == 'PEN') {
 				this.monto3 = this.monto-3;
-				return this.monto-3
+				return this.monto3
 			} else {
-				this.monto3 = this.monto-1;
-				return this.monto-1
+				if (this.banco == "BANPA / ZELLE" ){
+					this.monto3 = this.monto;
+				}else {
+					this.monto3 = this.monto-1;
+				}
+				return this.monto3
 			}
 		},
 		disablePEN: function() {
