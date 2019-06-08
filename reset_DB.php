@@ -33,11 +33,11 @@ if (mysqli_connect_errno()) {
 
 	$sql = "CREATE TABLE cuentas (
 	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	nombre VARCHAR(20),
-	tipo_cedula VARCHAR(1),
-	cedula VARCHAR(10),
-	tipo_cuenta VARCHAR(9),
-	cuenta VARCHAR(20)
+	nombre VARCHAR(200),
+	tipo_cedula VARCHAR(10),
+	cedula VARCHAR(100),
+	tipo_cuenta VARCHAR(100),
+	cuenta VARCHAR(200)
 	)";
 
 	if ($link->query($sql) === TRUE) {
