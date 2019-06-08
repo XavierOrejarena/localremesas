@@ -8,6 +8,7 @@ const app = new Vue({
 		tasa: '',
 		divisa: 'PEN',
 		banco: 'BCP',
+		Comision: 'yes',
 		id_usuario: 0,
 		tipo_usuario: '',
 		tipo_cliente: 'REGULAR',
@@ -23,7 +24,6 @@ const app = new Vue({
 	},
 	methods: {
 		cargarTasa(tipo) {
-			console.log(this.divisa)
 			var bodyFormData = new FormData();
 			bodyFormData.set('divisa', this.divisa);
 			axios({
@@ -333,15 +333,17 @@ const app = new Vue({
 		monto2: function () {
 			if (this.divisa == 'PEN') {
 				this.monto3 = this.monto-3;
-				return this.monto3
 			} else {
-				if (this.banco == "BANPA / ZELLE" ){
+				if (this.banco == "BANPA / ZELLE"){
 					this.monto3 = this.monto;
 				}else {
 					this.monto3 = this.monto-1;
 				}
-				return this.monto3
 			}
+			if (this.Comision === 'no') {
+				this.monto3 = this.monto
+			}
+			return this.monto3
 		},
 		disablePEN: function() {
 			if (this.banco == "INTERBANK") {
