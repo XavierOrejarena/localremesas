@@ -170,7 +170,7 @@
                   <div v-for="(cuenta, index) in cuentas" class="form-group border border-warning rounded container bg-light">
                      <div class="form-group mt-2">
                         <label>Nombre y Apellido</label>
-                        <input @keyup="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="20" v-model="cuenta.nombre">
+                        <input @change="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="20" v-model="cuenta.nombre">
                      </div>
                      <div class="form-group">
                         <div class="form-row">
@@ -190,7 +190,7 @@
                            </div>
                            <div class="col">
                               <label>Número de cédula</label>
-                              <input @keyup="verificarCedula($event)" type="text" class="form-control" :name="'cedula[' + index +']'" placeholder="Solamente números" required maxlength="9" v-model="cuenta.cedula">
+                              <input @change="verificarCedula($event)" type="text" class="form-control" :name="'cedula[' + index +']'" placeholder="Solamente números" required maxlength="9" v-model="cuenta.cedula">
                            </div>
                         </div>
                      </div>
@@ -208,7 +208,7 @@
                            </div>
                            <div class="col">
                               <label>Número de cuenta</label>
-                              <input @keyup="verificarCuenta($event)" type="text" class="form-control" :name="'cuenta[' + index +']'" placeholder="Solamente números" required v-model="cuenta.cuenta" maxlength="20">
+                              <input @change="verificarCuenta($event)" type="text" class="form-control" :name="'cuenta[' + index +']'" placeholder="Solamente números" required v-model="cuenta.cuenta" maxlength="20">
                            </div>
                         </div>
                         <div class="mt-4 mb-2 d-flex justify-content-end">

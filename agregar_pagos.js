@@ -2,7 +2,6 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		red: 'border-color: #ff0000;  -webkit-box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);',
-		agregar_cuenta: true,
 		monto: 0,
 		monto3: 0,
 		tasa: '',
@@ -19,6 +18,7 @@ const app = new Vue({
 		mensajes: [],
 		errores: [],
 		cuentas: [],
+		verificar: [false, false, false],
 		referencia: '',
 		otros: true
 	},
@@ -107,28 +107,28 @@ const app = new Vue({
 		verificarCedula: function(e) {
 			if (e.target.value.length > 9 || e.target.value.length < 7 || isNaN(e.target.value)) {
 				e.target.style = this.red;
-				this.agregar_cuenta = false;
+				this.verificar[0] = false;
 			} else {
 				e.target.style = '';
-				this.agregar_cuenta = true;
+				this.verificar[0] = true;
 			}
 		},
 		verificarCuenta: function(e) {
 			if (e.target.value.length > 20 || e.target.value.length < 20 || isNaN(e.target.value)) {
 				e.target.style = this.red;
-				this.agregar_cuenta = false;
+				this.verificar[1] = false;
 			} else {
 				e.target.style = '';
-				this.agregar_cuenta = true;
+				this.verificar[1] = true;
 			}
 		},
 		verificarNombre: function(e) {
 			if (e.target.value.length > 19 || e.target.value.length == 0) {
 				e.target.style = this.red;
-				this.agregar_cuenta = false;
+				this.verificar[2] = false;
 			} else {
 				e.target.style = '';
-				this.agregar_cuenta = true;
+				this.verificar[2] = true;
 			}
 		},
 		insertarPagos_in() {
@@ -242,7 +242,7 @@ const app = new Vue({
 			this.cuentas.splice(index, 1);
 		},
 		cargarCuentas() {
-			if (this.agregar_cuenta) {
+			if (this.verificar[0] && this.verificar[1] && this.verificar[2]) {
 				var bodyFormData = new FormData();
 				bodyFormData.set('id_usuario', this.id_usuario);
 				for (var i = 0; i < this.cuentas.length; i++) {
