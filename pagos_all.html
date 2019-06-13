@@ -98,7 +98,7 @@
                      <td scope="col">{{pago_out.amount}}</td>
                      <td scope="col">{{pago_out.divisa}}</td>
                      <td scope="col">{{pago_out.monto}}</td>
-                     <td scope="col">{{Math.round(filterTasa(pago_out.id_pago_in)/pago_out.amount,2)}}</td>
+                     <td scope="col">{{filterTasa(pago_out.id_pago_in)/pago_out.amount.toFixed(2)}}</td>
                      <td scope="col">{{pago_out.reg_date.split(' ')[1]}}</td>
                      <td scope="col">{{pago_out.estado}}</td>
                   </tr>
