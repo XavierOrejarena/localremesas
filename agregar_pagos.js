@@ -144,7 +144,7 @@ const app = new Vue({
 						if (this.monto_total == 0) {
 							this.error('El monto total no puede ser cero.', 'monto_total');
 						} else {
-							if (this.monto_total > Math.round(this.tasa * this.monto3)) {
+							if (this.monto_total != Math.round(this.tasa * this.monto3)) {
 								this.error('El monto total es inocrrecto.', 'monto_total');
 							} else {
 								if (this.referencia == '') {

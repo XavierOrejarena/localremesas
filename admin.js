@@ -21,8 +21,36 @@ const app = new Vue({
 		referencia: '',
 		mensajes: [],
 		errores: [],
+		divisas: '',
+		total_entrante: ''
 	},
 	methods: {
+		getDivisas(){
+			axios({
+				method: 'get',
+				url: './getDivisas.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				this.divisas = response.data;
+			});
+		},
+		totalEntrante(){
+			var bodyFormData = new FormData();
+			bodyFormData.set('tipo_usuario', this.tipo_usuario);
+			axios({
+				method: 'post',
+				url: './totalEntrante.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				let element = 0;
+				this.total_entrante = response.data
+				for (let i = 0; i < this.total_entrante.length; i++) {
+					element = element + parseFloat(this.total_entrante[i].monto);
+				}
+				console.log(element)
+			});
+		},
 		revisarPrestamo(){
 			var bodyFormData = new FormData();
 			bodyFormData.set('amount', this.amount);
@@ -251,6 +279,8 @@ const app = new Vue({
 				this.getBancos();
 				this.getPrestamos();
 				this.getRegistros(1);
+				this.getDivisas();
+				this.totalEntrante();
 			} else {
 				window.location.href = './login.html';
 			}
