@@ -6,7 +6,10 @@ $sql = "SELECT bancos.nombre, bancos.divisa, pagos_in.id, pagos_in.referencia, p
 FROM bancos
 INNER JOIN pagos_in ON bancos.id = pagos_in.id_banco
 -- WHERE estado IS NULL OR flag = 2
-WHERE estado = 'APROBADO' OR estado IS NULL OR estado = 'PAGADO'
+WHERE estado = 'APROBADO'
+OR estado IS NULL
+OR estado = 'PAGADO'
+AND referencia != 0
 ORDER BY reg_date ASC";
 
 $result = mysqli_query($link, $sql);
