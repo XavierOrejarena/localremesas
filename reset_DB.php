@@ -116,6 +116,8 @@ if (mysqli_connect_errno()) {
 	FOREIGN KEY (id_pago_in) REFERENCES pagos_in(id),
 	id_cuenta INT(10) UNSIGNED,
 	FOREIGN KEY (id_cuenta) REFERENCES cuentas(id),
+	id_banco INT(10) UNSIGNED,
+	FOREIGN KEY (id_banco) REFERENCES bancos(id),
 	monto INT(10),
 	referencia VARCHAR(64),
 	estado VARCHAR(64),

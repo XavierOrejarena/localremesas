@@ -50,7 +50,7 @@ if ($id = $_POST['id']) {
 				$id_pago_in = $_POST['id_pago_in'];
 				$id_banco = $_POST['id_banco'];
 
-				$sql = "UPDATE pagos_out SET estado = 'PAGADO', referencia = '$referencia' WHERE id = '$id'";
+				$sql = "UPDATE pagos_out SET id_banco = '$id_banco', estado = 'PAGADO', referencia = '$referencia' WHERE id = '$id'";
 				$res['errores'][] = mysqli_query($link, $sql);
 
 				$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");

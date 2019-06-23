@@ -40,6 +40,7 @@ const app = new Vue({
 				url: './cargar_pagos_all.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				console.log(response.data)
 				if (response.data) {
 					this.pagos_in = response.data.in;
 					this.pagos_out = response.data.out;
