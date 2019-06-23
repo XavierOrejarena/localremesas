@@ -21,7 +21,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 $result = mysqli_query($link, 
-"SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.divisa
+"SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.divisa, bancos.nombre AS banco
 FROM bancos, pagos_out
 JOIN pagos_in ON pagos_in.id = pagos_out.id_pago_in
 WHERE pagos_out.estado = 'PAGADO'
