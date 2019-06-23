@@ -86,7 +86,8 @@
                      <th scope="col">Divisa</th>
                      <th scope="col">Monto OUT</th>
                      <th scope="col">Tasa</th>
-                     <th scope="col">Banco</th>
+                     <th scope="col">Banco IN</th>
+                     <th scope="col">Banco OUT</th>
                      <th scope="col">Hora</th>
                      <th scope="col">Estado</th>
                   </tr>
@@ -100,7 +101,8 @@
                      <td scope="col">{{pago_out.divisa}}</td>
                      <td scope="col">{{pago_out.monto}}</td>
                      <td scope="col">{{(filterTasa(pago_out.id_pago_in)/pago_out.amount).toFixed(2)}}</td>
-                     <td scope="col">{{pago_out.banco}}</td>
+                     <td scope="col">{{pago_out.banco_in}}</td>
+                     <td scope="col">{{Banco(pago_out.banco_out)}}</td>
                      <td scope="col">{{pago_out.reg_date.split(' ')[1]}}</td>
                      <td scope="col">{{pago_out.estado}}</td>
                   </tr>
