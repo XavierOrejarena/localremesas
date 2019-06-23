@@ -93,10 +93,10 @@
                </thead>
                <tbody>
                   <tr v-for="(pago_out, index) in pagos_out">
-                    <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+pago_out.id+'.jpg'" target="_blank">{{pago_out.id}}</td>
+                     <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+pago_out.id+'.jpg'" target="_blank">{{pago_out.id}}</td>
                      <td scope="col">{{pago_out.id_usuario}}</td>
                      <td scope="col">{{pago_out.id_pago_in}}</td>
-                     <td scope="col">{{pago_out.amount}}</td>
+                     <td scope="col">{{pago_out.monto/pago_out.tasa}}</td>
                      <td scope="col">{{pago_out.divisa}}</td>
                      <td scope="col">{{pago_out.monto}}</td>
                      <td scope="col">{{(filterTasa(pago_out.id_pago_in)/pago_out.amount).toFixed(2)}}</td>
