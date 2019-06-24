@@ -15,7 +15,7 @@ const app = new Vue({
 		registro: '',
 		monto: '',
 		nota: '',
-		banco_id: 1,
+		banco_id: '',
 		registros: '',
 		amount: '',
 		referencia: '',
@@ -34,22 +34,22 @@ const app = new Vue({
 				this.divisas = response.data;
 			});
 		},
-		totalEntrante(){
-			var bodyFormData = new FormData();
-			bodyFormData.set('tipo_usuario', this.tipo_usuario);
-			axios({
-				method: 'post',
-				url: './totalEntrante.php',
-				data: bodyFormData,
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				let element = 0;
-				this.total_entrante = response.data
-				for (let i = 0; i < this.total_entrante.length; i++) {
-					element = element + parseFloat(this.total_entrante[i].monto);
-				}
-			});
-		},
+		// totalEntrante(){
+		// 	var bodyFormData = new FormData();
+		// 	bodyFormData.set('tipo_usuario', this.tipo_usuario);
+		// 	axios({
+		// 		method: 'post',
+		// 		url: './totalEntrante.php',
+		// 		data: bodyFormData,
+		// 		config: { headers: { 'Content-Type': 'multipart/form-data' } }
+		// 	}).then(response => {
+		// 		let element = 0;
+		// 		this.total_entrante = response.data
+		// 		for (let i = 0; i < this.total_entrante.length; i++) {
+		// 			element = element + parseFloat(this.total_entrante[i].monto);
+		// 		}
+		// 	});
+		// },
 		revisarPrestamo(){
 			var bodyFormData = new FormData();
 			bodyFormData.set('amount', this.amount);
@@ -277,7 +277,7 @@ const app = new Vue({
 				this.getPrestamos();
 				this.getRegistros(1);
 				this.getDivisas();
-				this.totalEntrante();
+				// this.totalEntrante();
 			} else {
 				window.location.href = './login.html';
 			}
