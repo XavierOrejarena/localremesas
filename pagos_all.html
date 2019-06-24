@@ -82,6 +82,7 @@
                      <th scope="col">ID</th>
                      <th scope="col">ID Usuario</th>
                      <th scope="col">ID Pago IN</th>
+                     <th scope="col">Banco IN</th>
                      <th scope="col">Monto IN</th>
                      <th scope="col">Divisa</th>
                      <th scope="col">Monto OUT</th>
@@ -96,6 +97,7 @@
                      <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+pago_out.id+'.jpg'" target="_blank">{{pago_out.id}}</td>
                      <td scope="col">{{pago_out.id_usuario}}</td>
                      <td scope="col">{{pago_out.id_pago_in}}</td>
+                     <td scope="col">{{pago_out.banco_in}}</td>
                      <td scope="col">{{(pago_out.monto/(filterTasa(pago_out.id_pago_in)/pago_out.amount)).toFixed(2)}}</td>
                      <!-- <td scope="col">{{pago_out.monto/pago_out.tasa}}</td> -->
                      <td scope="col">{{pago_out.divisa}}</td>

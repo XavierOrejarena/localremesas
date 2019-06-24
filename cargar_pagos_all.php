@@ -37,12 +37,35 @@ while ($row = mysqli_fetch_array($result)) {
 // AND bancos.id = pagos_in.id_banco
 // AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR");
 
+// $result = mysqli_query($link, 
+// "SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.nombre AS banco_out
+// FROM pagos_out
+// JOIN pagos_in ON pagos_in.id = pagos_out.id_pago_in
+// JOIN bancos ON bancos.id = pagos_out.id_banco
+// WHERE pagos_out.estado = 'PAGADO'
+// AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR");
+
+// $result = mysqli_query($link, 
+// "(SELECT *
+// FROM bancos, pagos_out
+// JOIN pagos_in ON pagos_in.id = pagos_out.id_pago_in
+// WHERE pagos_out.estado = 'PAGADO'
+// AND bancos.id = pagos_in.id_banco)
+// UNION
+// (SELECT *
+// FROM pagos_out
+// JOIN pagos_in ON pagos_in.id = pagos_out.id_pago_in
+// JOIN bancos ON bancos.id = pagos_out.id_banco
+// WHERE pagos_out.estado = 'PAGADO')");
+
 $result = mysqli_query($link, 
-"SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.divisa, bancos.nombre AS banco_out
+"SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.divisa, bancos.nombre AS banco_in, b.nombre AS banco_out
 FROM pagos_out
 JOIN pagos_in ON pagos_in.id = pagos_out.id_pago_in
-JOIN bancos ON bancos.id = pagos_out.id_banco
-WHERE pagos_out.estado = 'PAGADO'
+JOIN bancos ON bancos.id = pagos_in.id_banco
+JOIN bancos as b ON b.id = pagos_out.id_banco
+WHERE bancos.id = pagos_in.id_banco
+AND pagos_out.estado = 'PAGADO'
 AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR");
 
 while ($row = mysqli_fetch_assoc($result)) {
