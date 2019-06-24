@@ -59,11 +59,12 @@ while ($row = mysqli_fetch_array($result)) {
 // WHERE pagos_out.estado = 'PAGADO')");
 
 $result = mysqli_query($link, 
-"SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.divisa, bancos.nombre AS banco_in, b.nombre AS banco_out
+"SELECT pagos_out.*, pagos_in.tasa, pagos_in.id AS id_pago_in, pagos_in.monto AS amount, bancos.divisa, bancos.nombre AS banco_in, b.nombre AS banco_out, usuarios.tipo
 FROM pagos_out
 JOIN pagos_in ON pagos_in.id = pagos_out.id_pago_in
 JOIN bancos ON bancos.id = pagos_in.id_banco
 JOIN bancos as b ON b.id = pagos_out.id_banco
+JOIN usuarios ON usuarios.id = pagos_in.id_usuario
 WHERE bancos.id = pagos_in.id_banco
 AND pagos_out.estado = 'PAGADO'
 AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR");

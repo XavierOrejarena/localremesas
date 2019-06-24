@@ -298,17 +298,65 @@
          <div class="container-fluid">
             <table class="table table-hover text-center table-lg container border rounded">
                <thead>
-                  <tr>
+                  <tr class="thead-dark">
                      <th scope="col">Divisa</th>
+                     <th scope="col">Todal VES</th>
+                     <th scope="col">Total Divisa</th>
                      <th scope="col">Tasa Implícita</th>
-                     <th scope="col">Total</th>
                   </tr>
                </thead>
                <tbody>
                   <tr v-for="divisa in divisas">
                      <td scope="col">{{divisa.divisa}} </td>
+                     <td scope="col">251251</td>
+                     <td scope="col">200 </td>
+                     <td scope="col">1790 </td>
                   </tr>
                </tbody>
+               <thead>
+                     <tr class="thead-dark">
+                        <th scope="col">Banco</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                        <tr v-for="banco in filterBancos">
+                           <td scope="col">{{banco.nombre}} {{banco.divisa}} </td>
+                           <td scope="col">251251</td>
+                           <td scope="col">200 </td>
+                           <td scope="col">1790 </td>
+                        </tr>
+                     </tbody>
+                     <thead>
+                           <tr class="thead-dark">
+                              <th scope="col">Usuario</th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                              <tr>
+                                 <td scope="col">ADMIN </td>
+                                 <td scope="col">251251</td>
+                                 <td scope="col">200 </td>
+                                 <td scope="col">1790 </td>
+                              </tr>
+                              <tr>
+                                    <td scope="col">MAYORISTA </td>
+                                    <td scope="col">251251</td>
+                                    <td scope="col">200 </td>
+                                    <td scope="col">1790 </td>
+                                 </tr>
+                                 <tr>
+                                       <td scope="col">REGULAR </td>
+                                       <td scope="col">251251</td>
+                                       <td scope="col">200 </td>
+                                       <td scope="col">1790 </td>
+                                    </tr>
+                           </tbody>
             </table>
          </div>
      </div>

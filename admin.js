@@ -48,7 +48,6 @@ const app = new Vue({
 				for (let i = 0; i < this.total_entrante.length; i++) {
 					element = element + parseFloat(this.total_entrante[i].monto);
 				}
-				console.log(element)
 			});
 		},
 		revisarPrestamo(){
@@ -63,7 +62,6 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data);
 				this.mensajes.push(response.data.mensaje)
 				this.errores.push(response.data.error);
 				this.getPrestamos();
@@ -86,7 +84,6 @@ const app = new Vue({
 			localStorage.setItem('registro', registro);
 		},
 		eliminarBanco(id) {
-			console.log(id);
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', id);
 			axios({
@@ -301,7 +298,7 @@ const app = new Vue({
 			return clase;
 		},
 		filterBancos() {
-			return this.tipos.filter(tipo => tipo != this.usuario.tipo);
+			return this.bancos.filter(banco => banco.divisa != 'VES');
 		},
 		filterPrestamos() {
 			if (this.prestamos != null) {
