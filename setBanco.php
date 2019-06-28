@@ -77,7 +77,7 @@ if ($id_banco == 5) {
                 }
             }
         }
-    }elseif ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND id_banco = '$id_banco' AND flag = 2"))['id']) {
+    }elseif ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND id_banco = '$id_banco' AND (flag = 2 OR flag = 1)"))['id']) {
         $res['errores'][] = true;
         $res['mensajes'][] = "Ya este pago fue agregado.";
     }elseif (!($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND id_banco = '$id_banco'"))['id'])) {
@@ -126,8 +126,8 @@ if ($id_banco == 5) {
     } elseif ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND estado = 'APROBADO'"))['id']) {
         $res['errores'][] = true;
         $res['mensajes'][] = 'Este pago ya fue aprobado y agregado.';
-    } elseif (mysqli_num_rows(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND flag = 2")) > 0) {
-            $res['errores'][] = false;
+    } elseif (mysqli_num_rows(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND id_banco = '$id_banco' AND (flag = 2 OR flag = 1)")) > 0) {
+            $res['errores'][] = true;
             $res['mensajes'][] = "Ya este pago fue agregado.";
     } else {
         //SI NO EXISTE ESE PAGO
