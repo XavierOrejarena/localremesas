@@ -1,5 +1,15 @@
 <?php
 
+$folders = array('comprobantes_in', 'comprobantes_out');
+foreach ($folders as $folder) {
+	$files = glob($folder . '/*');
+	foreach($files as $file){
+		if(is_file($file)){
+			unlink($file);
+		}
+	}
+}
+
 include "connect.php";
 
 if (mysqli_connect_errno()) {
@@ -208,6 +218,7 @@ if (mysqli_connect_errno()) {
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 100, 'USD')");
+	$link->query("INSERT INTO pagos_in (id_banco, monto, referencia, flag, reg_date) VALUES (5, 50, 9566692, 1, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 	// $link->query("INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES (0, 1, 1, 0, 0, 'APROBADO', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 
 

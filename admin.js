@@ -22,9 +22,22 @@ const app = new Vue({
 		mensajes: [],
 		errores: [],
 		divisas: '',
-		total_entrante: ''
+		total_entrante: '',
+		pagos_out: ''
 	},
 	methods: {
+		cargar_pagos_all() {
+			axios({
+				method: 'get',
+				url: './cargar_pagos_all.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				if (response.data) {
+					this.pagos_out = response.data.out;
+					console.log(Array.from(this.pagos_out).filter(pago => pago.banco_in != ''));
+				}
+			});
+		},
 		getDivisas(){
 			axios({
 				method: 'get',
@@ -277,6 +290,7 @@ const app = new Vue({
 				this.getPrestamos();
 				this.getRegistros(1);
 				this.getDivisas();
+				this.cargar_pagos_all();
 				// this.totalEntrante();
 			} else {
 				window.location.href = './login.html';
@@ -298,7 +312,7 @@ const app = new Vue({
 			return clase;
 		},
 		filterBancos() {
-			return this.bancos.filter(banco => banco.divisa != 'VES');
+			return Array.from(this.bancos).filter(banco => banco.divisa != 'VES');
 		},
 		filterPrestamos() {
 			if (this.prestamos != null) {

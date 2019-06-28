@@ -6,9 +6,6 @@ const app = new Vue({
 		tipo_usuario: 'REGULAR'
 	},
 	methods: {
-		cargar_pagos_in() {
-
-		},
 		rechazar_in(e) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', e);
