@@ -2,6 +2,15 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
+function generateRandomString($length = 10) {
+	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	$charactersLength = strlen($characters);
+	$randomString = '';
+	for ($i = 0; $i < $length; $i++) {
+		$randomString .= $characters[rand(0, $charactersLength - 1)];
+	}
+	return $randomString;
+}
 
 if ($id = $_POST['id']) {
 	if ($_FILES['comprobante']['name']) {
@@ -45,7 +54,8 @@ if ($id = $_POST['id']) {
 	        $res['errores'][] = true;
 	    // if everything is ok, try to upload file
 	    } else {
-	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id . ".jpg")) {
+			$random = generateRandomString();
+	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id ."_". $random. ".jpg")) {
 				$referencia = $_POST['referencia'];
 				$id_pago_in = $_POST['id_pago_in'];
 				$id_banco = $_POST['id_banco'];
@@ -55,21 +65,9 @@ if ($id = $_POST['id']) {
 
 				$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
 
-
-				function generateRandomString($length = 10) {
-					$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-					$charactersLength = strlen($characters);
-					$randomString = '';
-					for ($i = 0; $i < $length; $i++) {
-						$randomString .= $characters[rand(0, $charactersLength - 1)];
-					}
-					return $randomString;
-				}
-
 				$token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
 				$chat_id = '@PagosLR';
-				$random = generateRandomString();
-				$text = 'http://localremesas.com/comprobantes_out/'.$id.'_'.$random.'.jpg';
+				$text = 'http://localremesas.com/comprobantes_out/'.$id."_".$random.".jpg";
 				file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
 				$aux = true;
 				while($row = mysqli_fetch_array($result)){
