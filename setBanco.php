@@ -10,9 +10,12 @@ $res['referencia'] = $referencia;
 $res['monto'] = $monto;
 $res['id_banco'] = $id_banco;
 
-if ($id_banco == 5) {
-    $referencia = sprintf("%06d", $referencia);
-}
+// if ($id_banco == 5) {
+//     $referencia = sprintf("%06d", $referencia);
+// }
+// $res['errores'][] = true;
+$res['post'][] = $referencia;
+
 
 if ($id_banco == 5) {
     if ($monto == -7.5 && ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND id_banco = '$id_banco' AND estado = 'PENDIENTE' AND flag IS NULL"))['id'])) {

@@ -55,9 +55,21 @@ if ($id = $_POST['id']) {
 
 				$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
 
+
+				function generateRandomString($length = 10) {
+					$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+					$charactersLength = strlen($characters);
+					$randomString = '';
+					for ($i = 0; $i < $length; $i++) {
+						$randomString .= $characters[rand(0, $charactersLength - 1)];
+					}
+					return $randomString;
+				}
+
 				$token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
 				$chat_id = '@PagosLR';
-				$text = 'http://localremesas.com/comprobantes_out/'.$id.'.jpg';
+				$random = generateRandomString();
+				$text = 'http://localremesas.com/comprobantes_out/'.$id.$random.'.jpg';
 				file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
 				$aux = true;
 				while($row = mysqli_fetch_array($result)){
