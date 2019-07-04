@@ -69,7 +69,7 @@ if ($id = $_POST['id']) {
 				$token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
 				$chat_id = '@PagosLR';
 				$random = generateRandomString();
-				$text = 'http://localremesas.com/comprobantes_out/'.$id.$random.'.jpg';
+				$text = 'http://localremesas.com/comprobantes_out/'.$id.'_'.$random.'.jpg';
 				file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
 				$aux = true;
 				while($row = mysqli_fetch_array($result)){
