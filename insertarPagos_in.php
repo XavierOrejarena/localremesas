@@ -26,11 +26,11 @@ if ($referencia == 0) {
                 $res['restar'] = 1;
             }
             
-            mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND referencia = '$referencia' AND flag = 1");
+            mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND flag = 1");
             $res['flag'] = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
-        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND id_banco = '$id_banco' AND flag IS NULL"))['id']) {
+        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND id_banco = '$id_banco' AND flag IS NULL OR flag = 2"))['id']) {
             $res['mensajes'][] = 'Este pago ya habia sido agregado anteriormente.';
             $res['errores'][] = true;
             $res['flag'] = 3;
@@ -45,7 +45,7 @@ if ($referencia == 0) {
             $res['flag'] = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
-        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND flag IS NULL"))['id']) {
+        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND flag IS NULL OR flag = 2"))['id']) {
             $res['mensajes'][] = 'Este pago ya habia sido agregado anteriormente.';
             $res['errores'][] = true;
             $res['flag'] = 3;
