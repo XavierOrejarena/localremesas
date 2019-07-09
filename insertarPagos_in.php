@@ -45,7 +45,7 @@ if ($referencia == 0) {
             $res['flag'] = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
-        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND flag IS NULL OR flag = 2"))['id']) {
+        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND (flag IS NULL OR flag = 2)"))['id']) {
             $res['mensajes'][] = 'Este pago ya habia sido agregado anteriormente.';
             $res['errores'][] = true;
             $res['flag'] = 3;
