@@ -36,7 +36,6 @@ const app = new Vue({
 				url: './cargar_pagos_all.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data)
 				if (response.data) {
 					this.pagos_in = response.data.in;
 					this.pagos_out = response.data.out;
@@ -52,9 +51,31 @@ const app = new Vue({
 				
 			}
 			return total;
+		},
+		captures_out() {
+			axios({
+				method: 'get',
+				url: './captures_out.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				response.data.forEach(element => {
+					var temp = element.indexOf("_")
+					var number = element.substring(0, temp)
+					if(!isNaN(number) && number != '') {
+						Array.prototype.forEach.call(this.pagos_out, e => {
+							if (number == e.id) {
+								e.capture = element;
+							}
+						})
+					}
+				})
+
+			});
 		}
 	},
 	beforeMount() {
+		this.cargar_pagos_all();
+		this.captures_out();
 		axios({
 			method: 'get',
 			url: './session.php',
@@ -62,7 +83,6 @@ const app = new Vue({
 		}).then(response => {
 			if (response['data'] == 'ADMIN' || response['data'] == 'OPERADOR') {
 				this.tipo_usuario = response.data;
-				this.cargar_pagos_all();
 			} else {
 				window.location.href = './login.html';
 			}
