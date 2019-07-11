@@ -3,6 +3,7 @@ const app = new Vue({
 	data: {
 		pagos_in: '',
 		pagos_out: '',
+		pagos_out2: '',
 		tipo_usuario: 'REGULAR'
 	},
 	methods: {
@@ -69,13 +70,11 @@ const app = new Vue({
 						})
 					}
 				})
-
+				this.pagos_out2 = this.pagos_out;
 			});
 		}
 	},
 	beforeMount() {
-		this.cargar_pagos_all();
-		this.captures_out();
 		axios({
 			method: 'get',
 			url: './session.php',
@@ -83,11 +82,13 @@ const app = new Vue({
 		}).then(response => {
 			if (response['data'] == 'ADMIN' || response['data'] == 'OPERADOR') {
 				this.tipo_usuario = response.data;
+				this.cargar_pagos_all();
 			} else {
 				window.location.href = './login.html';
 			}
 		});
 	},
-	computed: {
-	}
+	beforeUpdate() {
+		this.captures_out();
+	  },
 });
