@@ -11,7 +11,7 @@ $sql = "SELECT nombre FROM cuentas";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $nombre = Unaccent($row['nombre']);
+    $nombre = strtoupper(Unaccent($row['nombre']));
     echo "<p>$nombre<p>";
 }
 
