@@ -3,6 +3,11 @@ header( 'Content-type: application/json' );
 include "connect.php";
 $res = array( 'errores' => false );
 
+function Unaccent($string)
+{
+    return preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml|caron);~i', '$1', htmlentities($string, ENT_COMPAT, 'UTF-8'));
+}
+
 if ($_POST['id_usuario'] == 0) {
 	mysqli_query($link, "INSERT INTO usuarios (tipo) VALUES ('REGULAR')");
 	$id_usuario = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
@@ -13,7 +18,7 @@ $res['id_usuario'] = $id_usuario;
 
 if (isset($_POST['cuenta'])) {
 	for ($i=0; $i < sizeof($_POST['nombre']); $i++) { 
-		$nombre = strtoupper($_POST['nombre'][$i]);
+		$nombre = strtoupper(Unaccent($_POST['nombre'][$i]));
 		$tipo_cedula = $_POST['tipo_cedula'][$i];
 		$cedula = $_POST['cedula'][$i];
 		$tipo_cuenta = $_POST['tipo_cuenta'][$i];

@@ -14,7 +14,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     
     $nombre = strtoupper(Unaccent($row['nombre']));
     $id = $row['id'];
-    // mysqli_query($link, "UPDATE cuentas SET nombre = '$nombre' WHERE id = '$id'");
+    mysqli_query($link, "UPDATE cuentas SET nombre = '$nombre' WHERE id = '$id'");
 
     echo "<p>$nombre<p>";
 }
