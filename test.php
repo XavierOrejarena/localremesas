@@ -11,7 +11,9 @@ $sql = "SELECT nombre FROM cuentas";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $nombre = Unaccent($row['nombre']);
+    // $nombre = Unaccent($row['nombre']);
+    $nombre = iconv('UTF-8', 'ASCII//TRANSLIT', $row['nombre']);
+    $nombre = preg_replace('/[^a-zA-Z0-9]/', ' ', $nombre);
     echo "<p>$nombre<p>";
 }
 
