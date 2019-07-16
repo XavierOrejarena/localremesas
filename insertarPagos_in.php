@@ -21,8 +21,9 @@ if ($referencia == 0) {
     $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
 } else {
     if ($banco == 'BCP') {
-        if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND flag = 1"))['id']) {
-            if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = -7.5 AND flag = 1"))['id']) {
+        // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=$banco");
+        if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND flag = 1 AND id_banco = $id_banco"))['id']) {
+            if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = -7.5 AND flag = 1 AND id_banco = $id_banco"))['id']) {
                 $res['restar'] = 1;
             }
             
@@ -36,8 +37,8 @@ if ($referencia == 0) {
             $res['flag'] = 3;
         }
     } else {
-        if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag = 1"))['id']) {
-            if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = -7.5 AND flag = 1"))['id']) {
+        if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag = 1 AND id_banco = $id_banco"))['id']) {
+            if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = -7.5 AND flag = 1 AND id_banco = $id_banco"))['id']) {
                 $res['restar'] = 1;
             }
             
