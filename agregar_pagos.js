@@ -12,6 +12,7 @@ const app = new Vue({
 		tipo_usuario: '',
 		tipo_cliente: 'REGULAR',
 		monto_total: 0,
+		monto_totalDivisa: 0,
 		tabla: false,
 		cuentas_display: '',
 		small: 'Usuario nuevo',
@@ -39,16 +40,15 @@ const app = new Vue({
 				}
 			});
 		},
-		calcTest(){
-			this.cuentas_display[0].monto = this.monto_aux*this.tasa;
-		},
 		calcularMontoTotal() {
 			this.monto_total = 0;
+			this.monto_totalDivisa = 0;
 			if (!(this.cuentas_display == undefined)) {
 				var plus;
 				for (var i = 0; i < this.cuentas_display.length; i++) {
 					if (this.cuentas_display[i]['monto_aux'] > 0) {
-						this.cuentas_display[i]['monto'] = this.tasa*this.cuentas_display[i]['monto_aux'];
+						this.cuentas_display[i]['monto'] = Math.round(this.tasa*this.cuentas_display[i]['monto_aux']);
+						this.monto_totalDivisa = this.monto_totalDivisa + parseFloat(this.cuentas_display[i]['monto_aux']);
 					}
 					plus = parseFloat(this.cuentas_display[i]['monto']);
 					if (this.cuentas_display[i]['monto'] == '') {
