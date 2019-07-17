@@ -35,7 +35,8 @@ const app = new Vue({
 			}).then(response => {
 				if (response.data) {
 					this.pagos_out = response.data.out;
-					// console.log(response.data.out)
+					this.pagos_out.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
+					console.log(response.data.out)
 				}
 			});
 		},
@@ -275,9 +276,19 @@ const app = new Vue({
 		},
 		total: function(vif, divisa, prop) {
 			var total = 0
+			var arr = []
 			Array.from(this.pagos_out).forEach(pago => {
-				if (pago[vif] == divisa) {
-					total = parseFloat(total) + parseFloat(pago[prop]);
+				if (prop == 'amount') {
+					if (arr.indexOf(pago.id_pago_in) == -1) {
+						arr.push(pago.id_pago_in);
+						if (pago[vif] == divisa) {
+							total = total + pago[prop];
+						}
+					}
+				}else {
+					if (pago[vif] == divisa) {
+						total = total + pago[prop];
+					}
 				}
 			});
 			return total;
