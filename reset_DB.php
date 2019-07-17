@@ -16,10 +16,10 @@ if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }else {
 	
+	$link->query("DROP TABLE prestamos");
 	$link->query("DROP TABLE usuarios_cuentas");
 	$link->query("DROP TABLE pagos_out");
 	$link->query("DROP TABLE pagos_in");
-	$link->query("DROP TABLE prestamos");
 	$link->query("DROP TABLE cuentas");
 	$link->query("DROP TABLE usuarios");
 	$link->query("DROP TABLE tasas");
@@ -38,7 +38,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>usuarios<p>";
 	} else {
-	    echo "<p style='color: red;'>no usuarios<p>" . $conn->error;
+	    echo "<p style='color: red;'>no usuarios<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE cuentas (
@@ -53,7 +53,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>cuentas<p>";
 	} else {
-	    echo "<p style='color: red;'>no cuentas<p>" . $conn->error;
+	    echo "<p style='color: red;'>no cuentas<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE usuarios_cuentas (
@@ -67,7 +67,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>usuarios_cuentas<p>";
 	} else {
-	    echo "<p style='color: red;'>no usuarios_cuentas<p>" . $conn->error;
+	    echo "<p style='color: red;'>no usuarios_cuentas<p>" . $link->error;
 	}
 	
 	$sql = "CREATE TABLE bancos (
@@ -80,7 +80,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 		echo "<p style='color: green;'>bancos<p>";
 	} else {
-		echo "<p style='color: red;'>no bancos<p>" . $conn->error;
+		echo "<p style='color: red;'>no bancos<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE registros_bancos (
@@ -95,7 +95,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 		echo "<p style='color: green;'>registro_bancos<p>";
 	} else {
-		echo "<p style='color: red;'>no registro_bancos<p>" . $conn->error;
+		echo "<p style='color: red;'>no registro_bancos<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE pagos_in (
@@ -115,7 +115,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>pagos_in<p>";
 	} else {
-	    echo "<p style='color: red;'>no pagos_in<p>" . $conn->error;
+	    echo "<p style='color: red;'>no pagos_in<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE pagos_out (
@@ -137,22 +137,24 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>pagos_out<p>";
 	} else {
-	    echo "<p style='color: red;'>no pagos_out<p>" . $conn->error;
+	    echo "<p style='color: red;'>no pagos_out<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE prestamos (
 	id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	id_usuario INT(10) UNSIGNED,
 	FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+	id_pago_out INT(10) UNSIGNED,
+	FOREIGN KEY (id_pago_out) REFERENCES pagos_out(id),
 	monto DECIMAL(10,2),
-	id_banco INT(10) UNSIGNED,
-	FOREIGN KEY (id_banco) REFERENCES bancos(id)
+	divisa VARCHAR(3),
+	flag INT(1) UNSIGNED
 	)";
 
 	if ($link->query($sql) === TRUE) {
 		echo "<p style='color: green;'>prestamos<p>";
 	} else {
-		echo "<p style='color: red;'>no prestamos<p>" . $conn->error;
+		echo "<p style='color: red;'>no prestamos<p>" . $link->error;
 	}
 
 	$sql = "CREATE TABLE tasas (
@@ -163,7 +165,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>tasas<p>";
 	} else {
-	    echo "<p style='color: red;'>no tasas<p>" . $conn->error;
+	    echo "<p style='color: red;'>no tasas<p>" . $link->error;
 	}
 
 	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 1790)";
@@ -171,7 +173,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>PEN<p>";
 	} else {
-	    echo "<p style='color: red;'>no PEN<p>" . $conn->error;
+	    echo "<p style='color: red;'>no PEN<p>" . $link->error;
 	}
 
 	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('USD', 300)";
@@ -179,7 +181,7 @@ if (mysqli_connect_errno()) {
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>USD<p>";
 	} else {
-	    echo "<p style='color: red;'>no USD<p>" . $conn->error;
+	    echo "<p style='color: red;'>no USD<p>" . $link->error;
 	}
 
 	$password = password_hash('xavier123', PASSWORD_DEFAULT);
@@ -220,7 +222,8 @@ if (mysqli_connect_errno()) {
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 100, 'USD')");
 	// $link->query("INSERT INTO pagos_in (id_banco, monto, referencia, flag, reg_date) VALUES (5, 50, 9566692, 1, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
-	// $link->query("INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES (0, 1, 1, 0, 0, 'APROBADO', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 8, 50, 0, 300, 'PRESTAMO', 5, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	// $link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 1, NULL, 14700, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 
 
 

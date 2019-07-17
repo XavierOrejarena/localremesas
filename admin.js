@@ -11,6 +11,7 @@ const app = new Vue({
 		mensaje: '',
 		bancos: '',
 		prestamos: '',
+		prestamos2: '',
 		pagos_in: '',
 		registro: '',
 		monto: '',
@@ -34,7 +35,6 @@ const app = new Vue({
 			}).then(response => {
 				if (response.data) {
 					this.pagos_out = response.data.out;
-					console.log(Array.from(this.pagos_out).filter(pago => pago.banco_in != ''));
 				}
 			});
 		},
@@ -222,7 +222,8 @@ const app = new Vue({
 				url: './getPrestamos.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				this.prestamos = response.data;
+				this.prestamos = response.data.total;
+				this.prestamos2 = response.data.detallado;
 			});
 		},
 		getPagosIn() {
@@ -317,6 +318,11 @@ const app = new Vue({
 		filterPrestamos() {
 			if (this.prestamos != null) {
 				return this.prestamos.filter(prestamo => prestamo.id_usuario == this.id);
+			}
+		},
+		filterPrestamos2() {
+			if (this.prestamos2 != null) {
+				return this.prestamos2.filter(prestamo => prestamo.id_usuario == this.id);
 			}
 		}
 	}

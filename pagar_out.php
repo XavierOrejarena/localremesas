@@ -69,7 +69,7 @@ if ($id = $_POST['id']) {
 				// $chat_id = '@PagosLR';
 				$chat_id = -1001265304659;
 				$text = 'http://localremesas.com/comprobantes_out/'.$id."_".$random.".jpg";
-				file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
+				// file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
 				$aux = true;
 				while($row = mysqli_fetch_array($result)){
 					if ($row['estado'] != 'PAGADO') {
@@ -88,11 +88,15 @@ if ($id = $_POST['id']) {
 
 						$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_in WHERE id = '$id_pago_in'"))['monto'];
 						$id_banco = mysqli_fetch_array(mysqli_query($link, "SELECT id_banco FROM pagos_in WHERE id = '$id_pago_in'"))['id_banco'];
+						$divisa = mysqli_fetch_array(mysqli_query($link, "SELECT divisa FROM bancos WHERE id = '$id_banco'"))['divisa'];
 						
-						if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = '$id_usuario' AND divisa = '$divisa'")) == 1) {
-							$sql = "UPDATE prestamos SET monto = monto +$monto WHERE id_usuario = '$id_usuario'";
+						$sql = "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id', '$monto', '$divisa', 1)";
+						mysqli_query($link, $sql);
+						if (mysqli_num_rows(mysqli_query($link, "SELECT * FROM prestamos WHERE id_usuario = '$id_usuario' AND divisa = '$divisa' AND flag = 0")) == 1) {
+							file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=Hi");
+							$sql = "UPDATE prestamos SET monto = monto +$monto WHERE id_usuario = '$id_usuario' AND divisa = '$divisa' AND flag = 0";
 						} else {
-							$sql = "INSERT INTO prestamos (id_usuario, monto, id_banco) VALUES ('$id_usuario', '$monto', '$id_banco')";
+							$sql = "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id', '$monto', '$divisa', 0)";
 						}
 						if(mysqli_query($link, $sql)) {
 							$res['mensajes'][] = 'Prestamo agregado exitosamente';

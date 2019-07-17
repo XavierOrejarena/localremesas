@@ -17,7 +17,8 @@ if (!empty($_POST['id_usuario'])) {
     if ($result->num_rows == 1) {
         $id_pago_in = mysqli_fetch_assoc($result)['id'];
         mysqli_query($link, "UPDATE pagos_in SET flag = 9, id_usuario = '$id_usuario' WHERE id = '$id_pago_in'");
-        mysqli_query($link, "UPDATE prestamos SET monto = monto - '$amount' WHERE id_usuario = '$id_usuario' AND id_banco = '$id_banco'");
+        $divisa = mysqli_fetch_array(mysqli_query($link, "SELECT divisa FROM bancos WHERE id = '$id_banco'"))['divisa'];
+        mysqli_query($link, "UPDATE prestamos SET monto = monto - '$amount' WHERE id_usuario = '$id_usuario' AND divisa = '$divisa' AND flag = 0");
         $res[mensaje] = 'Prestamo actualizado exitosamente.';
         $res[error] = false;
     } else {

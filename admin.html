@@ -257,13 +257,13 @@
             <input v-model="id" type="text" class="form-control" maxlength="10">
             <small class="text-danger">{{small}}</small>
          </div>
-         <table v-if="id" class="table table-hover text-center table-lg container border rounded col-md-6">
+         <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-6 table-danger">
                <thead>
                   <tr>
                      <th scope="col">ID Usuario</th>
                      <th scope="col">Monto</th>
                      <th scope="col">Divisa</th>
-                     <th scope="col">Banco</th>
+                     <th scope="col">Fecha</th>
                   </tr>
                </thead>
                <tbody>
@@ -271,25 +271,43 @@
                      <td scope="col">{{prestamo.id_usuario}}</th>
                      <td scope="col">{{prestamo.monto}}</th>
                      <td scope="col">{{prestamo.divisa}}</th>
-                     <td scope="col">{{prestamo.nombre}}</th>
+                     <td scope="col">{{prestamo.fecha}}</th>
                   </tr>
                </tbody>
             </table>
-         <table v-if="!id" class="table table-hover text-center table-lg container border rounded col-md-6">
+         <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-6 table-danger">
             <thead>
                <tr>
                   <th scope="col">ID Usuario</th>
                   <th scope="col">Monto</th>
                   <th scope="col">Divisa</th>
-                  <th scope="col">Banco</th>
+                  <th scope="col">Fecha</th>
                </tr>
             </thead>
             <tbody>
                <tr v-for="prestamo in prestamos">
-                  <td scope="col">{{prestamo.id_usuario}}</th>
-                  <td scope="col">{{prestamo.monto}}</th>
-                  <td scope="col">{{prestamo.divisa}}</th>
-                  <td scope="col">{{prestamo.nombre}}</th>
+                  <td scope="col">{{prestamo.id_usuario}}</td>
+                  <td scope="col">{{prestamo.monto}}</td>
+                  <td scope="col">{{prestamo.divisa}}</td>
+                  <td scope="col">{{prestamo.fecha}}</td>
+               </tr>
+            </tbody>
+         </table>
+         <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-6 table-success">
+            <thead>
+               <tr>
+                  <th scope="col">ID Usuario</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Divisa</th>
+                  <th scope="col">Fecha</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr v-for="prestamo2 in filterPrestamos2">
+                  <td scope="col">{{prestamo2.id_usuario}}</td>
+                  <td scope="col">{{prestamo2.monto}}</td>
+                  <td scope="col">{{prestamo2.divisa}}</td>
+                  <td scope="col">{{prestamo2.fecha}}</td>
                </tr>
             </tbody>
          </table>
