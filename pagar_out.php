@@ -78,7 +78,7 @@ if ($id = $_POST['id']) {
 					}
 				}
 
-				$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_out WHERE id_pago_in = '$id_pago_in'"))['monto'];
+				$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_out WHERE id = '$id'"))['monto'];
 				mysqli_query($link, "UPDATE bancos SET saldo = bancos.saldo - '$monto' WHERE id = '$id_banco'");
 
 				if ($aux) {
@@ -87,8 +87,8 @@ if ($id = $_POST['id']) {
 					if (mysqli_fetch_array(mysqli_query($link, "SELECT referencia FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))[referencia] == 0) {
 
 						$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_in WHERE id = '$id_pago_in'"))['monto'];
-						$id_banco = mysqli_fetch_array(mysqli_query($link, "SELECT id_banco FROM pagos_in WHERE id = '$id_pago_in'"))['id_banco'];
-						$divisa = mysqli_fetch_array(mysqli_query($link, "SELECT divisa FROM bancos WHERE id = '$id_banco'"))['divisa'];
+						$id_banco_in = mysqli_fetch_array(mysqli_query($link, "SELECT id_banco FROM pagos_in WHERE id = '$id_pago_in'"))['id_banco'];
+						$divisa = mysqli_fetch_array(mysqli_query($link, "SELECT divisa FROM bancos WHERE id = '$id_banco_in'"))['divisa'];
 						
 						$sql = "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id', '$monto', '$divisa', 1)";
 						mysqli_query($link, $sql);

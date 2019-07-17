@@ -168,7 +168,7 @@ if (mysqli_connect_errno()) {
 	    echo "<p style='color: red;'>no tasas<p>" . $link->error;
 	}
 
-	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 1790)";
+	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('PEN', 2675)";
 
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>PEN<p>";
@@ -176,7 +176,7 @@ if (mysqli_connect_errno()) {
 	    echo "<p style='color: red;'>no PEN<p>" . $link->error;
 	}
 
-	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('USD', 300)";
+	$sql = "INSERT INTO tasas (divisa, tasa) VALUES ('USD', 8800)";
 
 	if ($link->query($sql) === TRUE) {
 	    echo "<p style='color: green;'>USD<p>";
@@ -214,16 +214,17 @@ if (mysqli_connect_errno()) {
 
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('MERCANTIL', 100, 'VES')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANESCO', 100, 'VES')");
-	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'USD')");
-	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('INTERBANK', 100, 'PEN')");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VIENA', 100, 'VES')");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('DKROSS', 100, 'VES')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'PEN')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'USD')");
 	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 100, 'USD')");
-	// $link->query("INSERT INTO pagos_in (id_banco, monto, referencia, flag, reg_date) VALUES (5, 50, 9566692, 1, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
-	// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 8, 50, 0, 300, 'PRESTAMO', 5, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
-	// $link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 1, NULL, 14700, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VENEZUELA', 100, 'VES')");
+	$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 9, 500, 123456, 8800, 'APROBADO', NULL, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	$link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 1, NULL, 2640000, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+	$link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 2, NULL, 1760000, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 
 
 
