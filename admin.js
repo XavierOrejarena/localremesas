@@ -27,6 +27,9 @@ const app = new Vue({
 		pagos_out: ''
 	},
 	methods: {
+		format(number) {
+			return new Intl.NumberFormat('de-DE').format(number)
+		},
 		cargar_pagos_all() {
 			axios({
 				method: 'get',
@@ -150,7 +153,8 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.bancos = response.data;
-				// this.bancos.map(item => (item.id = parseInt(item.id)))
+				this.bancos.map(item => (item.saldo = parseFloat(item.saldo)))
+				// console.log(this.bancos)
 			});
 		},
 		actualizarUsuario() {

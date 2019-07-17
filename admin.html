@@ -172,7 +172,7 @@
                        <td scope="col">{{banco.nombre}}</td>
                        <td scope="col">{{banco.divisa}}</td>
                        <td scope="col"><input type="text" class="form-control" placeholder="Saldo" :id="banco.id" :value="banco.saldo"></td>
-                       <td scope="col"><input type="text" class="form-control" v-model="banco.saldo" disabled></th>   
+                       <td scope="col"><input type="text" class="form-control" :value=format(banco.saldo) disabled></th>   
                        <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarSaldo(banco.id)">Actualizar</button></td>
                        <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="eliminarBanco(banco.id)">X</button></td>
                     </tr>
