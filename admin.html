@@ -304,10 +304,10 @@
             </thead>
             <tbody>
                <tr v-for="prestamo2 in filterPrestamos2">
-                  <td scope="col">{{prestamo2.id_usuario}}</td>
-                  <td scope="col">{{prestamo2.monto}}</td>
-                  <td scope="col">{{prestamo2.divisa}}</td>
-                  <td scope="col">{{prestamo2.fecha}}</td>
+                  <td :class="{'table-warning':prestamo2.monto < 0}" scope="col">{{prestamo2.id_usuario}}</td>
+                  <td :class="{'table-warning':prestamo2.monto < 0}" scope="col">{{prestamo2.monto}}</td>
+                  <td :class="{'table-warning':prestamo2.monto < 0}" scope="col">{{prestamo2.divisa}}</td>
+                  <td :class="{'table-warning':prestamo2.monto < 0}" scope="col">{{prestamo2.fecha}}</td>
                </tr>
             </tbody>
          </table>

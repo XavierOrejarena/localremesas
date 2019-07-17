@@ -15,5 +15,16 @@ while ($row = mysqli_fetch_assoc($result)) {
 	}
 }
 
+$sql = "SELECT id_usuario, -monto AS monto, reg_date AS fecha, bancos.divisa
+FROM pagos_in
+JOIN bancos ON bancos.id = pagos_in.id_banco
+WHERE flag = 9";
+$result = mysqli_query($link, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+	$res['detallado'][] = $row;
+}
+
+
 echo json_encode($res);
 ?>
