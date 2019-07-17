@@ -1,14 +1,14 @@
 <?php
 
-$folders = array('comprobantes_in', 'comprobantes_out');
-foreach ($folders as $folder) {
-	$files = glob($folder . '/*');
-	foreach($files as $file){
-		if(is_file($file)){
-			unlink($file);
-		}
-	}
-}
+// $folders = array('comprobantes_in', 'comprobantes_out');
+// foreach ($folders as $folder) {
+// 	$files = glob($folder . '/*');
+// 	foreach($files as $file){
+// 		if(is_file($file)){
+// 			unlink($file);
+// 		}
+// 	}
+// }
 
 include "connect.php";
 
