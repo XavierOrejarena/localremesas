@@ -225,8 +225,10 @@ const app = new Vue({
 				url: './getPrestamos.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				this.prestamos = response.data.total;
-				this.prestamos2 = response.data.detallado;
+				if (response.data) {
+					this.prestamos = response.data.total;
+					this.prestamos2 = response.data.detallado;
+				}
 			});
 		},
 		getPagosIn() {
