@@ -318,63 +318,51 @@
                <thead>
                   <tr class="thead-dark">
                      <th scope="col">Divisa</th>
-                     <th scope="col">Todal VES</th>
+                     <th scope="col">Total VES</th>
                      <th scope="col">Total Divisa</th>
                      <th scope="col">Tasa Implícita</th>
                   </tr>
                </thead>
                <tbody>
                   <tr v-for="divisa in divisas">
-                     <td scope="col">{{divisa.divisa}} </td>
-                     <td scope="col">251251</td>
-                     <td scope="col">200 </td>
-                     <td scope="col">1790 </td>
+                     <td scope="col">{{divisa.divisa}}</td>
+                     <td scope="col">{{total('divisa', divisa.divisa, 'monto')}}</td>
+                     <td scope="col">{{total('divisa', divisa.divisa, 'amount')}}</td>
+                     <td scope="col">{{tasa('divisa', divisa.divisa)}}</td>
                   </tr>
                </tbody>
                <thead>
                      <tr class="thead-dark">
                         <th scope="col">Banco</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col">Total VES</th>
+                        <th scope="col">Total Divisa</th>
+                        <th scope="col">Tasa Implícita</th>
                      </tr>
                   </thead>
                   <tbody>
                         <tr v-for="banco in filterBancos">
                            <td scope="col">{{banco.nombre}} {{banco.divisa}} </td>
-                           <td scope="col">251251</td>
-                           <td scope="col">200 </td>
-                           <td scope="col">1790 </td>
+                           <td scope="col">{{total('id_banco_in', banco.id, 'monto')}}</td>
+                           <td scope="col">{{total('id_banco_in', banco.id, 'amount')}}</td>
+                           <td scope="col">{{tasa('id_banco_in', banco.id)}}</td>
                         </tr>
                      </tbody>
                      <thead>
                            <tr class="thead-dark">
                               <th scope="col">Usuario</th>
-                              <th scope="col"></th>
-                              <th scope="col"></th>
-                              <th scope="col"></th>
+                              <th scope="col">Total VES</th>
+                              <th scope="col">Total Divisa</th>
+                              <th scope="col">Tasa Implícita</th>
                            </tr>
                         </thead>
                         <tbody>
-                              <tr>
-                                 <td scope="col">ADMIN </td>
-                                 <td scope="col">251251</td>
-                                 <td scope="col">200 </td>
-                                 <td scope="col">1790 </td>
-                              </tr>
-                              <tr>
-                                    <td scope="col">MAYORISTA </td>
-                                    <td scope="col">251251</td>
-                                    <td scope="col">200 </td>
-                                    <td scope="col">1790 </td>
-                                 </tr>
-                                 <tr>
-                                       <td scope="col">REGULAR </td>
-                                       <td scope="col">251251</td>
-                                       <td scope="col">200 </td>
-                                       <td scope="col">1790 </td>
-                                    </tr>
-                           </tbody>
+                           <tr v-for="tipo in tipos">
+                                 <td scope="col">{{tipo}}</td>
+                                 <td scope="col">{{total('tipo', tipo, 'monto')}}</td>
+                                 <td scope="col">{{total('tipo', tipo, 'amount')}}</td>
+                                 <td scope="col">{{tasa('tipo', tipo)}}</td>
+                           </tr>
+                        </tbody>
             </table>
          </div>
      </div>

@@ -35,6 +35,7 @@ const app = new Vue({
 			}).then(response => {
 				if (response.data) {
 					this.pagos_out = response.data.out;
+					// console.log(response.data.out)
 				}
 			});
 		},
@@ -148,6 +149,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.bancos = response.data;
+				// this.bancos.map(item => (item.id = parseInt(item.id)))
 			});
 		},
 		actualizarUsuario() {
@@ -270,7 +272,28 @@ const app = new Vue({
 			}).then(response => {
 				this.getRegistros();
 			});
-		}
+		},
+		total: function(vif, divisa, prop) {
+			var total = 0
+			Array.from(this.pagos_out).forEach(pago => {
+				if (pago[vif] == divisa) {
+					total = parseFloat(total) + parseFloat(pago[prop]);
+				}
+			});
+			return total;
+		},
+		tasa(vif, divisa) {
+			var total = 0
+			var i = 0
+			Array.from(this.pagos_out).forEach(pago => {
+				if (pago[vif] == divisa) {
+					i++
+					total = parseFloat(total) + parseFloat(pago.monto/pago.amount);
+				}
+			});
+			if (!i) i = 1;
+			return (total/i).toFixed(2);
+		},
 	},
 	beforeMount() {
 		axios({
