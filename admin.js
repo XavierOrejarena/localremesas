@@ -36,7 +36,7 @@ const app = new Vue({
 				if (response.data) {
 					this.pagos_out = response.data.out;
 					this.pagos_out.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
-					console.log(response.data.out)
+					// console.log(response.data.out)
 				}
 			});
 		},
