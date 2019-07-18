@@ -355,12 +355,12 @@
                               <th scope="col">Tasa Implícita</th>
                            </tr>
                         </thead>
-                        <tbody>
-                           <tr v-for="tipo in tipos">
-                                 <td scope="col">{{tipo}}</td>
-                                 <td scope="col">{{total('tipo', tipo, 'monto')}}</td>
-                                 <td scope="col">{{total('tipo', tipo, 'amount')}}</td>
-                                 <td scope="col">{{tasa('tipo', tipo)}}</td>
+                        <tbody v-for="tipo in tipos">
+                           <tr v-for="divisa in divisas">
+                              <td scope="col" >{{tipo}} {{divisa.divisa}}</td>
+                              <td scope="col">{{total('tipo', tipo, 'monto', divisa.divisa)}}</td>
+                              <td scope="col">{{total('tipo', tipo, 'amount', divisa.divisa)}}</td>
+                              <td scope="col">{{tasa('tipo', tipo, divisa.divisa)}}</td>
                            </tr>
                         </tbody>
             </table>

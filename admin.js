@@ -1,7 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
-		tipos: ['REGULAR', 'OPERADOR', 'BUSCADOR', 'ESPECIAL', 'ADMIN'],
+		tipos: [],
 		tasas: '',
 		clase: '',
 		id: '',
@@ -39,6 +39,11 @@ const app = new Vue({
 				if (response.data) {
 					this.pagos_out = response.data.out;
 					this.pagos_out.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
+					for (let i = 0; i < this.pagos_out.length; i++) {
+						if (this.tipos.indexOf(this.pagos_out[i].tipo) == -1) {
+							this.tipos.push(this.pagos_out[i].tipo)
+						}
+					}
 					// console.log(response.data.out)
 				}
 			});
@@ -280,7 +285,7 @@ const app = new Vue({
 				this.getRegistros();
 			});
 		},
-		total: function(vif, divisa, prop) {
+		total (vif, divisa, prop, divisa2) {
 			var total = 0
 			var arr = []
 			Array.from(this.pagos_out).forEach(pago => {
@@ -288,24 +293,47 @@ const app = new Vue({
 					if (arr.indexOf(pago.id_pago_in) == -1) {
 						arr.push(pago.id_pago_in);
 						if (pago[vif] == divisa) {
-							total = total + pago[prop];
+							if (divisa2) {
+								if (pago.divisa == divisa2) {
+									total = total + pago[prop];
+								}
+							} else {
+								total = total + pago[prop];
+							}
 						}
 					}
 				}else {
 					if (pago[vif] == divisa) {
-						total = total + pago[prop];
+						if (divisa2) {
+							if (pago.divisa == divisa2) {
+								total = total + pago[prop];
+							}
+						} else {
+							total = total + pago[prop];
+						}
 					}
 				}
 			});
-			return total;
+			// return total.toFixed(2);
+			return Intl.NumberFormat('de-DE').format(total)
 		},
-		tasa(vif, divisa) {
+		tasa(vif, divisa, divisa2) {
 			var total = 0
 			var i = 0
+			var arr = []
 			Array.from(this.pagos_out).forEach(pago => {
-				if (pago[vif] == divisa) {
-					i++
-					total = parseFloat(total) + parseFloat(pago.monto/pago.amount);
+				if (arr.indexOf(pago.id_pago_in) == -1) {
+					arr.push(pago.id_pago_in);
+					if (pago[vif] == divisa) {
+						i++
+						if (divisa2) {
+							if (pago.divisa == divisa2) {
+								total = parseFloat(total) + parseFloat(pago.monto/pago.amount);
+							}
+						} else {
+							total = parseFloat(total) + parseFloat(pago.monto/pago.amount);
+						}
+					}
 				}
 			});
 			if (!i) i = 1;

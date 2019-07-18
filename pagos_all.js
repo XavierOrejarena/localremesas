@@ -40,6 +40,7 @@ const app = new Vue({
 				if (response.data) {
 					this.pagos_in = response.data.in;
 					this.pagos_out = response.data.out;
+					console.log(this.pagos_out)
 				}
 			});
 		},

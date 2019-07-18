@@ -67,7 +67,7 @@ JOIN bancos as b ON b.id = pagos_out.id_banco
 JOIN usuarios ON usuarios.id = pagos_in.id_usuario
 WHERE bancos.id = pagos_in.id_banco
 AND pagos_out.estado = 'PAGADO'
-AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR
+-- AND pagos_in.reg_date > NOW() - INTERVAL 21 HOUR
 ORDER BY pagos_out.id ASC");
 
 while ($row = mysqli_fetch_assoc($result)) {
