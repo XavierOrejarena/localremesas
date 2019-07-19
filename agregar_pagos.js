@@ -295,6 +295,11 @@ const app = new Vue({
 						this.tabla = true;
 						this.cargarTasa(response['data']['cuentas'][0].tipo);
 						this.tipo_cliente = response['data']['cuentas'][0].tipo;
+						if (this.tipo_cliente == 'ESPECIAL') {
+							this.Comision = 'no'
+						} else {
+							this.Comision = 'yes'
+						}
 					} else {
 						if (response['data']['tipo']) {
 							this.small = 'Usuario ya existe';
