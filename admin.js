@@ -28,11 +28,12 @@ const app = new Vue({
 		pagos_out: ''
 	},
 	methods: {
-		format (n) {
+		format (n, d) {
+			if (!d) d = 2;
 			return n.toLocaleString(
 				undefined, // leave undefined to use the browser's locale,
 						   // or use a string like 'en-US' to override it.
-				{ minimumFractionDigits: 2 }
+				{ minimumFractionDigits: d }
 			  );
 		},
 		cargar_pagos_all() {
@@ -295,6 +296,7 @@ const app = new Vue({
 		total (vif, divisa, prop, divisa2) {
 			var total = 0
 			var arr = []
+			var aux = false;
 			Array.from(this.pagos_out).forEach(pago => {
 				if (prop == 'amount') {
 					if (arr.indexOf(pago.id_pago_in) == -1) {
@@ -310,6 +312,7 @@ const app = new Vue({
 						}
 					}
 				}else {
+					aux = true;
 					if (pago[vif] == divisa) {
 						if (divisa2) {
 							if (pago.divisa == divisa2) {
@@ -321,7 +324,11 @@ const app = new Vue({
 					}
 				}
 			});
-			return this.format(total)
+			if (aux) {
+				return this.format(total, '0')
+			}else {
+				return this.format(total)
+			}
 			// return total.toFixed(2)
 			// return String(total).replace(/(.)(?=(\d{3})+$)/g,'$1,')
 		},
