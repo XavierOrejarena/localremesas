@@ -95,7 +95,7 @@
                   <input type="text" class="form-control" :placeholder="'TASA ' + tasa.divisa" :id="tasa.divisa" :value="tasa.tasa">
                </div>
                <div class="form-group mr-2">
-                  <input type="text" class="form-control" :value="tasa.tasa" disabled>
+                  <input type="text" class="form-control" :value="format(parseFloat(tasa.tasa))" disabled>
                </div>
                <div class="form-group">
                   <input class="btn btn-primary" type="button" value="Actualizar" @click="actualizarTasa(tasa.divisa)">
@@ -123,7 +123,7 @@
                            <td scope="col">{{usuario.username}}</th>
                            <td scope="col">
                            <select class="form-control" id="tipo" v-model:value="tipo_usuario">
-                              <option v-for="tipo in tipos">{{tipo}}</option>
+                              <option v-for="tipo in tipos2">{{tipo}}</option>
                             </select>
                            </td>
                            <td scope="col">{{usuario.reg_date}}</th>   
@@ -325,7 +325,7 @@
                </thead>
                <tbody>
                   <tr v-for="divisa in divisas">
-                     <td scope="col">{{divisa.divisa}}</td>
+                     <td scope="col"><bdi class="font-weight-bold">{{divisa.divisa}}</bdi></td>
                      <td scope="col">{{total('divisa', divisa.divisa, 'monto')}}</td>
                      <td scope="col">{{total('divisa', divisa.divisa, 'amount')}}</td>
                      <td scope="col">{{tasa('divisa', divisa.divisa)}}</td>
@@ -341,7 +341,7 @@
                   </thead>
                   <tbody>
                         <tr v-for="banco in filterBancos">
-                           <td scope="col">{{banco.nombre}} {{banco.divisa}} </td>
+                           <td scope="col">{{banco.nombre}} <bdi class="font-weight-bold">{{banco.divisa}}</bdi></td>
                            <td scope="col">{{total('id_banco_in', banco.id, 'monto')}}</td>
                            <td scope="col">{{total('id_banco_in', banco.id, 'amount')}}</td>
                            <td scope="col">{{tasa('id_banco_in', banco.id)}}</td>
@@ -357,7 +357,7 @@
                         </thead>
                         <tbody v-for="tipo in tipos">
                            <tr v-for="divisa in divisas">
-                              <td scope="col" >{{tipo}} {{divisa.divisa}}</td>
+                              <td scope="col" >{{tipo}} <bdi class="font-weight-bold">{{divisa.divisa}}</bdi></td>
                               <td scope="col">{{total('tipo', tipo, 'monto', divisa.divisa)}}</td>
                               <td scope="col">{{total('tipo', tipo, 'amount', divisa.divisa)}}</td>
                               <td scope="col">{{tasa('tipo', tipo, divisa.divisa)}}</td>

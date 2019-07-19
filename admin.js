@@ -2,6 +2,7 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		tipos: [],
+		tipos2: ['REGULAR', 'OPERADOR', 'BUSCADOR', 'ESPECIAL', 'ADMIN'],
 		tasas: '',
 		clase: '',
 		id: '',
@@ -27,8 +28,12 @@ const app = new Vue({
 		pagos_out: ''
 	},
 	methods: {
-		format(number) {
-			return new Intl.NumberFormat('de-DE').format(number)
+		format (n) {
+			return n.toLocaleString(
+				undefined, // leave undefined to use the browser's locale,
+						   // or use a string like 'en-US' to override it.
+				{ minimumFractionDigits: 2 }
+			  );
 		},
 		cargar_pagos_all() {
 			axios({
@@ -237,6 +242,8 @@ const app = new Vue({
 				if (response.data) {
 					this.prestamos = response.data.total;
 					this.prestamos2 = response.data.detallado;
+					this.prestamos.map(prestamo => (prestamo.monto = this.format(parseFloat(prestamo.monto))));
+					this.prestamos2.map(prestamo => (prestamo.monto = this.format(parseFloat(prestamo.monto))));
 				}
 			});
 		},
@@ -314,8 +321,9 @@ const app = new Vue({
 					}
 				}
 			});
-			// return total.toFixed(2);
-			return Intl.NumberFormat('de-DE').format(total)
+			return this.format(total)
+			// return total.toFixed(2)
+			// return String(total).replace(/(.)(?=(\d{3})+$)/g,'$1,')
 		},
 		tasa(vif, divisa, divisa2) {
 			var total = 0
@@ -337,7 +345,8 @@ const app = new Vue({
 				}
 			});
 			if (!i) i = 1;
-			return (total/i).toFixed(2);
+			return this.format(total/i)
+			// return (total/i).toFixed(2);
 		},
 	},
 	beforeMount() {

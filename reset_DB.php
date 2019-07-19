@@ -74,7 +74,7 @@ if (1) {
 		$sql = "CREATE TABLE bancos (
 			id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			nombre VARCHAR(20),
-			saldo DECIMAL(10,2),
+			saldo DECIMAL(20,2),
 			divisa VARCHAR(3)
 			)";
 		

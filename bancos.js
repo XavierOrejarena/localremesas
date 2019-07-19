@@ -8,6 +8,13 @@ const app = new Vue({
 		tipo_usuario: ''
 	},
 	methods: {
+		format (n) {
+			return n.toLocaleString(
+				undefined, // leave undefined to use the browser's locale,
+						   // or use a string like 'en-US' to override it.
+				{ minimumFractionDigits: 2 }
+			  );
+		},
 		eliminarPago(id) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', id);
@@ -28,6 +35,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.bancos = response.data;
+				this.bancos.map(banco => (banco.saldo = this.format(parseFloat(banco.saldo))));
 			});
 		},
 		getPagos() {
@@ -37,6 +45,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.pagos = response.data;
+				this.pagos.map(pago => (pago.monto = this.format(parseFloat(pago.monto))));
 			});
 		},
 		setBanco(e) {

@@ -64,7 +64,7 @@
                   <td>{{pago.nombre}}</td>
                   <td>{{pago.divisa}}</td>
                   <td><a :href="'http://localremesas.com/comprobantes_in/'+pago.referencia+'.jpg'" target="_blank">{{pago.referencia}}</td>
-                  <td>{{pago.monto}}</td>
+                  <td>{{format(parseFloat(pago.monto))}}</td>
                   <td>
                     <button @click="aprobar_in(pago.id)" type="button" class="btn btn-outline-success btn-sm mr-2">Aprobar</button>
                     <button @click="rechazar_in(pago.id)"type="button" class="btn btn-outline-danger btn-sm">Rechazar</button>

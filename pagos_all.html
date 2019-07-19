@@ -98,12 +98,10 @@
                      <td scope="col">{{pago_out.id_usuario}}</td>
                      <td scope="col">{{pago_out.id_pago_in}}</td>
                      <td scope="col">{{pago_out.banco_in}}</td>
-                     <td scope="col">{{(pago_out.monto/(filterTasa(pago_out.id_pago_in)/pago_out.amount)).toFixed(2)}}</td>
-                     <!-- <td scope="col">{{pago_out.monto/pago_out.tasa}}</td> -->
+                     <td scope="col">{{format(pago_out.monto/(filterTasa(pago_out.id_pago_in)/pago_out.amount))}}</td>
                      <td scope="col">{{pago_out.divisa}}</td>
-                     <td scope="col">{{pago_out.monto}}</td>
-                     <!-- <td scope="col">{{pago_out.monto/(pago_out.monto/pago_out.tasa)}}</td> -->
-                     <td scope="col">{{(filterTasa(pago_out.id_pago_in)/pago_out.amount).toFixed(2)}}</td>
+                     <td scope="col">{{format(parseFloat(pago_out.monto),'0')}}</td>
+                     <td scope="col">{{format((filterTasa(pago_out.id_pago_in)/pago_out.amount).toFixed(2))}}</td>
                      <td scope="col">{{pago_out.banco_out}}</td>
                      <td scope="col">{{pago_out.reg_date.split(' ')[1]}}</td>
                      <td scope="col">{{pago_out.estado}}</td>
