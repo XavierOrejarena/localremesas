@@ -333,13 +333,24 @@ const app = new Vue({
 				if (arr.indexOf(pago.id_pago_in) == -1) {
 					arr.push(pago.id_pago_in);
 					if (pago[vif] == divisa) {
-						i++
 						if (divisa2) {
 							if (pago.divisa == divisa2) {
+								i++
 								total = parseFloat(total) + parseFloat(pago.monto/pago.amount);
 							}
 						} else {
 							total = parseFloat(total) + parseFloat(pago.monto/pago.amount);
+						}
+					}
+				}else {
+					if (pago[vif] == divisa) {
+						if (divisa2) {
+							if (pago.divisa == divisa2) {
+								i++
+								total = total + pago[prop];
+							}
+						} else {
+							total = total + pago[prop];
 						}
 					}
 				}
