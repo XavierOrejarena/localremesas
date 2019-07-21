@@ -45,7 +45,10 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.pagos = response.data;
-				this.pagos.map(pago => (pago.monto = this.format(parseFloat(pago.monto))));
+				// console.log(this.pagos)
+				if (this.pagos != null) {
+					this.pagos.map(pago => (pago.monto = this.format(parseFloat(pago.monto))));
+				}
 			});
 		},
 		setBanco(e) {
