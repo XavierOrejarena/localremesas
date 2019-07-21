@@ -104,6 +104,7 @@ const app = new Vue({
 							}
 						}
 					}).then(response => {
+						window.scrollTo(0, 0);
 						this.cargar_pagos_out()
 						barra.style = 'width: ' + 0 + '%';
 						barra.innerHTML = 0 + '%';
