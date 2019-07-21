@@ -104,7 +104,10 @@ const app = new Vue({
 							}
 						}
 					}).then(response => {
-						window.location.href = './pagos_out.html';
+						this.cargar_pagos_out()
+						barra.style = 'width: ' + 0 + '%';
+						barra.innerHTML = 0 + '%';
+						// window.location.href = './pagos_out.html';
 					});
 				}
 			}
