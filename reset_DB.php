@@ -213,16 +213,16 @@ if (1) {
 		$link->query("INSERT INTO usuarios_cuentas (id_usuario, id_cuenta) VALUES (1,1)");
 		$link->query("INSERT INTO usuarios_cuentas (id_usuario, id_cuenta) VALUES (1,2)");
 	
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('MERCANTIL', 100, 'VES')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANESCO', 100, 'VES')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VIENA', 100, 'VES')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('DKROSS', 100, 'VES')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'PEN')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 100, 'USD')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'PEN')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 100, 'USD')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 100, 'USD')");
-		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VENEZUELA', 100, 'VES')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('MERCANTIL', 0, 'VES')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANESCO', 0, 'VES')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VIENA', 0, 'VES')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('DKROSS', 0, 'VES')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 0, 'PEN')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BCP', 0, 'USD')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 0, 'PEN')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 0, 'USD')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 0, 'USD')");
+		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VENEZUELA', 0, 'VES')");
 		// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 9, 500, 123456, 8800, 'APROBADO', NULL, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 		// $link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 1, NULL, 2640000, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 		// $link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 2, NULL, 1760000, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");

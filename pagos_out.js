@@ -108,8 +108,11 @@ const app = new Vue({
 						this.cargar_pagos_out()
 						barra.style = 'width: ' + 0 + '%';
 						barra.innerHTML = 0 + '%';
+						// this.pagos.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
 						// window.location.href = './pagos_out.html';
-					});
+					}).catch(function (err) {
+						console.log(err)
+					  });
 				}
 			}
 		},
