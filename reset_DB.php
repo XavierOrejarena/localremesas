@@ -1,6 +1,6 @@
 <?php
 
-if (1) {
+if (0) {
 	$folders = array('comprobantes_in', 'comprobantes_out');
 	foreach ($folders as $folder) {
 		$files = glob($folder . '/*');
