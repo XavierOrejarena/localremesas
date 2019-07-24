@@ -293,7 +293,7 @@ const app = new Vue({
 				this.getRegistros();
 			});
 		},
-		total (vif, divisa, prop, divisa2) {
+		total (prom, vif, divisa, prop, divisa2) {
 			var total = 0
 			var arr = []
 			var aux = false;
@@ -324,6 +324,9 @@ const app = new Vue({
 					}
 				}
 			});
+			if (prom) {
+				return total
+			}
 			if (aux) {
 				return this.format(total, '0')
 			}else {
@@ -332,39 +335,11 @@ const app = new Vue({
 			// return total.toFixed(2)
 			// return String(total).replace(/(.)(?=(\d{3})+$)/g,'$1,')
 		},
-		tasa(vif, divisa, divisa2) {
-			var total = 0
-			var i = 0
-			var arr = []
-			Array.from(this.pagos_out).forEach(pago => {
-				if (arr.indexOf(pago.id_pago_in) == -1) {
-					arr.push(pago.id_pago_in);
-					if (pago[vif] == divisa) {
-						i++
-						if (divisa2) {
-							if (pago.divisa == divisa2) {
-								total = parseFloat(total) + parseFloat(pago.monto)/parseFloat(pago.amount)
-							}
-						} else {
-							total = parseFloat(total) + parseFloat(pago.monto)/parseFloat(pago.amount)
-						}
-					}
-				}else {
-					if (pago[vif] == divisa) {
-						i++
-						if (divisa2) {
-							if (pago.divisa == divisa2) {
-								total = parseFloat(total) + parseFloat(pago[prop])
-							}
-						} else {
-							total = parseFloat(total) + parseFloat(pago[prop])
-						}
-					}
-				}
-			});
-			if (!i) i = 1;
-			return this.format(total/i)
-			// return (total/i).toFixed(2);
+		tasa(tasa) {
+			if (isNaN(tasa)) {
+				return 0
+			}
+			return this.format(parseFloat(tasa.toFixed(2)))
 		},
 	},
 	beforeMount() {
