@@ -3,7 +3,8 @@ const app = new Vue({
 	data: {
 		pagos: '',
 		tipo_usuario: 'REGULAR',
-		bancos: []
+		bancos: [],
+		red: 'border-color: #ff0000;  -webkit-box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);',
 	},
 	methods: {
 		format (n, d) {
@@ -68,15 +69,16 @@ const app = new Vue({
 		},
 		pagar_out(e, id_pago_in) {
 			if (document.getElementById(e).value == '' || document.getElementById(e).value == 0) {
-				document.getElementById(e).style =
-					'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+				document.getElementById(e).style = this.red
 			} else {
 				document.getElementById(e).style = '';
 				if (document.getElementById('f' + e).value == '') {
-					// document.getElementById('f'+e).parentElement.style = 'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);'
-					document.getElementById('f' + e).style =
-						'border-color: #ff0000;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);';
+					(document.getElementById('f'+e).parentElement).parentElement.style = this.red
+					document.getElementById('f'+e).parentElement.style = this.red
+					// document.getElementById('f' + e).style = this.red
 				} else {
+					(document.getElementById('f'+e).parentElement).parentElement.style = ''
+					document.getElementById('f'+e).parentElement.style = ''
 					var barra = document.getElementById('barra');
 					var bodyFormData = new FormData();
 					bodyFormData.append(
@@ -104,10 +106,16 @@ const app = new Vue({
 							}
 						}
 					}).then(response => {
+						for (let i = 0; i < this.pagos.length; i++) {
+							document.getElementById(this.pagos[i].id_pago_out).value = '';
+							document.getElementById('f' + this.pagos[i].id_pago_out).value = document.getElementById('f' + this.pagos[i].id_pago_out).defaultValue;
+							console.log('f' + this.pagos[i].id_pago_out)
+						}
 						window.scrollTo(0, 0);
-						this.cargar_pagos_out()
 						barra.style = 'width: ' + 0 + '%';
 						barra.innerHTML = 0 + '%';
+						this.cargar_pagos_out()
+						this.getBancos()
 						// this.pagos.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
 						// window.location.href = './pagos_out.html';
 					}).catch(function (err) {
