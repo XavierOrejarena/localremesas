@@ -47,7 +47,7 @@
             </nav>
         <div class="container">
             <h4>Pagos entrantes</h3>
-         <table onclick="copy(this)" class="table table-hover text-center table-sm container border rounded">
+            <table onclick="copy(this)" class="table table-hover text-center table-sm container border rounded">
             <thead>
                <tr>
                   <th scope="col">ID</th>
@@ -75,7 +75,17 @@
          </table>
         </div>
         <div class="container">
-            <h4>Pagos salientes</h3>
+            <div class="form-row">
+               <div>
+                  <h4>Pagos salientes</h3>
+               </div>
+               <div class="form-group col-md-2 ml-4">
+                  <input type="date" name="bday" :min="min" :max="max" class="form-control" v-model:value="date">
+               </div>
+               <div>
+                  <button type="button" class="btn btn-primary" @click="cargar_pagos_all">Buscar</button>
+               </div>
+            </div>
             <table onclick="copy(this)" class="table table-hover text-center table-sm container border rounded">
                <thead>
                   <tr>
