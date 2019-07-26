@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('America/La_Paz');
+// date_default_timezone_set('America/La_Paz');
 echo date("Y-m-d h:i:s"), "<br>";
 include "connect.php";
 
