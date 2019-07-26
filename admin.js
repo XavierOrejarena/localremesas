@@ -25,7 +25,10 @@ const app = new Vue({
 		errores: [],
 		divisas: '',
 		total_entrante: '',
-		pagos_out: ''
+		pagos_out: '',
+		max: null,
+		min: null,
+		date: null
 	},
 	methods: {
 		format (n, d) {
@@ -37,9 +40,12 @@ const app = new Vue({
 			  );
 		},
 		cargar_pagos_all() {
+			var bodyFormData = new FormData();
+			bodyFormData.set('date', this.date);
 			axios({
-				method: 'get',
+				method: 'post',
 				url: './cargar_pagos_all.php',
+				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				if (response.data) {
@@ -361,8 +367,14 @@ const app = new Vue({
 				this.getPrestamos();
 				this.getRegistros(1);
 				this.getDivisas();
+				var today = new Date();
+				var dd = String(today.getDate()).padStart(2, '0');
+				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+				var yyyy = today.getFullYear();
+				this.max = yyyy + '-' + mm + '-' + dd;
+				this.min = yyyy + '-' + mm + '-01';
+				this.date = this.max
 				this.cargar_pagos_all();
-				// this.totalEntrante();
 			} else {
 				window.location.href = './login.html';
 			}
