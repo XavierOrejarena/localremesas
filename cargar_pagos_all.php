@@ -4,7 +4,12 @@ include "connect.php";
 
 $date = $_POST['date'];
 // if (!$date) $date = date("Y-m-d") . " " . date("h:i:sa");
-if (!$date) $date = date("Y-m-d");
+if (!$date) {
+	$offset = -4*60*60; //converting 5 hours to seconds.
+	$dateFormat = "Y-m-d H:i:s";
+	$date = gmdate($dateFormat, time()+$offset);
+	// $date = date("Y-m-d");
+}
 // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=$date");
 
 $result = mysqli_query($link,

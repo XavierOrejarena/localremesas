@@ -4,11 +4,13 @@
 include "connect.php";
 
 
-$offset=-4*60*60; //converting 5 hours to seconds.  Hora en localhost
-$dateFormat="d-m-Y H:i";
+$offset=-4*60*60; //converting 5 hours to seconds.
+$dateFormat="Y-m-d H:i:s";
 $timeNdate=gmdate($dateFormat, time()+$offset);
 
-echo $timeNdate;
+echo $timeNdate, "<br>";
+
+echo date("Y-m-d H:i:s"), "<br>";
 
 // $result = mysqli_query($link, "SELECT CURRENT_TIMESTAMP");
 // $result = mysqli_query($link, "SELECT CURRENT_TIMESTAMP + INTERVAL 3 HOUR");

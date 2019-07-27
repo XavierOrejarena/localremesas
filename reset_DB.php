@@ -1,5 +1,9 @@
 <?php
 
+$offset=-4*60*60; //converting 5 hours to seconds.
+$dateFormat="Y-m-d H:i:s";
+$timeNdate=gmdate($dateFormat, time()+$offset);
+
 if (1) {
 	$folders = array('comprobantes_in', 'comprobantes_out');
 	foreach ($folders as $folder) {
@@ -186,7 +190,7 @@ if (1) {
 		}
 	
 		$password = password_hash('xavier123', PASSWORD_DEFAULT);
-		$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+		$sql = "INSERT INTO usuarios (username, password, tipo, reg_date) VALUES ('XAVIER', '$password', 'ADMIN', '$timeNdate')";
 		
 		if ($link->query($sql)) {
 			echo "<p style='color: green;'>Admin creado.</br>";

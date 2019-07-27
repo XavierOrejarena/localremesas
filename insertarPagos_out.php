@@ -1,6 +1,11 @@
 <?php
 header( 'Content-type: application/json' );
 include "connect.php";
+
+$offset=-4*60*60; //converting 5 hours to seconds.
+$dateFormat="Y-m-d H:i:s";
+$timeNdate=gmdate($dateFormat, time()+$offset);
+
 $res = array( 'errores' => false );
 
 $id_usuario = $_POST['id_usuario'];
@@ -20,7 +25,7 @@ if ($_POST['flag'] == 3) {
 		$id_cuenta = $_POST['id_cuenta'][$i];
 		$monto = $_POST['monto'][$i];
 	
-		$sql = "INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, monto, estado, reg_date) VALUES ('$id_usuario', '$id_pago_in', '$id_cuenta', '$monto', '$estado', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+		$sql = "INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, monto, estado, reg_date) VALUES ('$id_usuario', '$id_pago_in', '$id_cuenta', '$monto', '$estado', '$timeNdate')";
 		if(mysqli_query($link, $sql)) {
 			$res['mensajes'][] = 'Pago saliente agregado existosamente';
 			$res['errores'][] = false;

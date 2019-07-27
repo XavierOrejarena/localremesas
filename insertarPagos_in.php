@@ -2,6 +2,10 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
+$offset=-4*60*60; //converting 5 hours to seconds.
+$dateFormat="Y-m-d H:i:s";
+$timeNdate=gmdate($dateFormat, time()+$offset);
+
 $res['flag'] = 0;
 $id_usuario = $_POST['id_usuario'];
 $divisa = $_POST['divisa'];
@@ -13,7 +17,7 @@ $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE 
 
 if ($referencia == 0) {
     
-    mysqli_query($link, "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', '$tasa', 'PRESTAMO', 4, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+    mysqli_query($link, "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', '$tasa', 'PRESTAMO', 4, '$timeNdate')");
     
     $res['mensajes'][] = 'Prestamo agregado exitosamente';
     $res['errores'][] = false;
@@ -98,7 +102,7 @@ if ($referencia == 0) {
                 $res['mensajes'][] = 'Archivo cargado existosamente';
                 $res['errores'][] = false;
 
-                $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+                $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', '$timeNdate')";
 
                 if(mysqli_query($link, $sql)) {
                         $res['mensajes'][] = 'Pago agregado existosamente';
@@ -115,7 +119,7 @@ if ($referencia == 0) {
             }
         }
     } elseif ($res['flag'] == 0){ // SI NO HAY ARCHIVO
-        $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))";
+        $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', '$timeNdate')";
 
         if(mysqli_query($link, $sql)) {
                 $res['mensajes'][] = 'Pago entrante agregado existosamente';
