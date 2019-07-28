@@ -1,5 +1,5 @@
 <?php
-
+// php -r 'echo date("Y-m-d H:i:s"), "\n";'
 $offset=-4*60*60; //converting 5 hours to seconds.
 $dateFormat="Y-m-d H:i:s";
 $timeNdate=gmdate($dateFormat, time()+$offset);
