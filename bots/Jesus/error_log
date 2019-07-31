@@ -1,0 +1,535 @@
+[21-Feb-2019 13:31:28 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[21-Feb-2019 13:31:28 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[21-Feb-2019 13:31:28 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[22-Feb-2019 13:16:39 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:41 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:41 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:43 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:45 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:47 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:53 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:16:55 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:17:10 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:17:12 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:17:42 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[22-Feb-2019 13:17:44 America/New_York] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 41
+[23-Feb-2019 07:32:50 America/New_York] PHP Parse error:  syntax error, unexpected '}' in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 55
+[23-Feb-2019 07:32:52 America/New_York] PHP Parse error:  syntax error, unexpected '}' in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 55
+[23-Feb-2019 07:32:56 America/New_York] PHP Parse error:  syntax error, unexpected '}' in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 55
+[23-Feb-2019 07:33:04 America/New_York] PHP Parse error:  syntax error, unexpected '}' in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 55
+[23-Feb-2019 07:33:20 America/New_York] PHP Parse error:  syntax error, unexpected '}' in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 55
+[23-Feb-2019 07:53:55 America/New_York] Request has failed with error 400: Bad Request: message is too long
+
+[23-Feb-2019 07:57:12 America/New_York] Request has failed with error 400: Bad Request: message is too long
+
+[23-Feb-2019 07:57:50 America/New_York] Request has failed with error 400: Bad Request: message is too long
+
+[23-Feb-2019 11:18:45 America/New_York] PHP Notice:  Undefined variable: pricePeru in /home/bitnehuc/public_html/Bots/Jesus/Alerta.php on line 93
+[26-Feb-2019 10:38:53 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[26-Feb-2019 10:38:53 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[27-Feb-2019 11:51:41 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[27-Feb-2019 11:51:41 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[27-Feb-2019 19:15:55 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[27-Feb-2019 19:15:55 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[27-Feb-2019 19:16:17 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[27-Feb-2019 19:16:17 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[27-Feb-2019 19:16:56 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[27-Feb-2019 19:16:56 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[27-Feb-2019 19:17:18 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[27-Feb-2019 19:17:18 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[27-Feb-2019 19:17:23 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[27-Feb-2019 19:17:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[27-Feb-2019 19:18:23 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[27-Feb-2019 19:18:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[28-Feb-2019 10:36:04 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[28-Feb-2019 10:36:04 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[01-Mar-2019 15:26:26 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[01-Mar-2019 15:26:26 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[06-Mar-2019 08:23:52 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed! HTTP/1.1 502 Bad Gateway
+ in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[06-Mar-2019 08:23:52 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[11-Mar-2019 15:11:24 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[11-Mar-2019 15:11:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[11-Mar-2019 15:11:53 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[11-Mar-2019 15:11:53 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[11-Mar-2019 15:13:32 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[11-Mar-2019 15:13:32 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[11-Mar-2019 15:14:41 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[11-Mar-2019 15:14:41 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[11-Mar-2019 15:14:41 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[11-Mar-2019 15:14:41 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[11-Mar-2019 15:16:19 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[11-Mar-2019 15:16:19 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[11-Mar-2019 15:17:25 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[11-Mar-2019 15:17:25 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[11-Mar-2019 15:18:10 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed! HTTP/1.1 502 Bad Gateway
+ in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[11-Mar-2019 15:18:10 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[18-Mar-2019 11:39:40 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[18-Mar-2019 11:39:40 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[22-Mar-2019 10:03:22 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[22-Mar-2019 10:03:22 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[03-Apr-2019 15:55:50 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[03-Apr-2019 15:55:50 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:32:49 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:32:49 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:33:50 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[04-Apr-2019 08:33:50 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[04-Apr-2019 08:34:14 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:34:14 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:34:28 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:34:28 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:35:29 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:35:29 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:35:53 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:35:53 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:36:03 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:36:03 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:36:11 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:36:11 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:36:30 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:30 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:30 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:34 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:34 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:34 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:34 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:34 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:34 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:38 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:38 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:38 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:41 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:41 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:41 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:43 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:43 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:43 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:43 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:43 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:43 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:48 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:48 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:50 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:50 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:50 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:54 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:55 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:55 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:55 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:57 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:36:57 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:36:57 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:01 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:02 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:02 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:02 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:04 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:08 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:09 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:09 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:09 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:15 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:15 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:15 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:19 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:19 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:19 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:22 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:22 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:22 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:23 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:23 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:26 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:26 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:26 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:29 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:29 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:29 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:30 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:30 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:30 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:33 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:37 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:37 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:40 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:40 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:40 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:44 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:44 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:48 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:51 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[04-Apr-2019 08:37:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[04-Apr-2019 08:37:52 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:52 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:52 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:53 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:53 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:53 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:57 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:57 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:57 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:37:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:37:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:00 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:00 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:00 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:04 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:04 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:08 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:11 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:11 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:11 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:13 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:13 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:13 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:17 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:17 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:17 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:18 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:18 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:18 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:20 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:20 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:20 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:24 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:24 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:25 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:25 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:25 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:28 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:28 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:28 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:31 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:31 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:31 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:32 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:32 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:32 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:33 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:37 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:38 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:38 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:38 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:40 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:40 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:40 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:44 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:45 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:45 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:45 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:47 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:47 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:47 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:51 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:38:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:38:52 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:52 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:52 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:54 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:59 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:38:59 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:38:59 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:01 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:05 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:05 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:05 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:06 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:06 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:06 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:08 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:13 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:13 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:13 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:15 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:15 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:15 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:16 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[04-Apr-2019 08:39:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[04-Apr-2019 08:39:19 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:19 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:19 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:20 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:20 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:20 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:22 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:22 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:22 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:26 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:26 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:26 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:27 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:27 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:27 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:29 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:29 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:29 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:32 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:39:32 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:39:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:33 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:34 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:34 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:34 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:36 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:36 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:36 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:40 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:40 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:40 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:41 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:41 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:41 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:43 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:43 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:43 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:47 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:47 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:47 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:48 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:48 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:54 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:55 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:55 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:55 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:39:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:39:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:01 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:02 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:02 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:02 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:05 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:05 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:05 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:08 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:09 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:09 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:09 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:12 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:40:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:40:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:19 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:19 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:19 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:23 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:23 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:23 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:23 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:26 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:26 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:26 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:30 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:30 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:30 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:31 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:31 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:31 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:31 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:40:31 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:40:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:33 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:33 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:37 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:37 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:38 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:38 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:38 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:41 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:41 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:41 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:44 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:44 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:46 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:46 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:46 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:46 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:46 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:46 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:51 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:51 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:54 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:54 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:56 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:40:56 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:40:57 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:57 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:57 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:40:58 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:40:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:01 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:01 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:04 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:04 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:05 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:05 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:05 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:08 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:08 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:12 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:16 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:17 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[04-Apr-2019 08:41:17 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[04-Apr-2019 08:41:20 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:20 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:20 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:24 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:24 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:28 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 9
+[04-Apr-2019 08:41:28 America/New_York] PHP Notice:  Undefined property: stdClass::$result in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:28 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/btcinfobot.php on line 10
+[04-Apr-2019 08:41:52 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:41:52 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:42:39 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:42:39 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:42:58 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:42:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:43:52 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[04-Apr-2019 08:43:52 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[04-Apr-2019 08:44:20 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:44:20 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:44:39 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:44:39 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[04-Apr-2019 08:44:56 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:44:56 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:45:25 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 65
+[04-Apr-2019 08:45:25 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 70
+[04-Apr-2019 08:46:53 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:46:53 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:47:24 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 53
+[04-Apr-2019 08:47:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 57
+[04-Apr-2019 08:48:15 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[04-Apr-2019 08:48:15 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[04-Apr-2019 08:49:20 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 33
+[04-Apr-2019 08:49:20 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 38
+[05-Apr-2019 10:49:27 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 28
+[05-Apr-2019 10:49:31 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 28
+[05-Apr-2019 10:49:37 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 28
+[05-Apr-2019 10:49:48 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 28
+[05-Apr-2019 10:50:17 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 28
+[05-Apr-2019 10:51:24 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[05-Apr-2019 10:51:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[05-Apr-2019 10:51:24 America/New_York] PHP Notice:  Array to string conversion in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 250
+[05-Apr-2019 10:51:25 America/New_York] PHP Notice:  Array to string conversion in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 251
+[05-Apr-2019 10:51:32 America/New_York] PHP Notice:  Array to string conversion in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 251
+[08-Apr-2019 11:38:42 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 21
+[08-Apr-2019 11:38:42 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 25
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 1 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 2 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 3 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 4 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 5 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 6 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 7 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 8 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 9 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[08-Apr-2019 11:38:45 America/New_York] PHP Notice:  Undefined offset: 10 in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 39
+[09-Apr-2019 07:36:21 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 99
+[09-Apr-2019 07:36:21 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 104
+[09-Apr-2019 08:26:53 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/ve/venezuela/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 67
+[09-Apr-2019 08:26:53 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 72
+[17-Apr-2019 12:21:12 America/New_York] PHP Warning:  file_get_contents(https://localbitcoins.com/sell-bitcoins-online/pe/peru/.json): failed to open stream: HTTP request failed!  in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 99
+[17-Apr-2019 12:21:12 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/bitnehuc/public_html/Bots/Jesus/bot.php on line 104

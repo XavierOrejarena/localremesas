@@ -3,7 +3,7 @@
 // @ApruebaBot
 define('BOT_TOKEN', '695950939:AAHfKc9Lv1yceBT9yPkpcxNlAeRsLPuFGHw');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
-define('WEBHOOK_URL', 'https://localremesas.com/bots/ApruebaBot.php');
+define('WEBHOOK_URL', 'https://e6c26684.ngrok.io/ApruebaBot.php');
 
 function apiRequestWebhook($method, $parameters) {
   if (!is_string($method)) {
