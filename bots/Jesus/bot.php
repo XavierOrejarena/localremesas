@@ -280,7 +280,7 @@ function processMessage($message) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getVenezuela()."</pre>", 'parse_mode' => 'HTML'));
     } else if (strpos($text,"/peru") !== false) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getPeru()."</pre>", 'parse_mode' => 'HTML'));
-    } else if ($text = "/s") {
+    } else if ($text == "/s") {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getS()."</pre>", 'parse_mode' => 'HTML'));
     } else if (strpos($text,"/colombia") !== false) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getColombia()."</pre>", 'parse_mode' => 'HTML'));
