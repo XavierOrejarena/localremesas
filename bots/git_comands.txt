@@ -1,0 +1,1 @@
+git add *; git commit -m "se agrega el archivo que contiene los comandos de git";git push -u origin master
