@@ -9,6 +9,7 @@ $id_banco = explode('r', key($_POST))[1];
 $res['referencia'] = $referencia;
 $res['monto'] = $monto;
 $res['id_banco'] = $id_banco;
+$mensageTelegram = false;
 
 // if ($id_banco == 5) {
 //     $referencia = sprintf("%06d", $referencia);
@@ -59,6 +60,7 @@ if ($id_banco == 5) {
             $res['errores'][] = false;
             $res['mensajes'][] = "Saldo actualizado existosamente.";
             if (mysqli_query($link, "UPDATE pagos_in SET flag = 2, estado = 'APROBADO' WHERE id = '$id_pago_in'")) {
+                $mensageTelegram = true;
                 $res['errores'][] = false;
                 $res['mensajes'][] = 'Se ha aprobado un pago en divisa extranjera.';
                 if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id_pago_in = '$id_pago_in'")) {
@@ -72,6 +74,7 @@ if ($id_banco == 5) {
             $res['errores'][] = false;
             $res['mensajes'][] = "Saldo actualizado existosamente.";
             if (mysqli_query($link, "UPDATE pagos_in SET flag = 2, estado = 'APROBADO' WHERE id = '$id_pago_in'")) {
+                $mensageTelegram = true;
                 $res['errores'][] = false;
                 $res['mensajes'][] = 'Se ha aprobado un pago en divisa extranjera.';
                 if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id_pago_in = '$id_pago_in'")) {
@@ -108,6 +111,7 @@ if ($id_banco == 5) {
         if ($result->num_rows == 1) { // si solo existe un pago
             $id_pago_out = mysqli_fetch_assoc($result)['id'];
             if (mysqli_query($link, "UPDATE pagos_in SET estado = 'APROBADO' WHERE id = '$id_pago_in'")) {
+                $mensageTelegram = true;
                 $res['errores'][] = false;
                 $res['mensajes'][] = 'Se ha aprobado un pago en divisa extranjera.';
                 if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id = '$id_pago_out'")) {
@@ -145,8 +149,14 @@ if ($id_banco == 5) {
     }
 }
 
-// $result = mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
-//         if ($result->num_rows == 1) { // si solo existe un pago saliente
+if ($mensageTelegram) {
+    $banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT nombre from bancos WHERE id = '$id_banco'"))['nombre'];
+    $divisa = mysqli_fetch_assoc(mysqli_query($link, "SELECT divisa from bancos WHERE id = '$id_banco'"))['divisa'];
+    $token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
+    $chat_id = -1001297263006;
+    $text = number_format((float)$monto, 2, '.', '') . " " . $divisa . " --> " . $banco;
+    file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
+}
 
 echo json_encode($res);
 ?>

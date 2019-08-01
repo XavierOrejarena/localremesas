@@ -14,6 +14,7 @@ $monto = $_POST['monto'];
 $tasa = $_POST['tasa'];
 $referencia = $_POST['referencia'];
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
+$mensageTelegram = false;
 
 if ($referencia == 0) {
     
@@ -32,6 +33,7 @@ if ($referencia == 0) {
             }
             
             mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND flag = 1");
+            $mensageTelegram = true;
             $res['flag'] = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
@@ -47,6 +49,7 @@ if ($referencia == 0) {
             }
             
             mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND referencia = '$referencia' AND flag = 1");
+            $mensageTelegram = true;
             $res['flag'] = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
@@ -132,6 +135,12 @@ if ($referencia == 0) {
     }
 }
 
+if ($mensageTelegram) {
+    $token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
+    $chat_id = -1001297263006;
+    $text = number_format((float)$monto, 2, '.', '') . " " . $divisa . " --> " . $banco;
+    file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
+}
 
 
 echo json_encode($res);
