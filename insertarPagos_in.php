@@ -20,6 +20,7 @@ if ($referencia == 0) {
     
     mysqli_query($link, "INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES ('$id_usuario', '$id_banco', '$monto', '$referencia', '$tasa', 'PRESTAMO', 4, '$timeNdate')");
     
+    $mensageTelegram = true;
     $res['mensajes'][] = 'Prestamo agregado exitosamente';
     $res['errores'][] = false;
     $res['flag'] = 2;
