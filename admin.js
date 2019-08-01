@@ -17,7 +17,7 @@ const app = new Vue({
 		registro: '',
 		monto: '',
 		nota: '',
-		banco_id: '',
+		banco_id: 1,
 		registros: '',
 		amount: '',
 		referencia: '',

@@ -191,8 +191,8 @@
                         </thead>
                         <tbody>
                            <td scope="col">
-                                 <select class="form-control" id="banco" @change="onChange($event)">
-                                    <option v-for="banco in bancos" :value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
+                                 <select v-model="banco_id" class="form-control" id="banco" @change="onChange($event)">
+                                    <option v-for="banco in bancos" v-bind:value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
                                  </select>
                            </td>
                            <td scope="col"><input type="text" class="form-control" placeholder="Monto" v-model="monto"></td>
