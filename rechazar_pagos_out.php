@@ -4,8 +4,8 @@ include "connect.php";
 
 $id = $_POST['id'];
 
-$sql = "UPDATE pagos_out SET estado = 'RECHAZADO' WHERE id = '$id'";
-$res = mysqli_query($link, $sql);
+$res[] = mysqli_query($link, "DELETE FROM pagos_out WHERE id_pago_in = '$id'");
+$res[] = mysqli_query($link, "DELETE FROM pagos_in WHERE id = '$id'");
 
 echo json_encode($res);
 ?>
