@@ -139,7 +139,7 @@
          <div v-if="clase=='Bancos'" class="container">
             <div class="text-center mb-3">
                <button type="button" :class="{'btn btn-primary mt-3': registro, 'btn btn-light mt-3': !registro}" @click="registro = true, getBancos(), setRegistro(true)">Saldo</button>
-               <button type="button" :class="{'btn btn-light mt-3': registro, 'btn btn-primary mt-3': !registro}" @click="registro = false, getRegistros(1), setRegistro(false)">Registro</button>
+               <button type="button" :class="{'btn btn-light mt-3': registro, 'btn btn-primary mt-3': !registro}" @click="registro = false, getRegistros(), setRegistro(false)">Registro</button>
            </div>
           <div v-if="registro" class="container">
             <div class="row ml-1">
@@ -207,6 +207,7 @@
                            <table class="table table-hover text-center table-lg container border rounded">
                                  <thead>
                                     <tr>
+                                       <th scope="col">ID</th>
                                        <th scope="col">Monto</th>
                                        <th scope="col">Nota</th>
                                        <th scope="col">Fecha</th>
@@ -214,6 +215,7 @@
                                  </thead>
                                  <tbody>
                                        <tr v-for="reg in registros">
+                                          <td scope="col">{{reg.id}}</td>
                                           <td scope="col">{{reg.monto}}</td>
                                           <td scope="col">{{reg.nota}}</td>
                                           <td scope="col">{{reg.reg_date}}</td>

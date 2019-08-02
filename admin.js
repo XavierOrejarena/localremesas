@@ -282,7 +282,10 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				this.registros = response.data;
+				if (response.data) {
+					this.registros = response.data;
+					this.registros.map(registros => (registros.monto = this.format(parseFloat(registros.monto))));
+				}
 			});
 		},
 		agregarRegistro() {
