@@ -2,7 +2,7 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
-$sql = "SELECT id FROM usuarios";
+$sql = "SELECT id, nombre, apellido, dni, tlf, correo FROM usuarios";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {

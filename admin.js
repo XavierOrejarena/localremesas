@@ -28,19 +28,9 @@ const app = new Vue({
 		pagos_out: '',
 		max: null,
 		min: null,
-		date: null,
-		usuarios: null
+		date: null
 	},
 	methods: {
-		getUsuarios(){
-			axios({
-				method: 'get',
-				url: './getUsuarios.php',
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				this.usuarios = response.data;
-			});
-		},
 		eliminarUsuario() {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', this.id);

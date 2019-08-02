@@ -39,6 +39,7 @@
                   <a class="nav-link" href="pagos_all.html">Todos los pagos</a>
             </li>
             <li class="nav-item"><a class="nav-link" href="bancos.html">Bancos</a></li>
+            <li class="nav-item"><a class="nav-link" href="facturacion.html">Facturación</a></li>
             <li v-if="tipo_usuario=='ADMIN'" class="nav-item active">
               <a class="nav-link" href="admin.html">Admin</a>
             </li>
@@ -71,9 +72,6 @@
                      </li>
                      <li>
                         <a :class="{'actives':clase=='Estadisticas'}" href="#" @click="setClase('Estadisticas')">Estadísticas</a>
-                     </li>
-                     <li>
-                        <a :class="{'actives':clase=='Facturacion'}" href="#" @click="setClase('Facturacion')">Facturacion</a>
                      </li>
                   </ul>
               </div>
@@ -384,33 +382,6 @@
          </div>
       </div>
    </div>
-               <div v-if="clase=='Facturacion'" class="container col-md-10 mt-5">
-                     <!-- <div class="container-fluid"></div> -->
-                           <label class="ml-3 mt-3">Registrar clientes</label>
-                           <table class="table table-hover text-center table-lg container border rounded">
-                                 <thead>
-                                    <tr>
-                                       <th scope="col">ID</th>
-                                       <th scope="col">Nombre</th>
-                                       <th scope="col">Apellido</th>
-                                       <th scope="col">DNI</th>
-                                       <th scope="col">Teléfono</th>
-                                       <th scope="col" style="width:  30%">Correo</th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    <tr v-for="usuario in usuarios">
-                                       <td scope="col">{{usuario.id}}</td>
-                                       <td scope="col"><input type="text" class="form-control" v-model="usuario.nombre"></td>
-                                       <td scope="col"><input type="text" class="form-control" v-model="usuario.apellido"></td>
-                                       <td scope="col"><input type="text" class="form-control" v-model="usuario.dni"></td>
-                                       <td scope="col"><input type="text" class="form-control" v-model="usuario.tlf"></td>
-                                       <td scope="col"><input type="text" class="form-control" v-model="usuario.correo"></td>
-                                    </tr>
-                                 </tbody>
-                           </table>
-                     <!-- </div> -->
-               </div>
    </div>
    </body>
    <script src="./vue.js"></script>
