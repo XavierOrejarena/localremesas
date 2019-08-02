@@ -116,6 +116,7 @@
                            <th scope="col">Tipo</th>
                            <th scope="col">Fecha de registro</th>
                            <th scope="col">Modificar</th>
+                           <th scope="col">Eliminar</th>
                         </tr>
                      </thead>
                      <tbody>
@@ -128,6 +129,9 @@
                            </td>
                            <td scope="col">{{usuario.reg_date}}</th>   
                            <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarUsuario()">Modificar</button></td>
+                           <td scope="col">
+                              <button type="button" class="btn btn-outline-danger btn-sm" @click="eliminarUsuario()">X</button>
+                           </td>
                         </tr>
                      </tbody>
                   </table>

@@ -31,6 +31,22 @@ const app = new Vue({
 		date: null
 	},
 	methods: {
+		eliminarUsuario() {
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', this.id);
+			axios({
+				method: 'post',
+				url: './eliminarUsuario.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				if (response.data) {
+					this.getUserInfo()
+				} else {
+					console.log("error")
+				}
+			});
+		},
 		format (n, d) {
 			if (!d) d = 2;
 			return n.toLocaleString(
@@ -56,7 +72,6 @@ const app = new Vue({
 							this.tipos.push(this.pagos_out[i].tipo)
 						}
 					}
-					// console.log(response.data.out)
 				}
 			});
 		},
