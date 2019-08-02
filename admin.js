@@ -366,6 +366,9 @@ const app = new Vue({
 			return this.format(parseFloat(tasa.toFixed(2)))
 		},
 	},
+	updated() {
+		this.getRegistros();
+	  },
 	beforeMount() {
 		axios({
 			method: 'get',
