@@ -185,7 +185,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.bancos = response.data;
-				this.banco_id = this.bancos[0].id
+				// this.banco_id = this.bancos[0].id
 				this.bancos.map(item => (item.saldo = parseFloat(item.saldo)))
 			});
 		},
@@ -297,8 +297,8 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.registros = response.data;
 				if (response.data) {
-					this.registros = response.data;
 					this.registros.map(registros => (registros.monto = this.format(parseFloat(registros.monto))));
 				}
 			});
@@ -396,7 +396,6 @@ const app = new Vue({
 				this.min = yyyy + '-' + mm + '-01';
 				this.date = this.max
 				this.cargar_pagos_all()
-				this.getUsuarios()
 			} else {
 				window.location.href = './login.html';
 			}
