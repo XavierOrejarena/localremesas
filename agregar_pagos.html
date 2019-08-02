@@ -105,7 +105,7 @@
                   <label>Monto</label>
                   <input @keyup="verificarMonto($event)" onClick="this.select();"  v-model="monto" type="number" class="form-control" name="monto" id="monto" placeholder="Soles o USD" required min="0">
                   <label>Número de referencia</label>
-                  <input @keyup="verificarReferencia($event);referencia_cero()" type="text" class="form-group form-control" name="referencia" id="referencia" placeholder="Solamente números" v-model="referencia">
+                  <input @keyup="verificarReferencia($event)" type="text" class="form-group form-control" name="referencia" id="referencia" placeholder="Solamente números" v-model="referencia">
                   <div v-if="referencia!='0'" class="form-group">
                      <label>Adjuntar comprobante de transferencia</label>
                      <input type="file" class="form-control-file" name="comprobante" id="comprobante" accept=".jpeg, .jpg, .png">

@@ -323,11 +323,11 @@ const app = new Vue({
 			}
 			this.calcularMontoTotal();
 		},
-		referencia_cero() {
-			if (this.referencia == '0') {
-				this.cargarTasa(this.tipo_cliente);
-			}
-		}
+		// referencia_cero() {
+		// 	if (this.referencia == '0') {
+		// 		this.cargarTasa(this.tipo_cliente);
+		// 	}
+		// }
 	},
 	watch: {
         divisa: function() {
