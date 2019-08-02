@@ -17,7 +17,7 @@ const app = new Vue({
 		registro: '',
 		monto: '',
 		nota: '',
-		banco_id: 1,
+		banco_id: null,
 		registros: '',
 		amount: '',
 		referencia: '',
@@ -170,8 +170,8 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.bancos = response.data;
+				this.banco_id = this.bancos[0].id
 				this.bancos.map(item => (item.saldo = parseFloat(item.saldo)))
-				// console.log(this.bancos)
 			});
 		},
 		actualizarUsuario() {
@@ -368,8 +368,8 @@ const app = new Vue({
 				this.cargarTasas();
 				this.getBancos();
 				this.getPrestamos();
-				this.getRegistros(1);
 				this.getDivisas();
+				this.getRegistros();
 				var today = new Date();
 				var dd = String(today.getDate()).padStart(2, '0');
 				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

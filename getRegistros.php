@@ -1,6 +1,7 @@
 <?php
 header( 'Content-type: application/json' );
 include "connect.php";
+
 $id = $_POST['id'];
 
 $sql = "SELECT * FROM registros_bancos WHERE id_banco = '$id'";
