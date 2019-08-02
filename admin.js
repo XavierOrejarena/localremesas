@@ -28,9 +28,19 @@ const app = new Vue({
 		pagos_out: '',
 		max: null,
 		min: null,
-		date: null
+		date: null,
+		usuarios: null
 	},
 	methods: {
+		getUsuarios(){
+			axios({
+				method: 'get',
+				url: './getUsuarios.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				this.usuarios = response.data;
+			});
+		},
 		eliminarUsuario() {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', this.id);
@@ -366,9 +376,9 @@ const app = new Vue({
 			return this.format(parseFloat(tasa.toFixed(2)))
 		},
 	},
-	updated() {
-		this.getRegistros();
-	  },
+	// updated() {
+	// 	this.getRegistros();
+	//   },
 	beforeMount() {
 		axios({
 			method: 'get',
@@ -395,7 +405,8 @@ const app = new Vue({
 				this.max = yyyy + '-' + mm + '-' + dd;
 				this.min = yyyy + '-' + mm + '-01';
 				this.date = this.max
-				this.cargar_pagos_all();
+				this.cargar_pagos_all()
+				this.getUsuarios()
 			} else {
 				window.location.href = './login.html';
 			}
