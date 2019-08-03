@@ -282,6 +282,21 @@
                   </tr>
                </tbody>
             </table>
+         </table>
+         <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-6 table-dark">
+            <thead>
+               <tr>
+                  <th scope="col">Divisa</th>
+                  <th scope="col">Total</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr v-for="total_prestamo in totalPrestamos">
+                  <td scope="col">{{total_prestamo.divisa}}</td>
+                  <td scope="col">{{total_prestamo.total}}</td>
+               </tr>
+            </tbody>
+         </table>
          <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-6 table-danger">
             <thead>
                <tr>
@@ -299,7 +314,6 @@
                   <td scope="col">{{prestamo.fecha}}</td>
                </tr>
             </tbody>
-         </table>
          <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-6 table-success">
             <thead>
                <tr>

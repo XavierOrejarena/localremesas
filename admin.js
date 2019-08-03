@@ -25,6 +25,7 @@ const app = new Vue({
 		errores: [],
 		divisas: '',
 		total_entrante: '',
+		totalPrestamos: [],
 		pagos_out: '',
 		max: null,
 		min: null,
@@ -255,6 +256,16 @@ const app = new Vue({
 				this.tasas = response.data;
 			});
 		},
+		calcularTotalPrestamos() {
+				for (let i = 0; i < this.divisas.length; i++) {
+					this.totalPrestamos.push({divisa: this.divisas[i].divisa, total: 0})
+					for (let j = 0; j < this.prestamos.length; j++) {
+						if (this.prestamos[j].divisa == this.divisas[i].divisa) {
+							this.totalPrestamos[i].total = this.totalPrestamos[i].total + this.prestamos[j].monto
+						}
+					}
+				}
+		},
 		getPrestamos() {
 			axios({
 				method: 'get',
@@ -263,6 +274,8 @@ const app = new Vue({
 			}).then(response => {
 				if (response.data != null) {
 					this.prestamos = response.data.total;
+					this.prestamos.map(prestamo => (prestamo.monto = parseFloat(prestamo.monto)));
+					this.calcularTotalPrestamos()
 					this.prestamos2 = response.data.detallado;
 				}
 			});
@@ -381,10 +394,10 @@ const app = new Vue({
 					this.registro = false;
 				}
 				this.tipo_usuario = response.data;
+				this.getDivisas();
 				this.cargarTasas();
 				this.getBancos();
 				this.getPrestamos();
-				this.getDivisas();
 				this.getRegistros();
 				var today = new Date();
 				var dd = String(today.getDate()).padStart(2, '0');
