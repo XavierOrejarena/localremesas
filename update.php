@@ -30,8 +30,11 @@ include "connect.php";
 // if (!$result)     
 // 		die("Adding record failed: " . mysqli_error()); 
 
-$ip_server = $_SERVER['SERVER_ADDR']; 
-  
-// Printing the stored address 
-echo "Server IP Address is: $ip_server"; 
+
+$ip_server = $_SERVER['SERVER_ADDR'];
+if ($ip_server == 1 ) {
+    echo "Local Server IP Address is: $ip_server";
+} else {
+    echo "Server IP Address is: $ip_server";
+}
 ?>
