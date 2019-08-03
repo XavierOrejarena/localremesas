@@ -12,8 +12,8 @@ include "connect.php";
 // $id_pago_out = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
 
 $result = mysqli_query($link, "UPDATE prestamos SET monto = 0.24 WHERE id = 8");
-// if (!$result)     
-// 		die("Adding record failed: " . mysqli_error()); 
+if (!$result)     
+		die("Adding record failed: " . mysqli_error()); 
 
 
 ?>
