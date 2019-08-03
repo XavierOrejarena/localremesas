@@ -293,7 +293,7 @@
             <tbody>
                <tr v-for="total_prestamo in totalPrestamos">
                   <td scope="col">{{total_prestamo.divisa}}</td>
-                  <td scope="col">{{total_prestamo.total}}</td>
+                  <td scope="col">{{format(total_prestamo.total)}}</td>
                </tr>
             </tbody>
          </table>
