@@ -379,7 +379,6 @@ const app = new Vue({
 	},
 	watch: { 
 		bancos: function() { // watch it
-			// console.log(this.bancos[0].id)
 			this.banco_id = this.bancos[0].id
 		}
 	},

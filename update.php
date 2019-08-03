@@ -12,8 +12,21 @@ include "connect.php";
 // $id_pago_out = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
 
 // $result = mysqli_query($link, "UPDATE prestamos SET monto = 0.24 WHERE id = 8");
-// if (!$result)     
-		// die("Adding record failed: " . mysqli_error()); 
 
 
+$result = mysqli_query($link, "UPDATE pagos_in SET id_usuario = 13 WHERE id = 208");
+if (!$result)     
+		die("Adding record failed: " . mysqli_error()); 
+$result = mysqli_query($link, "DELETE FROM prestamos WHERE id = 94");
+if (!$result)     
+		die("Adding record failed: " . mysqli_error()); 
+$result = mysqli_query($link, "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES (13, 114, 2656.04, 'PEN', 1)");
+if (!$result)     
+		die("Adding record failed: " . mysqli_error()); 
+$result = mysqli_query($link, "UPDATE prestamos SET monto = monto -2656.04 WHERE id = 51");
+if (!$result)     
+		die("Adding record failed: " . mysqli_error()); 
+$result = mysqli_query($link, "UPDATE prestamos SET monto = monto +2656.04 WHERE id = 8");
+if (!$result)     
+		die("Adding record failed: " . mysqli_error()); 
 ?>
