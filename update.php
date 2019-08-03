@@ -32,7 +32,7 @@ include "connect.php";
 
 
 $ip_server = $_SERVER['SERVER_ADDR'];
-if ($ip_server == 1 ) {
+if ($ip_server == "::1" ) {
     echo "Local Server IP Address is: $ip_server";
 } else {
     echo "Server IP Address is: $ip_server";
