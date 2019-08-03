@@ -29,4 +29,9 @@ include "connect.php";
 // $result = mysqli_query($link, "UPDATE prestamos SET monto = monto +2656.04 WHERE id = 8");
 // if (!$result)     
 // 		die("Adding record failed: " . mysqli_error()); 
+
+$ip_server = $_SERVER['SERVER_ADDR']; 
+  
+// Printing the stored address 
+echo "Server IP Address is: $ip_server"; 
 ?>

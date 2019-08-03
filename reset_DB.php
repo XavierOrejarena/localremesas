@@ -1,10 +1,10 @@
 <?php
 // php -r 'echo date("Y-m-d H:i:s"), "\n";'
-$offset=-4*60*60; //converting 5 hours to seconds.
-$dateFormat="Y-m-d H:i:s";
-$timeNdate=gmdate($dateFormat, time()+$offset);
 
-if (1) {
+if (0) {
+	$offset=-4*60*60; //converting 5 hours to seconds.
+	$dateFormat="Y-m-d H:i:s";
+	$timeNdate=gmdate($dateFormat, time()+$offset);
 	$folders = array('comprobantes_in', 'comprobantes_out');
 	foreach ($folders as $folder) {
 		$files = glob($folder . '/*');
@@ -37,7 +37,12 @@ if (1) {
 		username VARCHAR(255) UNIQUE,
 		password VARCHAR(255),
 		tipo VARCHAR(255),
-		reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+		reg_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		nombre VARCHAR(255),
+		apellido VARCHAR(255),
+		dni VARCHAR(255),
+		tlf VARCHAR(255),
+		correo VARCHAR(255)
 		)";
 	
 		if ($link->query($sql) === TRUE) {
