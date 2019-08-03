@@ -140,7 +140,13 @@ if ($mensageTelegram) {
     $token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
     $chat_id = -1001297263006;
     $text = number_format((float)$monto, 2, '.', '') . " " . $divisa . " --> " . $banco;
-    file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
+    $ip_server = $_SERVER['SERVER_ADDR'];
+    if ($ip_server == "::1" ) {
+        // echo "Local Server IP Address is: $ip_server";
+    } else {
+        // echo "Server IP Address is: $ip_server";
+        file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
+    }
 }
 
 
