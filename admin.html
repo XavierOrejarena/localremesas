@@ -254,7 +254,7 @@
                                  <option v-for="bank in bancos" :value="bank.id">{{bank.nombre}} {{bank.divisa}}</option>
                               </select>
                         </td>
-                        <td scope="col"><input type="text" class="form-control" placeholder="Monto" v-model="amount"></td>
+                        <td scope="col"><input type="number" class="form-control" placeholder="Monto" v-model.number="amount"></td>
                         <td scope="col"><input type="text" class="form-control" placeholder="Referencia" v-model="referencia"></td>
                         <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="revisarPrestamo()">+</button></td>
                      </tbody>

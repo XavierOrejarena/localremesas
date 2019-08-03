@@ -1,6 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
+		amount: 0,
 		tipos: [],
 		tipos2: ['REGULAR', 'OPERADOR', 'BUSCADOR', 'ESPECIAL', 'ADMIN'],
 		tasas: '',
@@ -19,7 +20,6 @@ const app = new Vue({
 		nota: '',
 		banco_id: null,
 		registros: '',
-		amount: '',
 		referencia: '',
 		mensajes: [],
 		errores: [],
