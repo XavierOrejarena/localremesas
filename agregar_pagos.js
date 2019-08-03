@@ -123,7 +123,7 @@ const app = new Vue({
 			}
 		},
 		verificarNombre: function(e) {
-			if (e.target.value.length > 19 || e.target.value.length == 0) {
+			if (e.target.value.length > 29 || e.target.value.length == 0) {
 				e.target.style = this.red;
 				this.verificar[2] = false;
 			} else {

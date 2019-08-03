@@ -171,7 +171,7 @@
                   <div v-for="(cuenta, index) in cuentas" class="form-group border border-warning rounded container bg-light">
                      <div class="form-group mt-2">
                         <label>Nombre y Apellido</label>
-                        <input @change="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="20" v-model="cuenta.nombre">
+                        <input @change="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="30" v-model="cuenta.nombre">
                      </div>
                      <div class="form-group">
                         <div class="form-row">
