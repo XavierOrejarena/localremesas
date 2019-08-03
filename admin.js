@@ -11,8 +11,8 @@ const app = new Vue({
 		usuario: '',
 		mensaje: '',
 		bancos: '',
-		prestamos: '',
-		prestamos2: '',
+		prestamos: null,
+		prestamos2: null,
 		pagos_in: '',
 		registro: '',
 		monto: '',
@@ -261,11 +261,9 @@ const app = new Vue({
 				url: './getPrestamos.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				if (response.data) {
+				if (response.data != null) {
 					this.prestamos = response.data.total;
 					this.prestamos2 = response.data.detallado;
-					this.prestamos.map(prestamo => (prestamo.monto = this.format(parseFloat(prestamo.monto))));
-					this.prestamos2.map(prestamo => (prestamo.monto = this.format(parseFloat(prestamo.monto))));
 				}
 			});
 		},
