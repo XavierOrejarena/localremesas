@@ -377,9 +377,12 @@ const app = new Vue({
 			return this.format(parseFloat(tasa.toFixed(2)))
 		},
 	},
-	// updated() {
-	// 	this.getRegistros();
-	//   },
+	watch: { 
+		bancos: function() { // watch it
+			// console.log(this.bancos[0].id)
+			this.banco_id = this.bancos[0].id
+		}
+	},
 	beforeMount() {
 		axios({
 			method: 'get',
