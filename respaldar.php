@@ -9,5 +9,4 @@ if ($ip_server == "::1" ) {
 } else {
     $result = exec('mysql localremesas --password="NX)[XDCM5~=f" --user=xavierorejarena <'.$path.$filename,$output);
 }
-
 ?>

@@ -391,7 +391,7 @@ const app = new Vue({
 				});
 			});
 		},
-		respaldar() {
+		Respaldar() {
 			var bodyFormData = new FormData();
 			bodyFormData.set('filename', this.respaldos[this.RespaldoSeleccionado]);
 			axios({
