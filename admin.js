@@ -1,6 +1,8 @@
 const app = new Vue({
 	el: '#app',
 	data: {
+		respaldos: ['Seleccione un archivo:'],
+		RespaldoSeleccionado: 0,
 		amount: 0,
 		tipos: [],
 		tipos2: ['REGULAR', 'OPERADOR', 'BUSCADOR', 'ESPECIAL', 'ADMIN'],
@@ -377,10 +379,37 @@ const app = new Vue({
 			}
 			return this.format(parseFloat(tasa.toFixed(2)))
 		},
+		getRespaldos() {
+			axios({
+				method: 'get',
+				url: './getRespaldos.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				this.respaldos = ['Seleccione un archivo:']
+				response.data.forEach(element => {
+					this.respaldos.push(element)
+				});
+			});
+		},
+		respaldar() {
+			var bodyFormData = new FormData();
+			bodyFormData.set('filename', this.respaldos[this.RespaldoSeleccionado]);
+			axios({
+				method: 'post',
+				url: './respaldar.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			})
+		}
 	},
 	watch: { 
 		bancos: function() { // watch it
 			this.banco_id = this.bancos[0].id
+		},
+		clase: function() {
+			if (this.clase == "Respaldo") {
+				this.getRespaldos()
+			}
 		}
 	},
 	beforeMount() {

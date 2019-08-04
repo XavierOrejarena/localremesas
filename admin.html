@@ -73,6 +73,9 @@
                      <li>
                         <a :class="{'actives':clase=='Estadisticas'}" href="#" @click="setClase('Estadisticas')">Estadísticas</a>
                      </li>
+                     <li>
+                        <a :class="{'actives':clase=='Respaldo'}" href="#" @click="setClase('Respaldo')">Respaldo</a>
+                     </li>
                   </ul>
               </div>
               <!-- /#sidebar-wrapper -->
@@ -126,7 +129,7 @@
                            <td scope="col">
                            <select class="form-control" id="tipo" v-model:value="tipo_usuario">
                               <option v-for="tipo in tipos2">{{tipo}}</option>
-                            </select>
+                           </select>
                            </td>
                            <td scope="col">{{usuario.reg_date}}</th>   
                            <td scope="col"><button type="button" class="btn btn-outline-primary btn-sm" @click="actualizarUsuario()">Modificar</button></td>
@@ -369,30 +372,42 @@
                      </tr>
                   </thead>
                   <tbody>
-                        <tr v-for="banco in filterBancos">
-                           <td scope="col">{{banco.nombre}} <bdi class="font-weight-bold">{{banco.divisa}}</bdi></td>
-                           <td scope="col">{{total(0, 'id_banco_in', banco.id, 'amount')}}</td>
-                           <td scope="col">{{total(0, 'id_banco_in', banco.id, 'monto')}}</td>
-                           <td scope="col">{{tasa(((total(1, 'id_banco_in', banco.id, 'monto'))/(total(1, 'id_banco_in', banco.id, 'amount'))))}}</td>
-                        </tr>
-                     </tbody>
-                     <thead>
-                           <tr class="thead-dark">
-                              <th scope="col">Usuario</th>
-                              <th scope="col">Total Divisa</th>
-                              <th scope="col">Total VES</th>
-                              <th scope="col">Tasa Implícita</th>
-                           </tr>
-                        </thead>
-                        <tbody v-for="tipo in tipos">
-                           <tr v-for="divisa in divisas">
-                              <td scope="col" >{{tipo}} <bdi class="font-weight-bold">{{divisa.divisa}}</bdi></td>
-                              <td scope="col">{{total(0, 'tipo', tipo, 'amount', divisa.divisa)}}</td>
-                              <td scope="col">{{total(0, 'tipo', tipo, 'monto', divisa.divisa)}}</td>
-                              <td scope="col">{{tasa(((total(1, 'tipo', tipo, 'monto', divisa.divisa))/(total(1, 'tipo', tipo, 'amount', divisa.divisa))))}}</td>
-                           </tr>
-                        </tbody>
+                     <tr v-for="banco in filterBancos">
+                        <td scope="col">{{banco.nombre}} <bdi class="font-weight-bold">{{banco.divisa}}</bdi></td>
+                        <td scope="col">{{total(0, 'id_banco_in', banco.id, 'amount')}}</td>
+                        <td scope="col">{{total(0, 'id_banco_in', banco.id, 'monto')}}</td>
+                        <td scope="col">{{tasa(((total(1, 'id_banco_in', banco.id, 'monto'))/(total(1, 'id_banco_in', banco.id, 'amount'))))}}</td>
+                     </tr>
+                  </tbody>
+                  <thead>
+                     <tr class="thead-dark">
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Total Divisa</th>
+                        <th scope="col">Total VES</th>
+                        <th scope="col">Tasa Implícita</th>
+                     </tr>
+                  </thead>
+                  <tbody v-for="tipo in tipos">
+                     <tr v-for="divisa in divisas">
+                        <td scope="col" >{{tipo}} <bdi class="font-weight-bold">{{divisa.divisa}}</bdi></td>
+                        <td scope="col">{{total(0, 'tipo', tipo, 'amount', divisa.divisa)}}</td>
+                        <td scope="col">{{total(0, 'tipo', tipo, 'monto', divisa.divisa)}}</td>
+                        <td scope="col">{{tasa(((total(1, 'tipo', tipo, 'monto', divisa.divisa))/(total(1, 'tipo', tipo, 'amount', divisa.divisa))))}}</td>
+                     </tr>
+                  </tbody>
             </table>
+         </div>
+      </div>
+      <div v-if="clase=='Respaldo'" class="container col-md-8">
+         <div class="row">
+            <div class="form-group mt-5">
+               <select class="form-control" id="respaldo" v-model:value="respaldos[RespaldoSeleccionado]">
+                  <option v-for="respaldo in respaldos">{{respaldo}}</option>
+               </select>
+            </div>
+            <div class="form-group ml-3 mt-5">
+               <input class="btn btn-outline-danger" type="button" value="Respaldar" @click="respaldar">
+            </div>
          </div>
       </div>
    </div>
