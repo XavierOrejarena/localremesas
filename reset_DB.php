@@ -8,6 +8,7 @@ if ($ip_server == "::1" ) {
 	$offset=-4*60*60; //converting 5 hours to seconds.
 	$dateFormat="Y-m-d H:i:s";
 	$timeNdate=gmdate($dateFormat, time()+$offset);
+	
 	$folders = array('comprobantes_in', 'comprobantes_out');
 	foreach ($folders as $folder) {
 		$files = glob($folder . '/*');
