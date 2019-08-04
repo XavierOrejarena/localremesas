@@ -1,7 +1,10 @@
 <?php
 // php -r 'echo date("Y-m-d H:i:s"), "\n";'
 
-if (0) {
+
+$ip_server = $_SERVER['SERVER_ADDR'];
+
+if ($ip_server == "::1" ) {
 	$offset=-4*60*60; //converting 5 hours to seconds.
 	$dateFormat="Y-m-d H:i:s";
 	$timeNdate=gmdate($dateFormat, time()+$offset);

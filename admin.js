@@ -257,14 +257,15 @@ const app = new Vue({
 			});
 		},
 		calcularTotalPrestamos() {
-				for (let i = 0; i < this.divisas.length; i++) {
-					this.totalPrestamos.push({divisa: this.divisas[i].divisa, total: 0})
-					for (let j = 0; j < this.prestamos.length; j++) {
-						if (this.prestamos[j].divisa == this.divisas[i].divisa) {
-							this.totalPrestamos[i].total = this.totalPrestamos[i].total + this.prestamos[j].monto
-						}
+			this.totalPrestamos = []
+			for (let i = 0; i < this.divisas.length; i++) {
+				this.totalPrestamos.push({divisa: this.divisas[i].divisa, total: 0})
+				for (let j = 0; j < this.prestamos.length; j++) {
+					if (this.prestamos[j].divisa == this.divisas[i].divisa) {
+						this.totalPrestamos[i].total = this.totalPrestamos[i].total + this.prestamos[j].monto
 					}
 				}
+			}
 		},
 		getPrestamos() {
 			axios({
