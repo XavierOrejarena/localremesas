@@ -1,6 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
+		identificaciones: ['RUC', 'DNI', 'CE', 'PASAPORTE'],
         tipo_usuario: null,
         usuarios: null
 	},
@@ -15,12 +16,12 @@ const app = new Vue({
 			});
         },
         actualizarCliente(i){
-            console.log(this.usuarios[i].id)
             var bodyFormData = new FormData();
 			bodyFormData.set('id', this.usuarios[i].id);
 			bodyFormData.set('nombre', this.usuarios[i].nombre);
 			bodyFormData.set('apellido', this.usuarios[i].apellido);
-			bodyFormData.set('dni', this.usuarios[i].dni);
+			bodyFormData.set('tipo', this.usuarios[i].tipo);
+			bodyFormData.set('numero', this.usuarios[i].numero);
 			bodyFormData.set('tlf', this.usuarios[i].tlf);
 			bodyFormData.set('correo', this.usuarios[i].correo);
             axios({

@@ -37,4 +37,10 @@ include "connect.php";
 // } else {
 //     echo "Server IP Address is: $ip_server";
 // }
+
+mysqli_query($link, "ALTER TABLE usuarios ADD RUC VARCHAR(255)");
+mysqli_query($link, "ALTER TABLE usuarios RENAME COLUMN dni TO DNI");
+mysqli_query($link, "ALTER TABLE usuarios ADD CE VARCHAR(255)");
+mysqli_query($link, "ALTER TABLE usuarios ADD PASAPORTE VARCHAR(255)");
+
 ?>
