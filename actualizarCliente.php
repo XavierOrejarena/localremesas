@@ -10,14 +10,16 @@ function Unaccent($string)
 $id = $_POST['id'];
 $nombre = strtoupper(Unaccent($_POST['nombre']));
 $apellido = strtoupper(Unaccent($_POST['apellido']));
-$tipo = $_POST['tipo'];
-$numero = $_POST['numero'];
+$DNI = $_POST['DNI'];
+$RUC = $_POST['RUC'];
+$CE = $_POST['CE'];
+$PASAPORTE = $_POST['PASAPORTE'];
 $tlf = $_POST['tlf'];
 $correo = strtoupper($_POST['correo']);
 // $sql = "UPDATE usuarios SET nombre = '$nombre', apellido = '$apellido', $tipo = '$numero', tlf = '$tlf', correo = '$correo' WHERE id = '$id'";
 
 // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=$sql");
 
-echo json_encode(mysqli_query($link, "UPDATE usuarios SET nombre = '$nombre', apellido = '$apellido', $tipo = '$numero', tlf = '$tlf', correo = '$correo' WHERE id = '$id'"));
+echo json_encode(mysqli_query($link, "UPDATE usuarios SET nombre = '$nombre', apellido = '$apellido', DNI = '$DNI', RUC = '$RUC', CE = '$CE', PASAPORTE = '$PASAPORTE',tlf = '$tlf', correo = '$correo' WHERE id = '$id'"));
 
 ?>

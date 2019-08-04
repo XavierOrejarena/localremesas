@@ -20,8 +20,10 @@ const app = new Vue({
 			bodyFormData.set('id', this.usuarios[i].id);
 			bodyFormData.set('nombre', this.usuarios[i].nombre);
 			bodyFormData.set('apellido', this.usuarios[i].apellido);
-			bodyFormData.set('tipo', this.usuarios[i].tipo);
-			bodyFormData.set('numero', this.usuarios[i].numero);
+			bodyFormData.set('DNI', this.usuarios[i].DNI);
+			bodyFormData.set('RUC', this.usuarios[i].RUC);
+			bodyFormData.set('CE', this.usuarios[i].CE);
+			bodyFormData.set('PASAPORTE', this.usuarios[i].PASAPORTE);
 			bodyFormData.set('tlf', this.usuarios[i].tlf);
 			bodyFormData.set('correo', this.usuarios[i].correo);
             axios({
