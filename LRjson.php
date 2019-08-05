@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /*
  #########################################################
@@ -48,15 +49,15 @@ $token = "dce0ec5a91ac4f89b4f310023cdde26a94a40d937bd14ee8a1af8dddc0e07a61";
 $data = array(
     "operacion"				=> "generar_comprobante",
     "tipo_de_comprobante"               => "1",
-    "serie"                             => "F0001",
+    "serie"                             => "F001-00019855",
     "numero"				=> "1",
     "sunat_transaction"			=> "1",
     "cliente_tipo_de_documento"		=> "6",
     "cliente_numero_de_documento"	=> "20603289812",
     "cliente_denominacion"              => "Pedro Perez",
     "cliente_direccion"                 => "CALLE LIBERTAD 116 MIRAFLORES - LIMA - PERU",
-    "cliente_email"                     => "",
-    "cliente_email_1"                   => "correo@gmail.com",
+    "cliente_email"                     => "correo@gmail.com",
+    "cliente_email_1"                   => "",
     "cliente_email_2"                   => "",
     "fecha_de_emision"                  => date('d-m-Y'),
     "fecha_de_vencimiento"              => "",

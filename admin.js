@@ -16,6 +16,7 @@ const app = new Vue({
 		bancos: '',
 		prestamos: null,
 		prestamos2: null,
+		prestamos3: null,
 		pagos_in: '',
 		registro: '',
 		monto: '',
@@ -276,11 +277,32 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				if (response.data != null) {
-					this.prestamos = response.data.total;
-					this.prestamos.map(prestamo => (prestamo.monto = parseFloat(prestamo.monto)));
+					// console.log(response.data.total)
+					this.prestamos = response.data.total
+					this.prestamos.map(prestamo => (prestamo.monto = parseFloat(prestamo.monto)))
 					this.calcularTotalPrestamos()
-					this.prestamos2 = response.data.detallado;
+					this.prestamos2 = response.data.detallado
 				}
+			});
+		},
+		captures_out() {
+			axios({
+				method: 'get',
+				url: './captures_out.php',
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				response.data.forEach(element => {
+					var temp = element.indexOf("_")
+					var number = element.substring(0, temp)
+					if(!isNaN(number) && number != '') {
+						Array.prototype.forEach.call(this.prestamos2, e => {
+							if (number == e.id_pago_out) {
+								e.capture = element;
+							}
+						})
+					}
+				})
+				this.prestamos3 = this.prestamos2;
 			});
 		},
 		getPagosIn() {
@@ -444,6 +466,9 @@ const app = new Vue({
 			}
 		});
 	},
+	beforeUpdate() {
+		this.captures_out();
+	  },
 	computed: {
 		SmallClass: function() {
 			var clase = '';

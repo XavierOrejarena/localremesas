@@ -3,7 +3,8 @@
 //@ppvzlabot
 define('BOT_TOKEN', '533073153:AAHkJZRvA_ZOXLT63ftnIApWuZPzpDtyScM');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
-define('WEBHOOK_URL', 'https://localremesas.com/bots/ppvzlabot.php');
+define('WEBHOOK_URL', 'https://xavier.mer.web.ve/ppvzlabot.php');
+echo file_get_contents(API_URL."setWebhook?url=".WEBHOOK_URL);
 
 function gen_uuid() {
     return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',

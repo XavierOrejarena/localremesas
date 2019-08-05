@@ -57,7 +57,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
-                            <th scope="col">Identificación</th>
+                            <th scope="col">Tipo Identificación</th>
                             <th scope="col"># Identificación</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col" style="width:  30%">Correo</th>
@@ -69,12 +69,12 @@
                             <td scope="col">{{usuario.id}}</td>
                             <td scope="col"><input type="text" class="form-control" v-model="usuario.nombre"></td>
                             <td scope="col"><input type="text" class="form-control" v-model="usuario.apellido"></td>
-							<td scope="col"><input type="text" class="form-control" v-model="usuario[usuario.selected]"></td>
 							<td scope="col">
 								<select class="form-control" v-model="usuario.selected">
-								   <option v-for="identificacion in identificaciones" v-bind:value="identificacion">{{identificacion}}</option>
+									<option v-for="identificacion in identificaciones" v-bind:value="identificacion">{{identificacion}}</option>
 								</select>
-						  	</td>
+							</td>
+							<td scope="col"><input type="text" class="form-control" v-model="usuario[usuario.selected]"></td>
                             <td scope="col"><input type="text" class="form-control" v-model="usuario.tlf"></td>
                             <td scope="col"><input type="email" class="form-control" v-model="usuario.correo"></td>
                             <td scope="col"><button type="button" class="btn btn-outline-success btn-sm" @click="actualizarCliente(index)">|-></button></td>

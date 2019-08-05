@@ -43,16 +43,15 @@
 					</div>
 				</nav>
 			</div>
-				<div class="row col px-0 mx-0 mt-4">
-					<div class="col-md-6">
+				<div class="col px-0 mx-0 mt-4 container">
+					<div class="col-md-3 container-fluid">
 						<form>
 							<div class="form-group">
-								<label for="dolares">Test</label>
-								<input class="form-control" type="text" value="180" readonly id="dolares" />
+								<h6 class="">Monto</h6>
+								<input class="form-control text-center" type="number" placeholder="Monto" v-model.number="value"/>
 							</div>
-							<div class="form-group">
-								<label for="soles">Soles a Bolívares</label>
-								<input class="form-control" type="text" value="50" readonly id="soles" />
+							<div v-for="tasa in tasas" class="form-group">
+								<input class="form-control text-center" type="text" v-bind:value="'VES/' + tasa.divisa + '  ' + format(value*tasa.tasa)" readonly/>
 							</div>
 						</form>
 					</div>
