@@ -1,5 +1,9 @@
 #!/usr/bin/env php
 <?php
+$offset = -4*60*60; //converting 5 hours to seconds.
+$dateFormat = "d-m-Y";
+$timeNdate = gmdate($dateFormat, time()+$offset);
+
 /*
  #########################################################
 #### INTEGRACIÓN FÁCIL ####
@@ -35,7 +39,7 @@
 $ruta = "https://api.nubefact.com/api/v1/9cf67f43-ca59-4228-8c0d-556e5cfdf973";
 
 //TOKEN para enviar documentos
-$token = "dce0ec5a91ac4f89b4f310023cdde26a94a40d937bd14ee8a1af8dddc0e07a61";
+$token = "2128fefd62964efd9fb9d1d9c41ed642a2bf82d99bdd4977a18053f99ba8707f";
 
 /*
 #########################################################
@@ -48,10 +52,10 @@ $token = "dce0ec5a91ac4f89b4f310023cdde26a94a40d937bd14ee8a1af8dddc0e07a61";
 
 $data = array(
     "operacion"				=> "generar_comprobante",
-    "tipo_de_comprobante"               => "1",
-    "serie"                             => "F001-00019855",
+    "tipo_de_comprobante"               => "2",
+    "serie"                             => "BBB1",
     "numero"				=> "1",
-    "sunat_transaction"			=> "1",
+    "sunat_transaction"			=> "4948",
     "cliente_tipo_de_documento"		=> "6",
     "cliente_numero_de_documento"	=> "20603289812",
     "cliente_denominacion"              => "Pedro Perez",
@@ -59,17 +63,17 @@ $data = array(
     "cliente_email"                     => "correo@gmail.com",
     "cliente_email_1"                   => "",
     "cliente_email_2"                   => "",
-    "fecha_de_emision"                  => date('d-m-Y'),
+    "fecha_de_emision"                  => $timeNdate,
     "fecha_de_vencimiento"              => "",
     "moneda"                            => "1",
-    "tipo_de_cambio"                    => "",
+    "tipo_de_cambio"                    => "3.29",
     "porcentaje_de_igv"                 => "18.00",
     "descuento_global"                  => "",
     "descuento_global"                  => "",
     "total_descuento"                   => "",
     "total_anticipo"                    => "",
     "total_gravada"                     => "600",
-    "total_inafecta"                    => "",
+    "total_inafecta"                    => "100",
     "total_exonerada"                   => "",
     "total_igv"                         => "108",
     "total_gratuita"                    => "",

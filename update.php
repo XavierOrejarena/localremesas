@@ -44,4 +44,9 @@ include "connect.php";
 // mysqli_query($link, "ALTER TABLE usuarios ADD CE VARCHAR(255)");
 // mysqli_query($link, "ALTER TABLE usuarios ADD PASAPORTE VARCHAR(255)");
 
+$ip1 = $_SERVER['REMOTE_ADDR'];
+$ip2 = $_SERVER['HTTP_X_FORWARDED_FOR'];
+echo "<p $ip1 <p>";
+echo "<p $ip2 <p>";
+
 ?>

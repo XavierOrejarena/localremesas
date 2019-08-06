@@ -68,10 +68,10 @@ const app = new Vue({
 			}
 		},
 		pagar_out(e, id_pago_in) {
-			if (document.getElementById(e).value == '' || document.getElementById(e).value == 0) {
-				document.getElementById(e).style = this.red
-			} else {
-				document.getElementById(e).style = '';
+			// if (document.getElementById(e).value == '' || document.getElementById(e).value == 0) {
+				// document.getElementById(e).style = this.red
+			// } else {
+				// document.getElementById(e).style = '';
 				if (document.getElementById('f' + e).value == '') {
 					(document.getElementById('f'+e).parentElement).parentElement.style = this.red
 					document.getElementById('f'+e).parentElement.style = this.red
@@ -122,7 +122,7 @@ const app = new Vue({
 						console.log(err)
 					  });
 				}
-			}
+			// }
 		},
 		cargar_pagos_out() {
 			axios({
