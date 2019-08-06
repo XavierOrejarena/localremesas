@@ -191,7 +191,7 @@
                            </div>
                            <div class="col">
                               <label>Número de cédula</label>
-                              <input @change="verificarCedula($event)" type="text" class="form-control" :name="'cedula[' + index +']'" placeholder="Solamente números" required maxlength="9" v-model="cuenta.cedula">
+                              <input @change="verificarCedula($event)" type="text" class="form-control" :name="'cedula[' + index +']'" placeholder="Solamente números" required maxlength="9" v-model.number="cuenta.cedula">
                            </div>
                         </div>
                      </div>

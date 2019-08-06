@@ -105,7 +105,7 @@ const app = new Vue({
 			}
 		},
 		verificarCedula: function(e) {
-			if (e.target.value.length > 9 || e.target.value.length < 6 || !isNaN(e.target.value)) {
+			if (e.target.value.length > 9 || e.target.value.length < 6 || isNaN(e.target.value)) {
 				e.target.style = this.red;
 				this.verificar[0] = false;
 			} else {
@@ -114,7 +114,7 @@ const app = new Vue({
 			}
 		},
 		verificarCuenta: function(e) {
-			if (e.target.value.length > 20 || e.target.value.length < 20 || !isNaN(e.target.value)) {
+			if (e.target.value.length > 20 || e.target.value.length < 20 || isNaN(e.target.value)) {
 				e.target.style = this.red;
 				this.verificar[1] = false;
 			} else {
