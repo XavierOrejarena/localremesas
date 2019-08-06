@@ -219,6 +219,7 @@
                                        <th scope="col">Monto</th>
                                        <th scope="col">Nota</th>
                                        <th scope="col">Fecha</th>
+                                       <th scope="col">Editar</th>
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -227,6 +228,7 @@
                                           <td scope="col">{{reg.monto}}</td>
                                           <td scope="col">{{reg.nota}}</td>
                                           <td scope="col">{{reg.reg_date}}</td>
+                                          <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="agregarRegistro()">Editar</button></td>
                                        </tr>
                                  </tbody>
                            </table>

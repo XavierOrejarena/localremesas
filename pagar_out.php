@@ -55,10 +55,10 @@ if ($id = $_POST['id']) {
 	    // if everything is ok, try to upload file
 	    } else {
 			$random = generateRandomString();
+			$id_pago_in = $_POST['id_pago_in'];
 			$id_usuario = mysqli_fetch_array(mysqli_query($link, "SELECT id_usuario FROM pagos_out WHERE id_pago_in = '$id_pago_in'"))['id_usuario'];
 	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id ."_". $random. "_$id_usuario.jpg")) {
 				$referencia = $_POST['referencia'];
-				$id_pago_in = $_POST['id_pago_in'];
 				$id_banco = $_POST['id_banco'];
 
 
