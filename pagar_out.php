@@ -55,7 +55,8 @@ if ($id = $_POST['id']) {
 	    // if everything is ok, try to upload file
 	    } else {
 			$random = generateRandomString();
-	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id ."_". $random. ".jpg")) {
+			$id_usuario = mysqli_fetch_array(mysqli_query($link, "SELECT id_usuario FROM pagos_out WHERE id_pago_in = '$id_pago_in'"))['id_usuario'];
+	        if (move_uploaded_file($_FILES["comprobante"]["tmp_name"], $target_dir . $id ."_". $random. "_$id_usuario.jpg")) {
 				$referencia = $_POST['referencia'];
 				$id_pago_in = $_POST['id_pago_in'];
 				$id_banco = $_POST['id_banco'];
@@ -70,7 +71,7 @@ if ($id = $_POST['id']) {
 				// $chat_id = 149273661;
 				$token = '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM';
 				$chat_id = -1001265304659;
-				$text = 'http://localremesas.com/comprobantes_out/'.$id."_".$random.".jpg";
+				$text = 'http://localremesas.com/comprobantes_out/'.$id."_".$random."_$id_usuario.jpg";
 				$ip_server = $_SERVER['SERVER_ADDR'];
 				if ($ip_server == "::1" ) {
 					// echo "Local Server IP Address is: $ip_server";
@@ -91,7 +92,6 @@ if ($id = $_POST['id']) {
 
 				if ($aux) {
 					mysqli_query($link, "UPDATE pagos_in SET estado = 'PAGADO' WHERE id = '$id_pago_in'");
-					$id_usuario = mysqli_fetch_array(mysqli_query($link, "SELECT id_usuario FROM pagos_out WHERE id_pago_in = '$id_pago_in'"))['id_usuario'];
 					if (mysqli_fetch_array(mysqli_query($link, "SELECT referencia FROM pagos_in WHERE id = (SELECT id_pago_in FROM pagos_out WHERE id = '$id')"))[referencia] == 0) {
 
 						$monto = mysqli_fetch_array(mysqli_query($link, "SELECT monto FROM pagos_in WHERE id = '$id_pago_in'"))['monto'];
