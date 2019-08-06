@@ -46,7 +46,7 @@ include "connect.php";
 
 $ip1 = $_SERVER['REMOTE_ADDR'];
 $ip2 = $_SERVER['HTTP_X_FORWARDED_FOR'];
-echo "<p> $ip1 <p>";
-echo "<p> $ip2 <p>";
+echo "<p> REMOTE_ADDR: $ip1 <p>";
+echo "<p> HTTP_X_FORWARDED_FOR: $ip2 <p>";
 
 ?>
