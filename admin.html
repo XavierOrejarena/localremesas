@@ -220,15 +220,17 @@
                                        <th scope="col">Nota</th>
                                        <th scope="col">Fecha</th>
                                        <th scope="col">Editar</th>
+                                       <th scope="col">Eliminar</th>
                                     </tr>
                                  </thead>
                                  <tbody>
-                                       <tr v-for="reg in registros">
+                                       <tr v-for="(reg, index) in registros">
                                           <td scope="col">{{reg.id}}</td>
-                                          <td scope="col">{{reg.monto}}</td>
-                                          <td scope="col">{{reg.nota}}</td>
+                                          <td scope="col"><input type="number" class="form-control" placeholder="Monto" v-model.number="reg.monto"></td>
+                                          <td scope="col"><input type="text" class="form-control" placeholder="Nota" v-model="reg.nota"></td>
                                           <td scope="col">{{reg.reg_date}}</td>
-                                          <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="agregarRegistro()">Editar</button></td>
+                                          <td scope="col"><button type="button" class="btn btn-primary btn-md" @click="editarRegistro(index)">Editar</button></td>
+                                          <td scope="col"><button type="button" class="btn btn-outline-danger btn-md" @click="eliminarRegistro(index)">X</button></td>
                                        </tr>
                                  </tbody>
                            </table>

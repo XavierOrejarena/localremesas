@@ -335,8 +335,37 @@ const app = new Vue({
 			}).then(response => {
 				this.registros = response.data;
 				if (response.data) {
-					this.registros.map(registros => (registros.monto = this.format(parseFloat(registros.monto))));
+					// this.registros.map(registros => (registros.monto = this.format(parseFloat(registros.monto))));
 				}
+			});
+		},
+		eliminarRegistro(index) {
+			var bodyFormData = new FormData();
+			bodyFormData.set('banco_id', this.banco_id);
+			bodyFormData.set('id_registro', this.registros[index].id);
+			axios({
+				method: 'post',
+				url: './eliminarRegistro.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				console.log(response.data)
+				this.getRegistros();
+			});
+		},
+		editarRegistro(index) {
+			var bodyFormData = new FormData();
+			bodyFormData.set('banco_id', this.banco_id);
+			bodyFormData.set('id_registro', this.registros[index].id);
+			bodyFormData.set('monto', this.registros[index].monto);
+			bodyFormData.set('nota', this.registros[index].nota);
+			axios({
+				method: 'post',
+				url: './editarRegistro.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				this.getRegistros();
 			});
 		},
 		agregarRegistro() {
