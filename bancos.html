@@ -85,7 +85,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="pago in pagos">
+						<tr v-for="pago in pagos" :class="{'table-success':pago.id_usuario}">
 							<td scope="col">{{pago.id}}</td>
 							<td scope="col">{{pago.nombre}}</td>
 							<td scope="col">{{pago.divisa}}</td>
