@@ -10,7 +10,7 @@ WHERE estado = 'APROBADO'
 OR estado IS NULL
 OR estado = 'PAGADO'
 AND referencia != 0
-ORDER BY pagos_in.id ASC";
+ORDER BY pagos_in.id DESC";
 
 $result = mysqli_query($link, $sql);
 
