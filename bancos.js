@@ -47,7 +47,7 @@ const app = new Vue({
 				this.pagos = response.data;
 				// console.log(this.pagos)
 				if (this.pagos != null) {
-					this.pagos.map(pago => (pago.monto = this.format(parseFloat(pago.monto))));
+					// this.pagos.map(pago => (pago.monto = this.format(parseFloat(pago.monto))));
 				}
 			});
 		},

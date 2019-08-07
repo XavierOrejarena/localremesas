@@ -90,7 +90,7 @@
 							<td scope="col">{{pago.nombre}}</td>
 							<td scope="col">{{pago.divisa}}</td>
 							<td scope="col">{{pago.referencia }}</td>
-							<td scope="col">{{pago.monto}}</td>
+							<td :class="{'text-danger':pago.monto < 0 }" scope="col">{{format(parseFloat(pago.monto))}}</td>
 							<td scope="col">{{pago.reg_date}}</td>
 							<td scope="col">{{pago.id_usuario }}</td>
 							<td scope="col">
