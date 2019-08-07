@@ -85,12 +85,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="pago in pagos" :class="{'table-success':pago.id_usuario}">
+						<tr v-for="pago in pagos" :class="{'table-success':pago.id_usuario, 'table-danger':pago.monto < 0}">
 							<td scope="col">{{pago.id}}</td>
 							<td scope="col">{{pago.nombre}}</td>
 							<td scope="col">{{pago.divisa}}</td>
 							<td scope="col">{{pago.referencia }}</td>
-							<td :class="{'text-danger':pago.monto < 0 }" scope="col">{{format(parseFloat(pago.monto))}}</td>
+							<td scope="col">{{format(parseFloat(pago.monto))}}</td>
 							<td scope="col">{{pago.reg_date}}</td>
 							<td scope="col">{{pago.id_usuario }}</td>
 							<td scope="col">
