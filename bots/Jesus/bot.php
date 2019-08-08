@@ -88,6 +88,9 @@ function getPeru() {
   $priceBTC = getBTCValue();
   $URL = file_get_contents("https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json");
   $DATA = json_decode($URL, true);
+  $URL = (file_get_contents("https://www.rextie.com/"));
+  preg_match_all('/<span _ngcontent-svr-c6="" class="number">/', $URL, $matches, PREG_OFFSET_CAPTURE);
+  // <span _ngcontent-svr-c6="" class="number">3.3915</span>
   
   $i = 0;
   foreach ($DATA['data']['ad_list'] as $oferta) {
