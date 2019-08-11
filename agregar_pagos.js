@@ -229,12 +229,15 @@ const app = new Vue({
 		borrarCuenta(e) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('id_cuenta', e.target.value);
+			bodyFormData.set('tipo_usuario', this.tipo_usuario);
 			axios({
 				method: 'post',
 				url: './borrarCuenta.php',
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.mensajes = response.data.mensajes
+				this.errores = response.data.errores
 				this.buscarUsuario();
 			});
 		},

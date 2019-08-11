@@ -1,5 +1,5 @@
-#!/usr/bin/env php
 <?php
+
 $offset = -4*60*60; //converting 5 hours to seconds.
 $dateFormat = "d-m-Y";
 $timeNdate = gmdate($dateFormat, time()+$offset);
@@ -37,11 +37,9 @@ $timeNdate = gmdate($dateFormat, time()+$offset);
 
 // RUTA para enviar documentos
 $ruta = "https://api.nubefact.com/api/v1/9cf67f43-ca59-4228-8c0d-556e5cfdf973";
-// $ruta = "https://demo.nubefact.com/api/v1/03989d1a-6c8c-4b71-b1cd-7d37001deaa0";
 
 //TOKEN para enviar documentos
 $token = "2128fefd62964efd9fb9d1d9c41ed642a2bf82d99bdd4977a18053f99ba8707f";
-// $token = "d0a80b88cde446d092025465bdb4673e103a0d881ca6479ebbab10664dbc5677";
 
 /*
 #########################################################
@@ -52,87 +50,75 @@ $token = "2128fefd62964efd9fb9d1d9c41ed642a2bf82d99bdd4977a18053f99ba8707f";
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
  */
 
-$data = (object) array(
-    "operacion" => "generar_comprobante",
-    "tipo_de_comprobante" => "2",
-    "serie" => "BBB1",
-    "numero" => 3,
-    "sunat_transaction" => 1,
-    "cliente_tipo_de_documento" => 1,
-    "cliente_numero_de_documento" => "41920371",
-    "cliente_denominacion" => "JORGE LOPEZ",
-    "cliente_direccion" => "JIRON COLOR 211",
-    "cliente_email" => "",
-    "cliente_email_1" => "",
-    "cliente_email_2" => "",
-    "fecha_de_emision" => "18-07-2019",
-    "fecha_de_vencimiento" => "",
-    "moneda" => "1",
-    "tipo_de_cambio" => "",
-    "porcentaje_de_igv" => "18.00",
-    "descuento_global" => "",
-    "total_descuento" => "",
-    "total_anticipo" => "",
-    "total_gravada" => "",
-    "total_inafecta" => "600",
-    "total_exonerada" => "",
-    "total_igv" => "",
-    "total_gratuita" => "",
-    "total_otros_cargos" => "",
-    "total" => "600",
-    "percepcion_tipo" => "",
-    "percepcion_base_imponible" => "",
-    "total_percepcion" => "",
-    "total_incluido_percepcion" => "",
-    "detraccion" => "false",
-    "observaciones" => "EJEMPLO JSON GENERAR CPE BOLETA 3 INAFECTAS",
-    "documento_que_se_modifica_tipo" => "",
-    "documento_que_se_modifica_serie" => "",
-    "documento_que_se_modifica_numero" => "",
-    "tipo_de_nota_de_credito" => "",
-    "tipo_de_nota_de_debito" => "",
+$data = array(
+    "operacion"				=> "generar_comprobante",
+    "tipo_de_comprobante"               => "1",
+    "serie"                             => "FFF1",
+    "numero"				=> "138",
+    "sunat_transaction"			=> "1",
+    "cliente_tipo_de_documento"		=> "6",
+    "cliente_numero_de_documento"	=> "20600695771",
+    "cliente_denominacion"              => "NUBEFACT SA",
+    "cliente_direccion"                 => "CALLE LIBERTAD 116 MIRAFLORES - LIMA - PERU",
+    "cliente_email"                     => "",
+    "cliente_email_1"                   => "",
+    "cliente_email_2"                   => "",
+    "fecha_de_emision"                  => $timeNdate,
+    "fecha_de_vencimiento"              => "",
+    "moneda"                            => "2",
+    "tipo_de_cambio"                    => "900.09",
+    "porcentaje_de_igv"                 => "18.00",
+    "descuento_global"                  => "",
+    "descuento_global"                  => "",
+    "total_descuento"                   => "",
+    "total_anticipo"                    => "",
+    "total_gravada"                     => "",
+    "total_inafecta"                    => "900.09",
+    "total_exonerada"                   => "",
+    "total_igv"                         => "",
+    "total_gratuita"                    => "",
+    "total_otros_cargos"                => "",
+    "total"                             => "900.09",
+    "percepcion_tipo"                   => "",
+    "percepcion_base_imponible"         => "",
+    "total_percepcion"                  => "",
+    "total_incluido_percepcion"         => "",
+    "detraccion"                        => "false",
+    "observaciones"                     => "NUMERO DE OPERACION 00000 DE PRUEBA  FELIPE MARICO ",
+    "documento_que_se_modifica_tipo"    => "",
+    "documento_que_se_modifica_serie"   => "",
+    "documento_que_se_modifica_numero"  => "",
+    "tipo_de_nota_de_credito"           => "",
+    "tipo_de_nota_de_debito"            => "",
     "enviar_automaticamente_a_la_sunat" => "true",
     "enviar_automaticamente_al_cliente" => "false",
-    "codigo_unico" => "",
-    "condiciones_de_pago" => "",
-    "medio_de_pago" => "",
-    "placa_vehiculo" => "",
-    "orden_compra_servicio" => "",
-    "tabla_personalizada_codigo" => "",
-    "formato_de_pdf" => "",
-    "items" => array(
-             "unidad_de_medida" => "NIU",
-             "codigo" => "001",
-             "descripcion" => "DETALLE DEL PRODUCTO",
-             "cantidad" => "1",
-             "valor_unitario" => "500",
-             "precio_unitario" => "500",
-             "descuento" => "",
-             "subtotal" => "500",
-             "tipo_de_igv" => 9,
-             "igv" => "0",
-             "total" => "500",
-             "anticipo_regularizacion" => "false",
-             "anticipo_documento_serie" => "",
-             "anticipo_documento_numero" => "",
-             "codigo_producto_sunat" => "10000000",
-             "unidad_de_medida" => "ZZ",
-             "codigo" => "001",
-             "descripcion" => "DETALLE DEL SERVICIO",
-             "cantidad" => "5",
-             "valor_unitario" => "20",
-             "precio_unitario" => "20",
-             "descuento" => "",
-             "subtotal" => "100",
-             "tipo_de_igv" => 9,
-             "igv" => "0",
-             "total" => 100,
-             "anticipo_regularizacion" => "false",
-             "anticipo_documento_serie" => "",
-             "anticipo_documento_numero" => "",
-             "codigo_producto_sunat" => "20000000"
-          )
-        );
+    "codigo_unico"                      => "",
+    "condiciones_de_pago"               => "",
+    "medio_de_pago"                     => "",
+    "placa_vehiculo"                    => "",
+    "orden_compra_servicio"             => "",
+    "tabla_personalizada_codigo"        => "",
+    "formato_de_pdf"                    => "",
+    "items" => array( 
+                    array(
+                        "unidad_de_medida"          => "ZZ",
+                        "codigo"                    => "S001",
+               "descripcion"               => "CAMBIO DE MONEDA PEN 3.000,00 TIPO DE CAMBIO 3,30",
+                        "cantidad"                  => "1",
+                        "valor_unitario"            => "900.09",
+                        "precio_unitario"           => "900.09",
+                        "descuento"                 => "",
+                        "subtotal"                  => "900.09",
+                        "tipo_de_igv"               => "9",
+                        "igv"                       => "0",
+                        "total"                     => "900.09",
+                        "anticipo_regularizacion"   => "false",
+                        "anticipo_documento_serie"  => "",
+                        "anticipo_documento_numero" => ""
+                    ),
+                    
+    )
+);
 	
 $data_json = json_encode($data);
 
