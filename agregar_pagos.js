@@ -236,9 +236,9 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.buscarUsuario();
 				this.mensajes = response.data.mensajes
 				this.errores = response.data.errores
-				this.buscarUsuario();
 			});
 		},
 		eliminarCuenta(index) {
