@@ -1,6 +1,5 @@
 #!/usr/bin/env php
 <?php
-
 function getBTCValue() {
   $BINANCE_BTCUSDT = file_get_contents("https://www.bitmex.com/api/v1/trade/bucketed?binSize=1m&partial=true&count=100&reverse=true");
   $BINANCE_BTCUSDT = json_decode($BINANCE_BTCUSDT, true);
@@ -50,6 +49,8 @@ function getS() {
 }
 
 function getVenezuela() {
+  include "connect.php";
+  $tasa = mysqli_fetch_assoc(mysqli_query($link, "SELECT tasa FROM DICOM WHERE id = 2"))['tasa'];
   $text = "COMPRA\nVES\t\t\t\t\t\t\t\tUSD\t\t\t\t\t\tPEN\t\t\tDIV\n";
   $priceBTC = getBTCValue();
   $URL = file_get_contents("https://localbitcoins.com/buy-bitcoins-online/ve/venezuela/.json");
@@ -59,7 +60,7 @@ function getVenezuela() {
   foreach ($DATA['data']['ad_list'] as $oferta) {
     if ($oferta['data']['currency'] == 'VES' && !stripos($oferta['data']['msg'], 'bitmain') && !stripos($oferta['data']['bank_name'], 'bitmain')) {
       $aux = $oferta['data']['temp_price']/$priceBTC;
-      $text = $text.number_format(round($oferta['data']['temp_price']/1000000,2), 2, ',', ' ')."M\t\t\t".number_format(round($aux))."\t\t\t".number_format(round($oferta['data']['temp_price']/$priceBTC/3.33))."\t\t\t".round(3050/$aux,3)."\n";
+      $text = $text.number_format(round($oferta['data']['temp_price']/1000000,2), 2, ',', ' ')."M\t\t\t".number_format(round($aux))."\t\t\t".number_format(round($oferta['data']['temp_price']/$priceBTC/$tasa))."\t\t\t".round(3050/$aux,3)."\n";
       $i++;
       if ($i > 9) break;
     }
@@ -73,7 +74,7 @@ function getVenezuela() {
   foreach ($DATA['data']['ad_list'] as $oferta) {
     if ($oferta['data']['currency'] == 'VES'  && !stripos($oferta['data']['msg'], 'bitmain') && !stripos($oferta['data']['bank_name'], 'bitmain')) {
       $aux = $oferta['data']['temp_price']/$priceBTC;
-      $text = $text.number_format(round($oferta['data']['temp_price']/1000000,2), 2, ',', ' ')."M\t\t\t".number_format(round($aux))."\t\t\t".number_format(round($oferta['data']['temp_price']/$priceBTC/3.33))."\t\t\t".round(3050/$aux,3)."\n";
+      $text = $text.number_format(round($oferta['data']['temp_price']/1000000,2), 2, ',', ' ')."M\t\t\t".number_format(round($aux))."\t\t\t".number_format(round($oferta['data']['temp_price']/$priceBTC/$tasa))."\t\t\t".round(3050/$aux,3)."\n";
       $i++;
       if ($i > 9) break;
     }
@@ -84,6 +85,8 @@ function getVenezuela() {
 }
 
 function getPeru() {
+  include "connect.php";
+  $tasa = mysqli_fetch_assoc(mysqli_query($link, "SELECT tasa FROM DICOM WHERE id = 2"))['tasa'];
   $text = "COMPRA\nPEN\t\t\t\t\t\tUSD\n";
   $priceBTC = getBTCValue();
   $URL = file_get_contents("https://localbitcoins.com/buy-bitcoins-online/pe/peru/.json");
@@ -95,7 +98,7 @@ function getPeru() {
   $i = 0;
   foreach ($DATA['data']['ad_list'] as $oferta) {
     if ($oferta['data']['currency'] == 'PEN') {
-      $text = $text.number_format(round($oferta['data']['temp_price']))."\t\t\t".round($oferta['data']['temp_price']/3.33,2)."\n";
+      $text = $text.number_format(round($oferta['data']['temp_price']))."\t\t\t".round($oferta['data']['temp_price']/$tasa,2)."\n";
       $i++;
       if ($i > 9) break;
     }
@@ -108,7 +111,7 @@ function getPeru() {
   $text = $text."\nVENTA\nPEN\t\t\t\t\t\tUSD\n";
   foreach ($DATA['data']['ad_list'] as $oferta) {
     if ($oferta['data']['currency'] == 'PEN') {
-      $text = $text.number_format(round($oferta['data']['temp_price']))."\t\t\t".round($oferta['data']['temp_price']/3.33,2)."\n";
+      $text = $text.number_format(round($oferta['data']['temp_price']))."\t\t\t".round($oferta['data']['temp_price']/$tasa,2)."\n";
       $i++;
       if ($i > 9) break;
     }
@@ -153,7 +156,8 @@ function getColombia() {
 
 define('BOT_TOKEN', '716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
-define('WEBHOOK_URL', 'https://localremesas.com/bots/Jesus/bot.php');
+define('WEBHOOK_URL', 'https://xavier.mer.web.ve/Jesus/bot.php');
+echo file_get_contents(API_URL."setWebhook?url=".WEBHOOK_URL);
 
 function apiRequestWebhook($method, $parameters) {
   if (!is_string($method)) {
@@ -287,6 +291,12 @@ function processMessage($message) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getS()."</pre>", 'parse_mode' => 'HTML'));
     } else if (strpos($text,"/colombia") !== false) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getColombia()."</pre>", 'parse_mode' => 'HTML'));
+    } else if (strpos($text,"/tasa") !== false) {
+      include "connect.php";
+      $tasa = (float)substr($text, 6, strlen($text)-1);
+      $res = mysqli_query($link, "UPDATE DICOM SET tasa = $tasa WHERE id = 2");
+      if (!$res) $res = mysqli_error();  
+      apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => $res, 'parse_mode' => 'HTML'));
     }
 }
 }

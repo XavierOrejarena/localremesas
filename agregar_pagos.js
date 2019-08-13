@@ -76,6 +76,7 @@ const app = new Vue({
 				document.getElementById('comprobante').value = document.getElementById('comprobante').defaultValue;
 			}
 			this.referencia = '';
+			this.divisa = 'PEN'
 		},
 		onChange() {
 			if (this.banco == 'BANPA / ZELLE' || this.tipo_cliente == 'ESPECIAL') {
