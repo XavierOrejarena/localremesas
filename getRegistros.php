@@ -4,7 +4,7 @@ include "connect.php";
 
 $id = $_POST['id'];
 
-$sql = "SELECT * FROM registros_bancos WHERE id_banco = '$id'";
+$sql = "SELECT * FROM registros_bancos WHERE id_banco = '$id' ORDER BY id DESC";
 $result = mysqli_query($link, $sql);
 
 while($row = mysqli_fetch_assoc($result)) {
