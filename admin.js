@@ -21,7 +21,7 @@ const app = new Vue({
 		registro: '',
 		monto: '',
 		nota: '',
-		banco_id: null,
+		banco_index: 0,
 		registros: '',
 		referencia: '',
 		mensajes: [],
@@ -107,7 +107,7 @@ const app = new Vue({
 		revisarPrestamo(){
 			var bodyFormData = new FormData();
 			bodyFormData.set('amount', this.amount);
-			bodyFormData.set('id_banco', this.banco_id);
+			bodyFormData.set('id_banco', this.bancos[this.banco_index].id);
 			bodyFormData.set('referencia', this.referencia);
 			bodyFormData.set('id_usuario', this.id);
 			axios({
@@ -317,16 +317,16 @@ const app = new Vue({
 				this.pagos_in = response.data;
 			});
 		},
-		onChanges(e) {
-			this.banco_id = e.target.value;
-		},
-		onChange(e) {
-			this.banco_id = e.target.value;
-			this.getRegistros();
-		},
+		// onChanges(e) {
+		// 	this.banco_id = e.target.value;
+		// },
+		// onChange(e) {
+		// 	this.banco_id = e.target.value;
+		// 	this.getRegistros();
+		// },
 		getRegistros() {
 			var bodyFormData = new FormData();
-			bodyFormData.set('id', this.banco_id);
+			bodyFormData.set('id', this.bancos[this.banco_index].id);
 			axios({
 				method: 'post',
 				url: './getRegistros.php',
@@ -341,7 +341,7 @@ const app = new Vue({
 		},
 		eliminarRegistro(index) {
 			var bodyFormData = new FormData();
-			bodyFormData.set('banco_id', this.banco_id);
+			bodyFormData.set('banco_id', this.bancos[this.banco_index].id);
 			bodyFormData.set('id_registro', this.registros[index].id);
 			axios({
 				method: 'post',
@@ -355,7 +355,7 @@ const app = new Vue({
 		},
 		editarRegistro(index) {
 			var bodyFormData = new FormData();
-			bodyFormData.set('banco_id', this.banco_id);
+			bodyFormData.set('banco_id', this.bancos[this.banco_index].id);
 			bodyFormData.set('id_registro', this.registros[index].id);
 			bodyFormData.set('monto', this.registros[index].monto);
 			bodyFormData.set('nota', this.registros[index].nota);
@@ -370,7 +370,7 @@ const app = new Vue({
 		},
 		agregarRegistro() {
 			var bodyFormData = new FormData();
-			bodyFormData.set('id', this.banco_id);
+			bodyFormData.set('id', this.bancos[this.banco_index].id);
 			bodyFormData.set('monto', this.monto);
 			bodyFormData.set('nota', this.nota);
 			axios({
@@ -391,6 +391,7 @@ const app = new Vue({
 							that2 = [];
 						});
 				}, 3000);
+				this.getBancos()
 				this.getRegistros();
 			});
 		},
@@ -467,15 +468,22 @@ const app = new Vue({
 	},
 	watch: { 
 		bancos: function() { // watch it
-			this.banco_id = this.bancos[0].id
+			this.banco_index = 0
 		},
 		clase: function() {
+			this.mensajes = []
+			this.errores = []
 			if (this.clase == "Respaldo") {
 				this.getRespaldos()
 			}
+		},
+		registro: function() {
+			this.mensajes = []
+			this.errores = []
 		}
 	},
 	beforeMount() {
+		this.getBancos();
 		axios({
 			method: 'get',
 			url: './session.php',
@@ -491,7 +499,6 @@ const app = new Vue({
 				this.tipo_usuario = response.data;
 				this.getDivisas();
 				this.cargarTasas();
-				this.getBancos();
 				this.getPrestamos();
 				this.getRegistros();
 				var today = new Date();

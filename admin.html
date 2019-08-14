@@ -203,6 +203,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                         <thead>
                            <tr>
                               <th scope="col">Banco</th>
+                              <th scope="col">Saldo</th>
                               <th scope="col">Monto</th>
                               <th scope="col">Nota</th>
                               <th scope="col">Agregar</th>
@@ -210,10 +211,11 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                         </thead>
                         <tbody>
                            <td scope="col">
-                                 <select v-model="banco_id" class="form-control" id="banco" @change="onChange($event)">
-                                    <option v-for="banco in bancos" v-bind:value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
+                                 <select v-model="banco_index" class="form-control" id="banco">
+                                    <option v-for="(banco, index) in bancos" v-bind:value="index">{{banco.nombre}} {{banco.divisa}}</option>
                                  </select>
                            </td>
+                           <td scope="col"><input type="text" class="form-control" :value="format(bancos[banco_index].saldo)" disabled></td>
                            <td scope="col"><input type="text" class="form-control" placeholder="Monto" v-model="monto"></td>
                            <td scope="col"><input type="text" class="form-control" placeholder="Nota" v-model="nota"></td>
                            <td scope="col"><button type="button" class="btn btn-outline-primary btn-md" @click="agregarRegistro()">+</button></td>
@@ -268,8 +270,8 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                      </thead>
                      <tbody>
                         <td scope="col">
-                              <select class="form-control" v-model.number="banco_id">
-                                 <option v-for="banco in bancos" v-bind:value="banco.id">{{banco.nombre}} {{banco.divisa}}</option>
+                              <select class="form-control" v-model.number="banco_index">
+                                 <option v-for="(banco, index) in bancos" v-bind:value="index">{{banco.nombre}} {{banco.divisa}}</option>
                               </select>
                         </td>
                         <td scope="col"><input onClick="this.select();" type="number" class="form-control" placeholder="Monto" v-model.number="amount"></td>
