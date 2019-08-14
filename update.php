@@ -1,6 +1,6 @@
 <?php
 
-include "connect.php";
+// include "connect.php";
 
 $files = glob('comprobantes_in' . '/*');
 foreach($files as $file){
