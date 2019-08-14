@@ -328,7 +328,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
             </thead>
             <tbody>
                <tr v-for="prestamo in prestamos">
-                  <td scope="col"><a :href="'https://api.whatsapp.com/send?phone=' + prestamo.tlf" target="_blank">{{prestamo.id_usuario}}</a></td>
+                  <td scope="col"><a :href="'https://api.whatsapp.com/send?phone=' + prestamo.tlf + '&text=Buen día presentas una deuda de: *' + prestamo.monto + '* ' + prestamo.divisa + whatsapp" target="_blank">{{prestamo.id_usuario}}</a></td>
                   <!-- <td scope="col">{{prestamo.id_usuario}}</td> -->
                   <td scope="col">{{prestamo.monto}}</td>
                   <td scope="col">{{prestamo.divisa}}</td>

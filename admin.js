@@ -1,6 +1,7 @@
 const app = new Vue({
 	el: '#app',
 	data: {
+		whatsapp: ' Nuestras cuentas son:%0D%0A%0D%0A💸Localremesas SAC 💸%0D%0A%0D%0A✅Cuenta en Soles✅%0D%0ABCP%0D%0A*191-2521900-0-36*%0D%0ACuenta Corriente%0D%0ALOCAL REMESAS S.A.C%0D%0ARUC: 20603289812%0D%0ACCI  #  00219100252190003658%0D%0A%0D%0A❎Cuenta en Dolares❎%0D%0ABCP%0D%0A*191-2575203-1-60* %0D%0ACuenta Corriente%0D%0ALOCAL REMESAS S.A.C%0D%0ARUC: 20603289812%0D%0ANota: Preguntar tasa de dolares',
 		respaldos: ['Seleccione un archivo:'],
 		RespaldoSeleccionado: 0,
 		amount: 0,
