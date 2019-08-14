@@ -289,6 +289,24 @@ function processMessage($message) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getPeru()."</pre>", 'parse_mode' => 'HTML'));
     } else if ($text == "/s") {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getS()."</pre>", 'parse_mode' => 'HTML'));
+    } else if ($text == "/saldo") {
+      $host = 'localremesas.com';
+      $user = 'xavierorejarena';
+      $password = 'NX)[XDCM5~=f';
+      $database = 'localremesas';
+      $link = mysqli_connect($host, $user, $password, $database);
+      $result = mysqli_query($link, "SELECT * FROM bancos WHERE divisa = 'VES'");
+      $res = '';
+      while($row = mysqli_fetch_assoc($result)) {
+        $string = "                                               ";
+        $string = substr_replace($string, $row['nombre'], 0, 0);
+        // ."\t\t".$row['saldo']."\n".$res;
+        $string = substr_replace($string, $row['saldo'], 14, 0);
+        $res = $string."\n".$res;
+        // ."\t\t\t\t\t".$row['saldo']."\n".$res;
+      }
+
+      apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".$res."</pre>", 'parse_mode' => 'HTML'));
     } else if (strpos($text,"/colombia") !== false) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getColombia()."</pre>", 'parse_mode' => 'HTML'));
     } else if (strpos($text,"/tasa") !== false) {

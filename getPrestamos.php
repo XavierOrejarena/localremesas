@@ -2,9 +2,10 @@
 header( 'Content-type: application/json' );
 include "connect.php";
 
-$sql = "SELECT prestamos.*, pagos_out.reg_date AS fecha
+$sql = "SELECT prestamos.*, pagos_out.reg_date AS fecha, usuarios.tlf
 FROM prestamos
-JOIN pagos_out ON pagos_out.id = prestamos.id_pago_out";
+JOIN pagos_out ON pagos_out.id = prestamos.id_pago_out
+JOIN usuarios ON usuarios.id = prestamos.id_usuario";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
