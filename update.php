@@ -5,7 +5,7 @@ echo "<p style='color: green;'>Test<p>";
 $files = glob('comprobantes_in' . '/*');
 foreach($files as $file){
         if(is_file($file)) {
-                if (strpos($file, "188") !== false) {
+                if (strpos($file, "400") !== false) {
                 echo "<p style='color: green;'>$file<p>";
                 }
         }
