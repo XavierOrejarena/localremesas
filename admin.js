@@ -379,6 +379,18 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.mensajes.push(response.data.mensajes)
+				this.errores.push(response.data.errores)
+				window.setTimeout(function() {
+					that = this.mensajes;
+					that2 = this.errores;
+					$('.alert')
+						.fadeTo(500, 0)
+						.slideUp(500, function() {
+							that = [];
+							that2 = [];
+						});
+				}, 3000);
 				this.getRegistros();
 			});
 		},
