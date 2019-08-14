@@ -76,6 +76,7 @@ const app = new Vue({
 				document.getElementById('comprobante').value = document.getElementById('comprobante').defaultValue;
 			}
 			this.referencia = '';
+			this.banco = 'BCP'
 			this.divisa = 'PEN'
 		},
 		onChange() {
