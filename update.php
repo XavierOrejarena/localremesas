@@ -1,7 +1,7 @@
 <?php
 
 // include "connect.php";
-
+echo "<p style='color: green;'>Test<p>";
 $files = glob('comprobantes_in' . '/*');
 foreach($files as $file){
         if(is_file($file)) {
