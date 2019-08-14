@@ -317,9 +317,9 @@ const app = new Vue({
 				this.pagos_in = response.data;
 			});
 		},
-		// onChanges(e) {
-		// 	this.banco_id = e.target.value;
-		// },
+		onChanges(e) {
+			this.banco_id = e.target.value;
+		},
 		// onChange(e) {
 		// 	this.banco_id = e.target.value;
 		// 	this.getRegistros();

@@ -211,7 +211,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                         </thead>
                         <tbody>
                            <td scope="col">
-                                 <select v-model="banco_index" class="form-control" id="banco">
+                                 <select v-model="banco_index" class="form-control" id="banco" @change="getRegistros()">
                                     <option v-for="(banco, index) in bancos" v-bind:value="index">{{banco.nombre}} {{banco.divisa}}</option>
                                  </select>
                            </td>
