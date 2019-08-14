@@ -18,7 +18,8 @@ while ($row = mysqli_fetch_assoc($result)) {
 $sql = "SELECT id_usuario, -monto AS monto, reg_date AS fecha, bancos.divisa
 FROM pagos_in
 JOIN bancos ON bancos.id = pagos_in.id_banco
-WHERE flag = 9";
+WHERE flag = 9
+ORDER BY pagos_in.id DESC";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
