@@ -2,14 +2,23 @@
 
 // include "connect.php";
 echo "<p style='color: green;'>Test<p>";
-$files = glob('comprobantes_in' . '/*');
-foreach($files as $file){
-        if(is_file($file)) {
-                // if (strpos($file, "400") !== false) {
-                echo "<p style='color: green;'>$file<p>";
-                // }
-        }
-}
+$folders = array('comprobantes_in', 'comprobantes_out');
+	foreach ($folders as $folder) {
+		$files = glob($folder . '/*');
+		foreach($files as $file){
+			if(is_file($file)){
+				echo "<p style='color: green;'>$file<p>";
+			}
+		}
+	}
+// $files = glob('comprobantes_in' . '/*');
+// foreach($files as $file){
+//         if(is_file($file)) {
+//                 // if (strpos($file, "400") !== false) {
+//                 echo "<p style='color: green;'>$file<p>";
+//                 // }
+//         }
+// }
 
 // $result = mysqli_query($link, "UPDATE pagos_in SET id_banco = 5 WHERE id = 897");
 // if (!$result)     
