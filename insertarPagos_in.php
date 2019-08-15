@@ -1,16 +1,13 @@
 <?php
 header( 'Content-type: application/json' );
 include "connect.php";
+include "date.php";
 
-$offset=-4*60*60; //converting 5 hours to seconds.
-$dateFormat="Y-m-d H:i:s";
-$timeNdate=gmdate($dateFormat, time()+$offset);
-
-$res['flag'] = 0;
+$flag = 0;
 $id_usuario = $_POST['id_usuario'];
 $divisa = $_POST['divisa'];
 $banco = $_POST['banco'];
-$monto = $_POST['monto'];
+$monto = $_POST['amount'];
 $tasa = $_POST['tasa'];
 $referencia = $_POST['referencia'];
 $id_banco = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM bancos WHERE nombre = '$banco' AND divisa = '$divisa'"))['id'];
@@ -23,41 +20,40 @@ if ($referencia == 0) {
     $mensageTelegram = true;
     $res['mensajes'][] = 'Prestamo agregado exitosamente';
     $res['errores'][] = false;
-    $res['flag'] = 2;
-    $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+    $flag = 2;
+    $id_pago_in = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
 } else {
     if ($banco == 'BCP') {
-        // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=$banco");
-        if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND flag = 1 AND id_banco = $id_banco"))['id']) {
-            if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = -7.5 AND flag = 1 AND id_banco = $id_banco"))['id']) {
-                $res['restar'] = 1;
+        if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = '$monto' AND flag = 1 AND id_banco = $id_banco"))['id']) {
+            if ($id_pago_in2 = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND monto = -7.5 AND flag = 1 AND id_banco = $id_banco"))['id']) {
+                $restar = 1;
             }
             
             mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND flag = 1");
             $mensageTelegram = true;
-            $res['flag'] = 1;
+            $flag = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
-        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND id_banco = '$id_banco' AND (flag IS NULL OR flag = 2)"))['id']) {
+        } elseif ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE RIGHT(referencia, 6) = RIGHT('$referencia', 6) AND id_banco = '$id_banco' AND (flag IS NULL OR flag = 2)"))['id']) {
             $res['mensajes'][] = 'Este pago ya habia sido agregado anteriormente.';
             $res['errores'][] = true;
-            $res['flag'] = 3;
+            $flag = 3;
         }
     } else {
-        if ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag = 1 AND id_banco = $id_banco"))['id']) {
-            if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = -7.5 AND flag = 1 AND id_banco = $id_banco"))['id']) {
-                $res['restar'] = 1;
+        if ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = '$monto' AND flag = 1 AND id_banco = $id_banco"))['id']) {
+            if ($id_pago_in2 = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND monto = -7.5 AND flag = 1 AND id_banco = $id_banco"))['id']) {
+                $restar = 1;
             }
             
             mysqli_query($link, "UPDATE pagos_in SET id_usuario = '$id_usuario', tasa = '$tasa', estado = 'APROBADO', flag = 2 WHERE id_banco = '$id_banco' AND monto = '$monto' AND referencia = '$referencia' AND flag = 1");
             $mensageTelegram = true;
-            $res['flag'] = 1;
+            $flag = 1;
             $res['mensajes'][] = 'El pago ya existe, pago aprobado.';
             $res['errores'][] = false;
-        } elseif ($res['id_pago_in'] = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND (flag IS NULL OR flag = 2)"))['id']) {
+        } elseif ($id_pago_in = mysqli_fetch_assoc(mysqli_query($link, "SELECT id FROM pagos_in WHERE referencia = '$referencia' AND id_banco = '$id_banco' AND (flag IS NULL OR flag = 2)"))['id']) {
             $res['mensajes'][] = 'Este pago ya habia sido agregado anteriormente.';
             $res['errores'][] = true;
-            $res['flag'] = 3;
+            $flag = 3;
         }
     }
 
@@ -111,7 +107,7 @@ if ($referencia == 0) {
                 if(mysqli_query($link, $sql)) {
                         $res['mensajes'][] = 'Pago agregado existosamente';
                         $res['errores'][] = false;
-                        $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+                        $id_pago_in = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
                 } else {
                     $res['mensajes'][] = 'Hubo un error agregando el pago';
                     $res['errores'][] = true;
@@ -122,13 +118,13 @@ if ($referencia == 0) {
                 $res['errores'] = true;
             }
         }
-    } elseif ($res['flag'] == 0){ // SI NO HAY ARCHIVO
+    } elseif ($flag == 0){ // SI NO HAY ARCHIVO
         $sql = "INSERT INTO pagos_in (tasa, id_usuario, id_banco, monto, referencia, estado, reg_date) VALUES ('$tasa', '$id_usuario', '$id_banco', '$monto', '$referencia', 'PENDIENTE', '$timeNdate')";
 
         if(mysqli_query($link, $sql)) {
                 $res['mensajes'][] = 'Pago entrante agregado existosamente';
                 $res['errores'][] = false;
-                $res['id_pago_in'] = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+                $id_pago_in = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
         } else {
             $res['mensajes'][] = 'Hubo un error agregando el pago entrante';
             $res['errores'][] = true;
@@ -148,6 +144,52 @@ if ($mensageTelegram) {
         file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");
     }
 }
+//---------------------------------------------------------------------------------------------------------
+// $res = array( 'errores' => false );
+if ($flag == 2) {
+	$estado = 'PENDIENTE';
+} else {
+	$estado = 'EN ESPERA';
+}
+
+if ($flag == 3) {
+	$res['mensajes'][] = 'Hubo un error agregando el pago saliente';
+	$res['errores'][] = true;
+}else {
+	for ($i=0; $i < sizeof($_POST['id_cuenta']); $i++) {
+		
+		$id_cuenta = $_POST['id_cuenta'][$i];
+		$monto = $_POST['monto'][$i];
+	
+        $sql = "INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, monto, estado, reg_date) VALUES ('$id_usuario', '$id_pago_in', '$id_cuenta', '$monto', '$estado', '$timeNdate')";
+        // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=$sql");
+		if(mysqli_query($link, $sql)) {
+			$res['mensajes'][] = 'Pago saliente agregado existosamente';
+			$res['errores'][] = false;
+			if ($i == 0) {
+				$id_pago_out = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
+			}
+		} else {
+			$res['mensajes'][] = 'Hubo un error agregando el pago saliente.';
+			$res['errores'][] = true;
+		}
+	}
+	if ($flag == 1) {
+		$sql = "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id_pago_in = '$id_pago_in'";
+		mysqli_query($link, $sql);
+		if ($restar == 1) {
+			$sql = "UPDATE pagos_out SET monto = monto - 7.5*(SELECT tasa FROM pagos_in WHERE id = '$id_pago_in') WHERE id = '$id_pago_out'";
+			mysqli_query($link, $sql);
+			$res['mensajes'][] = 'Se ha descontado la comision de un pago saliente';
+			$res['errores'][] = false;
+		}
+		$res['mensajes'][] = 'Pago saliente aprobado exitosamente';
+		$res['errores'][] = false;
+	}
+}
+
+
+
 
 
 echo json_encode($res);

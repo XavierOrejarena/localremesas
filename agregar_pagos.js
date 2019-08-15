@@ -161,8 +161,16 @@ const app = new Vue({
 									bodyFormData.set('id_usuario', this.id_usuario);
 									bodyFormData.set('divisa', this.divisa);
 									bodyFormData.set('banco', this.banco);
-									bodyFormData.set('monto', this.monto);
+									bodyFormData.set('amount', this.monto);
 									bodyFormData.set('referencia', this.referencia);
+									var j = 0;
+									for (var i = 0; i < this.cuentas_display.length; i++) {
+										if (this.cuentas_display[i].monto > 0) {
+											bodyFormData.set('id_cuenta[' + j + ']', this.cuentas_display[i].id);
+											bodyFormData.set('monto[' + j + ']', this.cuentas_display[i].monto);
+											j++;
+										}
+									}
 									axios({
 										method: 'post',
 										url: './insertarPagos_in.php',
@@ -184,7 +192,7 @@ const app = new Vue({
 											barra.style = 'width: 0%';
 											barra.innerHTML = '';
 										}
-										this.insertarPagos_out(response.data.id_pago_in, response.data.flag, response.data.restar);
+										// this.insertarPagos_out(response.data.id_pago_in, response.data.flag, response.data.restar);
 										this.clear();
 										window.scrollTo(0, 0);
 									});

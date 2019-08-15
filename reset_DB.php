@@ -236,7 +236,9 @@ if ($ip_server == "::1" ) {
 		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('SCOTIABANK', 0, 'USD')");
 		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('BANPA / ZELLE', 0, 'USD')");
 		$link->query("INSERT INTO bancos (nombre, saldo, divisa) VALUES ('VENEZUELA', 0, 'VES')");
-		// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 9, 500, 123456, 8800, 'APROBADO', NULL, DATE_ADD(NOW(),INTERVAL 3 HOUR))");
+		$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 5, 106, '267795', NULL, NULL, 1, '$timeNdate')");
+		$link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 5, -7.5, '00267795', NULL, NULL, 1, '$timeNdate')");
+		// $link->query("INSERT INTO pagos_in (id_usuario, id_banco, monto, referencia, tasa, estado, flag, reg_date) VALUES (1, 6, 100, 123456, NULL, NULL, 1, '$timeNdate')");
 		// $link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 1, NULL, 2640000, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 		// $link->query("INSERT INTO pagos_out (id_usuario, id_pago_in, id_cuenta, id_banco, monto, referencia, estado, reg_date) VALUES (1, 1, 2, NULL, 1760000, NULL, 'PENDIENTE', DATE_ADD(NOW(),INTERVAL 3 HOUR))");
 	
