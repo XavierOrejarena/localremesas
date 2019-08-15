@@ -209,7 +209,7 @@
                            </div>
                            <div class="col">
                               <label>Número de cuenta</label>
-                              <input @change="verificarCuenta($event)" type="number" class="form-control" :name="'cuenta[' + index +']'" placeholder="Solamente números" required v-model="cuenta.cuenta" maxlength="20">
+                              <input @change="verificarCuenta($event)" type="text" class="form-control" :name="'cuenta[' + index +']'" placeholder="Solamente números" required v-model="cuenta.cuenta" maxlength="20">
                            </div>
                         </div>
                         <div class="mt-4 mb-2 d-flex justify-content-end">
