@@ -13,6 +13,13 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.usuarios = response.data;
+				// this.usuarios.forEach(usuario => {
+				// 	this.identificaciones.forEach(identificacion => {
+				// 		if (condition) {
+							
+				// 		}
+				// 	});
+				// });
 			});
         },
         actualizarCliente(i){

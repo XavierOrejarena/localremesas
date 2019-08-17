@@ -139,6 +139,7 @@ if ($mensageTelegram) {
     $ip_server = $_SERVER['SERVER_ADDR'];
     if ($ip_server == "::1" ) {
         // echo "Local Server IP Address is: $ip_server";
+        file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=monto: $monto ");
     } else {
         // echo "Server IP Address is: $ip_server";
         file_get_contents("https://api.telegram.org/bot$token/sendMessage?chat_id=$chat_id&text=$text");

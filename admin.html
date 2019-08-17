@@ -16,7 +16,7 @@
       <div id="app">
          <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Local Remesas</a>
+        <a class="navbar-brand" href="#" @click="toggled = !toggled">Local Remesas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,13 +48,13 @@
       </div>
     </nav>
 
-      <div id="wrapper" class="toggled">
+      <div id="wrapper" :class="{'toggled' : toggled}">
 
               <!-- Sidebar -->
               <div id="sidebar-wrapper">
                   <ul class="sidebar-nav">
                       <li class="sidebar-brand">
-                          <a href="#">
+                          <a @click="toggled = !toggled">
                               Sección administrativa
                           </a>
                       </li>

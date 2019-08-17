@@ -6,6 +6,7 @@ $offset = -4*60*60; //converting 5 hours to seconds.
 $dateFormat = "Y-m-d H:i:s";
 $timeNdate = gmdate($dateFormat, time()+$offset);
 
+$flag = true;
 $amount = $_POST['amount'];
 $referencia = $_POST['referencia'];
 $id_banco = $_POST['id_banco'];
@@ -27,14 +28,20 @@ if (!empty($_POST['id_usuario'])) {
         } else {
             mysqli_query($link, "INSERT INTO pagos_out (id_usuario, id_pago_in, monto, estado, reg_date) VALUES ('$id_usuario', '$id_pago_in', 0, 'PRESTAMO', '$timeNdate')");
             $id_pago_out = mysqli_fetch_array((mysqli_query($link, "SELECT LAST_INSERT_ID()")))[0];
-            // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=$id_pago_out");
-            mysqli_query($link, "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id_pago_out', '-$amount', '$divisa', 0)");
-            // mysqli_query($link, "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id_pago_out', '$amount', '$divisa', 1)");
+            $result = mysqli_query($link, "SELECT id FROM prestamos WHERE id_pago_out = '$id_pago_out'");
+            if ($result->num_rows > 0) {
+                mysqli_query($link, "UPDATE prestamos SET monto = monto + '$amount' WHERE id_usuario = '$id_usuario' AND divisa = '$divisa' AND flag = 0");
+                $res[mensaje] = 'Error. Este prestamo ya se encuentra registrado.';
+                $res[error] = true;
+                $flag = false;
+            } else {
+                mysqli_query($link, "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id_pago_out', '-$amount', '$divisa', 0)");
+            }
         }
-        $res[mensaje] = 'Prestamo actualizado exitosamente.';
-        $res[error] = false;
-
-
+        if ($flag) {
+            $res[mensaje] = 'Prestamo actualizado exitosamente.';
+            $res[error] = false;
+        }
 
     } else {
         $res[mensaje] = 'No se encontró el pago.';

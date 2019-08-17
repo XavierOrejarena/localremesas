@@ -1,7 +1,7 @@
 <?php
 
-// include "connect.php";
-echo "<p style='color: green;'>TOST<p>";
+include "connect.php";
+// echo "<p style='color: green;'>TOST<p>";
 // $folders = array('comprobantes_in', 'comprobantes_out');
 // 	foreach ($folders as $folder) {
 // 		$files = glob($folder . '/*');
@@ -11,26 +11,26 @@ echo "<p style='color: green;'>TOST<p>";
 // 			}
 // 		}
 // 	}
-$files = glob('comprobantes_in' . '/*');
-foreach($files as $file){
-        if(is_file($file)) {
-                // if (strpos($file, "400") !== false) {
-                echo "<p style='color: green;'>$file<p>";
-                // }
-        }
-}
+// $files = glob('comprobantes_in' . '/*');
+// foreach($files as $file){
+//         if(is_file($file)) {
+//                 // if (strpos($file, "400") !== false) {
+//                 echo "<p style='color: green;'>$file<p>";
+//                 // }
+//         }
+// }
 
-// $result = mysqli_query($link, "UPDATE pagos_in SET id_banco = 5 WHERE id = 897");
-// if (!$result)     
-//         die("Adding record failed: " . mysqli_error());
+$result = mysqli_query($link, "UPDATE prestamos SET monto = monto - 2400 WHERE id = 198");
+if (!$result)     
+        die("Adding record failed: " . mysqli_error());
 
 // $result = mysqli_query($link, "UPDATE prestamos SET divisa = 'PEN' WHERE id = 352");
 // if (!$result)     
 //         die("Adding record failed: " . mysqli_error()); 
         
-// $result = mysqli_query($link, "DELETE FROM prestamos WHERE id = 353");
-// if (!$result)     
-//         die("Adding record failed: " . mysqli_error());
+$result = mysqli_query($link, "DELETE FROM prestamos WHERE id = 423");
+if (!$result)     
+        die("Adding record failed: " . mysqli_error());
 
 // $result = mysqli_query($link, "UPDATE prestamos SET monto = monto + 1161.44 WHERE id = 4");
 // if (!$result)     
