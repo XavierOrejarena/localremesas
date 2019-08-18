@@ -2,7 +2,9 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		pagos: '',
-		tipo_usuario: 'REGULAR'
+		tipo_usuario: 'REGULAR',
+		mensajes: [],
+		errores: []
 	},
 	methods: {
 		format (n, d) {
@@ -14,6 +16,8 @@ const app = new Vue({
 			  );
 		},
 		rechazar_in(e) {
+			this.mensajes = []
+			this.errores = []
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', e);
 			axios({
@@ -22,10 +26,22 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.mensajes = [response.data.mensajes]
+				this.errores = [response.data.errores]
 				this.cargar_pagos_in();
+				window.setTimeout(function() {
+					that = this.mensajes;
+					$('.alert')
+						.fadeTo(500, 0)
+						.slideUp(500, function() {
+							that = '';
+						});
+				}, 3000);
 			});
 		},
 		aprobar_in(e) {
+			this.mensajes = []
+			this.errores = []
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', e);
 			axios({
@@ -34,7 +50,18 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				console.log(response.data)
+				this.mensajes = [response.data.mensajes]
+				this.errores = [response.data.errores]
 				this.cargar_pagos_in();
+				window.setTimeout(function() {
+					that = this.mensajes;
+					$('.alert')
+						.fadeTo(500, 0)
+						.slideUp(500, function() {
+							that = '';
+						});
+				}, 3000);
 			});
 		},
 		cargar_pagos_in() {

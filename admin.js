@@ -13,7 +13,7 @@ const app = new Vue({
 		id: '',
 		small: '',
 		tipo_usuario: '',
-		usuario: '',
+		usuario: {id : 1},
 		mensaje: '',
 		bancos: '',
 		prestamos: null,
@@ -197,8 +197,8 @@ const app = new Vue({
 		},
 		actualizarUsuario() {
 			var bodyFormData = new FormData();
-			bodyFormData.set('id', this.id);
-			bodyFormData.set('tipo', this.tipo_usuario);
+			bodyFormData.set('id', this.usuario.id);
+			bodyFormData.set('tipo', this.usuario.tipo);
 			axios({
 				method: 'post',
 				url: './actualizarUsuario.php',
@@ -217,22 +217,22 @@ const app = new Vue({
 			});
 		},
 		getUserInfo() {
-			if (this.id != '') {
+			if (this.usuario.id != '') {
 				var bodyFormData = new FormData();
-				bodyFormData.set('id', this.id);
+				bodyFormData.set('id', this.usuario.id);
 				axios({
 					method: 'post',
 					url: './getUserInfo.php',
 					data: bodyFormData,
 					config: { headers: { 'Content-Type': 'multipart/form-data' } }
 				}).then(response => {
+					console.log(this.usuario.id)
 					if (response.data == null) {
 						this.small = 'Usuario no existe';
-						this.usuario = '';
 					} else {
 						this.usuario = response.data;
 						this.small = '';
-						this.tipo_usuario = response.data.tipo;
+						// this.tipo_usuario = response.data.tipo;
 					}
 				});
 			}

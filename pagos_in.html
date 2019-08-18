@@ -46,6 +46,17 @@
               </div>
             </nav>
         <div class="container">
+            <div style="position: absolute;
+            z-index: 15;
+            top: 50%;
+            left: 50%;
+            margin: -100px 0 0 -150px;
+            -webkit-box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
+-moz-box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
+box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
+" v-for="(mensaje, index) in mensajes" :class="{'alert container col-md-4 mt-2': true, 'alert-success': !errores[index], 'alert-danger': errores[index]}" role="alert">
+               {{ mensaje }}
+            </div>
          <table onclick="copy(this)" class="table table-hover text-center container table-responsive-sm text-nowrap">
             <thead>
                <tr>

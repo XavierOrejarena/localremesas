@@ -1,6 +1,7 @@
 <?php
 header( 'Content-type: application/json' );
 include "connect.php";
+session_start();
 
 function generateRandomString($length = 10) {
 	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -12,7 +13,8 @@ function generateRandomString($length = 10) {
 	return $randomString;
 }
 
-if ($id = $_POST['id']) {
+if ($_SESSION['tipo'] == 'ADMIN') {
+	$id = $_POST['id'];
 	if ($_FILES['comprobante']['name']) {
 	    $extension = pathinfo($_FILES["comprobante"]["name"], PATHINFO_EXTENSION);
 	    $target_dir = "comprobantes_out/";
@@ -25,33 +27,33 @@ if ($id = $_POST['id']) {
 	        if($check !== false) {
 	            $uploadOk = 1;
 	        } else {
-	            $res['mensajes'][] = 'El archivo no es una imagen.';
-	            $res['errores'][] = true;
+	            $res['mensajes'] = 'El archivo no es una imagen.';
+	            $res['errores'] = true;
 	            $uploadOk = 0;
 	        }
 	    }
 	    // Check if file already exists
 	    if (file_exists($target_file)) {
-	        $res['mensajes'][] = 'Nombre de archivo ya existe.';
-	        $res['errores'][] = true;
+	        $res['mensajes'] = 'Nombre de archivo ya existe.';
+	        $res['errores'] = true;
 	        $uploadOk = 0;
 	    }
 	    // Check file size 2 MEGAS
 	    if ($_FILES["comprobante"]["size"] > 2000000) { 
-	        $res['mensajes'][] = 'Tamaño del archivo no permitido.';
-	        $res['errores'][] = true;
+	        $res['mensajes'] = 'Tamaño del archivo no permitido.';
+	        $res['errores'] = true;
 	        $uploadOk = 0;
 	    }
 	    // Allow certain file formats
 	    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "jpe") {
-	        $res['mensajes'][] = 'Formato de archivo no admitido.';
-	        $res['errores'][] = true;
+	        $res['mensajes'] = 'Formato de archivo no admitido.';
+	        $res['errores'] = true;
 	        $uploadOk = 0;
 	    }
 	    // Check if $uploadOk is set to 0 by an error
 	    if ($uploadOk == 0) {
-	        $res['mensajes'][] = 'No se pudo subir el archivo.';
-	        $res['errores'][] = true;
+	        $res['mensajes'] = 'No se pudo subir el archivo.';
+	        $res['errores'] = true;
 	    // if everything is ok, try to upload file
 	    } else {
 			$random = generateRandomString();
@@ -63,7 +65,7 @@ if ($id = $_POST['id']) {
 
 
 				$sql = "UPDATE pagos_out SET id_banco = '$id_banco', estado = 'PAGADO', referencia = '$referencia' WHERE id = '$id' AND estado = 'PENDIENTE'";
-				$res['errores'][] = mysqli_query($link, $sql);
+				mysqli_query($link, $sql);
 
 				$result = mysqli_query($link, "SELECT estado FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
 
@@ -106,23 +108,26 @@ if ($id = $_POST['id']) {
 							$sql = "INSERT INTO prestamos (id_usuario, id_pago_out, monto, divisa, flag) VALUES ('$id_usuario', '$id', '$monto', '$divisa', 0)";
 						}
 						if(mysqli_query($link, $sql)) {
-							$res['mensajes'][] = 'Prestamo agregado exitosamente';
-							$res['errores'][] = false;
+							$res['mensajes'] = 'Prestamo agregado exitosamente';
+							$res['errores'] = false;
 						} else {
-							$res['mensajes'][] = 'Hubo un error agregando el prestamo';
-							$res['errores'][] = true;
+							$res['mensajes'] = 'Hubo un error agregando el prestamo';
+							$res['errores'] = true;
 						}
 					}
 
 				}
-	            $res['mensajes'][] = 'Archivo cargado existosamente';
-	            $res['errores'][] = false;
+	            $res['mensajes'] = 'Archivo cargado existosamente';
+				$res['errores'] = false;
 	        } else {
-	            $res['mensajes'][] = 'Hubo un error cargando el archivo.';
-	            $res['errores'][] = true;
+	            $res['mensajes'] = 'Hubo un error cargando el archivo.';
+	            $res['errores'] = true;
 	        }
 	    }
 	}
+} else {
+	$res['mensajes'] = "No tiene permiso.";
+	$res['errores'] = true;
 }
 
 echo json_encode($res);

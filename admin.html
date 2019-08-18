@@ -109,7 +109,7 @@
          <div v-if="clase=='Usuarios'" class="container">
             <div class="form-group">
                <label>ID de Usuario</label>
-               <input v-model="id" @keyup="getUserInfo()" type="text" class="form-control" onClick="this.select();" maxlength="10">
+               <input v-model.number="usuario.id" @keyup="getUserInfo()" type="text" class="form-control" onClick="this.select();" maxlength="10">
                <small class="text-danger">{{small}}</small>
             </div>
             <div v-if="usuario">
@@ -127,7 +127,7 @@
                         <tr>
                            <td scope="col">{{usuario.username}}</th>
                            <td scope="col">
-                           <select class="form-control" id="tipo" v-model:value="tipo_usuario">
+                           <select class="form-control" id="tipo" v-model:value="usuario.tipo">
                               <option v-for="tipo in tipos2">{{tipo}}</option>
                            </select>
                            </td>

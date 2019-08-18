@@ -5,9 +5,9 @@ include "connect.php";
 
 $id = $_POST['id'];
 
-$sql = "SELECT * FROM usuarios WHERE id = '$id'";
+$sql = "SELECT id, username, tipo, reg_date FROM usuarios WHERE id = '$id'";
 
-$res = mysqli_fetch_array(mysqli_query($link, $sql));
+$res = mysqli_fetch_assoc(mysqli_query($link, $sql));
 
 echo json_encode($res);
 ?>

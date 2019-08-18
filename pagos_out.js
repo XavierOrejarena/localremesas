@@ -5,6 +5,8 @@ const app = new Vue({
 		tipo_usuario: 'REGULAR',
 		bancos: [],
 		red: 'border-color: #ff0000;  -webkit-box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);',
+		mensajes: [],
+		errores: []
 	},
 	methods: {
 		format (n, d) {
@@ -68,6 +70,8 @@ const app = new Vue({
 			}
 		},
 		pagar_out(e, id_pago_in) {
+			this.mensajes = []
+			this.errores = []
 			// if (document.getElementById(e).value == '' || document.getElementById(e).value == 0) {
 				// document.getElementById(e).style = this.red
 			// } else {
@@ -106,10 +110,19 @@ const app = new Vue({
 							}
 						}
 					}).then(response => {
+						this.mensajes = [response.data.mensajes]
+						this.errores = [response.data.errores]
+						window.setTimeout(function() {
+							that = this.mensajes;
+							$('.alert')
+								.fadeTo(500, 0)
+								.slideUp(500, function() {
+									that = '';
+								});
+						}, 3000);
 						for (let i = 0; i < this.pagos.length; i++) {
 							document.getElementById(this.pagos[i].id_pago_out).value = '';
 							document.getElementById('f' + this.pagos[i].id_pago_out).value = document.getElementById('f' + this.pagos[i].id_pago_out).defaultValue;
-							console.log('f' + this.pagos[i].id_pago_out)
 						}
 						window.scrollTo(0, 0);
 						barra.style = 'width: ' + 0 + '%';
@@ -134,6 +147,8 @@ const app = new Vue({
 			});
 		},
 		rechazar(id) {
+			this.mensajes = []
+			this.errores = []
 			var bodyFormData = new FormData();
 			bodyFormData.set('id', id);
 			axios({
@@ -142,8 +157,18 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.mensajes = [response.data.mensajes]
+				this.errores = [response.data.errores]
 				this.cargar_pagos_out();
-				window.location.href = './pagos_out.html';
+				window.setTimeout(function() {
+					that = this.mensajes;
+					$('.alert')
+						.fadeTo(500, 0)
+						.slideUp(500, function() {
+							that = '';
+						});
+				}, 3000);
+				// window.location.href = './pagos_out.html';
 			});
 		}
 	},
