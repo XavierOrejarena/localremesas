@@ -49,9 +49,9 @@
 				</nav>
 			</div>
 			
-			<div class="container mt-5">
+			<div class="container-fluid col-md-12 mt-5">
                 <label class="ml-3 mt-3 text-info">Registrar clientes</label>
-                <table class="table table-hover text-center table-lg container rounded table-dark">
+                <table class="table table-hover text-center table-lg rounded table-dark">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -70,11 +70,11 @@
                             <td scope="col"><input type="text" class="form-control" v-model="usuario.nombre"></td>
                             <td scope="col"><input type="text" class="form-control" v-model="usuario.apellido"></td>
 							<td scope="col">
-								<select class="form-control" v-model="usuario.selected">
+								<select class="form-control" v-model:value="usuario.selected">
 									<option v-for="identificacion in identificaciones" v-bind:value="identificacion">{{identificacion}}</option>
 								</select>
 							</td>
-							<td scope="col"><input type="text" class="form-control" v-model="usuario[usuario.selected]"></td>
+							<td scope="col"><input type="text" class="form-control" v-model:value="usuario[usuario.selected]"></td>
                             <td scope="col"><input type="text" class="form-control" v-model="usuario.tlf"></td>
                             <td scope="col"><input type="email" class="form-control" v-model="usuario.correo"></td>
                             <td scope="col"><button type="button" class="btn btn-outline-success btn-sm" @click="actualizarCliente(index)">|-></button></td>

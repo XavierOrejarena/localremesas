@@ -12,16 +12,21 @@ const app = new Vue({
 				url: './getUsuarios.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				// this.usuarios.map(usuario => (usuario.selected = 'DNI'))
+				for (let i = 0; i < response.data.length; i++) {
+					for (let j = 0; j < this.identificaciones.length; j++) {
+						if (response.data[i][this.identificaciones[j]] != "null") {
+							response.data[i].selected = this.identificaciones[j]
+							break
+						}
+					}
+				}
 				this.usuarios = response.data;
-				// this.usuarios.forEach(usuario => {
-				// 	this.identificaciones.forEach(identificacion => {
-				// 		if (condition) {
-							
-				// 		}
-				// 	});
-				// });
 			});
-        },
+		},
+		test(){
+			this.usuarios.push('')
+		},
         actualizarCliente(i){
             var bodyFormData = new FormData();
 			bodyFormData.set('id', this.usuarios[i].id);

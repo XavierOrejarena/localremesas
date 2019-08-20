@@ -469,9 +469,9 @@ const app = new Vue({
 		}
 	},
 	watch: { 
-		bancos: function() { // watch it
-			this.banco_index = 0
-		},
+		// bancos: function() { // watch it
+		// 	this.banco_index = 0
+		// },
 		clase: function() {
 			this.mensajes = []
 			this.errores = []
