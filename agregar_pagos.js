@@ -301,6 +301,7 @@ const app = new Vue({
 					data: bodyFormData,
 					config: { headers: { 'Content-Type': 'multipart/form-data' } }
 				}).then(response => {
+					console.log(response.data)
 					if (response['data']['cuentas']) {
 						this.small = 'Usuario ya existe';
 						this.cuentas_display = response['data']['cuentas'];

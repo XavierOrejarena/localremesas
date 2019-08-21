@@ -146,29 +146,12 @@
                         </div>
                      </div>
                   </div>
-                  <div v-if="tabla">
-                     <table class="table table-hover text-center table-sm container border rounded">
-                        <thead>
-                           <tr>
-                              <th scope="col">Nombre</th>
-                              <th scope="col">Cuenta</th>
-                              <th scope="col">Monto VES</th>
-                              <th scope="col">Monto {{divisa}}</th>
-                              <th scope="col">Eliminar</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <tr v-for="(cuenta2, index) in cuentas_display" @keyup="calcularMontoTotal()">
-                              <td scope="col">{{cuenta2.nombre}}</th>
-                              <td scope="col">{{cuenta2.cuenta}}</th>
-                              <td scope="col"><input type="number" :name="'Bs[' + index +']'" class="form-control" placeholder="Bs." v-model:value="cuenta2.monto" onClick="this.select();" min="0"></th>
-                              <td scope="col"><input type="number" class="form-control" v-model:value="cuenta2.monto_aux" :placeholder="divisa" onClick="this.select();" min="0"></th>
-                              <td scope="col"><button type="button" class="btn btn-md " @click="borrarCuenta" :value="cuenta2.id">X</button></td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-                  <div v-for="(cuenta, index) in cuentas" class="form-group border border-warning rounded container bg-light">
+               </div>
+               <div class="mb-4 d-flex">
+                  <button v-if="small!='Usuario no existe'" @click="agregarCuenta" class="btn btn-outline-primary mr-auto p-2" type="button">Agregar cuenta</button>
+                  <button v-if="cuentas_display" @click="insertarPagos_in" type="button" class="btn btn-primary p-2">Cargar Pago</button>
+               </div>
+               <div v-for="(cuenta, index) in cuentas" class="form-group border border-warning rounded container bg-light">
                      <div class="form-group mt-2">
                         <label>Nombre y Apellido</label>
                         <input @change="verificarNombre($event)" type="text" class="form-control" :name="'nombre[' + index +']'" placeholder="Un solo nombre, un solo apellido" required maxlength="30" v-model="cuenta.nombre">
@@ -217,11 +200,35 @@
                         </div>
                      </div>
                   </div>
-                  <button v-if="small!='Usuario no existe'" @click="agregarCuenta" class="btn btn-outline-primary" type="button">Agregar cuenta</button>
-                  <button v-if="cuentas != 0" type="button" class="btn btn-primary" @click="cargarCuentas">Cargar Cuentas</button>
-                  <div class="mt-2">
-                     <button v-if="small=='Usuario ya existe'" @click="insertarPagos_in" type="button" class="form-group btn btn-primary">Cargar Pago</button>
+                  <button v-if="cuentas != 0" type="button" class="mb-4 btn btn-primary" @click="cargarCuentas">Cargar Cuentas</button>
+                  <div v-if="tabla">
+                     <table class="table table-hover text-center table-sm container border rounded">
+                        <thead>
+                           <tr>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Cuenta</th>
+                              <th scope="col">Monto VES</th>
+                              <th scope="col">Monto {{divisa}}</th>
+                              <th scope="col">Eliminar</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr v-for="(cuenta2, index) in cuentas_display" @keyup="calcularMontoTotal()">
+                              <td scope="col">{{cuenta2.nombre}}</th>
+                              <td scope="col">{{cuenta2.cuenta}}</th>
+                              <td scope="col"><input type="number" :name="'Bs[' + index +']'" class="form-control" placeholder="Bs." v-model:value="cuenta2.monto" onClick="this.select();" min="0"></th>
+                              <td scope="col"><input type="number" class="form-control" v-model:value="cuenta2.monto_aux" :placeholder="divisa" onClick="this.select();" min="0"></th>
+                              <td scope="col"><button type="button" class="btn btn-md " @click="borrarCuenta" :value="cuenta2.id">X</button></td>
+                           </tr>
+                        </tbody>
+                     </table>
                   </div>
+                  
+                  <!-- <button v-if="small!='Usuario no existe'" @click="agregarCuenta" class="btn btn-outline-primary" type="button">Agregar cuenta</button> -->
+                  <!-- <button v-if="cuentas != 0" type="button" class="btn btn-primary" @click="cargarCuentas">Cargar Cuentas</button> -->
+                  <!-- <div class="mt-2">
+                     <button v-if="small=='Usuario ya existe'" @click="insertarPagos_in" type="button" class="form-group btn btn-primary">Cargar Pago</button>
+                  </div> -->
                </div>
             </form>
          </div>
