@@ -342,7 +342,7 @@ const app = new Vue({
 			});
 		},
 		eliminarRegistro(index) {
-			if (confirm("Press a button!")) {
+			if (confirm("¿Está segur@ que desea eliminar el registro")) {
 				var bodyFormData = new FormData();
 				bodyFormData.set('banco_id', this.bancos[this.banco_index].id);
 				bodyFormData.set('id_registro', this.registros[index].id);
