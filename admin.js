@@ -342,18 +342,20 @@ const app = new Vue({
 			});
 		},
 		eliminarRegistro(index) {
-			var bodyFormData = new FormData();
-			bodyFormData.set('banco_id', this.bancos[this.banco_index].id);
-			bodyFormData.set('id_registro', this.registros[index].id);
-			axios({
-				method: 'post',
-				url: './eliminarRegistro.php',
-				data: bodyFormData,
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				console.log(response.data)
-				this.getRegistros();
-			});
+			if (confirm("Press a button!")) {
+				var bodyFormData = new FormData();
+				bodyFormData.set('banco_id', this.bancos[this.banco_index].id);
+				bodyFormData.set('id_registro', this.registros[index].id);
+				axios({
+					method: 'post',
+					url: './eliminarRegistro.php',
+					data: bodyFormData,
+					config: { headers: { 'Content-Type': 'multipart/form-data' } }
+				}).then(response => {
+					console.log(response.data)
+					this.getRegistros();
+				});
+			}
 		},
 		editarRegistro(index) {
 			var bodyFormData = new FormData();
