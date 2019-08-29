@@ -29,6 +29,18 @@ const app = new Vue({
 				this.getPagos();
 			});
 		},
+		facturar(id) {
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', id);
+			axios({
+				method: 'post',
+				url: './LRjson.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				console.log(response.data)
+			});
+		},
 		getBancos() {
 			axios({
 				method: 'get',

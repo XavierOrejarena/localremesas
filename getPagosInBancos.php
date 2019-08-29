@@ -14,7 +14,7 @@ ORDER BY pagos_in.id DESC";
 
 $result = mysqli_query($link, $sql);
 
-while ($row = mysqli_fetch_array($result)) {
+while ($row = mysqli_fetch_assoc($result)) {
 	$res[] = $row;
 }
  

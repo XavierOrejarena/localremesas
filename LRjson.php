@@ -1,8 +1,27 @@
 <?php
-
+header( 'Content-type: application/json');
+include "connect.php";
 $offset = -4*60*60; //converting 5 hours to seconds.
 $dateFormat = "d-m-Y";
 $timeNdate = gmdate($dateFormat, time()+$offset);
+
+$id = $_POST['id'];
+
+$sql = "SELECT bancos.nombre, bancos.divisa, pagos_in.id, pagos_in.referencia, pagos_in.monto, pagos_in.id_usuario, pagos_in.reg_date, usuarios.*
+FROM bancos
+INNER JOIN pagos_in ON bancos.id = pagos_in.id_banco
+INNER JOIN usuarios ON pagos_in.id_usuario = usuarios.id
+WHERE pagos_in.id = '$id'";
+
+$divisa = mysqli_fetch_assoc(mysqli_query($link, $sql))['divisa'];
+$divisa = mysqli_fetch_assoc(mysqli_query($link, $sql))['divisa'];
+$divisa = mysqli_fetch_assoc(mysqli_query($link, $sql))['divisa'];
+$divisa = mysqli_fetch_assoc(mysqli_query($link, $sql))['divisa'];
+$divisa = mysqli_fetch_assoc(mysqli_query($link, $sql))['divisa'];
+$divisa = mysqli_fetch_assoc(mysqli_query($link, $sql))['divisa'];
+
+echo json_encode($res);
+exit;
 
 /*
  #########################################################
@@ -49,22 +68,47 @@ $token = "2128fefd62964efd9fb9d1d9c41ed642a2bf82d99bdd4977a18053f99ba8707f";
 # - MANUAL para archivo TXT en el link: https://goo.gl/Lz7hAq
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
  */
+if ($divisa == 'PEN') {
+    $moneda = 1;
+} else {
+    $moneda = 2;
+}
+
+if ($RUC == 'null') {
+    $serie == "FFF1";
+    $contador = mysqli_fetch_assoc(mysqli_query($link, $sql))['contador'];
+} else {
+    $serie == "BBB1";
+    $contador = mysqli_fetch_assoc(mysqli_query($link, $sql))['contador'];
+}
+
+if (condition) {
+    cliente_tipo_de_documento
+}
+
+
+if ($monto >= 700) {
+    $cliente_direccion = "CALLE LIBERTAD 116 MIRAFLORES - LIMA - PERU";
+} else {
+    $cliente_direccion = "";
+}
+
 
 $data = array(
     "operacion"				            => "generar_comprobante",
     "tipo_de_comprobante"               => "1",
-    "serie"                             => "FFF1",
-    "numero"				            => "138",
+    "serie"                             => $serie,
+    "numero"				            => $contador,
     "sunat_transaction"			        => "1",
     "cliente_tipo_de_documento"		    => $cliente_tipo_de_documento,
     "cliente_numero_de_documento"	    => $cliente_numero_de_documento,
     "cliente_denominacion"              => "NUBEFACT SA",
-    "cliente_direccion"                 => "CALLE LIBERTAD 116 MIRAFLORES - LIMA - PERU",
+    "cliente_direccion"                 => $cliente_direccion,
     "cliente_email"                     => $email,
     "cliente_email_1"                   => "",
     "cliente_email_2"                   => "",
     "fecha_de_emision"                  => $timeNdate,
-    "fecha_de_vencimiento"              => "",
+    "fecha_de_vencimiento"              => $timeNdate,
     "moneda"                            => $moneda,
     "tipo_de_cambio"                    => $tasa,
     "porcentaje_de_igv"                 => "18.00",
