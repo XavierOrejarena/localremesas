@@ -348,6 +348,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
             <tbody>
                <tr v-for="prestamo2 in filterPrestamos2" :class="{'table-warning':prestamo2.monto < 0}">
                   <td scope="col">{{prestamo2.id_usuario}}</td>
+                  <td scope="col">{{prestamo2.id}}</td>
                   <!-- <td scope="col">{{prestamo2.id_pago_out}}</td> -->
                   <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+ prestamo2.capture" target="_blank"><span class="badge badge-primary badge-pill">{{prestamo2.id_pago_out}}</span></td>
                   <td scope="col">{{format(parseFloat(prestamo2.monto))}}</td>
