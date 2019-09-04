@@ -16,18 +16,20 @@ const app = new Vue({
 			  );
 		},
 		eliminarPago(id) {
-			var bodyFormData = new FormData();
-			bodyFormData.set('id', id);
-			axios({
-				method: 'post',
-				url: './eliminarPago.php',
-				data: bodyFormData,
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				console.log(response.data)
-				this.getBancos();
-				this.getPagos();
-			});
+			if (confirm("¿Está segur@ que desea eliminar el pago")) {
+				var bodyFormData = new FormData();
+				bodyFormData.set('id', id);
+				axios({
+					method: 'post',
+					url: './eliminarPago.php',
+					data: bodyFormData,
+					config: { headers: { 'Content-Type': 'multipart/form-data' } }
+				}).then(response => {
+					console.log(response.data)
+					this.getBancos();
+					this.getPagos();
+				});
+			}
 		},
 		facturar(id) {
 			var bodyFormData = new FormData();
