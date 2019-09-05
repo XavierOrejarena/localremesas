@@ -102,19 +102,19 @@ if ($id_banco == 5) {
         if (mysqli_query($link, "UPDATE pagos_in SET flag = 1 WHERE id = '$id_pago_in' AND flag = 0")){
             mysqli_query($link, "UPDATE bancos SET saldo = saldo + '$monto' WHERE id = '$id_banco'");
             $res['errores'][] = false;
-            $res['mensajes'][] = 'Pago agregado existosamente.4';
+            $res['mensajes'][] = 'Pago agregado existosamente.';
         } else {
             $res['errores'][] = true;
             $res['mensajes'][] = 'Hubo un error agregando el pago.';
         }
         $result = mysqli_query($link, "SELECT id FROM pagos_out WHERE id_pago_in = '$id_pago_in'");
-        if ($result->num_rows == 1) { // si solo existe un pago
-            $id_pago_out = mysqli_fetch_assoc($result)['id'];
+        if ($result->num_rows > 0) { // si solo existe un pago
+            // $id_pago_out = mysqli_fetch_assoc($result)['id'];
             if (mysqli_query($link, "UPDATE pagos_in SET estado = 'APROBADO' WHERE id = '$id_pago_in'")) {
                 $mensageTelegram = true;
                 $res['errores'][] = false;
                 $res['mensajes'][] = 'Se ha aprobado un pago en divisa extranjera.';
-                if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id = '$id_pago_out'")) {
+                if (mysqli_query($link, "UPDATE pagos_out SET estado = 'PENDIENTE' WHERE id_pago_in = '$id_pago_in'")) {
                     $res['errores'][] = false;
                     $res['mensajes'][] = 'Se ha aprobado un pago en bolívares.';
                 } else {
