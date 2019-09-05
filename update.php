@@ -1,5 +1,5 @@
 <?php
-
+// file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=sql: $sql");
 include "connect.php";
 // echo "<p style='color: green;'>TOST<p>";
 // $folders = array('comprobantes_in', 'comprobantes_out');
@@ -20,15 +20,15 @@ include "connect.php";
 //         }
 // }
 
-$result = mysqli_query($link, "UPDATE pagos_in SET referencia = 11424001608, flag = 9 WHERE id = 1095");
-if (!$result)     
-        die("Adding record failed: " . mysqli_error());
+// $result = mysqli_query($link, "UPDATE pagos_in SET referencia = 11424001608, flag = 9 WHERE id = 1095");
+// if (!$result)     
+//         die("Adding record failed: " . mysqli_error());
 
 // $result = mysqli_query($link, "UPDATE prestamos SET divisa = 'PEN' WHERE id = 352");
 // if (!$result)     
 //         die("Adding record failed: " . mysqli_error()); 
         
-$result = mysqli_query($link, "DELETE FROM pagos_in WHERE id = 1120");
+$result = mysqli_query($link, "ALTER TABLE registros_bancos MODIFY monto VARCHAR(255)");
 if (!$result)     
         die("Adding record failed: " . mysqli_error());
 

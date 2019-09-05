@@ -383,6 +383,7 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				console.log(response.data)
 				this.mensajes.push(response.data.mensajes)
 				this.errores.push(response.data.errores)
 				window.setTimeout(function() {
