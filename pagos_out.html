@@ -119,16 +119,14 @@
 				</table>
 			</div>
 			<div class="container col-md-3">
-
 					<table class="table table-success table-borderless rounded">
 						<tbody>
-							<tr v-for="saldo in saldos">
-								<th scope="row">{{saldo[0]}}</th>
-								<td>{{format(saldo[1])}}</th>
+							<tr v-for="(saldo, index) in saldos">
+								<th scope="row">{{index}}</th>
+								<td>{{format(saldo)}}</th>
 							</tr>
 						</tbody>
 					</table>
-
 			</div>
 		</div>
 		<script src="./vue.js"></script>
