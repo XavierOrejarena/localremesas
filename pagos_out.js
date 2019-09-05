@@ -6,7 +6,8 @@ const app = new Vue({
 		bancos: [],
 		red: 'border-color: #ff0000;  -webkit-box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);',
 		mensajes: [],
-		errores: []
+		errores: [],
+		saldos: [],
 	},
 	methods: {
 		format (n, d) {
@@ -144,6 +145,24 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.pagos = response.data;
+				response.data.map(item => (item.monto = parseInt(item.monto)));
+				var bancos = []
+				bancos[0] = new Array(2)
+				var i = 0
+				var j
+				this.pagos.forEach(pago => {
+					nombre_banco = this.Banco(pago.cuenta)
+					if (!bancos[0].includes(nombre_banco)) {
+						bancos[i] = new Array(2);
+						bancos[i][0] = nombre_banco
+						bancos[i][1] = pago.monto
+						i++
+					} else {
+						j = bancos[0].indexOf(nombre_banco)
+						bancos[j][1] = bancos[j][1] + pago.monto
+					}
+				});
+				this.saldos = bancos
 			});
 		},
 		rechazar(id) {
