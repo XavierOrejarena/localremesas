@@ -237,19 +237,21 @@ const app = new Vue({
 			});
 		},
 		borrarCuenta(e) {
-			var bodyFormData = new FormData();
-			bodyFormData.set('id_cuenta', e.target.value);
-			bodyFormData.set('tipo_usuario', this.tipo_usuario);
-			axios({
-				method: 'post',
-				url: './borrarCuenta.php',
-				data: bodyFormData,
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				this.buscarUsuario();
-				this.mensajes = response.data.mensajes
-				this.errores = response.data.errores
-			});
+			if (confirm("¿Está segur@ que desea eliminar esta cuenta?")) {
+				var bodyFormData = new FormData();
+				bodyFormData.set('id_cuenta', e.target.value);
+				bodyFormData.set('tipo_usuario', this.tipo_usuario);
+				axios({
+					method: 'post',
+					url: './borrarCuenta.php',
+					data: bodyFormData,
+					config: { headers: { 'Content-Type': 'multipart/form-data' } }
+				}).then(response => {
+					this.buscarUsuario();
+					this.mensajes = response.data.mensajes
+					this.errores = response.data.errores
+				});
+			}
 		},
 		eliminarCuenta(index) {
 			this.cuentas.splice(index, 1);

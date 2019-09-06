@@ -28,9 +28,9 @@ include "connect.php";
 // if (!$result)     
 //         die("Adding record failed: " . mysqli_error()); 
         
-$result = mysqli_query($link, "ALTER TABLE registros_bancos MODIFY monto VARCHAR(255)");
-if (!$result)     
-        die("Adding record failed: " . mysqli_error());
+// $result = mysqli_query($link, "ALTER TABLE registros_bancos MODIFY monto VARCHAR(255)");
+// if (!$result)     
+//         die("Adding record failed: " . mysqli_error());
 
 // $result = mysqli_query($link, "UPDATE prestamos SET monto = monto + 1161.44 WHERE id = 4");
 // if (!$result)     
