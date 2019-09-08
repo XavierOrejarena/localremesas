@@ -130,8 +130,6 @@ const app = new Vue({
 						barra.innerHTML = 0 + '%';
 						this.cargar_pagos_out()
 						this.getBancos()
-						// this.pagos.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
-						// window.location.href = './pagos_out.html';
 					}).catch(function (err) {
 						console.log(err)
 					  });
@@ -144,25 +142,28 @@ const app = new Vue({
 				url: './cargar_pagos_out.php',
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
+				this.saldos = {}
 				this.pagos = response.data;
-				response.data.map(item => (item.monto = parseInt(item.monto)));
-				this.pagos.forEach(pago => {
-					banco = this.Banco(pago.cuenta)
-					if (this.saldos[banco]) {
-						this.saldos[banco] = this.saldos[banco] + pago.monto
-					} else {
-						this.saldos[banco] = pago.monto
-					}
-				});
-				console.log(this.saldos)
+				if (response.data) {
+					response.data.map(item => (item.monto = parseInt(item.monto)));
+					this.pagos.forEach(pago => {
+						banco = this.Banco(pago.cuenta)
+						if (this.saldos[banco]) {
+							this.saldos[banco] = this.saldos[banco] + pago.monto
+						} else {
+							this.saldos[banco] = pago.monto
+						}
+					});
+				}
 			});
 		},
-		rechazar(id) {
+		rechazar(id, id_pago_out) {
 			if (confirm("¿Está segur@ que desea eliminar el pago?")) {
 				this.mensajes = []
 				this.errores = []
 				var bodyFormData = new FormData();
 				bodyFormData.set('id', id);
+				bodyFormData.set('id_pago_out', id_pago_out);
 				axios({
 					method: 'post',
 					url: './rechazar_pagos_out.php',
@@ -180,7 +181,6 @@ const app = new Vue({
 								that = '';
 							});
 					}, 3000);
-					// window.location.href = './pagos_out.html';
 				});
 			}
 		}
