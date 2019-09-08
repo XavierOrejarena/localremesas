@@ -365,9 +365,12 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                         <input type="date" name="bday" :min="min" :max="max" class="form-control" v-model:value="date">
                      </div>
                      <div>
-                        <button type="button" class="btn btn-primary" @click="cargar_pagos_all">Buscar</button>
+                        <button type="button" class="btn btn-primary" @click="cargar_pagos_all">DÍA</button>
                      </div>
-                  </div>
+                     <div class="ml-2">
+                        <button type="button" class="btn btn-primary" @click="cargar_pagos_all('mes')">MES</button>
+                     </div>
+               </div>
             <table class="table table-hover text-center table-lg container border rounded">
                <thead>
                   <tr class="thead-dark">

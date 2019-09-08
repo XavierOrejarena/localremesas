@@ -33,7 +33,7 @@ const app = new Vue({
 		totalPrestamos: [],
 		pagos_out: '',
 		max: null,
-		min: null,
+		min: "2019-08-01",
 		date: null
 	},
 	methods: {
@@ -61,9 +61,10 @@ const app = new Vue({
 				{ minimumFractionDigits: d }
 			  );
 		},
-		cargar_pagos_all() {
+		cargar_pagos_all(mes) {
 			var bodyFormData = new FormData();
 			bodyFormData.set('date', this.date);
+			bodyFormData.set('mes', mes);
 			axios({
 				method: 'post',
 				url: './cargar_pagos_all.php',
@@ -71,6 +72,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				if (response.data) {
+					console.log(response.data)
 					this.pagos_out = response.data.out;
 					this.pagos_out.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
 					for (let i = 0; i < this.pagos_out.length; i++) {
@@ -511,7 +513,7 @@ const app = new Vue({
 				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 				var yyyy = today.getFullYear();
 				this.max = yyyy + '-' + mm + '-' + dd;
-				this.min = yyyy + '-' + mm + '-01';
+				// this.min = yyyy + '-' + mm + '-01';
 				this.date = this.max
 				this.cargar_pagos_all()
 			} else {
