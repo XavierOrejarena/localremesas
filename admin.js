@@ -89,26 +89,10 @@ const app = new Vue({
 				this.divisas = response.data;
 			});
 		},
-		// totalEntrante(){
-		// 	var bodyFormData = new FormData();
-		// 	bodyFormData.set('tipo_usuario', this.tipo_usuario);
-		// 	axios({
-		// 		method: 'post',
-		// 		url: './totalEntrante.php',
-		// 		data: bodyFormData,
-		// 		config: { headers: { 'Content-Type': 'multipart/form-data' } }
-		// 	}).then(response => {
-		// 		let element = 0;
-		// 		this.total_entrante = response.data
-		// 		for (let i = 0; i < this.total_entrante.length; i++) {
-		// 			element = element + parseFloat(this.total_entrante[i].monto);
-		// 		}
-		// 	});
-		// },
 		revisarPrestamo(){
 			var bodyFormData = new FormData();
 			bodyFormData.set('amount', this.amount);
-			bodyFormData.set('id_banco', this.bancos[this.banco_index].id);
+			bodyFormData.set('id_banco', this.banco_index);
 			bodyFormData.set('referencia', this.referencia);
 			bodyFormData.set('id_usuario', this.id);
 			axios({
