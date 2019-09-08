@@ -158,29 +158,31 @@ const app = new Vue({
 			});
 		},
 		rechazar(id) {
-			this.mensajes = []
-			this.errores = []
-			var bodyFormData = new FormData();
-			bodyFormData.set('id', id);
-			axios({
-				method: 'post',
-				url: './rechazar_pagos_out.php',
-				data: bodyFormData,
-				config: { headers: { 'Content-Type': 'multipart/form-data' } }
-			}).then(response => {
-				this.mensajes = [response.data.mensajes]
-				this.errores = [response.data.errores]
-				this.cargar_pagos_out();
-				window.setTimeout(function() {
-					that = this.mensajes;
-					$('.alert')
-						.fadeTo(500, 0)
-						.slideUp(500, function() {
-							that = '';
-						});
-				}, 3000);
-				// window.location.href = './pagos_out.html';
-			});
+			if (confirm("¿Está segur@ que desea eliminar el pago?")) {
+				this.mensajes = []
+				this.errores = []
+				var bodyFormData = new FormData();
+				bodyFormData.set('id', id);
+				axios({
+					method: 'post',
+					url: './rechazar_pagos_out.php',
+					data: bodyFormData,
+					config: { headers: { 'Content-Type': 'multipart/form-data' } }
+				}).then(response => {
+					this.mensajes = [response.data.mensajes]
+					this.errores = [response.data.errores]
+					this.cargar_pagos_out();
+					window.setTimeout(function() {
+						that = this.mensajes;
+						$('.alert')
+							.fadeTo(500, 0)
+							.slideUp(500, function() {
+								that = '';
+							});
+					}, 3000);
+					// window.location.href = './pagos_out.html';
+				});
+			}
 		}
 	},
 	computed: {

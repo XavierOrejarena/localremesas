@@ -48,8 +48,6 @@ const app = new Vue({
 			}).then(response => {
 				if (response.data) {
 					this.getUserInfo()
-				} else {
-					console.log("error")
 				}
 			});
 		},
@@ -72,7 +70,6 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				if (response.data) {
-					console.log(response.data)
 					this.pagos_out = response.data.out;
 					this.pagos_out.map(item => (item.monto = parseInt(item.monto), item.amount = parseFloat(item.amount), item.tasa = parseFloat(item.tasa)));
 					for (let i = 0; i < this.pagos_out.length; i++) {
@@ -228,7 +225,6 @@ const app = new Vue({
 					data: bodyFormData,
 					config: { headers: { 'Content-Type': 'multipart/form-data' } }
 				}).then(response => {
-					console.log(this.usuario.id)
 					if (response.data == null) {
 						this.small = 'Usuario no existe';
 					} else {
@@ -281,7 +277,6 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				if (response.data != null) {
-					// console.log(response.data.total)
 					this.prestamos = response.data.total
 					this.prestamos.map(prestamo => (prestamo.monto = parseFloat(prestamo.monto)))
 					this.calcularTotalPrestamos()
@@ -354,7 +349,6 @@ const app = new Vue({
 					data: bodyFormData,
 					config: { headers: { 'Content-Type': 'multipart/form-data' } }
 				}).then(response => {
-					console.log(response.data)
 					this.getRegistros();
 				});
 			}
@@ -385,7 +379,6 @@ const app = new Vue({
 				data: bodyFormData,
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
-				console.log(response.data)
 				this.mensajes.push(response.data.mensajes)
 				this.errores.push(response.data.errores)
 				window.setTimeout(function() {
