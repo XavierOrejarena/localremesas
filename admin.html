@@ -271,7 +271,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                      <tbody>
                         <td scope="col">
                               <select class="form-control" v-model.number="banco_index">
-                                 <option v-for="(banco, index) in bancos" v-bind:value="index">{{banco.nombre}} {{banco.divisa}}</option>
+                                 <option v-for="(banco, index) in filterBancos" v-bind:value="index">{{banco.nombre}} {{banco.divisa}}</option>
                               </select>
                         </td>
                         <td scope="col"><input onClick="this.select();" type="number" class="form-control" placeholder="Monto" v-model.number="amount"></td>
