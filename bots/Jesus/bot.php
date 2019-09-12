@@ -305,7 +305,8 @@ function processMessage($message) {
         $res = $string."\n".$res;
         // ."\t\t\t\t\t".$row['saldo']."\n".$res;
       }
-
+      $res = $res."\n\nTotal: ".mysqli_fetch_assoc(mysqli_query($link, "SELECT SUM(saldo) FROM bancos WHERE divisa = 'VES'"))['SUM(saldo)'];
+      // $res = "Hello";
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".$res."</pre>", 'parse_mode' => 'HTML'));
     } else if (strpos($text,"/colombia") !== false) {
       apiRequestJson("sendMessage", array('chat_id' => $chat_id, "text" => "<pre>".getColombia()."</pre>", 'parse_mode' => 'HTML'));

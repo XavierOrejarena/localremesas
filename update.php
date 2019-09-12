@@ -20,9 +20,9 @@ include "connect.php";
 //         }
 // }
 
-// $result = mysqli_query($link, "UPDATE pagos_in SET referencia = 11424001608, flag = 9 WHERE id = 1095");
-// if (!$result)     
-//         die("Adding record failed: " . mysqli_error());
+$result = mysqli_query($link, "UPDATE prestamos SET monto = monto + 3149.61 WHERE id_usuario = 26 AND flag = 0");
+if (!$result)     
+        die("Adding record failed: " . mysqli_error());
 
 // $result = mysqli_query($link, "UPDATE prestamos SET divisa = 'PEN' WHERE id = 352");
 // if (!$result)     

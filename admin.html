@@ -317,7 +317,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                </tr>
             </tbody>
          </table>
-         <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-6 table-danger">
+         <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-8 table-danger">
             <thead>
                <tr>
                   <th scope="col">ID Usuario</th>
@@ -335,11 +335,12 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                   <td scope="col">{{prestamo.fecha}}</td>
                </tr>
             </tbody>
-         <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-6 table-success">
+         <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-8 table-success">
             <thead>
                <tr>
                   <th scope="col">ID Usuario</th>
-                  <th scope="col">ID Pago</th>
+                  <th scope="col">ID Pago IN</th>
+                  <th scope="col">ID Pago OUT</th>
                   <th scope="col">Monto</th>
                   <th scope="col">Divisa</th>
                   <th scope="col">Fecha</th>

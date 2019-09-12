@@ -459,6 +459,8 @@ const app = new Vue({
 			this.errores = []
 			if (this.clase == "Respaldo") {
 				this.getRespaldos()
+			} else if (this.clase == "Prestamos") {
+				this.banco_index == 5
 			}
 		},
 		registro: function() {
