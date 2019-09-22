@@ -7,7 +7,7 @@ const app = new Vue({
 		tasa: '',
 		divisa: 'PEN',
 		banco: 'BCP',
-		Comision: 'yes',
+		Comision: 'no',
 		id_usuario: 0,
 		tipo_usuario: '',
 		tipo_cliente: 'REGULAR',
@@ -311,11 +311,11 @@ const app = new Vue({
 						this.tabla = true;
 						this.cargarTasa(response['data']['cuentas'][0].tipo);
 						this.tipo_cliente = response['data']['cuentas'][0].tipo;
-						if (this.tipo_cliente == 'ESPECIAL') {
-							this.Comision = 'no'
-						} else {
-							this.Comision = 'yes'
-						}
+						// if (this.tipo_cliente == 'ESPECIAL') {
+						// 	this.Comision = 'no'
+						// } else {
+						// 	this.Comision = 'yes'
+						// }
 					} else {
 						if (response['data']['tipo']) {
 							this.small = 'Usuario ya existe';
@@ -353,12 +353,12 @@ const app = new Vue({
 	computed: {
 		monto2: function () {
 			if (this.divisa == 'PEN') {
-				this.monto3 = this.monto-3;
+				this.monto3 = this.monto-6;
 			} else {
 				if (this.banco == "BANPA / ZELLE"){
 					this.monto3 = this.monto;
 				}else {
-					this.monto3 = this.monto-1;
+					this.monto3 = this.monto-2;
 				}
 			}
 			if (this.Comision === 'no') {
