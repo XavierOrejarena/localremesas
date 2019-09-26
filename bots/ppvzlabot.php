@@ -160,6 +160,25 @@ Ejemplo: 50*7500',
     }
     else if ($signal == 'x' || $signal == '*' || is_null($signal) || $signal == 'X') {
         $receive = round(($USD-$USD*(0.054)-0.3), 2);
+        $sent = round((100*($USD+0.3)/94.6),2);
+        if ($BS == '') {
+            $results[] = [
+                'type'         => 'article',
+                'id'           => gen_uuid(),
+                'title'        => "Si envían: $USD $",
+                'message_text' => "Envían: $USD $
+Llegarán: $receive $",
+                'description'  => "Llegaran: $receive",
+                ];
+                $results[] = [
+                'type'         => 'article',
+                'id'           => gen_uuid(),
+                'title'        => "Para que lleguen: $USD $",
+                'message_text' => "Envían: $sent $
+Llegarán: $USD $",
+                'description'  => "Deben enviar: $sent",
+                ];
+        } else {
         $results[] = [
         'type'         => 'article',
         'id'           => gen_uuid(),
@@ -170,7 +189,6 @@ Llegarán: $receive $
 Total: ".number_format($receive*$Bolivares, 2, ',', '')." Bs.",
         'description'  => "Llegaran: $receive",
         ];
-        $sent = round((100*($USD+0.3)/94.6),2);
         $results[] = [
         'type'         => 'article',
         'id'           => gen_uuid(),
@@ -182,7 +200,7 @@ Total: ".number_format($USD*$Bolivares, 2, ',', '')." Bs.",
         'description'  => "Deben enviar: $sent",
         ];
     }
-    else if ($signal == "/" || $signal == '\\') {
+    }else if ($signal == "/" || $signal == '\\') {
         $sent = round((100*(($USD/$BS)+0.3)/94.6),2);
         $receive = round($USD/$BS,2);
         $results[] = [
@@ -222,15 +240,22 @@ function processMessage($message) {
 
             if ($signal == 'x' || $signal == '*' || is_null($signal) || $signal == 'X') {
                 $receive = round(($USD-$USD*(0.054)-0.3), 2);
-                $msg1 = "Envían: $USD $
+                $sent = round((100*($USD+0.3)/94.6),2);
+                if ($BS == '') {
+                    $msg1 = "Envían: $USD $
+Llegarán: $receive $";
+                    $msg2 = "Envían: $sent $
+Llegarán: $USD $";
+                } else {
+                    $msg1 = "Envían: $USD $
 Llegarán: $receive $
 \xE2\x98\x95: $Bolivares Bs.
 Total: ".number_format($receive*$Bolivares, 2, ',', '')." Bs.";
-                $sent = round((100*($USD+0.3)/94.6),2);
-                $msg2 = "Envían: $sent $
+                    $msg2 = "Envían: $sent $
 Llegarán: $USD $
 \xE2\x98\x95: $Bolivares Bs.
 Total: ".number_format($USD*$Bolivares, 2, ',', '')." Bs.";
+                }
             }
             else if ($signal == "/" || $signal == '\\') {
                 $sent = round((100*(($USD/$BS)+0.3)/94.6),2);

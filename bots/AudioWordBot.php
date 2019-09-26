@@ -194,7 +194,7 @@ if (!$update) {
 
 if (isset($update["message"])) {
   processMessage($update["message"]);
-  saveUser($update['message']['from']);
+  // saveUser($update['message']['from']);
 }
 
 ?>
