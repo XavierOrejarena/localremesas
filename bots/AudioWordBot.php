@@ -3,7 +3,8 @@
 //@AudioWordBot
 define('BOT_TOKEN', '814434766:AAEpIZOreTpDpIG_j2xiIW6bYqNTnwm_JOQ');
 define('API_URL', 'https://api.telegram.org/bot'.BOT_TOKEN.'/');
-define('WEBHOOK_URL', 'https://xavier.mer.web.ve/AudioWordBot.php');
+// define('WEBHOOK_URL', 'https://xavier.mer.web.ve/AudioWordBot.php');
+define('WEBHOOK_URL', 'https://localremesas.com/AudioWordBot.php');
 
 function saveUser($user) {
   include "connect.php";
