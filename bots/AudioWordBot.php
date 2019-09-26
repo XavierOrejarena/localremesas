@@ -133,6 +133,7 @@ function apiRequestJson($method, $parameters) {
 function processMessage($message) {
   $message_id = $message['message_id'];
   $chat_id = $message['chat']['id'];
+  apiRequest("sendMessage", array('chat_id' => $chat_id, "text" => 'Procesando...'));
   if (isset($message['text'])) {
     $word = $message['text'];
     $URL = (file_get_contents("https://dictionary.cambridge.org/es/diccionario/ingles/$word"));
