@@ -267,6 +267,7 @@ const app = new Vue({
 					this.prestamos2 = response.data.detallado
 				}
 			});
+			this.captures_out();
 		},
 		captures_out() {
 			axios({
@@ -487,7 +488,6 @@ const app = new Vue({
 				this.cargarTasas();
 				this.getPrestamos();
 				this.getRegistros();
-				this.captures_out();
 				var today = new Date();
 				var dd = String(today.getDate()).padStart(2, '0');
 				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
