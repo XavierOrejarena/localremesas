@@ -310,6 +310,7 @@ const app = new Vue({
 		// 	this.getRegistros();
 		// },
 		getRegistros() {
+			console.log("test")
 			if (this.bancos[this.banco_index].id) {
 				var bodyFormData = new FormData();
 				bodyFormData.set('id', this.bancos[this.banco_index].id);
