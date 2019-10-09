@@ -267,7 +267,6 @@ const app = new Vue({
 					this.prestamos2 = response.data.detallado
 				}
 			});
-			this.captures_out()
 		},
 		captures_out() {
 			axios({
@@ -276,7 +275,6 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				response.data.forEach(element => {
-					console.log(this.prestamos2)
 					var temp = element.indexOf("_")
 					var number = element.substring(0, temp)
 					if(!isNaN(number) && number != '') {
@@ -287,7 +285,7 @@ const app = new Vue({
 						})
 					}
 				})
-				// this.prestamos3 = this.prestamos2;
+				this.prestamos3 = this.prestamos2;
 			});
 		},
 		getPagosIn() {
@@ -310,22 +308,19 @@ const app = new Vue({
 		// 	this.getRegistros();
 		// },
 		getRegistros() {
-			console.log("test")
-			if (this.bancos[this.banco_index].id) {
-				var bodyFormData = new FormData();
-				bodyFormData.set('id', this.bancos[this.banco_index].id);
-				axios({
-					method: 'post',
-					url: './getRegistros.php',
-					data: bodyFormData,
-					config: { headers: { 'Content-Type': 'multipart/form-data' } }
-				}).then(response => {
-					this.registros = response.data;
-					if (response.data) {
-						// this.registros.map(registros => (registros.monto = this.format(parseFloat(registros.monto))));
-					}
-				});
-			}
+			var bodyFormData = new FormData();
+			bodyFormData.set('id', this.bancos[this.banco_index].id);
+			axios({
+				method: 'post',
+				url: './getRegistros.php',
+				data: bodyFormData,
+				config: { headers: { 'Content-Type': 'multipart/form-data' } }
+			}).then(response => {
+				this.registros = response.data;
+				if (response.data) {
+					// this.registros.map(registros => (registros.monto = this.format(parseFloat(registros.monto))));
+				}
+			});
 		},
 		eliminarRegistro(index) {
 			if (confirm("¿Está segur@ que desea eliminar el registro")) {
@@ -505,8 +500,8 @@ const app = new Vue({
 			}
 		});
 	},
-	beforeUpdate() {
-		// this.captures_out();
+	created() {
+		this.captures_out();
 	  },
 	computed: {
 		SmallClass: function() {
