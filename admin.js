@@ -276,6 +276,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				response.data.forEach(element => {
+					console.log(this.prestamos2)
 					var temp = element.indexOf("_")
 					var number = element.substring(0, temp)
 					if(!isNaN(number) && number != '') {
