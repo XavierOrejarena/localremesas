@@ -267,7 +267,6 @@ const app = new Vue({
 					this.prestamos2 = response.data.detallado
 				}
 			});
-			this.captures_out();
 		},
 		captures_out() {
 			axios({
@@ -286,7 +285,7 @@ const app = new Vue({
 						})
 					}
 				})
-				this.prestamos3 = this.prestamos2;
+				// this.prestamos3 = this.prestamos2;
 			});
 		},
 		getPagosIn() {
