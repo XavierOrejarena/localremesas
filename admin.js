@@ -527,6 +527,7 @@ const app = new Vue({
 		},
 		filterPrestamos2() {
 			if (this.prestamos2 != null) {
+				this.captures_out();
 				return this.prestamos2.filter(prestamo => prestamo.id_usuario == this.id);
 			}
 		}
