@@ -487,6 +487,7 @@ const app = new Vue({
 				this.cargarTasas();
 				this.getPrestamos();
 				this.getRegistros();
+				this.captures_out();
 				var today = new Date();
 				var dd = String(today.getDate()).padStart(2, '0');
 				var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -527,7 +528,6 @@ const app = new Vue({
 		},
 		filterPrestamos2() {
 			if (this.prestamos2 != null) {
-				this.captures_out();
 				return this.prestamos2.filter(prestamo => prestamo.id_usuario == this.id);
 			}
 		}
