@@ -284,24 +284,31 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
             <input v-model="id" type="text" class="form-control" maxlength="10">
             <small class="text-danger">{{small}}</small>
          </div>
-         <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-6 table-danger">
-               <thead>
-                  <tr>
-                     <th scope="col">ID Usuario</th>
-                     <th scope="col">Monto</th>
-                     <th scope="col">Divisa</th>
-                     <th scope="col">Fecha</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr v-for="prestamo in filterPrestamos">
-                     <td scope="col">{{prestamo.id_usuario}}</th>
-                     <td scope="col">{{prestamo.monto}}</th>
-                     <td scope="col">{{prestamo.divisa}}</th>
-                     <td scope="col">{{prestamo.fecha}}</th>
-                  </tr>
-               </tbody>
-            </table>
+         <div class="row justify-content-start col-8 offset-md-2">
+            <div class="form-group col-md-11">
+               <table v-if="id" class="table table-hover text-center table-sm container border rounded table-danger">
+                  <thead>
+                     <tr>
+                        <th scope="col">ID Usuario</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Divisa</th>
+                        <th scope="col">Fecha</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr v-for="prestamo in filterPrestamos">
+                        <td scope="col">{{prestamo.id_usuario}}</th>
+                        <td scope="col">{{prestamo.monto}}</th>
+                        <td scope="col">{{prestamo.divisa}}</th>
+                        <td scope="col">{{prestamo.fecha}}</th>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <div v-if="id" class="form-group col-md-1">
+               <button type="button" class="btn btn-primary" @click="captures_out">Captures</button>
+            </div>
+         </div>
          </table>
          <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-6 table-dark">
             <thead>
@@ -317,24 +324,26 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                </tr>
             </tbody>
          </table>
-         <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-8 table-danger">
-            <thead>
-               <tr>
-                  <th scope="col">ID Usuario</th>
-                  <th scope="col">Monto</th>
-                  <th scope="col">Divisa</th>
-                  <th scope="col">Fecha</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr v-for="prestamo in prestamos" v-if="prestamo.monto > 1">
-                  <td scope="col"><a :href="'https://api.whatsapp.com/send?phone=' + prestamo.tlf + '&text=Buen día presentas una deuda de: *' + prestamo.monto + '* ' + prestamo.divisa + whatsapp" target="_blank">{{prestamo.id_usuario}}</a></td>
-                  <!-- <td scope="col">{{prestamo.id_usuario}}</td> -->
-                  <td scope="col">{{prestamo.monto}}</td>
-                  <td scope="col">{{prestamo.divisa}}</td>
-                  <td scope="col">{{prestamo.fecha}}</td>
-               </tr>
-            </tbody>
+            <table v-if="!id" class="table table-hover text-center table-sm container border rounded col-md-8 table-danger">
+               <thead>
+                  <tr>
+                     <th scope="col">ID Usuario</th>
+                     <th scope="col">Monto</th>
+                     <th scope="col">Divisa</th>
+                     <th scope="col">Fecha</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr v-for="prestamo in prestamos" v-if="prestamo.monto > 1">
+                     <td scope="col"><a :href="'https://api.whatsapp.com/send?phone=' + prestamo.tlf + '&text=Buen día presentas una deuda de: *' + prestamo.monto + '* ' + prestamo.divisa + whatsapp" target="_blank">{{prestamo.id_usuario}}</a></td>
+                     <!-- <td scope="col">{{prestamo.id_usuario}}</td> -->
+                     <td scope="col">{{prestamo.monto}}</td>
+                     <td scope="col">{{prestamo.divisa}}</td>
+                     <td scope="col">{{prestamo.fecha}}</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
          <table v-if="id" class="table table-hover text-center table-sm container border rounded col-md-8 table-success">
             <thead>
                <tr>
@@ -351,7 +360,7 @@ box-shadow: -3px 17px 24px -7px rgba(0,0,0,0.75);
                   <td scope="col">{{prestamo2.id_usuario}}</td>
                   <td scope="col">{{prestamo2.id}}</td>
                   <!-- <td scope="col">{{prestamo2.id_pago_out}}</td> -->
-                  <td scope="col"><a @click="captures_out" :href="'http://localremesas.com/comprobantes_out/'+ prestamo2.capture" target="_blank"><span class="badge badge-primary badge-pill">{{prestamo2.id_pago_out}}</span></td>
+                  <td scope="col"><a :href="'http://localremesas.com/comprobantes_out/'+ prestamo2.capture" target="_blank"><span class="badge badge-primary badge-pill">{{prestamo2.id_pago_out}}</span></td>
                   <td scope="col">{{format(parseFloat(prestamo2.monto))}}</td>
                   <td scope="col">{{prestamo2.divisa}}</td>
                   <td scope="col">{{prestamo2.fecha}}</td>
