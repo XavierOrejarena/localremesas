@@ -500,7 +500,7 @@ const app = new Vue({
 			}
 		});
 	},
-	created() {
+	updated() {
 		this.captures_out();
 	  },
 	computed: {
