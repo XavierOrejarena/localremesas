@@ -460,6 +460,7 @@ const app = new Vue({
 			if (this.clase == "Respaldo") {
 				this.getRespaldos()
 			} else if (this.clase == "Prestamos") {
+				this.captures_out();
 				this.banco_index == 5
 			}
 		},
@@ -501,7 +502,7 @@ const app = new Vue({
 		});
 	},
 	updated() {
-		this.captures_out();
+		// this.captures_out();
 	  },
 	computed: {
 		SmallClass: function() {
