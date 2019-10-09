@@ -250,11 +250,13 @@ Llegarán: $USD $";
                     $msg1 = "Envían: $USD $
 Llegarán: $receive $
 \xE2\x98\x95: $Bolivares Bs.
-Total: ".number_format($receive*$Bolivares, 2, ',', '')." Bs.";
+Total: ".number_format($receive*$Bolivares, 2, ',', '')." Bs.
+Total: ".number_format($receive*$Bolivares, 2, ',', '.')." Bs.";
                     $msg2 = "Envían: $sent $
 Llegarán: $USD $
 \xE2\x98\x95: $Bolivares Bs.
-Total: ".number_format($USD*$Bolivares, 2, ',', '')." Bs.";
+Total: ".number_format($USD*$Bolivares, 2, ',', '')." Bs.
+Total: ".number_format($USD*$Bolivares, 2, ',', '.')." Bs.";
                 }
             }
             else if ($signal == "/" || $signal == '\\') {
@@ -263,7 +265,8 @@ Total: ".number_format($USD*$Bolivares, 2, ',', '')." Bs.";
                 $msg1 = "Envían: $sent $
 Llegarán: $receive $
 \xE2\x98\x95: $BS Bs.
-Total: ".number_format($USD, 2, ',', '')." Bs.";
+Total: ".number_format($USD, 2, ',', '')." Bs.
+Total: ".number_format($USD, 2, ',', '.')." Bs.";
             }
 
             sendMessage($chat_id, $msg1);

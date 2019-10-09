@@ -501,7 +501,7 @@ const app = new Vue({
 		});
 	},
 	beforeUpdate() {
-		this.captures_out();
+		// this.captures_out();
 	  },
 	computed: {
 		SmallClass: function() {
