@@ -303,7 +303,6 @@ const app = new Vue({
 					data: bodyFormData,
 					config: { headers: { 'Content-Type': 'multipart/form-data' } }
 				}).then(response => {
-					console.log(response.data)
 					if (response['data']['cuentas']) {
 						this.small = 'Usuario ya existe';
 						this.cuentas_display = response['data']['cuentas'];
@@ -311,11 +310,6 @@ const app = new Vue({
 						this.tabla = true;
 						this.cargarTasa(response['data']['cuentas'][0].tipo);
 						this.tipo_cliente = response['data']['cuentas'][0].tipo;
-						// if (this.tipo_cliente == 'ESPECIAL') {
-						// 	this.Comision = 'no'
-						// } else {
-						// 	this.Comision = 'yes'
-						// }
 					} else {
 						if (response['data']['tipo']) {
 							this.small = 'Usuario ya existe';
@@ -353,12 +347,12 @@ const app = new Vue({
 	computed: {
 		monto2: function () {
 			if (this.divisa == 'PEN') {
-				this.monto3 = this.monto-6;
+				this.monto3 = this.monto-3;
 			} else {
 				if (this.banco == "BANPA / ZELLE"){
 					this.monto3 = this.monto;
 				}else {
-					this.monto3 = this.monto-2;
+					this.monto3 = this.monto-1;
 				}
 			}
 			if (this.Comision === 'no') {
