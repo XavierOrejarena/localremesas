@@ -143,6 +143,7 @@ const app = new Vue({
 				config: { headers: { 'Content-Type': 'multipart/form-data' } }
 			}).then(response => {
 				this.saldos = {}
+				this.saldos['TOTAL'] = 0
 				this.pagos = response.data;
 				if (response.data) {
 					response.data.map(item => (item.monto = parseInt(item.monto)));
@@ -153,6 +154,7 @@ const app = new Vue({
 						} else {
 							this.saldos[banco] = pago.monto
 						}
+						this.saldos['TOTAL'] = this.saldos['TOTAL'] + pago.monto
 					});
 				}
 			});
