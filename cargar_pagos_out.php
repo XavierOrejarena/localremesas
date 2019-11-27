@@ -8,7 +8,8 @@ include "connect.php";
 $sql = "SELECT pagos_out.id AS id_pago_out, pagos_out.id_usuario, pagos_out.id_pago_in, pagos_out.monto, cuentas.*
 FROM pagos_out
 INNER JOIN cuentas ON cuentas.id = pagos_out.id_cuenta
-WHERE pagos_out.estado = 'PENDIENTE'";
+WHERE pagos_out.estado = 'PENDIENTE'
+ORDER BY pagos_out.id DESC";
 $result = mysqli_query($link, $sql);
 
 while ($row = mysqli_fetch_assoc($result)) {
