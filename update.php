@@ -2,7 +2,7 @@
 // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=sql: $sql");
 include "connect.php";
 
-`rm * /home/jy4360mfsda5/public_html/db_backups/`;
+`rm  /home/jy4360mfsda5/public_html/db_backups/*`;
 // echo "<p style='color: green;'>TOST<p>";
 // $folders = array('comprobantes_in', 'comprobantes_out');
 // 	foreach ($folders as $folder) {
