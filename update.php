@@ -3,6 +3,8 @@
 include "connect.php";
 
 `rm  /home/jy4360mfsda5/public_html/db_backups/*`;
+
+
 // echo "<p style='color: green;'>TOST<p>";
 // $folders = array('comprobantes_in', 'comprobantes_out');
 // 	foreach ($folders as $folder) {
