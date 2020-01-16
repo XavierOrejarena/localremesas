@@ -1,0 +1,3 @@
+rm * /Directory/
+
+rm /Directory/*

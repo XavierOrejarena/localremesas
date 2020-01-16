@@ -2,7 +2,7 @@
 // file_get_contents("https://api.telegram.org/bot716396100:AAFbVh6W950S4goHt30TVUXW3cuKGdWQmKM/sendMessage?chat_id=149273661&text=sql: $sql");
 include "connect.php";
 
-`rm  /home/jy4360mfsda5/public_html/db_backups/*`;
+// `rm  /home/jy4360mfsda5/public_html/db_backups/*`;
 
 // echo "<p style='color: green;'>TOST<p>";
 // $folders = array('comprobantes_in', 'comprobantes_out');
@@ -88,7 +88,7 @@ $ip2 = $_SERVER['HTTP_X_FORWARDED_FOR'];
 $ip3 = $_SERVER['HTTP_CLIENT_IP'];
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-echo "<p> REMOTE_ADDR: $ip1 <p>";
+echo "<p> REMOTE_ADDRes: $ip1 <p>";
 echo "<p> HTTP_X_FORWARDED_FOR: $ip2 <p>";
 echo "<p> HTTP_CLIENT_IP: $ip3 <p>";
 echo "<p> HTTP_USER_AGENT: $user_agent <p>";
